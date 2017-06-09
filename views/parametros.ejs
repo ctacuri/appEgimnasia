@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Escuela de Gimnasia</title>
+
+</head>
+<body>
+    <% include menu %>
+
+    <div id="myModal" class="modal modal-wide2 modal-high2 fade" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">PARAMETROS</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 nopadding">
+
+                            <div class="form-group row">
+                                <label for="nroDocumento" class="col-md-3 col-form-label col-form-label-sm">Ruc</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control form-control-sm" id="nroDocumento">
+                                    <input type="hidden" class="form-control form-control-sm" id="id">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="descripcion" class="col-md-3 col-form-label col-form-label-sm">Razon Social</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-sm" id="descripcion">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="impuesto" class="col-md-3 col-form-label col-form-label-sm">Impuesto</label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control form-control-sm text-align-right" id="impuesto">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="serieTicket" class="col-md-3 col-form-label col-form-label-sm">Serie Ticket</label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control form-control-sm text-align-right" id="serieTicket">
+                                </div>
+
+                                <label for="nroTicket" class="col-md-3 col-form-label col-form-label-sm">Nro. Ticket</label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control form-control-sm text-align-right" id="nroTicket">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="serieBoleta" class="col-md-3 col-form-label col-form-label-sm">Serie Boleta</label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control form-control-sm text-align-right" id="serieBoleta">
+                                </div>
+
+                                <label for="nroBoleta" class="col-md-3 col-form-label col-form-label-sm">Nro. Boleta</label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control form-control-sm text-align-right" id="nroBoleta">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="serieFactura" class="col-md-3 col-form-label col-form-label-sm">Serie Factura</label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control form-control-sm text-align-right" id="serieFactura">
+                                </div>
+
+                                <label for="nroFactura" class="col-md-3 col-form-label col-form-label-sm">Nro. Factura</label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control form-control-sm text-align-right" id="nroFactura">
+                                </div>
+                            </div>
+
+                            <!--<div class="form-group row">
+                                <label for="serieCobro" class="col-md-3 col-form-label col-form-label-sm">Serie Cobro</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control form-control-sm text-align-right" id="serieCobro">
+                                </div>
+                            </div>-->
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnSave">Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCerrar">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id='Menu'>
+        <ul>
+            <li>Editar</li>
+            <li>Eliminar</li>
+        </ul>
+    </div>
+
+    <div class="row fill-height-91">
+        <div class="col-md-12 fill-height-91">
+            <div id="jqxToolBar"></div>
+            <div id="grid"></div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="javascripts/scripts.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#jqxToolBar").jqxToolBar(
+                $.extend( {},
+                    vDefaultOptionsToolBar,
+                    {
+                        tools: 'custom | custom | custom',
+                        initTools: function (type, index, tool, menuToolIninitialization) {
+                            switch (index) {
+                                case 0:
+                                    var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'><b>PARAMETROS &nbsp;&nbsp; </b></div>";
+                                    tool.append(label);
+                                    break;
+                                case 1:
+                                    var addBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/add.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                        theme: theme2,
+                                        width: 30,
+                                        height: 19
+                                    });
+                                    tool.append(addBtn);
+                                    addBtn.click(function (event) {
+                                        $("#id").val("");
+                                        fn_clearText();
+
+                                        $("#btnSave").text("Guardar");
+                                        $('#myModal').modal('show');
+                                    });
+                                    break;
+                                case 2:
+                                    var exportBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/icon_excel_02_20.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                        theme: theme2,
+                                        width: 30,
+                                        height: 19
+                                    });
+                                    tool.append(exportBtn);
+                                    exportBtn.click(function (event) {
+                                        var JSONData = $("#grid").jqxGrid('exportdata', 'json');
+                                        fn_JSONToCSVConvertor(JSONData, "ReporteTutores", "", true);
+                                    });
+                                    break;
+                            }
+                        }
+                    }
+                )
+            )
+
+            $.getJSON('/listaParametros/', function(json) {
+                //console.log(json.registros);
+                var source =
+                    {
+                        datatype: "json",
+                        datafields: [
+                            { name: 'id_parametro', type: 'int'},
+                            { name: 'numdoc', type: 'string'},
+                            { name: 'descripcion', type: 'string'},
+                            { name: 'impuesto', type: 'float'},
+                            { name: 'nro_serie_ticket', type: 'string'},
+                            { name: 'nro_ticket', type: 'int'},
+                            { name: 'nro_serie_boleta', type: 'string'},
+                            { name: 'nro_boleta', type: 'int'},
+                            { name: 'nro_serie_factura', type: 'string'},
+                            { name: 'nro_factura', type: 'int'},
+                            { name: 'estado', type: 'string'}
+                        ],
+                        localdata: json.registros
+                    };
+                var dataAdapter = new $.jqx.dataAdapter(source);
+
+                $("#grid").jqxGrid(
+                    {
+                        source: dataAdapter
+                    });
+            });
+
+            $("#grid").jqxGrid(
+                $.extend(
+                    {}, vDefaultOptionsGrid,
+                    {
+                        groupable: false,
+                        selectionmode: 'singlerow',
+                        columns: [
+                            { text: 'Ruc', align: 'center', datafield: 'numdoc', cellsalign: 'right', width: '8%' },
+                            { text: 'Razon Social', align: 'center', datafield: 'descripcion', cellsalign: 'left', width: '36%' },
+                            { text: 'Impuesto', align: 'center', datafield: 'impuesto', cellsalign: 'right', width: '8%' },
+                            { text: 'Serie Ticket', align: 'center', datafield: 'nro_serie_ticket', cellsalign: 'right', width: '8%' },
+                            { text: 'Nro. Ticket', align: 'center', datafield: 'nro_ticket', cellsalign: 'right', width: '8%' },
+                            { text: 'Serie Boleta', align: 'center', datafield: 'nro_serie_boleta', cellsalign: 'right', width: '8%'},
+                            { text: 'Nro. Boleta', align: 'center', datafield: 'nro_boleta', cellsalign: 'right', width: '8%' },
+                            { text: 'Serie Factura', align: 'center', datafield: 'nro_serie_factura', cellsalign: 'right', width: '8%' },
+                            { text: 'Nro. Factura', align: 'center', datafield: 'nro_factura', cellsalign: 'right', width: '8%' }
+                        ]
+                    }
+                )
+            );
+            var contextMenu = $("#Menu").jqxMenu({ theme: theme3, width: 200, height: 58, autoOpenPopup: false, mode: 'popup'});
+            $("#grid").on('contextmenu', function () {
+                return false;
+            });
+
+            $("#Menu").on('itemclick', function (event) {
+                var args = event.args;
+                var rowindex = $("#grid").jqxGrid('getselectedrowindex');
+
+                if ( $.trim($(args).text()) == "Editar" ) {
+                    editrow = rowindex;
+                    var offset = $("#jqxgrid").offset();
+                    $("#popupWindow").jqxWindow({ position: { x: parseInt(offset.left) + 60, y: parseInt(offset.top) + 60} });
+                    // get the clicked row's data and initialize the input fields.
+                    var dataRecord = $("#jqxgrid").jqxGrid('getrowdata', editrow);
+                    $("#firstName").val(dataRecord.firstname);
+                    // show the popup window.
+                    $("#popupWindow").jqxWindow('show');
+                } else if( $.trim($(args).text()) == "Eliminar" ) {
+                    var rowid = $("#jqxgrid").jqxGrid('getrowid', rowindex);
+                    $("#jqxgrid").jqxGrid('deleterow', rowid);
+
+                }
+            });
+            $("#grid").on('rowclick', function (event) {
+                if (event.args.rightclick) {
+                    $("#grid").jqxGrid('selectrow', event.args.rowindex);
+                    var scrollTop = $(window).scrollTop();
+                    var scrollLeft = $(window).scrollLeft();
+                    contextMenu.jqxMenu('open', parseInt(event.args.originalEvent.clientX) + 5 + scrollLeft, parseInt(event.args.originalEvent.clientY) + 5 + scrollTop);
+                    return false;
+                }
+            });
+            $('#grid').on('rowdoubleclick', function (event)
+            {
+                var args = event.args;
+                // row's bound index.
+                var boundIndex = args.rowindex;
+                var data = $('#grid').jqxGrid('getrowdata', boundIndex);
+                $("#id").val(data.id_parametro);
+                $("#nroDocumento").val(data.numdoc);
+                $("#descripcion").val(data.descripcion);
+                $("#impuesto").val(data.impuesto);
+                $("#serieTicket").val(data.nro_serie_ticket);
+                $("#nroTicket").val(data.nro_ticket);
+                $("#serieBoleta").val(data.nro_serie_boleta);
+                $("#nroBoleta").val(data.nro_boleta);
+                $("#serieFactura").val(data.nro_serie_factura);
+                $("#nroFactura").val(data.nro_factura);
+
+                $("#btnSave").text("Actualizar");
+                $('#myModal').modal('show');
+            });
+
+
+            $("#btnSave").click(function() {
+                var datos = {
+                    id: $("#id").val(),
+                    nroDocumento: $("#nroDocumento").val(),
+                    descripcion: $("#descripcion").val(),
+                    impuesto: $("#impuesto").val(),
+                    serieTicket: $("#serieTicket").val(),
+                    nroTicket: $("#nroTicket").val(),
+                    serieBoleta: $("#serieBoleta").val(),
+                    nroBoleta: $("#nroBoleta").val(),
+                    serieFactura: $("#serieFactura").val(),
+                    nroFactura: $("#nroFactura").val()
+                };
+                console.log(datos);
+                var txtMsg = "", url = "";
+                if($("#id").val() != ""){
+                    url = "/EG/updParametros";
+                    txtMsg = "actualizar";
+                }else{
+                    url = "/EG/saveParametros";
+                    txtMsg = "registrar";
+                }
+
+                if(confirm("Esta seguro de "+txtMsg+" los datos ?")){
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: datos,
+                        dataType: 'json',
+                        success: function(result){
+                            //console.log(result);
+                            if(result.status == "success") {
+                                alert("Proceso realizado correctamente");
+                                location.reload();
+                                return false;
+                            }else{
+                                alert("Error: Vuelva a intentarlo");
+                                return false;
+                            }
+                        },error: function (xhr, ajaxOptions, thrownError) {
+                            alert("ERROR: " + xhr.responseText+" - "+thrownError);
+                        }
+                    });
+                }
+            });
+
+
+        });
+    </script>
+</body>
+</html>

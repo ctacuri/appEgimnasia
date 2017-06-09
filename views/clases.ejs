@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Escuela de Gimnasia</title>
+
+</head>
+<body>
+    <% include menu %>
+
+    <div id="myModal" class="modal modal-wide2 modal-high2 fade" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">HORARIOS</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 nopadding">
+
+                            <div class="form-group row">
+                                <label for="dias" class="col-md-3 col-form-label col-form-label-sm">Dias</label>
+                                <div class="col-md-4">
+                                    <div id="dias"></div>
+                                    <input type="hidden" class="form-control form-control-sm" id="id">
+                                </div>
+
+                                <label for="edades" class="col-md-2 col-form-label col-form-label-sm">Edades</label>
+                                <div class="col-md-3">
+                                    <div id="edades"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="fechaInicio" class="col-md-3 col-form-label col-form-label-sm">H. Inicio</label>
+                                <div class="col-md-4">
+                                    <div id="fechaInicio"></div>
+                                </div>
+
+                                <label for="fechaFin" class="col-md-2 col-form-label col-form-label-sm">H. Fin</label>
+                                <div class="col-md-3">
+                                    <div id="fechaFin"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="sexo" class="col-md-3 col-form-label col-form-label-sm">Sexo</label>
+                                <div class="col-md-4">
+                                    <div id="sexo"></div>
+                                </div>
+
+                                <label for="importe" class="col-md-2 col-form-label col-form-label-sm">Importe</label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control form-control-sm text-align-right" id="importe">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="profesor" class="col-md-3 col-form-label col-form-label-sm">Profesor</label>
+                                <div class="col-md-4">
+                                    <div id="profesor"></div>
+                                </div>
+
+                                <!--<label for="estado" class="col-md-2 col-form-label col-form-label-sm">Estado</label>
+                                <div class="col-md-3">
+                                    <div id="estado"></div>
+                                </div>-->
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnSave">Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCerrar">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id='Menu'>
+        <ul>
+            <li>Eliminar</li>
+        </ul>
+    </div>
+
+    <div class="row fill-height-91">
+        <div class="col-md-12 fill-height-91">
+            <div id="jqxToolBar"></div>
+            <div id="grid"></div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="javascripts/scripts.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#jqxToolBar").jqxToolBar(
+                    $.extend( {},
+                            vDefaultOptionsToolBar,
+                            {
+                                tools: 'custom | custom | custom',
+                                initTools: function (type, index, tool, menuToolIninitialization) {
+                                    switch (index) {
+                                        case 0:
+                                            var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'><b>HORARIOS &nbsp;&nbsp; </b></div>";
+                                            tool.append(label);
+                                            break;
+                                            /*case 1:
+                                             var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Inicio: </div>";
+                                             tool.append(label);
+                                             break;
+                                             case 2:
+                                             var fecha = $("<div id='FechaIniOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
+                                             theme: theme2,
+                                             value: new Date(anioActual, mesActual, 1),
+                                             width: 105,
+                                             height: 25,
+                                             culture: 'es-ES'
+                                             });
+                                             tool.append(fecha);
+                                             break;
+                                             case 3:
+                                             var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Fin: </div>";
+                                             tool.append(label);
+                                             break;
+                                             case 4:
+                                             var fecha = $("<div id='FechaFinOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
+                                             theme: theme2,
+                                             value: new Date(anioActual, mesActual, ultimoDiaMesActual),
+                                             width: 105,
+                                             height: 25,
+                                             culture: 'es-ES'
+                                             });
+                                             tool.append(fecha);
+                                             break;*/
+                                        case 1:
+                                            var addBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/add.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                                theme: theme2,
+                                                width: 30,
+                                                height: 19
+                                            });
+                                            tool.append(addBtn);
+                                            addBtn.click(function (event) {
+                                                fn_clearText();
+                                                var arregloInputDropDownList = ['dias', 'edades', 'sexo', 'profesor'];
+                                                fn_clearDropDownList(arregloInputDropDownList);
+
+                                                $("#profesor").jqxDropDownList('selectItem', 4 );
+                                                $("#btnSave").text("Guardar");
+                                                $('#myModal').modal('show');
+                                            });
+                                            break;
+                                            /*case 2:
+                                             var searchBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/search.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                             theme: theme2,
+                                             width: 30,
+                                             height: 19
+                                             });
+                                             tool.append(searchBtn);
+                                             searchBtn.click(function (event) {
+                                             var tools = $("#jqxToolBar").jqxToolBar("getTools");
+                                             var fechaIni = $("#FechaIniOS").val();
+                                             var fechaFin = $("#FechaFinOS").val();
+                                             var fechaIniSql = fechaIni.substring(6,10)+'-'+fechaIni.substring(3,5)+"-"+fechaIni.substring(0,2);
+                                             var fechaFinSql = fechaFin.substring(6,10)+'-'+fechaFin.substring(3,5)+"-"+fechaFin.substring(0,2);
+
+                                             fn_listaTrabGridMap(fechaIniSql,fechaFinSql,usuario);
+                                             });
+                                             break;*/
+                                        case 2:
+                                            var exportBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/icon_excel_02_20.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                                theme: theme2,
+                                                width: 30,
+                                                height: 19
+                                            });
+                                            tool.append(exportBtn);
+                                            exportBtn.click(function (event) {
+                                                var JSONData = $("#grid").jqxGrid('exportdata', 'json');
+                                                fn_JSONToCSVConvertor(JSONData, "ReporteHorarios", "", true);
+                                            });
+                                            break;
+                                    }
+                                }
+                            }
+                    )
+            )
+
+            $("#fechaInicio").jqxDateTimeInput(
+                $.extend(
+                    {}, vDefaultOptionsDateTimeInput, {
+                        width: '120',
+                        showTimeButton: true,
+                        showCalendarButton: false,
+                        formatString: 'HH:mm'
+                    }
+                )
+            );
+
+            $("#fechaFin").jqxDateTimeInput(
+                $.extend(
+                    {}, vDefaultOptionsDateTimeInput, {
+                        width: '120',
+                        showTimeButton: true,
+                        showCalendarButton: false,
+                        formatString: 'HH:mm'
+                    }
+                )
+            );
+
+            $("#dias").jqxDropDownList(
+                $.extend(
+                    {}, vDefaultOptionsDropDownList, {
+                        width: '100%'
+                    }
+                )
+            );
+
+            $("#edades").jqxDropDownList(
+                $.extend(
+                    {}, vDefaultOptionsDropDownList, {
+                        width: '100%'
+                    }
+                )
+            );
+
+            $("#profesor").jqxDropDownList(
+                $.extend(
+                    {}, vDefaultOptionsDropDownList, {
+                        width: '100%'
+                    }
+                )
+            );
+
+            /*$("#estado").jqxDropDownList(
+                $.extend(
+                    {}, vDefaultOptionsDropDownList, {
+                        width: '100%'
+                    }
+                )
+            );*/
+
+            $.getJSON('/listaHorarios/', function(json) {
+                //console.log(json.registros[0]);
+                var source =
+                    {
+                        datatype: "json",
+                        datafields: [
+                            { name: 'id_horario', type: 'string'},
+                            { name: 'id_dias', type: 'int'},
+                            { name: 'dias', type: 'string'},
+                            { name: 'id_edades', type: 'int'},
+                            { name: 'edades', type: 'string'},
+                            { name: 'id_sexo', type: 'int'},
+                            { name: 'sexo', type: 'string'},
+                            { name: 'hora_inicio', type: 'string'},
+                            { name: 'hora_fin', type: 'string'},
+                            { name: 'clase', type: 'string'},
+                            { name: 'importe', type: 'float'},
+                            { name: 'id_profesor', type: 'string'},
+                            { name: 'profesor', type: 'string'},
+                            { name: 'estado', type: 'string'}
+                        ],
+                        localdata: json.registros[0]
+                    };
+                var dataAdapter = new $.jqx.dataAdapter(source);
+
+                $("#grid").jqxGrid(
+                {
+                    source: dataAdapter
+                });
+            });
+
+
+            $("#grid").jqxGrid(
+                $.extend(
+                    {}, vDefaultOptionsGrid,
+                    {
+                        selectionmode: 'singlerow',
+                        columns: [
+                            { text: 'Id horario', align: 'center', datafield: 'id_horario', cellsalign: 'right', width: '5%' },
+                            { text: 'Dias', align: 'center', datafield: 'dias', cellsalign: 'left', width: '15%'},
+                            { text: 'Edades', align: 'center', datafield: 'edades', cellsalign: 'left', width: '10%' },
+                            { text: 'Sexo', align: 'center', datafield: 'sexo', cellsalign: 'center', width: '5%' },
+                            { text: 'Hora Inicio', align: 'center', datafield: 'hora_inicio', cellsalign: 'center', width: '10%' },
+                            { text: 'Hora Fin', align: 'center', datafield: 'hora_fin', cellsalign: 'center', width: '10%' },
+                            { text: 'Clase', align: 'center', datafield: 'clase', cellsalign: 'left', width: '40%' },
+                            { text: 'Importe', align: 'center', datafield: 'importe', cellsalign: 'right', cellsformat: 'd2', width: '10%' },
+                            { text: 'Profesor', align: 'center', datafield: 'profesor', cellsalign: 'left', width: '30%' },
+                            { text: 'Estado', align: 'center', datafield: 'estado', cellsalign: 'center', width: '5%' }
+                        ]
+                    }
+                )
+            );
+
+            var contextMenu = $("#Menu").jqxMenu({
+                width: 150,
+                height: 30,
+                autoOpenPopup: false,
+                mode: 'popup'
+            });
+            $("#grid").on('contextmenu', function () {
+                return false;
+            });
+
+            $("#Menu").on('itemclick', function (event) {
+                var args = event.args;
+                var rowindex = $("#grid").jqxGrid('getselectedrowindex');
+                var dataRecord = $("#grid").jqxGrid('getrowdata', rowindex);
+
+                if ( $.trim($(args).text()) == "Editar" ) {
+
+                } else if( $.trim($(args).text()) == "Eliminar" ) {
+                    if(confirm("Esta seguro de eliminar el registro?")) {
+                        var rowid = $("#grid").jqxGrid('getrowid', rowindex);
+                        var datos = {
+                            id: dataRecord.id_horario,
+                            tabla: 'gim_horarios'
+                        };
+                        $.ajax({
+                            type: "POST",
+                            url: '/EG/eliminarRegistroTabla/',
+                            data: datos,
+                            dataType: 'json',
+                            success: function (result) {
+                                //console.log(result);
+                                if (result.status == "success") {
+                                    //alert("Proceso realizado correctamente");
+                                    $("#grid").jqxGrid('deleterow', rowid);
+                                    return false;
+                                } else {
+                                    alert("Error: Vuelva a intentarlo");
+                                    return false;
+                                }
+                            }, error: function (xhr, ajaxOptions, thrownError) {
+                                alert("ERROR: " + xhr.responseText + " - " + thrownError);
+                            }
+                        });
+                    }
+                }
+            });
+            $("#grid").on('rowclick', function (event) {
+                if (event.args.rightclick) {
+                    $("#grid").jqxGrid('selectrow', event.args.rowindex);
+                    var scrollTop = $(window).scrollTop();
+                    var scrollLeft = $(window).scrollLeft();
+                    contextMenu.jqxMenu('open', parseInt(event.args.originalEvent.clientX) + 5 + scrollLeft, parseInt(event.args.originalEvent.clientY) + 5 + scrollTop);
+                    return false;
+                }
+            });
+            $('#grid').on('rowdoubleclick', function (event)
+            {
+                var args = event.args;
+                // row's bound index.
+                var boundIndex = args.rowindex;
+                var data = $('#grid').jqxGrid('getrowdata', boundIndex);
+                $("#id").val(data.id_horario);
+                $("#dias").jqxDropDownList('selectItem', data.id_dias);
+                $("#edades").jqxDropDownList('selectItem', data.id_edades);
+
+                var h_ini = data.hora_inicio.split(":");
+                var h_fin = data.hora_fin.split(":");
+                $('#fechaInicio').jqxDateTimeInput({ value: new Date(1900, 0, 1, parseInt(h_ini[0]), parseInt(h_ini[1]), 0 ) });
+                $("#fechaFin").jqxDateTimeInput({ value: new Date(1900, 0, 1, parseInt(h_fin[0]), parseInt(h_fin[1]), 0 ) });
+
+                $("#sexo").jqxDropDownList('selectItem', data.id_sexo);
+                $("#importe").val(data.importe);
+                $("#profesor").jqxDropDownList('selectItem', data.id_profesor);
+
+                $("#btnSave").text("Actualizar");
+                $('#myModal').modal('show');
+            });
+
+            $("#sexo").jqxDropDownList(
+                $.extend(
+                    {}, vDefaultOptionsDropDownList, {
+                        width: '100%'
+                    }
+                )
+            );
+
+
+
+            $.when(
+                $.ajax("/listaDias"),
+                $.ajax("/listaEdades"),
+                $.ajax("/listaSexo"),
+                $.ajax("/listaProfesores")
+            ).done(function( json1, json2, json3, json4 ) {
+                //console.log(json1[0].registros[0]);
+                if(json1[0].status == "success"){
+                    $("#dias").jqxDropDownList({
+                        source: json1[0].registros,
+                        displayMember: "descripcion",
+                        valueMember: "id",
+                        autoDropDownHeight: true
+                    });
+                }else{
+                    alert("Error: al cargar los dias");
+                    return false;
+                }
+
+                if(json2[0].status == "success"){
+                    //console.log(json2[0].registros);
+                    $("#edades").jqxDropDownList({
+                        source: json2[0].registros,
+                        displayMember: "descripcion",
+                        valueMember: "id_edad",
+                        dropDownHeight: 250
+                    });
+                }else{
+                    alert("Error: al cargar las edades");
+                    return false;
+                }
+
+                if(json3[0].status == "success"){
+                    $("#sexo").jqxDropDownList({
+                        source: json3[0].registros,
+                        displayMember: "descripcion",
+                        valueMember: "id_sexo",
+                        dropDownWidth: 150,
+                        autoDropDownHeight: true
+                    });
+                }else{
+                    alert("Error: al cargar sexo");
+                    return false;
+                }
+
+                if(json4[0].status == "success"){
+                    $("#profesor").jqxDropDownList({
+                        source: json4[0].registros[0],
+                        displayMember: "nombre_corto",
+                        valueMember: "id_profesor",
+                        filterable: true,
+                        searchMode: 'containsignorecase',
+                        dropDownHeight: 200,
+                        dropDownWidth: 250
+                    });
+                }else{
+                    alert("Error: al cargar los profesores");
+                    return false;
+                }
+
+            });
+
+            $("#btnSave").click(function() {
+
+                var datos = {
+                    id: $("#id").val(),
+                    dias: $("#dias").val(),
+                    dias_txt: $("#dias").text(),
+                    edades: $("#edades").val(),
+                    edades_txt: $("#edades").text(),
+                    fechaInicio: $("#fechaInicio").val(),
+                    fechaFin: $("#fechaFin").val(),
+                    sexo: $("#sexo").val(),
+                    sexo_txt: $("#sexo").text().substring(0,1),
+                    importe: $("#importe").val(),
+                    profesor: $("#profesor").val()
+                };
+                //console.log(datos);
+                //return false;
+                var txtMsg = "", url = "";
+                if($("#id").val() != ""){
+                    url = "/EG/updHorarios";
+                    txtMsg = "actualizar";
+                }else{
+                    url = "/EG/saveHorarios";
+                    txtMsg = "registrar";
+                }
+
+                if(confirm("Esta seguro de "+txtMsg+" los datos ?")){
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: datos,
+                        dataType: 'json',
+                        success: function(result){
+                            //console.log(result);
+                            if(result.status == "success") {
+                                alert("Proceso realizado correctamente");
+                                location.reload();
+                                return false;
+                            }else{
+                                alert("Error: Vuelva a intentarlo");
+                                return false;
+                            }
+                        },error: function (xhr, ajaxOptions, thrownError) {
+                            alert("ERROR: " + xhr.responseText+" - "+thrownError);
+                        }
+                    });
+                }
+            });
+
+
+        });
+    </script>
+</body>
+</html>

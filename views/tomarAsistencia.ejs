@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Escuela de Gimnasia</title>
+
+</head>
+<body>
+<% include menu %>
+
+<div class="row fill-height-91">
+    <div class="col-sm-6 fill-height-91">
+        <div id="horario"></div>
+        <div id="grid"></div>
+    </div>
+    <div class="col-sm-6 fill-height-91">
+        <div id="grid2"></div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="javascripts/scripts.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#horario").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    theme: theme3,
+                    placeHolder: "Elija un horario",
+                    width: '100%',
+                    dropDownHeight: 200
+                }
+            )
+        );
+
+        $('#horario').on('change', function (event)
+        {
+            var args = event.args;
+            if (args) {
+                // index represents the item's index.
+                var index = args.index;
+                var item = args.item;
+                var value = item.value;
+                fn_listaAlumnosHorario(value);
+                //fn_listarAsistenciaHorario(value);
+            }
+        });
+
+        var arregloProfesores = [];
+        $.when(
+            $.ajax("/listaHorariosSimple"),
+            $.ajax("/listaProfesoresSimple")
+        ).done(function(json2, json3) {
+            //console.log(json2[0].status);
+            if(json2[0].status == "success"){
+                $("#horario").jqxDropDownList({
+                    source: json2[0].registros[0],
+                    displayMember: "clase",
+                    valueMember: "id_horario",
+                    dropDownHeight: 250,
+                    filterable: true,
+                    searchMode: 'containsignorecase'
+                });
+            }else{
+                alert("Error: al cargar horarios");
+                return false;
+            }
+
+            if(json3[0].status == "success"){
+                //console.log(json3[0].registros);
+                for(var x = 0; x<json3[0].registros.length; x++) {
+                    arregloProfesores.push({
+                        idProfesor: json3[0].registros[x].id_profesor,
+                        profesor: json3[0].registros[x].nombre_corto
+                    });
+                    /*$("#profesor").jqxDropDownList({
+                     source: json3[0].registros,
+                     displayMember: "nombre_corto",
+                     valueMember: "id_profesor",
+                     dropDownHeight: 250,
+                     filterable: true,
+                     searchMode: 'containsignorecase'
+                     });*/
+                }
+                //console.log(arregloProfesores);
+            }else{
+                alert("Error: al cargar profesores");
+                return false;
+            }
+        });
+
+        $("#grid").jqxGrid(
+            $.extend(
+                {}, vDefaultOptionsGrid,
+                {
+                    selectionmode: 'singlerow',
+                    groupable: false,
+                    columnsresize: true,
+                    columns: [
+                        { text: 'ID', align: 'center', datafield: 'id_alumno', cellsalign: 'right', width: '10%' },
+                        { text: 'Alumno', align: 'center', datafield: 'alumno', cellsalign: 'left', width: '90%' }
+                    ]
+                }
+            )
+        );
+
+        $('#grid').on('rowdoubleclick', function (event)
+        {
+            var args = event.args;
+            // row's bound index.
+            var boundIndex = args.rowindex;
+            var data = $('#grid').jqxGrid('getrowdata', boundIndex);
+
+            fn_listarAsistenciaHorarioAlumno($("#horario").val(), data.id_alumno);
+        });
+
+        $("#grid2").jqxGrid(
+            $.extend(
+                {}, vDefaultOptionsGrid,
+                {
+                    selectionmode: 'checkbox',
+                    groupable: false,
+                    columnsresize: true,
+                    editable: true,
+                    //showtoolbar: true,
+                    height: '104.3%',
+                    columns: [
+                        //{ text: 'CHK', align: 'center', datafield: 'asistio', cellsalign: 'left', width: '10%' },
+                        { text: 'Año', align: 'center', datafield: 'anio', cellsalign: 'center', width: '10%', editable: false },
+                        { text: 'Mes', align: 'center', datafield: 'mes', cellsalign: 'center', width: '10%', editable: false },
+                        { text: 'Fecha', align: 'center', datafield: 'fecha', cellsalign: 'center', width: '15%', editable: false },
+                        { text: 'Profesor', align: 'center', datafield: 'profesor', cellsalign: 'left', width: '60%',  columntype: 'dropdownlist',
+                            createeditor: function (row, value, editor) {
+                                editor.jqxDropDownList({
+                                    filterable: true,
+                                    searchMode: 'containsignorecase',
+                                    source: arregloProfesores,
+                                    displayMember: 'profesor',
+                                    valueMember: 'idProfesor',
+                                    dropDownHeight: 150,
+                                    selectedIndex: 0
+                                });
+                            }
+                        }
+                    ]
+                }
+            )
+        );
+
+        $('#grid2').jqxGrid('selectrow', 2);
+
+        function fn_listaAlumnosHorario(idHorario){
+            var url = "/listaAlumnosHorario/"+idHorario;
+            $.ajax({
+                type: "GET",
+                url: url,
+                //data: newdata,
+                dataType: 'json',
+                success: function(result){
+                    //console.log(result);
+                    if(result.status == "success") {
+
+                        var source =
+                            {
+                                datatype: "json",
+                                datafields: [
+                                    { name: 'id_alumno', type: 'int'},
+                                    { name: 'alumno', type: 'string'}
+                                ],
+                                localdata: result.registros[0]
+                            };
+                        var dataAdapter = new $.jqx.dataAdapter(source);
+
+                        $("#grid").jqxGrid(
+                        {
+                            source: dataAdapter
+                        });
+
+                    }else{
+                        alert("Error: Vuelva a intentarlo");
+                        return false;
+                    }
+                },error: function (xhr, ajaxOptions, thrownError) {
+                    alert("ERROR: " + xhr.responseText+" - "+thrownError);
+                }
+            });
+        }
+
+
+        function fn_listarAsistenciaHorarioAlumno(idHorario, idAlumno){
+            var url = "/listarAsistenciaHorarioAlumno/"+idHorario+"/"+idAlumno;
+            $.ajax({
+                type: "GET",
+                url: url,
+                //data: newdata,
+                dataType: 'json',
+                success: function(result){
+                    //console.log(result);
+                    if(result.status == "success") {
+
+                        var source =
+                            {
+                                datatype: "json",
+                                datafields: [
+                                    { name: 'id', type: 'int'},
+                                    { name: 'id_alumno', type: 'int'},
+                                    { name: 'id_horario', type: 'int'},
+                                    { name: 'anio', type: 'int'},
+                                    { name: 'mes', type: 'int'},
+                                    { name: 'fecha', type: 'string'},
+                                    { name: 'id_profesor', type: 'int'},
+                                    { name: 'asistio', type: 'string'}, //N - S
+                                    { name: 'estado', type: 'string'} //V - A
+                                ],
+                                localdata: result.registros[0]
+                            };
+                        var dataAdapter = new $.jqx.dataAdapter(source);
+
+                        $("#grid2").jqxGrid(
+                        {
+                            source: dataAdapter
+                        });
+
+                    }else{
+                        alert("Error: Vuelva a intentarlo");
+                        return false;
+                    }
+                },error: function (xhr, ajaxOptions, thrownError) {
+                    alert("ERROR: " + xhr.responseText+" - "+thrownError);
+                }
+            });
+        }
+
+
+    });
+</script>
+
+</body>
+</html>

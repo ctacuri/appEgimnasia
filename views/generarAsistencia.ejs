@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Escuela de Gimnasia</title>
+
+</head>
+<body>
+<% include menu %>
+
+<div id='Menu'>
+    <ul>
+        <li>Eliminar</li>
+        <li>Imprimir</li>
+    </ul>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        <div id="horario"></div>
+        <div id="calendar"></div>
+    </div>
+    <div class="col-sm-8">
+        <div id="grid"></div>
+    </div>
+</div>
+
+<script type="text/javascript" src="javascripts/scripts.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        // create jqxcalendar.
+        $("#calendar").jqxCalendar({
+            theme: theme3,
+            width: '100%',
+            height: '374px',
+            showFooter: false,
+            culture: 'es-ES'
+        });
+
+        $("#horario").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    theme: theme3,
+                    placeHolder: "Elija un horario",
+                    width: '100%',
+                    dropDownHeight: 200
+                }
+            )
+        );
+
+        $('#horario').on('change', function (event)
+        {
+            var args = event.args;
+            if (args) {
+                // index represents the item's index.
+                var index = args.index;
+                var item = args.item;
+                var value = item.value;
+                fn_listarAsistenciaHorario(value);
+            }
+        });
+
+
+        function fn_listarAsistenciaHorario(idHorario){
+            var url = "/listarAsistenciaHorario/"+idHorario;
+            $.ajax({
+                type: "GET",
+                url: url,
+                //data: newdata,
+                dataType: 'json',
+                success: function(result){
+                    //console.log(result);
+                    if(result.status == "success") {
+
+                        var source =
+                            {
+                                datatype: "json",
+                                datafields: [
+                                    { name: 'id', type: 'int'},
+                                    { name: 'id_horario', type: 'int'},
+                                    { name: 'horario', type: 'string'},
+                                    { name: 'anio', type: 'int'},
+                                    { name: 'mes', type: 'string'},
+                                    { name: 'fecha', type: 'string'}
+                                ],
+                                localdata: result.registros[0]
+                            };
+                        var dataAdapter = new $.jqx.dataAdapter(source);
+
+                        $("#grid").jqxGrid(
+                            {
+                                source: dataAdapter
+                            });
+
+                    }else{
+                        alert("Error: Vuelva a intentarlo");
+                        return false;
+                    }
+                },error: function (xhr, ajaxOptions, thrownError) {
+                    alert("ERROR: " + xhr.responseText+" - "+thrownError);
+                }
+            });
+        }
+
+        $("#grid").jqxGrid(
+            $.extend(
+                {}, vDefaultOptionsGrid,
+                {
+                    selectionmode: 'singlerow',
+                    groupable: false,
+                    columnsresize: true,
+                    columns: [
+                        { text: 'Horario', align: 'center', datafield: 'horario', cellsalign: 'left', width: '65%' },
+                        { text: 'Año', align: 'center', datafield: 'anio', cellsalign: 'center', width: '10%'},
+                        { text: 'Mes', align: 'center', datafield: 'mes', cellsalign: 'center', width: '10%' },
+                        { text: 'Fecha', align: 'center', datafield: 'fecha', cellsalign: 'center', width: '15%' }
+                    ]
+                }
+            )
+        );
+        var contextMenu = $("#Menu").jqxMenu({ theme: theme3, width: 160, height: 30, autoOpenPopup: false, mode: 'popup'});
+        $("#grid").on('contextmenu', function () {
+            return false;
+        });
+        contextMenu.on('itemclick', function (event) {
+            var args = event.args;
+            var rowindex = $("#grid").jqxGrid('getselectedrowindex');
+            var dataRecord = $("#grid").jqxGrid('getrowdata', rowindex);
+
+            if( $.trim($(args).text()) == "Eliminar" ) {
+                var rowid = $("#grid").jqxGrid('getrowid', rowindex);
+
+                if(confirm("Esta seguro de eliminar el registro?")){
+                    var datos = {
+                        id: dataRecord.id,
+                        tabla: 'gim_asistencia_horario'
+                    };
+                    $.ajax({
+                        type: "POST",
+                        url: '/EG/eliminarRegistroTabla/',
+                        data: datos,
+                        dataType: 'json',
+                        success: function (result) {
+                            //console.log(result);
+                            if (result.status == "success") {
+                                //alert("Proceso realizado correctamente");
+                                $("#grid").jqxGrid('deleterow', rowid);
+                                return false;
+                            } else {
+                                alert("Error: Vuelva a intentarlo");
+                                return false;
+                            }
+                        }, error: function (xhr, ajaxOptions, thrownError) {
+                            alert("ERROR: " + xhr.responseText + " - " + thrownError);
+                        }
+                    });
+                }
+            }
+        });
+        $("#grid").on('rowclick', function (event) {
+            if (event.args.rightclick) {
+                $("#grid").jqxGrid('selectrow', event.args.rowindex);
+                var scrollTop = $(window).scrollTop();
+                var scrollLeft = $(window).scrollLeft();
+                contextMenu.jqxMenu('open', parseInt(event.args.originalEvent.clientX) + 5 + scrollLeft, parseInt(event.args.originalEvent.clientY) + 5 + scrollTop);
+                return false;
+            }
+        });
+
+        //var arregloHorarios = [];
+        $.when(
+            $.ajax("/listaHorariosSimple")
+        ).done(function(json2) {
+            //console.log(json2.registros);
+            if(json2.status == "success"){
+                $("#horario").jqxDropDownList({
+                    source: json2.registros[0],
+                    displayMember: "clase",
+                    valueMember: "id_horario",
+                    dropDownHeight: 250,
+                    filterable: true,
+                    searchMode: 'containsignorecase'
+                });
+            }else{
+                alert("Error: al cargar horarios");
+                return false;
+            }
+        });
+
+        $('#calendar').on('change', function (event)
+        {
+            if($("#horario").val() == ""){
+                alert("Error: Elija un horario valido");
+                $("#horario").jqxDropDownList('open');
+                return false;
+            }
+
+            var jsDate = event.args.date;
+            var type = event.args.type; // keyboard, mouse or null depending on how the date was selected.
+            //var value = $('#calendar').jqxCalendar('val');
+            var dateTime = jsDate.toLocaleString("en-US");
+            var splitDate = dateTime.split("/");
+            //console.log(splitDate);
+            var dia = (splitDate[1]<10) ? "0" + splitDate[1] : splitDate[1];
+            var mes = (splitDate[0]<10) ? "0" + splitDate[0] : splitDate[0];
+            var anio = splitDate[2].substring(0,4);
+            var fecha = dia + "/" + mes + "/" + anio;
+            var newdata = {
+                id_horario: $("#horario").val(),
+                horario: $("#horario").text(),
+                anio: parseInt(anio),
+                mes: parseInt(mes),
+                fecha: fn_convertFecha_DMY_to_SQL(fecha)
+            };
+            //console.log("arreglo: " + fecha);
+            var rows = $('#grid').jqxGrid('getrows');
+            for(var i = 0; i < rows.length; i++)
+            {
+                var row = rows[i];
+                //console.log(row.fecha);
+                if(row.fecha == fecha){
+                    alert("Error: fecha ya ingresada");
+                    //$('#calendar').jqxCalendar('clear');
+                    return false;
+                }
+            }
+            //return false;
+            var url = "/EG/saveAsistenciaHorario";
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: newdata,
+                dataType: 'json',
+                success: function(result){
+                    console.log(result);
+                    if(result.status == "success") {
+                        fn_listarAsistenciaHorario($("#horario").val());
+                        //$('#grid').jqxGrid('addrow', null, newdata);
+                        //newdata = [];
+                    }else{
+                        alert("Error: Vuelva a intentarlo");
+                        return false;
+                    }
+                },error: function (xhr, ajaxOptions, thrownError) {
+                    alert("ERROR: " + xhr.responseText+" - "+thrownError);
+                }
+            });
+            // if the selectionMode is set to 'range'.
+            // var range = event.args.range;
+            // var rangeFrom = range.from;
+            // var rangeTo = range.to;
+            // additional properties.
+            // var view = event.args.view;
+            // var viewFrom = view.from;
+            // var viewTo = view.to;
+        });
+
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Escuela de Gimnasia</title>
+
+</head>
+<body>
+    <% include menu %>
+
+    <div id="myModal" class="modal modal-wide2 modal-high2 fade" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">TUTOR</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 nopadding">
+
+                            <div class="form-group row">
+                                <label for="tipoDocumento" class="col-md-3 col-form-label col-form-label-sm">Tipo doc(*)</label>
+                                <div class="col-md-4">
+                                    <div id="tipoDocumento"></div>
+                                    <input type="hidden" class="form-control form-control-sm" id="id">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="nroDocumento" class="col-md-3 col-form-label col-form-label-sm">Nro doc(*)</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-sm" id="nroDocumento">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="apellidoPaterno" class="col-md-3 col-form-label col-form-label-sm">A. paterno(*)</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-sm" id="apellidoPaterno">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="apellidoMaterno" class="col-md-3 col-form-label col-form-label-sm">A. materno(*)</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-sm" id="apellidoMaterno">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="nombres" class="col-md-3 col-form-label col-form-label-sm">Nombres(*)</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-sm" id="nombres">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="fechaNacimiento" class="col-md-3 col-form-label col-form-label-sm">Fecha nac(*)</label>
+                                <div class="col-md-4">
+                                    <div id="fechaNacimiento"></div>
+                                </div>
+
+                                <label for="sexo" class="col-md-2 col-form-label col-form-label-sm">Sexo(*)</label>
+                                <div class="col-md-3">
+                                    <div id="sexo"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="estadoCivil" class="col-md-3 col-form-label col-form-label-sm">Estado Civil</label>
+                                <div class="col-md-4">
+                                    <div id="estadoCivil"></div>
+                                </div>
+
+                                <label for="departamento" class="col-md-2 col-form-label col-form-label-sm">Dpto(*)</label>
+                                <div class="col-md-3">
+                                    <div id="departamento"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="provincia" class="col-md-3 col-form-label col-form-label-sm">Provincia(*)</label>
+                                <div class="col-md-4">
+                                    <div id="provincia"></div>
+                                </div>
+
+                                <label for="distrito" class="col-md-2 col-form-label col-form-label-sm">Distrito(*)</label>
+                                <div class="col-md-3">
+                                    <div id="distrito"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="direccion" class="col-md-3 col-form-label col-form-label-sm">Direccion(*)</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-sm" id="direccion">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="telefonoFijo" class="col-md-3 col-form-label col-form-label-sm">Telf. fijo</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control form-control-sm" id="telefonoFijo">
+                                </div>
+
+                                <label for="celular" class="col-md-2 col-form-label col-form-label-sm">Celular</label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control form-control-sm" id="celular">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="email" class="col-md-3 col-form-label col-form-label-sm">Email</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-sm" id="email">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="fechaReg" class="col-md-3 col-form-label col-form-label-sm">Fecha registro</label>
+                                <div class="col-md-9">
+                                    <div id="fechaReg"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="obs" class="col-md-3 col-form-label col-form-label-sm">Observacion</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-sm" id="obs">
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnSave">Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCerrar">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id='Menu'>
+        <ul>
+            <li>Eliminar</li>
+        </ul>
+    </div>
+
+    <div class="row fill-height-91">
+        <div class="col-md-12 fill-height-91">
+            <div id="jqxToolBar"></div>
+            <div id="grid"></div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="javascripts/scripts.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#jqxToolBar").jqxToolBar(
+                    $.extend( {},
+                            vDefaultOptionsToolBar,
+                            {
+                                tools: 'custom | custom | custom',
+                                initTools: function (type, index, tool, menuToolIninitialization) {
+                                    switch (index) {
+                                        case 0:
+                                            var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'><b>TUTORES &nbsp;&nbsp; </b></div>";
+                                            tool.append(label);
+                                            break;
+                                            /*case 1:
+                                             var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Inicio: </div>";
+                                             tool.append(label);
+                                             break;
+                                             case 2:
+                                             var fecha = $("<div id='FechaIniOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
+                                             theme: theme2,
+                                             value: new Date(anioActual, mesActual, 1),
+                                             width: 105,
+                                             height: 25,
+                                             culture: 'es-ES'
+                                             });
+                                             tool.append(fecha);
+                                             break;
+                                             case 3:
+                                             var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Fin: </div>";
+                                             tool.append(label);
+                                             break;
+                                             case 4:
+                                             var fecha = $("<div id='FechaFinOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
+                                             theme: theme2,
+                                             value: new Date(anioActual, mesActual, ultimoDiaMesActual),
+                                             width: 105,
+                                             height: 25,
+                                             culture: 'es-ES'
+                                             });
+                                             tool.append(fecha);
+                                             break;*/
+                                        case 1:
+                                            var addBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/add.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                                theme: theme2,
+                                                width: 30,
+                                                height: 19
+                                            });
+                                            tool.append(addBtn);
+                                            addBtn.click(function (event) {
+                                                $("#id").val('');
+                                                fn_clearText();
+                                                var arregloInputDateTime = ['fechaNacimiento', 'fechaReg'];
+                                                fn_clearDateTimeInput(arregloInputDateTime);
+                                                var arregloInputDropDownList = ['sexo', 'estadoCivil', 'departamento', 'provincia', 'distrito'];
+                                                fn_clearDropDownList(arregloInputDropDownList);
+
+                                                $("#departamento").jqxDropDownList('selectItem', '15' );
+                                                setTimeout(function(){
+                                                    $("#provincia").jqxDropDownList('selectItem', '01' );
+                                                }, 1000);
+
+                                                $("#btnSave").text("Guardar");
+                                                $('#myModal').modal('show');
+                                            });
+                                            break;
+                                            /*case 2:
+                                             var searchBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/search.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                             theme: theme2,
+                                             width: 30,
+                                             height: 19
+                                             });
+                                             tool.append(searchBtn);
+                                             searchBtn.click(function (event) {
+                                             var tools = $("#jqxToolBar").jqxToolBar("getTools");
+                                             var fechaIni = $("#FechaIniOS").val();
+                                             var fechaFin = $("#FechaFinOS").val();
+                                             var fechaIniSql = fechaIni.substring(6,10)+'-'+fechaIni.substring(3,5)+"-"+fechaIni.substring(0,2);
+                                             var fechaFinSql = fechaFin.substring(6,10)+'-'+fechaFin.substring(3,5)+"-"+fechaFin.substring(0,2);
+
+                                             fn_listaTrabGridMap(fechaIniSql,fechaFinSql,usuario);
+                                             });
+                                             break;*/
+                                        case 2:
+                                            var exportBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/icon_excel_02_20.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                                theme: theme2,
+                                                width: 30,
+                                                height: 19
+                                            });
+                                            tool.append(exportBtn);
+                                            exportBtn.click(function (event) {
+                                                var JSONData = $("#grid").jqxGrid('exportdata', 'json');
+                                                fn_JSONToCSVConvertor(JSONData, "ReporteTutores", "", true);
+                                            });
+                                            break;
+                                    }
+                                }
+                            }
+                    )
+            )
+
+            $.getJSON('/listaTutores/', function(json) {
+                //console.log(json.registros[0]);
+                var source =
+                {
+                    datatype: "json",
+                    datafields: [
+                        { name: 'id_tutor', type: 'int'},
+                        { name: 'id_tipo_doc', type: 'int'},
+                        { name: 'tipo_doc', type: 'string'},
+                        { name: 'numdoc', type: 'string'},
+                        { name: 'apepat', type: 'string'},
+                        { name: 'apemat', type: 'string'},
+                        { name: 'nombres', type: 'string'},
+                        { name: 'fecha_nac', type: 'string'},
+                        { name: 'sexo', type: 'string'},
+                        { name: 'id_estado_civil', type: 'int'},
+                        { name: 'estado_civil', type: 'string'},
+                        { name: 'departamento', type: 'string'},
+                        { name: 'provincia', type: 'string'},
+                        { name: 'distrito', type: 'string'},
+                        { name: 'direccion', type: 'string'},
+                        { name: 'telefono', type: 'string'},
+                        { name: 'celular', type: 'string'},
+                        { name: 'email', type: 'string'},
+                        { name: 'fecha_ingreso', type: 'string'},
+                        { name: 'observacion', type: 'string'},
+                        { name: 'estado', type: 'string'}
+                    ],
+                    localdata: json.registros[0]
+                };
+                var dataAdapter = new $.jqx.dataAdapter(source);
+
+                $("#grid").jqxGrid(
+                {
+                    source: dataAdapter
+                });
+            });
+
+            $("#grid").jqxGrid(
+                    $.extend(
+                        {}, vDefaultOptionsGrid,
+                        {
+                            selectionmode: 'singlerow',
+                            columns: [
+                                { text: 'Id tutor', align: 'center', datafield: 'id_tutor', cellsalign: 'center', width: '5%' },
+                                { text: 'Tipo de documento', align: 'center', datafield: 'tipo_doc', cellsalign: 'center', width: '10%' },
+                                { text: 'Nro. Documento', align: 'center', datafield: 'numdoc', cellsalign: 'right', width: '10%' },
+                                { text: 'Nombres', align: 'center', datafield: 'nombres', cellsalign: 'left', width: '15%' },
+                                { text: 'Apellido Paterno', align: 'center', datafield: 'apepat', cellsalign: 'left', width: '15%'},
+                                { text: 'Apellido Materno', align: 'center', datafield: 'apemat', cellsalign: 'left', width: '15%' },
+                                { text: 'Fecha de Nac.', align: 'center', datafield: 'fecha_nac', cellsalign: 'left', width: '10%' },
+                                { text: 'Sexo', align: 'center', datafield: 'sexo', cellsalign: 'center', width: '10%' },
+                                { text: 'Estado Civil', align: 'center', datafield: 'estado_civil', cellsalign: 'left', width: '10%' },
+                                { text: 'Direccion', align: 'center', datafield: 'direccion', cellsalign: 'left', width: '25%' },
+                                { text: 'Departamento', align: 'center', datafield: 'departamento', cellsalign: 'left', width: '10%' },
+                                { text: 'Provincia', align: 'center', datafield: 'provincia', cellsalign: 'left', width: '10%' },
+                                { text: 'Distrito', align: 'center', datafield: 'distrito', cellsalign: 'left', width: '10%' },
+                                { text: 'Telefono Fijo', align: 'center', datafield: 'telefono', cellsalign: 'left', width: '10%' },
+                                { text: 'Telefono Celular', align: 'center', datafield: 'celular', cellsalign: 'center', width: '10%' },
+                                { text: 'Email', align: 'center', datafield: 'email', cellsalign: 'left', width: '30%' },
+                                { text: 'Fecha Ingreso', align: 'center', datafield: 'fecha_ingreso', cellsalign: 'center', width: '10%' },
+                                { text: 'Observaciones', align: 'center', datafield: 'observacion', cellsalign: 'left', width: '30%' }
+                            ]
+                        }
+                    )
+            );
+            var contextMenu = $("#Menu").jqxMenu({
+                theme: theme3,
+                width: 120,
+                height: 30,
+                autoOpenPopup: false,
+                mode: 'popup'
+            });
+            $("#grid").on('contextmenu', function () {
+                return false;
+            });
+
+            contextMenu.on('itemclick', function (event) {
+                var args = event.args;
+                var rowindex = $("#grid").jqxGrid('getselectedrowindex');
+                var dataRecord = $("#grid").jqxGrid('getrowdata', rowindex);
+                //console.log(dataRecord);
+
+                if ( $.trim($(args).text()) == "Editar" ) {
+                    var dataRecord = $("#grid").jqxGrid('getrowdata', rowindex);
+                } else if( $.trim($(args).text()) == "Eliminar" ) {
+                    if(confirm("Esta seguro de eliminar el registro?")){
+                        var rowid = $("#grid").jqxGrid('getrowid', rowindex);
+                        var datos = {
+                            id: dataRecord.id_tutor,
+                            tabla: 'gim_tutores'
+                        };
+                        $.ajax({
+                            type: "POST",
+                            url: '/EG/eliminarRegistroTabla/',
+                            data: datos,
+                            dataType: 'json',
+                            success: function(result){
+                                //console.log(result);
+                                if(result.status == "success") {
+                                    //alert("Proceso realizado correctamente");
+                                    $("#grid").jqxGrid('deleterow', rowid);
+                                    return false;
+                                }else{
+                                    alert("Error: Vuelva a intentarlo");
+                                    return false;
+                                }
+                            },error: function (xhr, ajaxOptions, thrownError) {
+                                alert("ERROR: " + xhr.responseText+" - "+thrownError);
+                            }
+                        });
+                    }
+                }
+            });
+            $("#grid").on('rowclick', function (event) {
+                if (event.args.rightclick) {
+                    $("#grid").jqxGrid('selectrow', event.args.rowindex);
+                    var scrollTop = $(window).scrollTop();
+                    var scrollLeft = $(window).scrollLeft();
+                    contextMenu.jqxMenu('open', parseInt(event.args.originalEvent.clientX) + 5 + scrollLeft, parseInt(event.args.originalEvent.clientY) + 5 + scrollTop);
+                    return false;
+                }
+            });
+            $('#grid').on('rowdoubleclick', function (event)
+            {
+                var args = event.args;
+                // row's bound index.
+                var boundIndex = args.rowindex;
+                var data = $('#grid').jqxGrid('getrowdata', boundIndex);
+                $("#id").val(data.id_tutor);
+                $("#tipoDocumento").jqxDropDownList('selectItem', data.id_tipo_doc);
+                $("#nroDocumento").val(data.numdoc);
+                $("#apellidoPaterno").val(data.apepat);
+                $("#apellidoMaterno").val(data.apemat);
+                $("#nombres").val(data.nombres);
+
+                setTimeout(function() {
+                    $("#departamento").jqxDropDownList('selectItem', data.departamento);
+                }, 500);
+
+                setTimeout(function(){
+                    $("#provincia").jqxDropDownList('selectItem', data.provincia);
+                }, 1000);
+
+                setTimeout(function(){
+                    $("#distrito").jqxDropDownList('selectItem', data.distrito);
+                    $("#provincia").jqxDropDownList("close");
+                    $("#distrito").jqxDropDownList("close");
+                }, 1500);
+
+                $("#direccion").val(data.direccion);
+                var f = fn_DMY_to_Array(data.fecha_nac);
+                $('#fechaNacimiento').jqxDateTimeInput({ value: new Date(f.ANIO, f.MES - 1, f.DIA) });
+                $("#sexo").jqxDropDownList('selectItem', data.sexo);
+                $("#estadoCivil").jqxDropDownList('selectItem', data.id_estado_civil);
+                $("#telefonoFijo").val(data.telefonoFijo);
+                $("#celular").val(data.celular);
+                $("#email").val(data.email);
+                var f2 = fn_DMY_to_Array(data.fecha_ingreso);
+                $('#fechaReg').jqxDateTimeInput({ value: new Date(f2.ANIO, f2.MES - 1, f2.DIA) });
+                $("#observacion").val(data.observacion);
+
+                $("#btnSave").text("Actualizar");
+                $('#myModal').modal('show');
+            });
+
+            $("#tipoDocumento").jqxDropDownList(
+                $.extend(
+                    {}, vDefaultOptionsDropDownList, {
+                        width: '100%'
+                    }
+                )
+            );
+
+            $("#sexo").jqxDropDownList(
+                $.extend(
+                    {}, vDefaultOptionsDropDownList, {
+                        width: '100%'
+                    }
+                )
+            );
+
+            $("#fechaNacimiento").jqxDateTimeInput(
+                $.extend(
+                    {}, vDefaultOptionsDateTimeInput, {
+                        width: '120',
+                        formatString: 'dd/MM/yyyy',
+                        showTimeButton: false
+                    }
+                )
+            );
+
+            $("#fechaReg").jqxDateTimeInput(
+                $.extend(
+                    {}, vDefaultOptionsDateTimeInput, {
+                        width: '120',
+                        formatString: 'dd/MM/yyyy',
+                        showTimeButton: false
+                    }
+                )
+            );
+
+            $("#estadoCivil").jqxDropDownList(
+                $.extend(
+                    {}, vDefaultOptionsDropDownList, {
+                        width: '100%'
+                    }
+                )
+            );
+
+            $("#departamento").jqxDropDownList(
+                $.extend(
+                    {}, vDefaultOptionsDropDownList, {
+                        width: '100%',
+                        dropDownWidth: 250,
+                        dropDownHorizontalAlignment: 'right'
+                    }
+                )
+            );
+            $('#departamento').on('change', function (event)
+            {
+                var args = event.args;
+                if (args) {
+                    // index represents the item's index.
+                    var index = args.index;
+                    var item = args.item;
+                    // get item's label and value.
+                    var label = item.label;
+                    var value = item.value;
+
+                    //console.log(arrayProv[0]);
+                    var queryResult = Enumerable.From(arrayProv[0])
+                        .Where("$.ccod_dpto == '"+value+"'")
+                        .Select()
+                        .ToArray();
+
+                    var height = false;
+                    if(queryResult.length >= 10){
+                        height = false;
+                    }else{
+                        height = true;
+                    }
+                    $("#provincia").jqxDropDownList({
+                        source: queryResult,
+                        displayMember: "descripcion",
+                        valueMember: "ccod_prov",
+                        dropDownWidth: 250,
+                        dropDownHeight: 250,
+                        autoDropDownHeight: height
+                    });
+                }
+            });
+
+            $("#provincia").jqxDropDownList(
+                $.extend(
+                    {}, vDefaultOptionsDropDownList, {
+                        width: '100%'
+                    }
+                )
+            );
+            $('#provincia').on('change', function (event)
+            {
+                var args = event.args;
+                if (args) {
+                    // index represents the item's index.
+                    var index = args.index;
+                    var item = args.item;
+                    // get item's label and value.
+                    var label = item.label;
+                    var value = item.value;
+
+                    //console.log(arrayDist[0]);
+                    var queryResult = Enumerable.From(arrayDist[0])
+                        .Where("$.ccod_dpto == '"+$("#departamento").val()+"' && $.ccod_prov == '"+value+"'")
+                        .Select()
+                        .ToArray();
+
+                    var height = false;
+                    if(queryResult.length >= 10){
+                        height = false;
+                    }else{
+                        height = true;
+                    }
+                    $("#distrito").jqxDropDownList({
+                        source: queryResult,
+                        displayMember: "descripcion",
+                        valueMember: "ccod_dist",
+                        dropDownWidth: 250,
+                        dropDownHeight: 250,
+                        filterable: true,
+                        searchMode: 'containsignorecase',
+                        autoDropDownHeight: height
+                    });
+                }
+            });
+
+
+            $("#distrito").jqxDropDownList(
+                $.extend(
+                    {}, vDefaultOptionsDropDownList, {
+                        width: '100%'
+                    }
+                )
+            );
+
+            var arrayProv = [], arrayDist = [];
+            $.when(
+                $.ajax("/listaTipoDoc"),
+                $.ajax("/listaEstadoCivil"),
+                $.ajax("/listaSexo"),
+                $.ajax("/listaDepartamentos"),
+                $.ajax("/listaProvincias"),
+                $.ajax("/listaDistritos")
+            ).done(function( json1, json2, json3, json4, json5, json6 ) {
+                //console.log(json1[0].registros[0]);
+                if(json1[0].status == "success"){
+                    $("#tipoDocumento").jqxDropDownList({
+                        source: json1[0].registros[0],
+                        displayMember: "descripcion",
+                        valueMember: "id_tipo_documento",
+                        autoDropDownHeight: true
+                    });
+                }else{
+                    alert("Error: al cargar los tipo de documentos");
+                    return false;
+                }
+
+                if(json2[0].status == "success"){
+                    $("#estadoCivil").jqxDropDownList({
+                        source: json2[0].registros,
+                        displayMember: "descripcion",
+                        valueMember: "id_estado_civil",
+                        autoDropDownHeight: true
+                    });
+                }else{
+                    alert("Error: al cargar estado civil");
+                    return false;
+                }
+
+                if(json3[0].status == "success"){
+                    $("#sexo").jqxDropDownList({
+                        source: json3[0].registros,
+                        displayMember: "descripcion",
+                        valueMember: "id_sexo",
+                        autoDropDownHeight: true
+                    });
+                }else{
+                    alert("Error: al cargar datos de sexo");
+                    return false;
+                }
+
+                if(json4[0].status == "success"){
+                    $("#departamento").jqxDropDownList({
+                        source: json4[0].registros,
+                        displayMember: "descripcion",
+                        valueMember: "ccod_dpto",
+                        dropDownHeight: 250
+                    });
+                }else{
+                    alert("Error: al cargar departamentos");
+                    return false;
+                }
+
+                if(json5[0].status == "success"){
+                    arrayProv.push(json5[0].registros);
+                }else{
+                    alert("Error: al cargar provincias");
+                    return false;
+                }
+
+                if(json6[0].status == "success"){
+                    arrayDist.push(json6[0].registros);
+                }else{
+                    alert("Error: al cargar provincias");
+                    return false;
+                }
+            });
+
+            $("#btnSave").click(function() {
+                var datos = {
+                    id: $("#id").val(),
+                    tipoDoc: $("#tipoDocumento").val(),
+                    nroDocumento: $("#nroDocumento").val(),
+                    nombres: $("#nombres").val(),
+                    apepat: $("#apellidoPaterno").val(),
+                    apemat: $("#apellidoMaterno").val(),
+                    fechaNac: fn_convertFecha_DMY_to_SQL($("#fechaNacimiento").val()),
+                    sexo: $("#sexo").val(),
+                    estadoCivil: $("#estadoCivil").val(),
+                    dpto: $("#departamento").val(),
+                    prov: $("#provincia").val(),
+                    dist: $("#distrito").val(),
+                    direccion: $("#direccion").val(),
+                    telefonoFijo: $("#telefonoFijo").val(),
+                    celular: $("#celular").val(),
+                    email: $("#email").val(),
+                    fechaReg: fn_convertFecha_DMY_to_SQL($("#fechaReg").val()),
+                    obs: $("#obs").val()
+                };
+                console.log(datos);
+                var txtMsg = "", url = "";
+                if($("#id").val() != ""){
+                    url = "/EG/updTutores";
+                    txtMsg = "actualizar";
+                }else{
+                    url = "/EG/saveTutores";
+                    txtMsg = "registrar";
+                }
+                if(!fn_validarTutor(datos)){
+                    return false;
+                };
+                if(confirm("Esta seguro de "+txtMsg+" los datos ?")){
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: datos,
+                        dataType: 'json',
+                        success: function(result){
+                            //console.log(result);
+                            if(result.status == "success") {
+                                alert("Proceso realizado correctamente");
+                                location.reload();
+                                return false;
+                            }else{
+                                alert("Error: Vuelva a intentarlo");
+                                return false;
+                            }
+                        },error: function (xhr, ajaxOptions, thrownError) {
+                            alert("ERROR: " + xhr.responseText+" - "+thrownError);
+                        }
+                    });
+                }
+            });
+
+
+        });
+    </script>
+</body>
+</html>

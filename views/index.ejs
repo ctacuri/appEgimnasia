@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Escuela de Gimnasia</title>
+  <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <!-- Material Design Bootstrap -->
+  <link href="MDB/css/mdb.css" rel="stylesheet">
+
+  <style type="text/css">
+    /*html, body{
+      position: relative;
+      height: 100% !important;
+      background: #4a110c;
+      background-image: url(/images/fondo03.jpg), url(/images/background.svg);
+      background-size: cover;
+      background-repeat: no-repeat, no-repeat;
+      background-position: center, center;
+      z-index: 0;
+    }*/
+
+    html, body{
+      position: relative;
+      height: 100% !important;
+      /*background: #4a110c;*/
+      background-image: url(/images/background.svg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      z-index: 0;
+    }
+
+    .text_shadow
+    {
+      color: rgb(255, 255, 255);
+      text-shadow: rgb(3, 3, 3) 4px 4px 4px;
+    }
+
+    .fill-height {
+      min-height: 100%;
+      height: 100% !important;
+    }
+
+    #output{
+      position: absolute;
+      width: 325px;
+      top: -75px;
+      left: 0;
+      color: #fff;
+    }
+
+    #output.alert-success{
+      background: #6A1415 /*rgb(25, 204, 25)*/;
+    }
+
+    #output.alert-danger{
+      background: rgb(228, 105, 105);
+    }
+
+    .centerBlock {
+      display: table;
+      margin: auto;
+    }
+
+    .login-container{
+      /*position: absolute;*/
+      width: 300px;
+      height: 300px;
+      /* Center form on page horizontally & vertically */
+      /*top: 50%;
+      left: 20%;*/
+      /*margin-top: -150px;
+      margin-left: -150px;
+      margin: 180px auto;
+      padding: 20px 40px 40px;*/
+      text-align: center;
+      background: #fff;
+      border: 1px solid #ccc;
+    }
+
+    .login-container::before,.login-container::after{
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      top: 3.5px;
+      left: 0;
+      background: #fff;
+      z-index: -1;
+      -webkit-transform: rotateZ(4deg);
+      -moz-transform: rotateZ(4deg);
+      -ms-transform: rotateZ(4deg);
+      border: 1px solid #ccc;
+
+    }
+
+    .login-container::after{
+      top: 5px;
+      z-index: -2;
+      -webkit-transform: rotateZ(-2deg);
+      -moz-transform: rotateZ(-2deg);
+      -ms-transform: rotateZ(-2deg);
+    }
+
+    .avatar{
+      width: 100px;height: 100px;
+      margin: 10px auto 30px;
+      border-radius: 100%;
+      border: 2px solid #aaa;
+      background-size: cover;
+    }
+
+    .form-box input{
+      width: 92%;
+      padding: 10px;
+      text-align: center;
+      height:40px;
+      border: 1px solid #ccc;;
+      background: #fafafa;
+      transition:0.2s ease-in-out;
+    }
+
+    .form-box input:focus{
+      outline: 0;
+      background: #eee;
+    }
+
+    .form-box input[type="text"]{
+      border-radius: 5px 5px 0 0;
+      /*text-transform: lowercase;*/
+    }
+
+    .form-box input[type="password"]{
+      border-radius: 0 0 5px 5px;
+      border-top: 0;
+    }
+
+    .form-box button.login{
+      margin-top:15px;
+      padding: 10px 20px;
+    }
+
+    .animated {
+      -webkit-animation-duration: 1s;
+      animation-duration: 1s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+    }
+
+    @-webkit-keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        -webkit-transform: translateY(20px);
+        transform: translateY(20px);
+      }
+
+      100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        -webkit-transform: translateY(20px);
+        -ms-transform: translateY(20px);
+        transform: translateY(20px);
+      }
+
+      100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+      }
+    }
+
+    .fadeInUp {
+      -webkit-animation-name: fadeInUp;
+      animation-name: fadeInUp;
+    }
+    */
+
+    .view {
+      height: 100%;
+    }
+    /* Navigation*/
+
+    .navbar {
+      background-color: transparent;
+    }
+
+    .top-nav-collapse {
+      background-color: #3F729B;
+    }
+
+    @media only screen and (max-width: 768px) {
+      .navbar {
+        background-color: #3F729B;
+      }
+    }
+
+    /*Intro*/
+    @media (max-width: 768px) {
+      .full-bg-img,
+      .view {
+        height: auto;
+        position: relative;
+      }
+    }
+
+    .description {
+      padding-top: 5%;
+      padding-bottom: 3rem;
+      color: #fff
+    }
+
+    /* iPads (portrait and landscape) ----------- */
+    @media (min-width : 769px)
+    and (max-width : 991px) {
+      .full-bg-img,
+      .view {
+        height: auto;
+        position: relative;
+      }
+      .description {
+        padding-top: 5%;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .description {
+        padding-top: 5%;
+        /*padding-top: 0rem;*/
+        text-align: center;
+      }
+
+      .login-container{
+        position: absolute;
+        /*width: 300px;
+        height: 300px;*/
+        /* Center form on page horizontally & vertically */
+        top: 50%;
+        left: -490%;
+        /*margin-top: -150px;
+        margin-left: -150px;
+        margin: 180px auto;
+        padding: 20px 40px 40px;*/
+        text-align: center;
+        background: #fff;
+        border: 1px solid #ccc;
+
+        display: table;
+        margin: auto;
+      }
+    }
+
+    /* iPads (portrait and landscape) ----------- */
+    @media (min-width : 993px)
+    and (max-width : 1199px) {
+      .full-bg-img,
+      .view {
+        height: auto;
+        position: relative;
+      }
+      .description {
+        padding-top: 5%;
+        text-align: center;
+      }
+    }
+
+  </style>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <!--<script src="bower_components/jquery.cookie/jquery.cookie.js"></script>-->
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!--<script src="js/config.js"></script>-->
+
+  <script type="text/javascript">
+    /*$.getScript('bower_components/jquery/dist/jquery.min.js');
+     $.getScript('bower_components/jquery.cookie/jquery.cookie.js');
+     $.getScript('bower_components/bootstrap/dist/js/bootstrap.min.js');*/
+
+    /*$.cookie("CESAR_KEY", 123456789);
+
+     setTimeout(function(){
+     alert($.cookie("CESAR_KEY"));
+     }, 2000);
+
+     createCookie('ppkcookie','testcookie',1);
+     alert(readCookie('ppkcookie'));
+
+     setCookie('test','1');
+
+     alert(getCookie('test'));*/
+
+    /*localStorage.setItem("lastname", "Smith");
+     // Retrieve
+     alert(localStorage.getItem("lastname"));
+
+     window.alert = function(){};
+     var defaultCSS = document.getElementById('bootstrap-css');
+     function changeCSS(css){
+     if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+     else $('head > link').filter(':first').replaceWith(defaultCSS);
+     }
+     $( document ).ready(function() {
+     var iframe_height = parseInt($('html').height());
+     //window.parent.postMessage( iframe_height, 'http://bootsnipp.com');
+     });*/
+  </script>
+</head>
+<body>
+
+
+<!--Mask-->
+<!--<div class="hm-black-strong"> -->
+<div class="full-bg-img flex-center">
+  <div class="container">
+    <div class="row" id="home">
+
+      <!--First column-->
+      <div class="col-lg-6 fill-height">
+        <div class="description fill-height centerBlock">
+          <h2 class="wow fadeInLeft text_shadow"><center>Escuela de Gimnasia</center></h2> <!-- h2-responsive -->
+          <hr class="hr-dark wow fadeInLeft">
+          <p class="wow fadeInLeft" data-wow-delay="0.4s">
+            <img src="images/LOGO-INDEX.png" class="img-responsive">
+          </p>
+        </div>
+      </div>
+      <!--/.First column-->
+
+      <!--second column-->
+      <div class="col-lg-2">
+
+      </div>
+      <!--/.second column-->
+
+      <!--third column-->
+      <div class="col-lg-3 centerBlock">
+        <!--Form-->
+
+        <!--<div class="container">-->
+        <div class="login-container centerBlock">
+          <div id="output"></div>
+          <div class="avatar"></div>
+          <div class="form-box">
+            <form action="" method="">
+              <input name="usuario" id="usuario" type="text" placeholder="username" maxlength="6">
+              <input name="contrasena" id="contrasena" type="password" placeholder="password">
+              <button class="btn btn-danger btn-block login" type="submit">Login</button>
+            </form>
+          </div>
+        </div>
+        <!--</div>-->
+
+        <!--/.Form-->
+      </div>
+      <!--/third column-->
+
+
+      <!--four column-->
+      <div class="col-lg-1">
+
+      </div>
+      <!--/.four column-->
+
+    </div>
+    <!--</div>-->
+  </div>
+  <!--</div>-->
+  <!--/.Mask-->
+
+
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="MDB/js/mdb.js"></script>
+  <script>
+    new WOW().init();
+  </script>
+  <script language="JavaScript">
+    $(function(){
+      //var username = $("input[name=usuario]");
+      //var password = $("input[name=contrasena]");
+
+      $('button[type="submit"]').click(function(e) {
+        //alert($('button[type="submit"]').text());
+        if($('button[type="submit"]').text() == 'continue'){
+          location.href = "/main";
+          return false;
+        }
+
+        e.preventDefault();
+        //little validation just to check username
+        if ($("#usuario").val() != "" && $("#contrasena").val() != "") {
+          //$("body").scrollTo("#output");
+          var datos = {
+            usuario: $("#usuario").val(),
+            contrasena: $("#contrasena").val()
+          };
+          //console.log(datos);
+          $.ajax({
+            type: "POST",
+            url: "/loguear",
+            data: datos,
+            dataType: "json",
+            success: function (response) {
+              if (response.status == "success") {
+                console.log(response);
+                $("#output").addClass("alert alert-success animated fadeInUp").html("Bienvenido " + "<span style='text-transform:uppercase'>" + response.datos.usuario + "</span>");
+                $("#output").removeClass('alert-danger');
+                $("input").css({
+                  "height":"0",
+                  "padding":"0",
+                  "margin":"0",
+                  "opacity":"0"
+                });
+                //change button text
+                $('button[type="submit"]').html("continue")
+                        .removeClass("btn-info")
+                        .addClass("btn-default").click(function(){
+                  $("input").css({
+                    "height":"auto",
+                    "padding":"10px",
+                    "opacity":"1"
+                  }).val("");
+                });
+                $(".avatar").css({
+                  "background-image": "url('images/user.png')"
+                });
+                setTimeout(function(){
+                  location.href = "/main";
+                }, 2000);
+                return false;
+              } else if (response.status == "error") {
+                $("#output").addClass("alert alert-success animated fadeInUp").html("<span style='text-transform:uppercase'>Error vuelva a intentarlo</span>");
+                $("#usuario").focus();
+                setTimeout(function(){
+                  $("#output").removeClass('alert alert-success animated fadeInUp');
+                  $("#output").html("");
+                }, 2000);
+                return false;
+              } else if (response.status == "error2") {
+                $("#output").addClass("alert alert-success animated fadeInUp").html("<span style='text-transform:uppercase'>Error: Usuario deshabilitado</span>");
+                $("#usuario").focus();
+              } else if (response.status == "error3") {
+                $("#output").addClass("alert alert-success animated fadeInUp").html("<span style='text-transform:uppercase'>Error: Usuario ha expirado</span>");
+                $("#usuario").focus();
+              }
+            }
+          });
+
+        } else {
+          if($("#usuario").val() == ""){
+            //remove success mesage replaced with error message
+            $("#output").removeClass('alert alert-success');
+            $("#output").addClass("alert alert-danger animated fadeInUp").html("Por favor ingrese un <b>username</b> ");
+            $("#usuario").focus();
+            setTimeout(function(){
+              $("#output").removeClass('alert alert-success animated fadeInUp');
+              $("#output").html("");
+            }, 2000);
+            return false;
+          }
+
+          if($("#contrasena").val() == ""){
+            //remove success mesage replaced with error message
+            $("#output").removeClass('alert alert-success');
+            $("#output").addClass("alert alert-danger animated fadeInUp").html("Por favor ingrese un <b>password</b> ");
+            $("#contrasena").focus();
+            setTimeout(function(){
+              $("#output").removeClass('alert alert-success animated fadeInUp');
+              $("#output").html("");
+            }, 2000);
+            return false;
+          }
+        }
+        //console.log(textfield.val());
+      });
+
+      $("#user").blur(function (e) {
+        //alert("sdsd");
+        e.stopPropagation();
+      });
+
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Escuela de Gimnasia</title>
+
+</head>
+<body>
+    <% include menu %>
+
+    <div id="myModal" class="modal modal-wide2 modal-high2 fade" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">USUARIO</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 nopadding">
+
+                            <div class="form-group row">
+                                <label for="usuario" class="col-md-3 col-form-label col-form-label-sm">Usuario</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-sm" id="usuario">
+                                    <input type="hidden" class="form-control form-control-sm" id="id">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="contrasena" class="col-md-3 col-form-label col-form-label-sm">Contraseña</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-sm" id="contrasena">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+
+                                <!--<div id='jqxWidget' style="margin-top: 5px;">-->
+                                    <div id='jqxTree'>
+                                        <ul style="margin-top: 5px;">
+                                            <li item-expanded='true' id="maestros">Maestros
+                                                <ul>
+                                                    <li id="m_tutores">Tutores</li>
+                                                    <li id="m_alumnos">Alumnos</li>
+                                                    <li id="m_profesores">Profesores</li>
+                                                    <li id="m_horarios">Horarios</li>
+                                                    <li id="m_usuarios">Usuarios</li>
+                                                    <li id="m_suscripciones">Matricula</li>
+                                                    <li id="m_parametros">Parametros</li>
+                                                    <li id="m_registroVentas">Registro de Ventas</li>
+                                                    <li id="m_edades">Edades</li>
+                                                </ul>
+                                            </li>
+
+                                            <li item-expanded='true' id="reportes">Reportes
+                                                <ul>
+                                                    <li id="r_alumnosPorClase">Alumnos por clase</li>
+                                                    <li id="r_deudasMatriculados">Deudas de matriculados</li>
+                                                    <li id="r_pagosMatriculados">Pagos de matriculados</li>
+                                                </ul>
+                                            </li>
+
+                                            <li id="suscripciones">Suscripciones</li>
+                                            <li id="cobros">Cobros</li>
+                                        </ul>
+                                    </div>
+
+                                <!--</div>-->
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnSave">Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCerrar">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id='Menu'>
+        <ul>
+            <li>Eliminar</li>
+        </ul>
+    </div>
+
+    <div class="row fill-height-91">
+        <div class="col-md-12 fill-height-91">
+            <div id="jqxToolBar"></div>
+            <div id="grid"></div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="javascripts/scripts.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#jqxToolBar").jqxToolBar(
+                    $.extend( {},
+                            vDefaultOptionsToolBar,
+                            {
+                                tools: 'custom | custom | custom',
+                                initTools: function (type, index, tool, menuToolIninitialization) {
+                                    switch (index) {
+                                        case 0:
+                                            var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'><b>USUARIOS &nbsp;&nbsp; </b></div>";
+                                            tool.append(label);
+                                            break;
+                                            /*case 1:
+                                             var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Inicio: </div>";
+                                             tool.append(label);
+                                             break;
+                                             case 2:
+                                             var fecha = $("<div id='FechaIniOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
+                                             theme: theme2,
+                                             value: new Date(anioActual, mesActual, 1),
+                                             width: 105,
+                                             height: 25,
+                                             culture: 'es-ES'
+                                             });
+                                             tool.append(fecha);
+                                             break;
+                                             case 3:
+                                             var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Fin: </div>";
+                                             tool.append(label);
+                                             break;
+                                             case 4:
+                                             var fecha = $("<div id='FechaFinOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
+                                             theme: theme2,
+                                             value: new Date(anioActual, mesActual, ultimoDiaMesActual),
+                                             width: 105,
+                                             height: 25,
+                                             culture: 'es-ES'
+                                             });
+                                             tool.append(fecha);
+                                             break;*/
+                                        case 1:
+                                            var addBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/add.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                                theme: theme2,
+                                                width: 30,
+                                                height: 19
+                                            });
+                                            tool.append(addBtn);
+                                            addBtn.click(function (event) {
+                                                $("#usuario").val("");
+                                                $("#contrasena").val("");
+                                                $("#btnSave").text("Guardar");
+                                                $('#jqxTree').jqxTree('uncheckAll');
+                                                setTimeout(function(){
+                                                    $("#usuario").focus();
+                                                }, 1000);
+                                                $('#myModal').modal('show');
+                                            });
+                                            break;
+                                            /*case 2:
+                                             var searchBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/search.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                             theme: theme2,
+                                             width: 30,
+                                             height: 19
+                                             });
+                                             tool.append(searchBtn);
+                                             searchBtn.click(function (event) {
+                                             var tools = $("#jqxToolBar").jqxToolBar("getTools");
+                                             var fechaIni = $("#FechaIniOS").val();
+                                             var fechaFin = $("#FechaFinOS").val();
+                                             var fechaIniSql = fechaIni.substring(6,10)+'-'+fechaIni.substring(3,5)+"-"+fechaIni.substring(0,2);
+                                             var fechaFinSql = fechaFin.substring(6,10)+'-'+fechaFin.substring(3,5)+"-"+fechaFin.substring(0,2);
+
+                                             fn_listaTrabGridMap(fechaIniSql,fechaFinSql,usuario);
+                                             });
+                                             break;*/
+                                        case 2:
+                                            var exportBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/icon_excel_02_20.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                                theme: theme2,
+                                                width: 30,
+                                                height: 19
+                                            });
+                                            tool.append(exportBtn);
+                                            exportBtn.click(function (event) {
+                                                var JSONData = $("#grid").jqxGrid('exportdata', 'json');
+                                                fn_JSONToCSVConvertor(JSONData, "ReporteUsuarios", "", true);
+                                            });
+                                            break;
+                                    }
+                                }
+                            }
+                    )
+            )
+
+            var source =
+            {
+                datatype: "json",
+                datafields: [
+                    { name: 'id_usuario', type: 'int'},
+                    { name: 'usuario', type: 'string'},
+                    { name: 'contrasena', type: 'string'},
+                    { name: 'maestros', type: 'int'},
+                    { name: 'm_tutores', type: 'int'},
+                    { name: 'm_alumnos', type: 'int'},
+                    { name: 'm_profesores', type: 'int'},
+                    { name: 'm_horarios', type: 'int'},
+                    { name: 'm_usuarios', type: 'int'},
+                    { name: 'm_suscripciones', type: 'int'},
+                    { name: 'm_parametros', type: 'int'},
+                    { name: 'm_registroVentas', type: 'int'},
+                    { name: 'm_edades', type: 'int'},
+                    { name: 'reportes', type: 'int'},
+                    { name: 'r_alumnosPorClase', type: 'int'},
+                    { name: 'r_deudasMatriculados', type: 'int'},
+                    { name: 'r_pagosMatriculados', type: 'int'},
+                    { name: 'suscripciones', type: 'int'},
+                    { name: 'cobros', type: 'int'},
+                    { name: 'estado', type: 'string'}
+                ],
+                url: '/listaUsuarios'
+            };
+            var dataAdapter = new $.jqx.dataAdapter(source);
+
+
+            $("#grid").jqxGrid(
+                $.extend(
+                    {}, vDefaultOptionsGrid,
+                    {
+                        source: dataAdapter,
+                        selectionmode: 'singlerow',
+                        columns: [
+                            { text: 'Usuario', align: 'center', datafield: 'usuario', cellsalign: 'left', width: '10%', pinned: true },
+                            { text: 'Contraseña', align: 'center', datafield: 'contrasena', cellsalign: 'left', width: '10%', pinned: true},
+                            { text: 'Maestros', align: 'center', datafield: 'maestros', cellsalign: 'center', width: '7%' },
+                            { text: 'Tutores', align: 'center', datafield: 'm_tutores', cellsalign: 'center', width: '7%' },
+                            { text: 'Alumnos', align: 'center', datafield: 'm_alumnos', cellsalign: 'center', width: '7%' },
+                            { text: 'Profesores', align: 'center', datafield: 'm_profesores', cellsalign: 'center', width: '7%' },
+                            { text: 'Horarios', align: 'center', datafield: 'm_horarios', cellsalign: 'center', width: '7%' },
+                            { text: 'Usuarios', align: 'center', datafield: 'm_usuarios', cellsalign: 'center', width: '7%' },
+                            { text: 'Matricula', align: 'center', datafield: 'm_suscripciones', cellsalign: 'center', width: '7%' },
+                            { text: 'Parametros', align: 'center', datafield: 'm_parametros', cellsalign: 'center', width: '7%' },
+                            { text: 'Registro Vtas', align: 'center', datafield: 'm_registroVentas', cellsalign: 'center', width: '7%' },
+                            { text: 'Edades', align: 'center', datafield: 'm_edades', cellsalign: 'center', width: '7%' },
+                            { text: 'Reportes', align: 'center', datafield: 'reportes', cellsalign: 'center', width: '7%' },
+                            { text: 'Rep. Alumnos', align: 'center', datafield: 'r_alumnosPorClase', cellsalign: 'center', width: '7%' },
+                            { text: 'Rep. Deudas', align: 'center', datafield: 'r_deudasMatriculados', cellsalign: 'center', width: '7%' },
+                            { text: 'Rep. Pagos', align: 'center', datafield: 'r_pagosMatriculados', cellsalign: 'center', width: '7%' },
+                            { text: 'Suscripciones', align: 'center', datafield: 'suscripciones', cellsalign: 'center', width: '7%' },
+                            { text: 'Cobros', align: 'center', datafield: 'cobros', cellsalign: 'center', width: '7%' },
+                            { text: 'Estado', align: 'center', datafield: 'estado', cellsalign: 'center', width: '7%' }
+
+                        ]
+                    }
+                )
+            );
+
+            var contextMenu = $("#Menu").jqxMenu({
+                theme: theme3,
+                width: 150,
+                height: 30,
+                autoOpenPopup: false,
+                mode: 'popup'
+            });
+            $("#grid").on('contextmenu', function () {
+                return false;
+            });
+
+            $("#Menu").on('itemclick', function (event) {
+                var args = event.args;
+                var rowindex = $("#grid").jqxGrid('getselectedrowindex');
+                var dataRecord = $("#grid").jqxGrid('getrowdata', rowindex);
+
+                if ( $.trim($(args).text()) == "Editar" ) {
+
+                } else if( $.trim($(args).text()) == "Eliminar" ) {
+                    if(confirm("Esta seguro de eliminar el registro?")) {
+                        //var rowid = $("#grid").jqxGrid('getrowid', rowindex);
+                        var datos = {
+                            id: dataRecord.id_usuario,
+                            tabla: 'gim_usuarios'
+                        };
+                        $.ajax({
+                            type: "POST",
+                            url: '/EG/eliminarRegistroTabla/',
+                            data: datos,
+                            dataType: 'json',
+                            success: function (result) {
+                                //console.log(result);
+                                if (result.status == "success") {
+                                    //alert("Proceso realizado correctamente");
+                                    $("#grid").jqxGrid('deleterow', rowid);
+                                    return false;
+                                } else {
+                                    alert("Error: Vuelva a intentarlo");
+                                    return false;
+                                }
+                            }, error: function (xhr, ajaxOptions, thrownError) {
+                                alert("ERROR: " + xhr.responseText + " - " + thrownError);
+                            }
+                        });
+                    }
+                }
+            });
+            $("#grid").on('rowclick', function (event) {
+                if (event.args.rightclick) {
+                    $("#grid").jqxGrid('selectrow', event.args.rowindex);
+                    var scrollTop = $(window).scrollTop();
+                    var scrollLeft = $(window).scrollLeft();
+                    contextMenu.jqxMenu('open', parseInt(event.args.originalEvent.clientX) + 5 + scrollLeft, parseInt(event.args.originalEvent.clientY) + 5 + scrollTop);
+                    return false;
+                }
+            });
+            $('#grid').on('rowdoubleclick', function (event)
+            {
+                var args = event.args;
+                // row's bound index.
+                var boundIndex = args.rowindex;
+                var data = $('#grid').jqxGrid('getrowdata', boundIndex);
+
+                $("#id").val(data.id_usuario);
+                $("#usuario").val(data.usuario);
+                $("#contrasena").val(data.contrasena);
+                $("#jqxTree").jqxTree('checkItem', $("#maestros")[0], (data.maestros == 1) ? true  : false);
+                $("#jqxTree").jqxTree('checkItem', $("#m_tutores")[0], (data.m_tutores == 1) ? true  : false);
+                $("#jqxTree").jqxTree('checkItem', $("#m_alumnos")[0], (data.m_alumnos == 1) ? true  : false);
+                $("#jqxTree").jqxTree('checkItem', $("#m_profesores")[0], (data.m_profesores == 1) ? true  : false);
+                $("#jqxTree").jqxTree('checkItem', $("#m_horarios")[0], (data.m_horarios == 1) ? true  : false);
+                $("#jqxTree").jqxTree('checkItem', $("#m_usuarios")[0], (data.m_usuarios == 1) ? true  : false);
+                $("#jqxTree").jqxTree('checkItem', $("#m_suscripciones")[0], (data.m_suscripciones == 1) ? true  : false);
+                $("#jqxTree").jqxTree('checkItem', $("#m_parametros")[0], (data.m_parametros == 1) ? true  : false);
+                $("#jqxTree").jqxTree('checkItem', $("#m_registroVentas")[0], (data.m_registroVentas == 1) ? true  : false);
+                $("#jqxTree").jqxTree('checkItem', $("#m_edades")[0], (data.m_edades == 1) ? true  : false);
+                $("#jqxTree").jqxTree('checkItem', $("#reportes")[0], (data.reportes == 1) ? true  : false);
+                $("#jqxTree").jqxTree('checkItem', $("#r_alumnosPorClase")[0], (data.r_alumnosPorClase == 1) ? true  : false);
+                $("#jqxTree").jqxTree('checkItem', $("#r_deudasMatriculados")[0], (data.r_deudasMatriculados == 1) ? true  : false);
+                $("#jqxTree").jqxTree('checkItem', $("#r_pagosMatriculados")[0], (data.r_pagosMatriculados == 1) ? true  : false);
+                $("#jqxTree").jqxTree('checkItem', $("#suscripciones")[0], (data.suscripciones == 1) ? true  : false);
+                $("#jqxTree").jqxTree('checkItem', $("#cobros")[0], (data.cobros == 1) ? true  : false);
+
+                $("#btnSave").text("Actualizar");
+                $('#myModal').modal('show');
+                setTimeout(function(){
+                    $("#usuario").focus();
+                }, 1000);
+            });
+
+            $('#jqxTree').jqxTree({
+                height: '400px',
+                hasThreeStates: false,
+                checkboxes: true,
+                width: '100%'
+            });
+
+            $("#btnSave").click(function() {
+                if( $("#usuario").val() == ""){
+                    alert("ERROR: Ingrese un usuario valido");
+                    return false;
+                }
+                if( $("#contrasena").val() == ""){
+                    alert("ERROR: Ingrese una contraseña valida");
+                    return false;
+                }
+                var rows = $('#grid').jqxGrid('getrows');
+                for(var i = 0; i < rows.length; i++)
+                {
+                    var row = rows[i];
+                    if(row.usuario == $("#usuario").val()){
+                        alert("ERROR: El usuario ya exuste");
+                        return false;
+                    }
+                    //console.log(row.usuario);
+                }
+                //return false;
+                var cont = 0;
+                var states = "";
+                var items = $('#jqxTree').jqxTree('getItems');
+                for (var i = 0; i < items.length; i++) {
+                    var item = items[i];
+                    cont = cont + 1;
+                    if(cont < items.length){
+                        states += item.checked == true ? 1 : 0;
+                        states += ",";
+                    }else{
+                        states += item.checked == true ? 1 : 0;
+                    }
+                }
+
+                var datos = {
+                    id: $("#id").val(),
+                    usuario: $("#usuario").val(),
+                    contrasena: $("#contrasena").val(),
+                    states: states
+                };
+
+                console.log(datos);
+                //return false;
+                var txtMsg = "", url = "";
+                if($("#id").val() != ""){
+                    url = "/EG/updUsuarios";
+                    txtMsg = "actualizar";
+                }else{
+                    url = "/EG/saveUsuarios";
+                    txtMsg = "registrar";
+                }
+                if(confirm("Esta seguro de "+txtMsg+" los datos ?")){
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: datos,
+                        dataType: 'json',
+                        success: function(result){
+                            //console.log(result);
+                            if(result.status == "success") {
+                                alert("Proceso realizado correctamente");
+                                location.reload();
+                                return false;
+                            }else{
+                                alert("Error: Vuelva a intentarlo");
+                                return false;
+                            }
+                        },error: function (xhr, ajaxOptions, thrownError) {
+                            alert("ERROR: " + xhr.responseText+" - "+thrownError);
+                        }
+                    });
+                }
+
+            });
+
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <!--<span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span>
+                <img src="http://placehold.it/150x50&text=Logo" alt="">-->
+                <img src="images/LogoBrand.png" alt="Escuela de Gimnasia">
+            </a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <% if(usuario.maestros == 1){%>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-dashboard white"></i>
+                        Maestros <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <% if(usuario.m_tutores == 1){%>
+                        <li><a href="/tutores">Tutores</a></li>
+                        <% } %>
+                        <% if(usuario.m_alumnos == 1){%>
+                        <li><a href="/alumnos">Alumnos</a></li>
+                        <% } %>
+                        <% if(usuario.m_profesores == 1){%>
+                        <li><a href="/profesores">Profesores</a></li>
+                        <% } %>
+                        <!--<li class="divider"></li>-->
+                        <% if(usuario.m_horarios == 1){%>
+                        <li><a href="/clases">Horarios</a></li>
+                        <% } %>
+                        <% if(usuario.m_usuarios == 1){%>
+                        <li><a href="/usuarios">Usuarios</a></li>
+                        <% } %>
+                        <% if(usuario.m_suscripciones == 1){%>
+                        <li><a href="/suscripciones">Matricula</a></li>
+                        <% } %>
+                        <% if(usuario.m_suscripciones == 1){%>
+                        <li><a href="/parametros">Parametros</a></li>
+                        <% } %>
+                        <% if(usuario.m_registroVentas == 1){%>
+                        <li><a href="/registroVentas">Registro de Ventas</a></li>
+                        <% } %>
+                        <!--<li class="divider"></li>-->
+                        <% if(usuario.m_edades == 1){%>
+                        <li><a href="/edades">Edades/Dias</a></li>
+                        <% } %>
+                    </ul>
+                </li>
+                <% } %>
+
+                <% if(usuario.reportes == 1){%>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-signal white"></i>
+                        Reportes <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/reporteAlumnosClase">Alumnos por Clase</a></li>
+                        <li><a href="/reporteDeudas">Deudas de matriculados</a></li>
+                        <li><a href="/reportePagosMatriculados">Pagos de matriculados</a></li>
+                    </ul>
+                </li>
+                <% } %>
+
+                <% if(usuario.suscripciones == 1){%>
+                <li class="">
+                    <a href="/suscripciones" data-pjax="#main" data-title="Ventas" class="LetraMenu">
+                        <i class="fa fa-users white"></i>
+                        Matricula
+                    </a>
+                </li>
+                <% } %>
+
+                <% if(usuario.cobros == 1){%>
+                <li class="">
+                    <a href="/cobros" data-pjax="#main" data-title="Cobros" class="LetraMenu">
+                        <i class="fa fa-usd white"></i>
+                        Cobros
+                    </a>
+                </li>
+                <% } %>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-signal white"></i>
+                        Asistencia <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/generarAsistencia">Generar Asistencia</a></li>
+                        <li><a href="/tomarAsistencia">Tomar Asistencia</a></li>
+                    </ul>
+                </li>
+                <li class="">
+                    <a href="/evaluacion" data-pjax="#main" data-title="v" class="LetraMenu">
+                        <i class="fa fa-pencil-square-o white"></i>
+                        Evaluacion
+                    </a>
+                </li>
+                <li>
+                    <a href="/logout" data-pjax="#main" data-title="Logout" class="LetraMenu">
+                        <i class="fa fa-sign-out white"></i>
+                        Salir
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>

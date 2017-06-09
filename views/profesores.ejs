@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Escuela de Gimnasia</title>
+
+</head>
+<body>
+    <% include menu %>
+
+    <div id="myModal" class="modal modal-wide2 modal-high2 fade" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">PROFESOR</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 nopadding">
+
+                            <div class="form-group row">
+                                <label for="tipoDocumento" class="col-md-3 col-form-label col-form-label-sm">Tipo doc</label>
+                                <div class="col-md-4">
+                                    <div id="tipoDocumento"></div>
+                                    <input type="hidden" class="form-control form-control-sm" id="id">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="nroDocumento" class="col-md-3 col-form-label col-form-label-sm">Nro doc</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-sm" id="nroDocumento">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="apellidoPaterno" class="col-md-3 col-form-label col-form-label-sm">A. paterno</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-sm" id="apellidoPaterno">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="apellidoMaterno" class="col-md-3 col-form-label col-form-label-sm">A. materno</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-sm" id="apellidoMaterno">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="nombres" class="col-md-3 col-form-label col-form-label-sm">Nombres</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-sm" id="nombres">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="nombreCorto" class="col-md-3 col-form-label col-form-label-sm">Nombre corto</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control form-control-sm" id="nombreCorto">
+                                </div>
+
+                                <label for="sexo" class="col-md-2 col-form-label col-form-label-sm">Sexo</label>
+                                <div class="col-md-3">
+                                    <div id="sexo"></div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnSave">Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCerrar">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id='Menu'>
+        <ul>
+            <li>Eliminar</li>
+        </ul>
+    </div>
+
+    <div class="row fill-height-91">
+        <div class="col-md-12 fill-height-91">
+            <div id="jqxToolBar"></div>
+            <div id="grid"></div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="javascripts/scripts.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#jqxToolBar").jqxToolBar(
+                    $.extend( {},
+                            vDefaultOptionsToolBar,
+                            {
+                                tools: 'custom | custom | custom',
+                                initTools: function (type, index, tool, menuToolIninitialization) {
+                                    switch (index) {
+                                        case 0:
+                                            var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'><b>PROFESORES &nbsp;&nbsp; </b></div>";
+                                            tool.append(label);
+                                            break;
+                                            /*case 1:
+                                             var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Inicio: </div>";
+                                             tool.append(label);
+                                             break;
+                                             case 2:
+                                             var fecha = $("<div id='FechaIniOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
+                                             theme: theme2,
+                                             value: new Date(anioActual, mesActual, 1),
+                                             width: 105,
+                                             height: 25,
+                                             culture: 'es-ES'
+                                             });
+                                             tool.append(fecha);
+                                             break;
+                                             case 3:
+                                             var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Fin: </div>";
+                                             tool.append(label);
+                                             break;
+                                             case 4:
+                                             var fecha = $("<div id='FechaFinOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
+                                             theme: theme2,
+                                             value: new Date(anioActual, mesActual, ultimoDiaMesActual),
+                                             width: 105,
+                                             height: 25,
+                                             culture: 'es-ES'
+                                             });
+                                             tool.append(fecha);
+                                             break;*/
+                                        case 1:
+                                            var addBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/add.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                                theme: theme2,
+                                                width: 30,
+                                                height: 19
+                                            });
+                                            tool.append(addBtn);
+                                            addBtn.click(function (event) {
+                                                $("#id").val('');
+                                                fn_clearText();
+                                                var arregloInputDropDownList = ['sexo'];
+                                                fn_clearDropDownList(arregloInputDropDownList);
+
+                                                $("#btnSave").text("Guardar");
+                                                $('#myModal').modal('show');
+                                            });
+                                            break;
+                                            /*case 2:
+                                             var searchBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/search.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                             theme: theme2,
+                                             width: 30,
+                                             height: 19
+                                             });
+                                             tool.append(searchBtn);
+                                             searchBtn.click(function (event) {
+                                             var tools = $("#jqxToolBar").jqxToolBar("getTools");
+                                             var fechaIni = $("#FechaIniOS").val();
+                                             var fechaFin = $("#FechaFinOS").val();
+                                             var fechaIniSql = fechaIni.substring(6,10)+'-'+fechaIni.substring(3,5)+"-"+fechaIni.substring(0,2);
+                                             var fechaFinSql = fechaFin.substring(6,10)+'-'+fechaFin.substring(3,5)+"-"+fechaFin.substring(0,2);
+
+                                             fn_listaTrabGridMap(fechaIniSql,fechaFinSql,usuario);
+                                             });
+                                             break;*/
+                                        case 2:
+                                            var exportBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/icon_excel_02_20.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                                theme: theme2,
+                                                width: 30,
+                                                height: 19
+                                            });
+                                            tool.append(exportBtn);
+                                            exportBtn.click(function (event) {
+                                                var JSONData = $("#grid").jqxGrid('exportdata', 'json');
+                                                fn_JSONToCSVConvertor(JSONData, "ReporteProfesores", "", true);
+                                                //console.log(vExport);
+                                            });
+                                            break;
+                                    }
+                                }
+                            }
+                    )
+            )
+
+            $.getJSON('/listaProfesores/', function(json) {
+                //console.log(json.registros[0]);
+                var source =
+                {
+                    datatype: "json",
+                    datafields: [
+                        { name: 'id_profesor', type: 'int'},
+                        { name: 'id_tipo_doc', type: 'int'},
+                        { name: 'tipo_doc', type: 'string'},
+                        { name: 'numdoc', type: 'string'},
+                        { name: 'apepat', type: 'string'},
+                        { name: 'apemat', type: 'string'},
+                        { name: 'nombres', type: 'string'},
+                        { name: 'nombre_corto', type: 'string'},
+                        { name: 'sexo', type: 'string'},
+                        { name: 'estado', type: 'string'}
+                    ],
+                    localdata: json.registros[0]
+                };
+                var dataAdapter = new $.jqx.dataAdapter(source);
+
+                $("#grid").jqxGrid(
+                {
+                    source: dataAdapter
+                });
+            });
+
+            $("#grid").jqxGrid(
+                $.extend(
+                        {}, vDefaultOptionsGrid,
+                    {
+                        selectionmode: 'singlerow',
+                        columns: [
+                            { text: 'Tipo documento', align: 'center', datafield: 'tipo_doc', cellsalign: 'center', width: '10%' },
+                            { text: 'Nro. Documento', align: 'center', datafield: 'numdoc', cellsalign: 'right', width: '10%' },
+                            { text: 'Nombre corto', align: 'center', datafield: 'nombre_corto', cellsalign: 'left', width: '20%' },
+                            { text: 'Nombres', align: 'center', datafield: 'nombres', cellsalign: 'left', width: '20%' },
+                            { text: 'Apellido Paterno', align: 'center', datafield: 'apepat', cellsalign: 'left', width: '20%'},
+                            { text: 'Apellido Materno', align: 'center', datafield: 'apemat', cellsalign: 'left', width: '20%' }
+                            //{ text: 'Email', align: 'center', datafield: 'email', cellsalign: 'right', width: '20%' },
+                            //{ text: 'Telefono Celular', align: 'center', datafield: 'telefonoCelular', cellsalign: 'right', width: '15%' }
+                        ]
+                    }
+                )
+            );
+            var contextMenu = $("#Menu").jqxMenu({
+                width: 150,
+                height: 30,
+                autoOpenPopup: false,
+                mode: 'popup'
+            });
+            $("#grid").on('contextmenu', function () {
+                return false;
+            });
+
+            $("#Menu").on('itemclick', function (event) {
+                var args = event.args;
+                var rowindex = $("#grid").jqxGrid('getselectedrowindex');
+                var dataRecord = $("#grid").jqxGrid('getrowdata', rowindex);
+
+                if ( $.trim($(args).text()) == "Editar" ) {
+
+                } else if( $.trim($(args).text()) == "Eliminar" ) {
+                    if(confirm("Esta seguro de eliminar el registro?")) {
+                        var rowid = $("#grid").jqxGrid('getrowid', rowindex);
+                        var datos = {
+                            id: dataRecord.id_profesor,
+                            tabla: 'gim_profesores'
+                        };
+                        $.ajax({
+                            type: "POST",
+                            url: '/EG/eliminarRegistroTabla/',
+                            data: datos,
+                            dataType: 'json',
+                            success: function (result) {
+                                //console.log(result);
+                                if (result.status == "success") {
+                                    //alert("Proceso realizado correctamente");
+                                    $("#grid").jqxGrid('deleterow', rowid);
+                                    return false;
+                                } else {
+                                    alert("Error: Vuelva a intentarlo");
+                                    return false;
+                                }
+                            }, error: function (xhr, ajaxOptions, thrownError) {
+                                alert("ERROR: " + xhr.responseText + " - " + thrownError);
+                            }
+                        });
+                    }
+                }
+            });
+            $("#grid").on('rowclick', function (event) {
+                if (event.args.rightclick) {
+                    $("#grid").jqxGrid('selectrow', event.args.rowindex);
+                    var scrollTop = $(window).scrollTop();
+                    var scrollLeft = $(window).scrollLeft();
+                    contextMenu.jqxMenu('open', parseInt(event.args.originalEvent.clientX) + 5 + scrollLeft, parseInt(event.args.originalEvent.clientY) + 5 + scrollTop);
+                    return false;
+                }
+            });
+            $('#grid').on('rowdoubleclick', function (event)
+            {
+                var args = event.args;
+                // row's bound index.
+                var boundIndex = args.rowindex;
+                var data = $('#grid').jqxGrid('getrowdata', boundIndex);
+                //console.log(data.id_tipo_doc);
+                //console.log(data.tipo_doc);
+                $("#id").val(data.id_profesor);
+                $("#tipoDocumento").jqxDropDownList('selectItem', data.id_tipo_doc);
+                $("#nroDocumento").val(data.numdoc);
+                $("#apellidoPaterno").val(data.apepat);
+                $("#apellidoMaterno").val(data.apemat);
+                $("#nombres").val(data.nombres);
+                $("#nombreCorto").val(data.nombre_corto);
+
+                $("#sexo").jqxDropDownList('selectItem', data.sexo);
+
+                $("#btnSave").text("Actualizar");
+                $('#myModal').modal('show');
+            });
+
+
+            $("#tipoDocumento").jqxDropDownList(
+                $.extend(
+                    {}, vDefaultOptionsDropDownList, {
+                        width: '100%'
+                    }
+                )
+            );
+
+            $("#sexo").jqxDropDownList(
+                $.extend(
+                    {}, vDefaultOptionsDropDownList, {
+                        width: '100%'
+                    }
+                )
+            );
+
+            $.when(
+                $.ajax("/listaTipoDoc"),
+                $.ajax("/listaSexo")
+            ).done(function( json1, json2 ) {
+                //console.log(json1[0].registros[0]);
+                if(json1[0].status == "success"){
+                    $("#tipoDocumento").jqxDropDownList({
+                        source: json1[0].registros[0],
+                        displayMember: "descripcion",
+                        valueMember: "id_tipo_documento",
+                        autoDropDownHeight: true
+                    });
+                }else{
+                    alert("Error: al cargar los tipo de documentos");
+                    return false;
+                }
+
+                if(json2[0].status == "success"){
+                    $("#sexo").jqxDropDownList({
+                        source: json2[0].registros,
+                        displayMember: "descripcion",
+                        valueMember: "id_sexo",
+                        autoDropDownHeight: true
+                    });
+                }else{
+                    alert("Error: al cargar datos de sexo");
+                    return false;
+                }
+
+            });
+
+            $("#btnSave").click(function() {
+                var datos = {
+                    id: $("#id").val(),
+                    tipoDoc: $("#tipoDocumento").val(),
+                    nroDocumento: $("#nroDocumento").val(),
+                    nombres: $("#nombres").val(),
+                    apepat: $("#apellidoPaterno").val(),
+                    apemat: $("#apellidoMaterno").val(),
+                    nombreCorto: $("#nombreCorto").val(),
+                    sexo: $("#sexo").val()
+                };
+                console.log(datos);
+                var txtMsg = "", url = "";
+                if($("#id").val() != ""){
+                    url = "/EG/updProfesores";
+                    txtMsg = "actualizar";
+                }else{
+                    url = "/EG/saveProfesores";
+                    txtMsg = "registrar";
+                }
+
+                if(confirm("Esta seguro de "+txtMsg+" los datos ?")){
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: datos,
+                        dataType: 'json',
+                        success: function(result){
+                            //console.log(result);
+                            if(result.status == "success") {
+                                alert("Proceso realizado correctamente");
+                                location.reload();
+                                return false;
+                            }else{
+                                alert("Error: Vuelva a intentarlo");
+                                return false;
+                            }
+                        },error: function (xhr, ajaxOptions, thrownError) {
+                            alert("ERROR: " + xhr.responseText+" - "+thrownError);
+                        }
+                    });
+                }
+            });
+
+
+
+        });
+    </script>
+</body>
+</html>

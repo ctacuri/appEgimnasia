@@ -1,0 +1,1237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f34f7079-dc81-4b1b-96d1-ceb27fcabfa8" name="Default" comment="" />
+    <ignored path="appEgimnasia.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="appEgimnasia" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="profesores.ejs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/profesores.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4245">
+              <caret line="283" column="21" lean-forward="false" selection-start-line="258" selection-start-column="20" selection-end-line="283" selection-end-column="21" />
+              <folding>
+                <marker date="1493259862000" expanded="true" signature="5065:5112" ph="..." />
+                <marker date="1493259862000" expanded="true" signature="5128:5134" ph=" " />
+                <marker date="1493259862000" expanded="true" signature="5134:5140" ph=" " />
+                <marker date="1493259862000" expanded="true" signature="7374:7459" ph="..." />
+                <marker date="1493259862000" expanded="true" signature="7473:7527" ph="..." />
+                <marker date="1493259862000" expanded="true" signature="7564:7601" ph="..." />
+                <marker date="1493259862000" expanded="true" signature="10214:10299" ph="..." />
+                <marker date="1493259862000" expanded="true" signature="10313:10367" ph="..." />
+                <marker date="1493259862000" expanded="true" signature="10417:10454" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="clases.ejs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/clases.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4740">
+              <caret line="316" column="76" lean-forward="false" selection-start-line="316" selection-start-column="16" selection-end-line="316" selection-end-column="76" />
+              <folding>
+                <marker date="1493260013000" expanded="true" signature="4926:4973" ph="..." />
+                <marker date="1493260013000" expanded="true" signature="4987:4993" ph="..." />
+                <marker date="1493260013000" expanded="true" signature="4993:4999" ph="..." />
+                <marker date="1493260013000" expanded="true" signature="7233:7318" ph="..." />
+                <marker date="1493260013000" expanded="true" signature="7332:7386" ph="..." />
+                <marker date="1493260013000" expanded="true" signature="7423:7460" ph="..." />
+                <marker date="1493260013000" expanded="true" signature="10135:10220" ph="..." />
+                <marker date="1493260013000" expanded="true" signature="10234:10288" ph="..." />
+                <marker date="1493260013000" expanded="true" signature="10338:10375" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/routes.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1080">
+              <caret line="72" column="24" lean-forward="false" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edades.ejs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/edades.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5820">
+              <caret line="388" column="45" lean-forward="false" selection-start-line="388" selection-start-column="45" selection-end-line="388" selection-end-column="45" />
+              <folding>
+                <marker date="1493261158000" expanded="true" signature="4330:4377" ph="..." />
+                <marker date="1493261158000" expanded="true" signature="4389:4395" ph=" " />
+                <marker date="1493261158000" expanded="true" signature="4395:4401" ph=" " />
+                <marker date="1493261158000" expanded="true" signature="4618:4703" ph="..." />
+                <marker date="1493261158000" expanded="true" signature="4717:4771" ph="..." />
+                <marker date="1493261158000" expanded="true" signature="4808:4845" ph="..." />
+                <marker date="1493261158000" expanded="true" signature="5652:5737" ph="..." />
+                <marker date="1493261158000" expanded="true" signature="5751:5805" ph="..." />
+                <marker date="1493261158000" expanded="true" signature="5855:5892" ph="..." />
+                <marker date="1493261158000" expanded="true" signature="7076:7123" ph="..." />
+                <marker date="1493261158000" expanded="true" signature="7133:7139" ph=" " />
+                <marker date="1493261158000" expanded="true" signature="7139:7145" ph=" " />
+                <marker date="1493261158000" expanded="true" signature="7362:7447" ph="..." />
+                <marker date="1493261158000" expanded="true" signature="7461:7515" ph="..." />
+                <marker date="1493261158000" expanded="true" signature="7552:7589" ph="..." />
+                <marker date="1493261158000" expanded="true" signature="8400:8485" ph="..." />
+                <marker date="1493261158000" expanded="true" signature="8499:8553" ph="..." />
+                <marker date="1493261158000" expanded="true" signature="8603:8640" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="usuarios.ejs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/usuarios.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4230">
+              <caret line="282" column="48" lean-forward="false" selection-start-line="282" selection-start-column="48" selection-end-line="282" selection-end-column="48" />
+              <folding>
+                <marker date="1493261244000" expanded="true" signature="5344:5391" ph="..." />
+                <marker date="1493261244000" expanded="true" signature="5405:5411" ph=" " />
+                <marker date="1493261244000" expanded="true" signature="5411:5417" ph=" " />
+                <marker date="1493261244000" expanded="true" signature="7651:7736" ph="..." />
+                <marker date="1493261244000" expanded="true" signature="7750:7804" ph="..." />
+                <marker date="1493261244000" expanded="true" signature="7841:7878" ph="..." />
+                <marker date="1493261244000" expanded="true" signature="10609:10694" ph="..." />
+                <marker date="1493261244000" expanded="true" signature="10708:10762" ph="..." />
+                <marker date="1493261244000" expanded="true" signature="10812:10849" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="www" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/www">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="connMYSQL.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/connection/connMYSQL.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" column="66" lean-forward="false" selection-start-line="21" selection-start-column="66" selection-end-line="21" selection-end-column="66" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="generarAsistencia.ejs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/generarAsistencia.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="275">
+              <caret line="131" column="72" lean-forward="false" selection-start-line="131" selection-start-column="72" selection-end-line="131" selection-end-column="72" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="controllerEG.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controllers/controllerEG.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="531">
+              <caret line="1288" column="0" lean-forward="false" selection-start-line="1288" selection-start-column="0" selection-end-line="1288" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="modelEG.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/models/modelEG.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="115">
+              <caret line="644" column="47" lean-forward="false" selection-start-line="644" selection-start-column="47" selection-end-line="644" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>reportePagos</find>
+      <find>grid2</find>
+      <find>reporteRegistroVenras</find>
+      <find>SQL</find>
+      <find>reporteRegistroVentas</find>
+      <find>format</find>
+      <find>Alergias</find>
+      <find>listaTipoAlumno</find>
+      <find>when</find>
+      <find>Aler</find>
+      <find>for=&quot;alergias&quot;</find>
+      <find>ciaSeg</find>
+      <find>updAlumnos</find>
+      <find>doubl</find>
+      <find>listaAlumnos</find>
+      <find>tipo_alumno</find>
+      <find>console.log</find>
+      <find>double</find>
+      <find>tipoAlumno</find>
+      <find>dou</find>
+      <find>btnSave</find>
+      <find>doub</find>
+      <find>listarAsistenciaHorarioAlumno</find>
+      <find>ajax</find>
+      <find>console.log(dataRecord);</find>
+      <find>Menu</find>
+      <find>} else if( $.trim($(args).text()) == &quot;Eliminar&quot; ) {</find>
+      <find>fire</find>
+      <find>change</find>
+      <find>Eliminar</find>
+    </findStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$</dir>
+    </dirStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/public/bower.json" />
+        <option value="$PROJECT_DIR$/public/stylesheets/logo-nav.css" />
+        <option value="$PROJECT_DIR$/public/images/background.svg" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/views/reporteDuedas.ejs.js" />
+        <option value="$PROJECT_DIR$/views/horarios.ejs" />
+        <option value="$PROJECT_DIR$/views/main.ejs" />
+        <option value="$PROJECT_DIR$/views/index.ejs" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/views/formatoRegistroPadronSocios.ejs" />
+        <option value="$PROJECT_DIR$/views/asistencia.ejs" />
+        <option value="$PROJECT_DIR$/views/evaluacion.ejs" />
+        <option value="$PROJECT_DIR$/views/menu.ejs" />
+        <option value="$PROJECT_DIR$/views/parametros.ejs" />
+        <option value="$PROJECT_DIR$/public/javascripts/jquery.printElement.js" />
+        <option value="$PROJECT_DIR$/public/javascripts/printThis.js" />
+        <option value="$PROJECT_DIR$/public/javascripts/scripts.js" />
+        <option value="$PROJECT_DIR$/views/formatoTicketPago.ejs" />
+        <option value="$PROJECT_DIR$/public/stylesheets/style.css" />
+        <option value="$PROJECT_DIR$/views/cobros.ejs" />
+        <option value="$PROJECT_DIR$/bin/www" />
+        <option value="$PROJECT_DIR$/public/javascripts/config.js" />
+        <option value="$PROJECT_DIR$/views/reporteAlumnosClase.ejs" />
+        <option value="$PROJECT_DIR$/connection/connMYSQL.js" />
+        <option value="$PROJECT_DIR$/views/reporteDeudas.ejs" />
+        <option value="$PROJECT_DIR$/views/tomarAsistencia.ejs" />
+        <option value="$PROJECT_DIR$/views/reportePagosMatriculados.ejs" />
+        <option value="$PROJECT_DIR$/views/suscripciones.ejs" />
+        <option value="$PROJECT_DIR$/views/registroVentas.ejs" />
+        <option value="$PROJECT_DIR$/models/modelEG.js" />
+        <option value="$PROJECT_DIR$/controllers/controllerEG.js" />
+        <option value="$PROJECT_DIR$/views/tutores.ejs" />
+        <option value="$PROJECT_DIR$/views/alumnos.ejs" />
+        <option value="$PROJECT_DIR$/views/profesores.ejs" />
+        <option value="$PROJECT_DIR$/views/clases.ejs" />
+        <option value="$PROJECT_DIR$/views/edades.ejs" />
+        <option value="$PROJECT_DIR$/views/usuarios.ejs" />
+        <option value="$PROJECT_DIR$/routes/routes.js" />
+        <option value="$PROJECT_DIR$/views/firebase.ejs" />
+        <option value="$PROJECT_DIR$/views/generarAsistencia.ejs" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
+    <package-json value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="821" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="appEgimnasia" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="appEgimnasia" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="appEgimnasia" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="appEgimnasia" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="appEgimnasia" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="appEgimnasia" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="routes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="appEgimnasia" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="appEgimnasia" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="appEgimnasia" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="appEgimnasia" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stylesheets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="appEgimnasia" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="appEgimnasia" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="appEgimnasia" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="appEgimnasia" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="appEgimnasia" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="appEgimnasia" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="connection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="appEgimnasia" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="appEgimnasia" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="options.lastSelected" value="Errors" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
+    <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="js.eslint.eslintPackage" value="" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="J:\NodeJS\appEgimnasia\public" />
+      <recent name="J:\NodeJS\appEgimnasia\public\images" />
+      <recent name="J:\NodeJS\appEgimnasia\public\bower_components\jqwidgets\jqwidgets\styles" />
+      <recent name="J:\NodeJS\appEgimnasia\public\bower_components\jqwidgets\jqwidgets\globalization" />
+      <recent name="J:\NodeJS\appEgimnasia\public\bower_components\jqwidgets\jqwidgets" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" value="" />
+      <option name="executablePath" />
+      <option name="filePath" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <pass-parent-envs>true</pass-parent-envs>
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter />
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f34f7079-dc81-4b1b-96d1-ceb27fcabfa8" name="Default" comment="" />
+      <created>1487211808904</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1487211808904</updated>
+      <workItem from="1487211810461" duration="6546000" />
+      <workItem from="1487385616164" duration="19175000" />
+      <workItem from="1488249064645" duration="3947000" />
+      <workItem from="1488335623873" duration="149000" />
+      <workItem from="1488335792233" duration="12512000" />
+      <workItem from="1488512151524" duration="6643000" />
+      <workItem from="1488936661274" duration="3772000" />
+      <workItem from="1489111900762" duration="6661000" />
+      <workItem from="1489237169446" duration="8837000" />
+      <workItem from="1489457494831" duration="35061000" />
+      <workItem from="1490151231466" duration="461000" />
+      <workItem from="1490151744863" duration="105712000" />
+      <workItem from="1491597961314" duration="60874000" />
+      <workItem from="1492105273928" duration="722000" />
+      <workItem from="1492106311473" duration="34592000" />
+      <workItem from="1492566628929" duration="24473000" />
+      <workItem from="1495857551919" duration="714000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="330851000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1440" height="821" extended-state="0" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17054264" sideWeight="0.49506348" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32863188" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27038628" sideWeight="0.5137421" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13460183" sideWeight="0.5049365" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13742071" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28165007" sideWeight="0.48625794" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32863188" sideWeight="0.49753347" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32863188" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27038628" sideWeight="0.5137421" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13460183" sideWeight="0.5049365" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28165007" sideWeight="0.48625794" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17054264" sideWeight="0.49506348" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32863188" sideWeight="0.49753347" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13742071" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/draw/typescript-draw.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/draw/typescript-draw.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/grid/typescript-grid.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/grid/typescript-grid.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/grid/typescript-grid-filterrow.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/grid/typescript-grid-filterrow.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/grid/typescript-grid-nestedgrids.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/grid/typescript-grid-nestedgrids.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/grid/typescript-grid-grouping.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/grid/typescript-grid-grouping.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/grid/typescript-grid-filtering.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/grid/typescript-grid-filtering.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/grid/typescript-grid-editing.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/grid/typescript-grid-editing.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/grid/typescript-grid-paging.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/grid/typescript-grid-paging.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/knob/typescript-knob.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/knob/typescript-knob.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/menu/typescript-menu.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/menu/typescript-menu.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/tabs/typescript-tabs.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/tabs/typescript-tabs.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/tree/typescript-tree.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/tree/typescript-tree.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/chart/typescript-chart-columnlocaldata.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/chart/typescript-chart-columnlocaldata.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/chart/typescript-chart-polarseries.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/chart/typescript-chart-polarseries.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/chart/typescript-chart-donutseries.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/chart/typescript-chart-donutseries.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/chart/typescript-chart.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/chart/typescript-chart.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/gauge/typescript-gauge.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/gauge/typescript-gauge.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/input/typescript-input.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/input/typescript-input.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/panel/typescript_panel.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/panel/typescript_panel.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/button/typescript-button.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/button/typescript-button.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/editor/typescript-editor.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/editor/typescript-editor.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/kanban/typescript-kanban.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/kanban/typescript-kanban.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/layout/typescript-layout.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/layout/typescript-layout.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/loader/typescript-loader.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/loader/typescript-loader.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/navbar/typescript-navbar.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/navbar/typescript-navbar.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/rating/typescript-rating.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/rating/typescript-rating.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/ribbon/typescript-ribbon.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/ribbon/typescript-ribbon.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/slider/typescript-slider.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/slider/typescript-slider.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/window/typescript-window.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/window/typescript-window.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/docking/typescript-docking.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/docking/typescript-docking.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/listbox/typescript-listbox.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/listbox/typescript-listbox.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/popover/typescript-popover.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/popover/typescript-popover.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/toolbar/typescript-toolbar.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/toolbar/typescript-toolbar.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/tooltip/typescript-tooltip.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/tooltip/typescript-tooltip.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/treemap/typescript-treemap.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/treemap/typescript-treemap.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/bargauge/typescript-bargauge.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/bargauge/typescript-bargauge.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/calendar/typescript-calendar.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/calendar/typescript-calendar.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/checkbox/typescript-checkbox.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/checkbox/typescript-checkbox.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/combobox/typescript-combobox.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/combobox/typescript-combobox.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/dragdrop/typescript-dragdrop.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/dragdrop/typescript-dragdrop.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/expander/typescript-expander.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/expander/typescript-expander.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/listmenu/typescript-listmenu.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/listmenu/typescript-listmenu.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/sortable/typescript-sortable.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/sortable/typescript-sortable.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/splitter/typescript-splitter.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/splitter/typescript-splitter.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/tagcloud/typescript-tagcloud.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/tagcloud/typescript-tagcloud.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/textarea/typescript-textarea.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/textarea/typescript-textarea.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/treegrid/typescript-treegrid-virtualmode.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/treegrid/typescript-treegrid-virtualmode.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/treegrid/typescript-treegrid.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/treegrid/typescript-treegrid.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/datatable/typescript-datatable-editing.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/datatable/typescript-datatable-editing.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/datatable/typescript-datatable-paging.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/datatable/typescript-datatable-paging.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/datatable/typescript-datatable-filtering.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/datatable/typescript-datatable-filtering.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/datatable/typescript-datatable-sorting.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/datatable/typescript-datatable-sorting.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/datatable/typescript-datatable.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/datatable/typescript-datatable.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/dockpanel/typescript-dockpanel.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/dockpanel/typescript-dockpanel.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/scheduler/typescript-scheduler.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/scheduler/typescript-scheduler.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/scheduler/typescript-scheduler-resources.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/scheduler/typescript-scheduler-resources.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/scrollbar/typescript-scrollbar.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/scrollbar/typescript-scrollbar.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/validator/typescript-validator.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/validator/typescript-validator.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/fileupload/typescript-fileupload.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/fileupload/typescript-fileupload.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/scrollview/typescript-scrollview.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/scrollview/typescript-scrollview.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/bulletchart/typescript-bulletchart.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/bulletchart/typescript-bulletchart.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/buttongroup/typescript-buttongroup.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/buttongroup/typescript-buttongroup.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/colorpicker/typescript-colorpicker.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/colorpicker/typescript-colorpicker.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/lineargauge/typescript-lineargauge.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/lineargauge/typescript-lineargauge.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/maskedinput/typescript-maskedinput.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/maskedinput/typescript-maskedinput.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/numberinput/typescript-numberinput.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/numberinput/typescript-numberinput.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/progressbar/typescript-progressbar.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/progressbar/typescript-progressbar.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/radiobutton/typescript-radiobutton.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/radiobutton/typescript-radiobutton.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/complexinput/typescript-complexinput.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/complexinput/typescript-complexinput.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/dropdownlist/typescript-dropdownlist.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/dropdownlist/typescript-dropdownlist.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/notification/typescript-notification.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/notification/typescript-notification.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/switchbutton/typescript-switchbutton.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/switchbutton/typescript-switchbutton.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/datetimeinput/typescript-datetimeinput.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/datetimeinput/typescript-datetimeinput.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/dockinglayout/typescript-dockinglayout.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/dockinglayout/typescript-dockinglayout.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/navigationbar/typescript-navigationbar.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/navigationbar/typescript-navigationbar.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/passwordinput/typescript-passwordinput.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/passwordinput/typescript-passwordinput.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/rangeselector/typescript-rangeselector.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/rangeselector/typescript-rangeselector.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/dropdownbutton/typescript-dropdownbutton.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/dropdownbutton/typescript-dropdownbutton.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/formattedinput/typescript-formattedinput.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/formattedinput/typescript-formattedinput.js.map" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/responsivepanel/typescript-responsivepanel.js" />
+        <option value="$PROJECT_DIR$/public/bower_components/jqwidgets/demos/typescript/responsivepanel/typescript-responsivepanel.js.map" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/models/modelEG.js</url>
+          <line>128</line>
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="7" column="37" lean-forward="false" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/modelEG.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/menu.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/logo-nav.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/main.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/controllerEG.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="13" column="28" lean-forward="false" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="15" column="8" lean-forward="false" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="318" column="26" lean-forward="false" selection-start-line="318" selection-start-column="26" selection-end-line="318" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/www">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/bower_components/jquery/dist/jquery.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="1" column="1125" lean-forward="false" selection-start-line="1" selection-start-column="1125" selection-end-line="1" selection-end-column="1125" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="15" column="8" lean-forward="false" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/logo-nav.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/images/background.svg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="4" column="43" lean-forward="false" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/main.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="4" column="57" lean-forward="false" selection-start-line="4" selection-start-column="57" selection-end-line="4" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="26" column="5" lean-forward="false" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="411" column="166" lean-forward="false" selection-start-line="411" selection-start-column="166" selection-end-line="411" selection-end-column="166" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/menu.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="99" column="21" lean-forward="false" selection-start-line="99" selection-start-column="21" selection-end-line="99" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/parametros.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="261" column="55" lean-forward="false" selection-start-line="261" selection-start-column="55" selection-end-line="261" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/asistencia.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="21" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/jquery.printElement.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="178" column="10" lean-forward="false" selection-start-line="178" selection-start-column="10" selection-end-line="178" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/printThis.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="27" column="39" lean-forward="false" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/formatoTicketPago.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="171" column="7" lean-forward="false" selection-start-line="171" selection-start-column="7" selection-end-line="171" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="258" column="11" lean-forward="false" selection-start-line="258" selection-start-column="11" selection-end-line="258" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/scripts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="69" column="30" lean-forward="false" selection-start-line="69" selection-start-column="30" selection-end-line="69" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/cobros.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="46" column="45" lean-forward="false" selection-start-line="46" selection-start-column="45" selection-end-line="46" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/evaluacion.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="21" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/reporteDuedas.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/reporteAlumnosClase.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="202" column="129" lean-forward="true" selection-start-line="202" selection-start-column="110" selection-end-line="202" selection-end-column="129" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/formatoRegistroPadronSocios.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="18" column="33" lean-forward="false" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/reporteDeudas.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="446">
+          <caret line="179" column="15" lean-forward="true" selection-start-line="146" selection-start-column="12" selection-end-line="179" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/reportePagosMatriculados.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6">
+          <caret line="28" column="105" lean-forward="false" selection-start-line="28" selection-start-column="105" selection-end-line="28" selection-end-column="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="36" column="35" lean-forward="false" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/suscripciones.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="2414" column="38" lean-forward="true" selection-start-line="2414" selection-start-column="38" selection-end-line="2414" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/registroVentas.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="125" column="117" lean-forward="false" selection-start-line="125" selection-start-column="117" selection-end-line="125" selection-end-column="117" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/tomarAsistencia.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="194" column="53" lean-forward="false" selection-start-line="194" selection-start-column="24" selection-end-line="194" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/tutores.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5265">
+          <caret line="351" column="72" lean-forward="false" selection-start-line="351" selection-start-column="20" selection-end-line="351" selection-end-column="72" />
+          <folding>
+            <marker date="1493259469000" expanded="true" signature="8721:8768" ph="..." />
+            <marker date="1493259469000" expanded="true" signature="8781:8787" ph="..." />
+            <marker date="1493259469000" expanded="true" signature="8787:8793" ph="..." />
+            <marker date="1493259469000" expanded="true" signature="11027:11112" ph="..." />
+            <marker date="1493259469000" expanded="true" signature="11126:11180" ph="..." />
+            <marker date="1493259469000" expanded="true" signature="11217:11254" ph="..." />
+            <marker date="1493259469000" expanded="true" signature="14465:14550" ph="..." />
+            <marker date="1493259469000" expanded="true" signature="14564:14618" ph="..." />
+            <marker date="1493259469000" expanded="true" signature="14668:14705" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/alumnos.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10515">
+          <caret line="701" column="56" lean-forward="false" selection-start-line="701" selection-start-column="56" selection-end-line="701" selection-end-column="56" />
+          <folding>
+            <marker date="1493259662000" expanded="true" signature="17576:17623" ph="..." />
+            <marker date="1493259662000" expanded="true" signature="17636:17642" ph=" " />
+            <marker date="1493259662000" expanded="true" signature="17642:17648" ph=" " />
+            <marker date="1493259662000" expanded="true" signature="19751:19836" ph="..." />
+            <marker date="1493259662000" expanded="true" signature="19850:19904" ph="..." />
+            <marker date="1493259662000" expanded="true" signature="19941:19978" ph="..." />
+            <marker date="1493259662000" expanded="true" signature="23046:23131" ph="..." />
+            <marker date="1493259662000" expanded="true" signature="23145:23199" ph="..." />
+            <marker date="1493259662000" expanded="true" signature="23249:23286" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/profesores.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4245">
+          <caret line="283" column="21" lean-forward="false" selection-start-line="258" selection-start-column="20" selection-end-line="283" selection-end-column="21" />
+          <folding>
+            <marker date="1493259862000" expanded="true" signature="5065:5112" ph="..." />
+            <marker date="1493259862000" expanded="true" signature="5128:5134" ph=" " />
+            <marker date="1493259862000" expanded="true" signature="5134:5140" ph=" " />
+            <marker date="1493259862000" expanded="true" signature="7374:7459" ph="..." />
+            <marker date="1493259862000" expanded="true" signature="7473:7527" ph="..." />
+            <marker date="1493259862000" expanded="true" signature="7564:7601" ph="..." />
+            <marker date="1493259862000" expanded="true" signature="10214:10299" ph="..." />
+            <marker date="1493259862000" expanded="true" signature="10313:10367" ph="..." />
+            <marker date="1493259862000" expanded="true" signature="10417:10454" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/edades.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5820">
+          <caret line="388" column="45" lean-forward="false" selection-start-line="388" selection-start-column="45" selection-end-line="388" selection-end-column="45" />
+          <folding>
+            <marker date="1493261158000" expanded="true" signature="4330:4377" ph="..." />
+            <marker date="1493261158000" expanded="true" signature="4389:4395" ph=" " />
+            <marker date="1493261158000" expanded="true" signature="4395:4401" ph=" " />
+            <marker date="1493261158000" expanded="true" signature="4618:4703" ph="..." />
+            <marker date="1493261158000" expanded="true" signature="4717:4771" ph="..." />
+            <marker date="1493261158000" expanded="true" signature="4808:4845" ph="..." />
+            <marker date="1493261158000" expanded="true" signature="5652:5737" ph="..." />
+            <marker date="1493261158000" expanded="true" signature="5751:5805" ph="..." />
+            <marker date="1493261158000" expanded="true" signature="5855:5892" ph="..." />
+            <marker date="1493261158000" expanded="true" signature="7076:7123" ph="..." />
+            <marker date="1493261158000" expanded="true" signature="7133:7139" ph=" " />
+            <marker date="1493261158000" expanded="true" signature="7139:7145" ph=" " />
+            <marker date="1493261158000" expanded="true" signature="7362:7447" ph="..." />
+            <marker date="1493261158000" expanded="true" signature="7461:7515" ph="..." />
+            <marker date="1493261158000" expanded="true" signature="7552:7589" ph="..." />
+            <marker date="1493261158000" expanded="true" signature="8400:8485" ph="..." />
+            <marker date="1493261158000" expanded="true" signature="8499:8553" ph="..." />
+            <marker date="1493261158000" expanded="true" signature="8603:8640" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/usuarios.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4230">
+          <caret line="282" column="48" lean-forward="false" selection-start-line="282" selection-start-column="48" selection-end-line="282" selection-end-column="48" />
+          <folding>
+            <marker date="1493261244000" expanded="true" signature="5344:5391" ph="..." />
+            <marker date="1493261244000" expanded="true" signature="5405:5411" ph=" " />
+            <marker date="1493261244000" expanded="true" signature="5411:5417" ph=" " />
+            <marker date="1493261244000" expanded="true" signature="7651:7736" ph="..." />
+            <marker date="1493261244000" expanded="true" signature="7750:7804" ph="..." />
+            <marker date="1493261244000" expanded="true" signature="7841:7878" ph="..." />
+            <marker date="1493261244000" expanded="true" signature="10609:10694" ph="..." />
+            <marker date="1493261244000" expanded="true" signature="10708:10762" ph="..." />
+            <marker date="1493261244000" expanded="true" signature="10812:10849" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/connection/connMYSQL.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="66" lean-forward="false" selection-start-line="21" selection-start-column="66" selection-end-line="21" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="72" column="24" lean-forward="false" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/firebase.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="77" column="7" lean-forward="false" selection-start-line="77" selection-start-column="7" selection-end-line="77" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/www">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/clases.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4740">
+          <caret line="316" column="76" lean-forward="false" selection-start-line="316" selection-start-column="16" selection-end-line="316" selection-end-column="76" />
+          <folding>
+            <marker date="1493260013000" expanded="true" signature="4926:4973" ph="..." />
+            <marker date="1493260013000" expanded="true" signature="4987:4993" ph="..." />
+            <marker date="1493260013000" expanded="true" signature="4993:4999" ph="..." />
+            <marker date="1493260013000" expanded="true" signature="7233:7318" ph="..." />
+            <marker date="1493260013000" expanded="true" signature="7332:7386" ph="..." />
+            <marker date="1493260013000" expanded="true" signature="7423:7460" ph="..." />
+            <marker date="1493260013000" expanded="true" signature="10135:10220" ph="..." />
+            <marker date="1493260013000" expanded="true" signature="10234:10288" ph="..." />
+            <marker date="1493260013000" expanded="true" signature="10338:10375" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/generarAsistencia.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="131" column="72" lean-forward="false" selection-start-line="131" selection-start-column="72" selection-end-line="131" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/controllerEG.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="531">
+          <caret line="1288" column="0" lean-forward="false" selection-start-line="1288" selection-start-column="0" selection-end-line="1288" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/modelEG.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="644" column="47" lean-forward="false" selection-start-line="644" selection-start-column="47" selection-end-line="644" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

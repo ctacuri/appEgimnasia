@@ -1,0 +1,27 @@
+{
+  "name": "appEgimnasia",
+  "authors": [
+    "ctacuri <cesar_hbk@hotmail.com>"
+  ],
+  "description": "Escuela de Gimnasia",
+  "main": "app.js",
+  "keywords": [
+    "Escuela",
+    "de",
+    "Gimnasia"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jqwidgets": "^4.6.0",
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0"
+  }
+}

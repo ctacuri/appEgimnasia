@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Escuela de Gimnasia</title>
+
+</head>
+<body>
+<% include menu %>
+
+<div class="row fill-height-91">
+    <div class="col-md-12 fill-height-91">
+        <div id="jqxToolBar"></div>
+        <div id="grid"></div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="javascripts/scripts.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $("#jqxToolBar").jqxToolBar(
+            $.extend( {},
+                vDefaultOptionsToolBar,
+                {
+                    tools: 'custom | custom | custom', //| input | custom | custom | custom | custom
+                    initTools: function (type, index, tool, menuToolIninitialization) {
+                        switch (index) {
+                            case 0:
+                                var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'><b>DEUDAS MATRICULADOS &nbsp;&nbsp; </b></div>";
+                                tool.append(label);
+                                break;
+                            /*case 1:
+                                var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Inicio: </div>";
+                                tool.append(label);
+                                break;
+                            case 2:
+                                var fecha = $("<div id='FechaIniOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
+                                    theme: theme2,
+                                    value: new Date(anioActual, mesActual, 1),
+                                    width: 105,
+                                    height: 25,
+                                    culture: 'es-ES'
+                                });
+                                tool.append(fecha);
+                                break;
+                            case 3:
+                                var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Fin: </div>";
+                                tool.append(label);
+                                break;
+                            case 4:
+                                var fecha = $("<div id='FechaFinOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
+                                    theme: theme2,
+                                    value: new Date(anioActual, mesActual, ultimoDiaMesActual),
+                                    width: 105,
+                                    height: 25,
+                                    culture: 'es-ES'
+                                });
+                                tool.append(fecha);
+                                break;
+                            case 5:
+                                var toggleBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/notepad-20.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxToggleButton({
+                                    theme: theme2,
+                                    width: 30,
+                                    height: 19,
+                                    toggled: true
+                                });
+                                tool.append(toggleBtn);
+                                toggleBtn.click(function (event) {
+                                    var toggled = toggleBtn.jqxToggleButton('toggled');
+                                    if (toggled) {
+                                        console.log('Toggled On');
+                                    } else {
+                                        console.log('Toggled Off');
+                                    }
+                                });
+                                break;*/
+                            case 1:
+                                var searchBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/search.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                    theme: theme2,
+                                    width: 30,
+                                    height: 19
+                                });
+                                tool.append(searchBtn);
+                                searchBtn.click(function (event) {
+                                    var tools = $("#jqxToolBar").jqxToolBar("getTools");
+                                    var fechaIni = $("#FechaIniOS").val();
+                                    var fechaFin = $("#FechaFinOS").val();
+
+                                    fn_reporteDeudadMatriculados();
+                                });
+                                break;
+                            case 2:
+                                var exportBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/icon_excel_02_20.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                    theme: theme2,
+                                    width: 30,
+                                    height: 19
+                                });
+                                tool.append(exportBtn);
+                                exportBtn.click(function (event) {
+                                    var tools = $("#jqxToolBar").jqxToolBar("getTools");
+                                    var JSONData = $("#grid").jqxGrid('exportdata', 'json');
+                                    fn_JSONToCSVConvertor(JSONData, "RepDeudasMatriculados", "", true);
+                                });
+                                break;
+                        }
+                    }
+                }
+            )
+        )
+
+
+        $("#grid").jqxGrid(
+            $.extend(
+                {}, vDefaultOptionsGrid,
+                {
+                    pageable: true,
+                    pagermode: 'simple',
+                    selectionmode: 'singlerow',
+                    columns: [
+                        { text: 'Clase', align: 'center', datafield: 'horario', cellsalign: 'left', width: '20%' },
+                        { text: 'Año', align: 'center', datafield: 'anio_matricula', cellsalign: 'center', width: '10%' },
+                        { text: 'Mes', align: 'center', datafield: 'mes_matricula', cellsalign: 'right', width: '10%' },
+                        { text: 'Sexo', align: 'center', datafield: 'sexo', cellsalign: 'center', width: '10%' },
+                        { text: 'Edades', align: 'center', datafield: 'edades', cellsalign: 'center', width: '10%' },
+                        { text: 'Dias', align: 'center', datafield: 'dias', cellsalign: 'center', width: '10%' },
+                        //{ text: 'Horario', align: 'center', datafield: 'HORARIO', cellsalign: 'center', width: '30%' },
+                        { text: 'Apellidos Alumno', align: 'center', datafield: 'apellidos_alumno', cellsalign: 'left', width: '25%' },
+                        { text: 'Nombres Alumno', align: 'center', datafield: 'nombres_alumno', cellsalign: 'left', width: '25%' },
+                        { text: 'Apellidos Tutor', align: 'center', datafield: 'apellidos_tutor', cellsalign: 'left', width: '25%' },
+                        { text: 'Nombres Tutor', align: 'center', datafield: 'nombres_tutor', cellsalign: 'left', width: '25%' },
+                        { text: 'Telefono', align: 'center', datafield: 'telefono_tutor', cellsalign: 'right', width: '10%' },
+                        { text: 'Celular', align: 'center', datafield: 'celular_tutor', cellsalign: 'right', width: '10%' },
+                        { text: 'Total', align: 'center', datafield: 'total', cellsalign: 'right', width: '10%', cellsformat: 'd2' },
+                        { text: 'Pago', align: 'center', datafield: 'pago', cellsalign: 'right', width: '10%', cellsformat: 'd2' },
+                        { text: 'Saldo', align: 'center', datafield: 'saldo', cellsalign: 'right', width: '10%', cellsformat: 'd2' }
+                    ]
+                }
+            )
+        );
+
+        function fn_reporteDeudadMatriculados(){
+            $.getJSON('/reporteDeudasMatriculados', function(json) {
+                //console.log(json);
+                var source =
+                    {
+                        datatype: "json",
+                        datafields: [
+                            { name: 'id_horario', type: 'int'},
+                            { name: 'horario', type: 'string'},
+                            { name: 'anio_matricula', type: 'int'},
+                            { name: 'mes_matricula', type: 'int'},
+                            { name: 'sexo', type: 'string'},
+                            { name: 'edades', type: 'string'},
+                            { name: 'dias', type: 'string'},
+                            { name: 'id_alumno', type: 'int'},
+                            { name: 'apellidos_alumno', type: 'string'},
+                            { name: 'nombres_alumno', type: 'string'},
+                            { name: 'apellidos_tutor', type: 'string'},
+                            { name: 'nombres_tutor', type: 'string'},
+                            { name: 'telefono_tutor', type: 'string'},
+                            { name: 'celular_tutor', type: 'string'},
+                            { name: 'email_tutor', type: 'string'},
+                            { name: 'total', type: 'float'},
+                            { name: 'pago', type: 'float'},
+                            { name: 'saldo', type: 'float'}
+                        ],
+                        localdata: json.registros[0]
+                    };
+                var dataAdapter = new $.jqx.dataAdapter(source);
+
+                $("#grid").jqxGrid(
+                {
+                    source: dataAdapter
+                });
+            });
+        }
+
+
+    });
+</script>
+</body>
+</html>

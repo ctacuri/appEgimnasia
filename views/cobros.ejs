@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Escuela de Gimnasia</title>
+    <style type="text/css">
+        .table-borderless > tbody > tr > td,
+        .table-borderless > tbody > tr > th,
+        .table-borderless > tfoot > tr > td,
+        .table-borderless > tfoot > tr > th,
+        .table-borderless > thead > tr > td,
+        .table-borderless > thead > tr > th {
+            border: none !important;
+        }
+
+        .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+            border-top: 0px !important;
+        }
+
+        @media print {
+            border-top: 0px !important;
+        }
+    </style>
+</head>
+<body>
+<% include menu %>
+
+<div id="myModal" class="modal modal-wide2 modal-high2 fade" role="dialog">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">COBROS</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 nopadding">
+                        <div class="form-group row">
+                            <label for="tutor" class="col-md-3 col-form-label col-form-label-sm">Tutor</label>
+                            <div class="col-md-9">
+                                <div id="tutor"></div>
+                                <input type="hidden" class="form-control form-control-sm" id="idMatricula">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="tipoDocumento" class="col-md-3 col-form-label col-form-label-sm">Tipo doc</label>
+                            <div class="col-md-3">
+                                <div id="tipoDocumento"></div>
+                                <!--<input type="text" class="form-control form-control-sm" id="tipoDocumento">-->
+                            </div>
+
+                            <label for="nroDocumento" class="col-md-2 col-form-label col-form-label-sm">Nro doc</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control form-control-sm" id="nroDocumento" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="direccion" class="col-md-3 col-form-label col-form-label-sm">Direccion</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="direccion" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="alumno" class="col-md-3 col-form-label col-form-label-sm">Alumno</label>
+                            <div class="col-md-9">
+                                <div id="alumno"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="horario" class="col-md-3 col-form-label col-form-label-sm">Horario</label>
+                            <div class="col-md-9">
+                                <div id="horario"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="importe" class="col-md-3 col-form-label col-form-label-sm">Importe</label>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control form-control-sm text-align-right" id="importe">
+                            </div>
+
+                            <label for="emitir" class="col-md-2 col-form-label col-form-label-sm">Emitir</label>
+                            <div class="col-md-4">
+                                <div id="emitir"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="empresa" class="col-md-3 col-form-label col-form-label-sm">Empresa</label>
+                            <div class="col-md-3">
+                                <div id="empresa"></div>
+                            </div>
+
+                            <label for="formaPago" class="col-md-3 col-form-label col-form-label-sm">Forma Pago</label>
+                            <div class="col-md-3">
+                                <div id="formaPago"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="serie" class="col-md-3 col-form-label col-form-label-sm">Serie</label>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control form-control-sm text-align-right" id="serie">
+                            </div>
+
+                            <label for="correlativo" class="col-md-3 col-form-label col-form-label-sm">Correlativo</label>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control form-control-sm text-align-right" id="correlativo">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnSave">Cobrar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCerrar">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModalTicket" class="modal modal-wide-35 modal-high-ticket fade" role="dialog">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">EMISION DE TICKET</h4>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-md-12 text-right" style="margin-top: -10px; margin-bottom: 5px;">
+                        <button type="button" class="btn btn-primary" id="btnPrint">Print</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCerrar">Cerrar</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="viewTicket">
+
+                            <p align="center">CLUB ESCUELA DE GIMNASIA</p>
+                            <p align="center">AV. PETIT THOUARS NRO. 2685 LIMA - LIMA - LINCE</p>
+                            <p align="center">RUC: 20601497795</p>
+                            <p align="center">Telefono: (01) 4225261</p>
+                            <p align="center">www.gimnasia.pe</p>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table width="100%" class='table table-sm' border="0" style="font-size: 12px;">
+                                        <tr>
+                                            <td width="49%" align="right" style="margin-bottom: 3px;">Autorizacion SUNAT</td>
+                                            <td width="2%" align="center">:</td>
+                                            <td width="49%">0023845108800</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="49%" align="right">Maq Regist Nro</td>
+                                            <td width="2%" align="center">:</td>
+                                            <td width="49%">FFCF268000</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="49%" align="right">Ticket Boleta</td>
+                                            <td width="2%" align="center">:</td>
+                                            <td width="49%"><span id="nroTicket"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="49%" align="right">FECHA EMISION</td>
+                                            <td width="2%" align="center">:</td>
+                                            <td width="49%"><span id="fechaEmision"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="49%" align="right">DNI/RUC</td>
+                                            <td width="2%" align="center">:</td>
+                                            <td width="49%"><span id="idCliente"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="49%" align="right">CLIENTE</td>
+                                            <td width="2%" align="center">:</td>
+                                            <td width="49%"><span id="cliente"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="49%" align="right">TIPO DE PAGO</td>
+                                            <td width="2%" align="center">:</td>
+                                            <td width="49%"><span id="tipoPago"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="49%" align="right">DETALLE</td>
+                                            <td width="2%" align="center">:</td>
+                                            <td width="49%">
+                                                <div id="detalle"></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="49%" align="right"><B>TOTAL</B></td>
+                                            <td width="2%" align="center"><B>:</B></td>
+                                            <td width="49%"><b><span id="totalTicket"></span></b></td>
+                                        </tr>
+                                    </table>
+
+
+                                </div>
+                            </div>
+
+                            <div class="form-group row" style="margin-top: -15px;">
+                                <label class="col-xs-12 col-form-label col-form-label-sm">
+                                    <p align="center" style="font-size: 13px; font-weight: normal;">Siguenos en Facebook</p>
+                                    <p align="center" style="font-size: 13px; font-weight: normal;">facebook.com/escueladegimnasialima</p>
+                                </label>
+                            </div>
+
+                        </div>
+                        <!--<iframe src="/ticket" style="height: 380px !important;"></iframe>-->
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="modal-footer" style="margin-top: -10px;">
+                <!--<button type="button" class="btn btn-primary" id="btnPrint">Print</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCerrar">Cerrar</button>-->
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div id='Menu'>
+    <ul>
+        <li>Imprimir</li>
+        <li>Eliminar</li>
+    </ul>
+</div>
+
+<div class="row fill-height-91">
+    <div class="col-md-12 fill-height-91">
+        <div id="jqxToolBar"></div>
+        <div id="grid"></div>
+    </div>
+</div>
+
+<script type="text/javascript" src="javascripts/scripts.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#jqxToolBar").jqxToolBar(
+                $.extend( {},
+                        vDefaultOptionsToolBar,
+                        {
+                            tools: 'custom | custom | custom | custom | custom | custom | custom | custom',
+                            initTools: function (type, index, tool, menuToolIninitialization) {
+                                switch (index) {
+                                    case 0:
+                                        var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'><b>COBROS &nbsp;&nbsp; </b></div>";
+                                        tool.append(label);
+                                        break;
+                                    case 1:
+                                        var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Inicio: </div>";
+                                        tool.append(label);
+                                     break;
+                                     case 2:
+                                         var fecha = $("<div id='FechaIniOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
+                                             theme: theme2,
+                                             value: new Date(anioActual, mesActual, 1),
+                                             width: 105,
+                                             height: 25,
+                                             culture: 'es-ES'
+                                         });
+                                         tool.append(fecha);
+                                     break;
+                                     case 3:
+                                         var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Fin: </div>";
+                                         tool.append(label);
+                                     break;
+                                     case 4:
+                                         var fecha = $("<div id='FechaFinOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
+                                             theme: theme2,
+                                             value: new Date(anioActual, mesActual, ultimoDiaMesActual),
+                                             width: 105,
+                                             height: 25,
+                                             culture: 'es-ES'
+                                         });
+                                         tool.append(fecha);
+                                     break;
+                                    case 5:
+                                        /*var addBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/add.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                            theme: theme2,
+                                            width: 30,
+                                            height: 19
+                                        });*/
+                                        var statusBtn = $("<div id='statusBtn' style='float: left; position: relative; margin-top: -2px;'></div>").jqxSwitchButton({
+                                            height: 25,
+                                            width: 160,
+                                            onLabel:'PENDIENTE',
+                                            offLabel:'CANCELADO',
+                                            checked: true
+                                        });
+                                        tool.append(statusBtn);
+                                        statusBtn.click(function (event) {
+                                            //$('#myModal').modal('show');
+                                        });
+                                     break;
+                                    case 6:
+                                        var searchBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/search.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                             theme: theme2,
+                                             width: 30,
+                                             height: 19
+                                        });
+                                         tool.append(searchBtn);
+                                         searchBtn.click(function (event) {
+                                         var tools = $("#jqxToolBar").jqxToolBar("getTools");
+                                         var fechaIni = $("#FechaIniOS").val();
+                                         var fechaFin = $("#FechaFinOS").val();
+                                         var fechaIniSql = fechaIni.substring(6,10)+'-'+fechaIni.substring(3,5)+"-"+fechaIni.substring(0,2);
+                                         var fechaFinSql = fechaFin.substring(6,10)+'-'+fechaFin.substring(3,5)+"-"+fechaFin.substring(0,2);
+                                         var checked = $('#statusBtn').jqxSwitchButton('checked');
+
+                                         var status = '';
+                                         if(checked){
+                                            status = 'P';
+                                         }else{
+                                             status = 'C';
+                                         }
+                                         fn_listaMatriculaCobro(fechaIniSql, fechaFinSql, status);
+
+                                         });
+                                    break;
+                                    case 7:
+                                        var exportBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/icon_excel_02_20.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                            theme: theme2,
+                                            width: 30,
+                                            height: 19
+                                        });
+                                        tool.append(exportBtn);
+                                        exportBtn.click(function (event) {
+                                            var tools = $("#jqxToolBar").jqxToolBar("getTools");
+                                            try {
+                                                var JSONData = $("#grid").jqxGrid('exportdata', 'json');
+                                                fn_JSONToCSVConvertor(JSONData, "ReporteCobros", "", true);
+                                            }
+                                            catch(err) {
+
+                                            }
+
+                                        });
+                                    break;
+                                }
+                            }
+                        }
+                )
+        )
+
+        $("#grid").jqxGrid(
+            $.extend(
+                {}, vDefaultOptionsGrid,
+                {
+                    selectionmode: 'singlerow',
+                    columnsresize: true,
+                    columns: [
+                        { text: 'Nombre del Tutor', align: 'center', datafield: 'tutor', cellsalign: 'left', width: '30%' },
+                        { text: 'Descripcion del pedido', align: 'center', datafield: 'descripcion_pedido', cellsalign: 'left', width: '50%'},
+                        { text: 'Monto pagado', align: 'center', datafield: 'importe', cellsalign: 'right', width: '10%', cellsformat: 'd2' },
+                        { text: 'Saldo', align: 'center', datafield: 'saldo', cellsalign: 'right', width: '10%', cellsformat: 'd2' }
+                    ]
+                }
+            )
+        );
+        var contextMenu = $("#Menu").jqxMenu({ theme: theme3, width: 200, height: 58, autoOpenPopup: false, mode: 'popup'});
+        $("#grid").on('contextmenu', function () {
+            return false;
+        });
+        $("#Menu").on('itemclick', function (event) {
+            var args = event.args;
+            var rowindex = $("#grid").jqxGrid('getselectedrowindex');
+
+            if ( $.trim($(args).text()) == "Imprimir" ) {
+                var dataRecord = $("#grid").jqxGrid('getrowdata', rowindex);
+                //$("#firstName").val(dataRecord.firstname);
+
+                $('#myModalTicket').modal('show');
+
+            } else if( $.trim($(args).text()) == "Eliminar" ) {
+                if(confirm("Esta seguro de eliminar el registro?")){
+                    var rowid = $("#grid").jqxGrid('getrowid', rowindex);
+                    $("#grid").jqxGrid('deleterow', rowid);
+
+                }
+            }
+        });
+        $("#grid").on('rowclick', function (event) {
+            if (event.args.rightclick) {
+                $("#grid").jqxGrid('selectrow', event.args.rowindex);
+                var scrollTop = $(window).scrollTop();
+                var scrollLeft = $(window).scrollLeft();
+                contextMenu.jqxMenu('open', parseInt(event.args.originalEvent.clientX) + 5 + scrollLeft, parseInt(event.args.originalEvent.clientY) + 5 + scrollTop);
+                return false;
+            }
+        });
+        $('#grid').on('rowdoubleclick', function (event)
+        {
+            var args = event.args;
+            // row's bound index.
+            var boundIndex = args.rowindex;
+            var data = $('#grid').jqxGrid('getrowdata', boundIndex);
+            //console.log(data.id_tipo_doc);
+            //console.log(data.tipo_doc);
+
+            var arregloInputDropDownList = ['empresa', 'formaPago'];
+            fn_clearDropDownList(arregloInputDropDownList);
+
+            $("#idMatricula").val(data.id_matricula);
+            $("#tutor").jqxDropDownList('selectItem', data.id_tutor);
+            $("#tipoDocumento").jqxDropDownList('selectItem', data.id_tipo_doc);
+            $("#nroDocumento").val(data.numdoc);
+            $("#direccion").val(data.direccion);
+            $("#alumno").jqxDropDownList('selectItem', data.id_alumno);
+            $("#horario").jqxDropDownList('selectItem', data.id_horario);
+
+            $("#importe").val(data.saldo); //SE DEBE COBRAR EL SALDO PENDIENTE
+
+            $("#tutor").jqxDropDownList({ disabled: true });
+            $("#tipoDocumento").jqxDropDownList({ disabled: true });
+            $("#alumno").jqxDropDownList({ disabled: true });
+            $("#horario").jqxDropDownList({ disabled: true });
+
+            //$("#btnSave").text("Actualizar");
+            if(data.saldo > 0){
+                $('#myModal').modal('show');
+            }else{
+                alert("Error: Saldo es IGUAL a CERO no es posible el cobro");
+                return false;
+            }
+
+        });
+
+        $("#tutor").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%',
+                    filterable: true,
+                    searchMode: 'containsignorecase',
+                    filterPlaceHolder: 'Buscar por'
+                }
+            )
+        );
+
+        $("#tipoDocumento").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%'
+                }
+            )
+        );
+
+        $("#alumno").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%',
+                    filterable: true,
+                    searchMode: 'containsignorecase'
+                }
+            )
+        );
+
+        $("#horario").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%',
+                    filterable: true,
+                    searchMode: 'containsignorecase'
+                }
+            )
+        );
+
+        $("#emitir").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%'
+                }
+            )
+        );
+
+        $("#empresa").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%',
+                    dropDownWidth: 350
+                }
+            )
+        );
+
+        $("#formaPago").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%'
+                }
+            )
+        );
+
+        var arregloAlumnos = [], arregloHorarios = [], arregloEmpresas = [];
+        $.when(
+            $.ajax("/listaAlumnosSimple"),
+            $.ajax("/listaTutoresSimple"),
+            //$.ajax("/listaAlumnos_x_TutorSimple"),
+            $.ajax("/listaHorariosSimple"),
+            $.ajax("/listaComprobanteVenta"),
+            $.ajax("/listaEmpresas"),
+            $.ajax("/listaFormaPago"),
+            $.ajax("/listaTipoDoc")
+        ).done(function( json0, json1, json2, json3, json4, json5, json6 ) {
+            //console.log(json1[0].registros);
+            for(var j = 0; j<json0[0].registros[0].length; j++){
+                arregloAlumnos.push(
+                    {
+                        id_alumno: json0[0].registros[0][j].id_alumno,
+                        descripcion: json0[0].registros[0][j].descripcion,
+                        id_tutor: json0[0].registros[0][j].id_tutor,
+                        tipo_doc: json0[0].registros[0][j].tipo_doc,
+                        numdoc: json0[0].registros[0][j].numdoc,
+                        descripcion_tutor: json0[0].registros[0][j].descripcion_tutor,
+                        direccion: json0[0].registros[0][j].direccion
+                    }
+                );
+            }
+
+            for(var x = 0; x<json4[0].registros[0].length; x++){
+                arregloEmpresas.push(
+                    {
+                        id_parametro: json4[0].registros[0][x].id_parametro,
+                        numdoc: json4[0].registros[0][x].numdoc,
+                        descripcion: json4[0].registros[0][x].descripcion,
+                        impuesto: json4[0].registros[0][x].impuesto,
+                        nro_serie_ticket: json4[0].registros[0][x].nro_serie_ticket,
+                        nro_ticket: json4[0].registros[0][x].nro_ticket,
+                        nro_serie_boleta: json5[0].registros[0][x].nro_serie_boleta,
+                        nro_boleta: json4[0].registros[0][x].nro_boleta,
+                        nro_serie_factura: json4[0].registros[0][x].nro_serie_factura,
+                        nro_factura: json4[0].registros[0][x].nro_factura
+                    }
+                );
+            }
+
+            if(json0[0].status == "success"){
+                $("#alumno").jqxDropDownList({
+                    source: json0[0].registros[0],
+                    displayMember: "descripcion",
+                    valueMember: "id_alumno",
+                    dropDownHeight: 250,
+                    filterable: true,
+                    searchMode: 'containsignorecase'
+                });
+            }else{
+                alert("Error: al cargar alumnos");
+                return false;
+            }
+
+
+            if(json1[0].status == "success"){
+                $("#tutor").jqxDropDownList({
+                    source: json1[0].registros,
+                    displayMember: "descripcion",
+                    valueMember: "id_tutor"
+                });
+            }else{
+                alert("Error: al cargar tutores");
+                return false;
+            }
+
+            for(var y = 0; y<json2[0].registros[0].length; y++){
+                arregloHorarios.push(
+                    {
+                        id_horario: json2[0].registros[0][y].id_horario,
+                        clase: json2[0].registros[0][y].clase,
+                        id_profesor: json2[0].registros[0][y].id_profesor,
+                        importe: json2[0].registros[0][y].importe
+                    }
+                );
+            }
+            if(json2[0].status == "success"){
+                $("#horario").jqxDropDownList({
+                    source: arregloHorarios,
+                    displayMember: "clase",
+                    valueMember: "id_horario",
+                    dropDownHeight: 150
+                });
+            }else{
+                alert("Error: al cargar horarios");
+                return false;
+            }
+
+            if(json3[0].status == "success"){
+                $("#emitir").jqxDropDownList({
+                    source: json3[0].registros[0],
+                    displayMember: "descripcion",
+                    valueMember: "id_comprobante",
+                    autoDropDownHeight: true,
+                    selectedIndex: 0
+                });
+            }else{
+                alert("Error: al cargar documenros de venta");
+                return false;
+            }
+
+            if(json4[0].status == "success"){
+                $("#empresa").jqxDropDownList({
+                    source: json4[0].registros[0],
+                    displayMember: "descripcion",
+                    valueMember: "numdoc",
+                    autoDropDownHeight: true
+                });
+            }else{
+                alert("Error: al cargar empresa");
+                return false;
+            }
+
+            if(json5[0].status == "success"){
+                $("#formaPago").jqxDropDownList({
+                    source: json5[0].registros[0],
+                    displayMember: "descripcion",
+                    valueMember: "id_tipo_pago",
+                    autoDropDownHeight: true
+                });
+            }else{
+                alert("Error: al cargar forma de pago");
+                return false;
+            }
+
+            if(json6[0].status == "success"){
+                $("#tipoDocumento").jqxDropDownList({
+                    source: json6[0].registros[0],
+                    displayMember: "descripcion",
+                    valueMember: "id_tipo_documento",
+                    autoDropDownHeight: true
+                });
+            }else{
+                alert("Error: al cargar tipo de documento");
+                return false;
+            }
+
+        });
+
+        $('#horario').on('change', function (event)
+        {
+            var args = event.args;
+            if (args) {
+                // index represents the item's index.
+                var index = args.index;
+                var item = args.item;
+                var value = item.value;
+
+                var queryResult = Enumerable.From(arregloHorarios)
+                    .Where("$.id_horario == '"+value+"'")
+                    .Select()
+                    .ToArray();
+                //console.log(queryResult);
+                //$("#profesor").jqxDropDownList('selectItem', queryResult[0].id_profesor);
+                $("#importe").val(queryResult[0].importe);
+                $("#saldo").val(queryResult[0].saldo);
+            }
+        });
+
+        $('#empresa').on('change', function (event)
+        {
+            //console.log("PINTA DESDE CHANGE");
+            //console.log(fn_updArreglos());
+            //return false;
+            var args = event.args;
+            if (args) {
+                var index = args.index;
+                var item = args.item;
+                var value = item.value;
+                //fn_updArreglos();
+                //var arreglo = [];
+                $.when(
+                    $.ajax("/listaEmpresas")
+                ).done(function( json5 ) {
+                    //console.log(json5.registros[0]);
+                    var queryResult = Enumerable.From(json5.registros[0])
+                        .Where("$.numdoc == '"+value+"'")
+                        .Select()
+                        .ToArray();
+                    console.log(queryResult);
+                    switch($("#emitir").text()){
+                        case 'TICKET':
+                            $("#serie").val(queryResult[0].nro_serie_ticket);
+                            $("#correlativo").val(queryResult[0].nro_ticket);
+                            break;
+                        case 'BOLETA':
+                            $("#serie").val(queryResult[0].nro_serie_boleta);
+                            $("#correlativo").val(queryResult[0].nro_boleta);
+                            break;
+                        case 'FACTURA':
+                            $("#serie").val(queryResult[0].nro_serie_factura);
+                            $("#correlativo").val(queryResult[0].nro_factura);
+                            break;
+                        case 'SIN COMPROBANTE':
+                            $("#serie").val("");
+                            $("#correlativo").val("");
+                            break;
+                    }
+                });
+            }
+        });
+
+        $('#emitir').on('change', function (event)
+        {
+            //fn_updArreglos();
+            //return false;
+            var args = event.args;
+            if (args) {
+                var index = args.index;
+                var item = args.item;
+                var value = item.value;
+                //fn_updArreglos();
+
+                if($("#empresa").jqxDropDownList('selectedIndex') != -1){
+                    var idEmpresa = $("#empresa").val();
+                    $.when(
+                        $.ajax("/listaEmpresas")
+                    ).done(function( json5 ) {
+                        //console.log(json5.registros[0]);
+                        var queryResult = Enumerable.From(json5.registros[0])
+                            .Where("$.numdoc == '"+idEmpresa+"'")
+                            .Select()
+                            .ToArray();
+                        console.log(queryResult);
+                        switch($("#emitir").text()){
+                            case 'TICKET':
+                                $("#serie").val(queryResult[0].nro_serie_ticket);
+                                $("#correlativo").val(queryResult[0].nro_ticket);
+                                break;
+                            case 'BOLETA':
+                                $("#serie").val(queryResult[0].nro_serie_boleta);
+                                $("#correlativo").val(queryResult[0].nro_boleta);
+                                break;
+                            case 'FACTURA':
+                                $("#serie").val(queryResult[0].nro_serie_factura);
+                                $("#correlativo").val(queryResult[0].nro_factura);
+                                break;
+                            case 'SIN COMPROBANTE':
+                                $("#serie").val("");
+                                $("#correlativo").val("");
+                                break;
+                        }
+                    });
+                }
+            }
+        });
+
+        $("#btnSave").click(function() {
+            if($("#importe").val() == ""){
+                alert("Error: ingrese un importe valido");
+                $("#importe").focus()
+                return false;
+            }
+            if($('#emitir').jqxDropDownList('selectedIndex') == -1){
+                alert("Error: ingrese un comprobante de venta valido");
+                $("#emitir").jqxDropDownList('open');
+                return false;
+            }
+            if($('#empresa').jqxDropDownList('selectedIndex') == -1){
+                alert("Error: ingrese una empresa valida");
+                $("#empresa").jqxDropDownList('open');
+                return false;
+            }
+            if($('#formaPago').jqxDropDownList('selectedIndex') == -1){
+                alert("Error: ingrese una forma de pago valida");
+                $("#formaPago").jqxDropDownList('open');
+                return false;
+            }
+            if($('#serie').val() == ""){
+                alert("Error: ingrese una serie valida");
+                $("#serie").focus();
+                return false;
+            }
+            if($('#correlativo').val() == ""){
+                alert("Error: ingrese un correlativo valido");
+                $("#correlativo").focus();
+                return false;
+            }
+
+            //INICIO - DATOS DE TUTOR
+            var idAlumno = $("#alumno").val();
+            var queryResult = Enumerable.From(arregloAlumnos)
+                .Where("$.id_alumno == '"+idAlumno+"'")
+                .Select()
+                .ToArray();
+            //FIN - DATOS DE TUTOR
+
+            //var data = $('#grid').jqxGrid('getrowdata', 0);
+            //INICIO - IMPUESTO POR EMPRESA
+            var queryResultE = Enumerable.From(arregloEmpresas)
+                .Where("$.numdoc == '"+$('#empresa').val()+"'")
+                .Select()
+                .ToArray();
+            //console.log(queryResultE[0]);
+            //FIN - IMPUESTO POR EMPRESA
+            var igv = parseFloat($("#importe").val() * queryResultE[0].impuesto);
+            var subTotal = parseFloat($("#importe").val() - igv);
+            var total = subTotal + igv;
+
+            var f = fn_time();
+            var arregloCabCobro = {
+                pantallaCobro: "SI",
+                fechaEmision: fn_convertFecha_DMY_to_SQL(f.DIA + "/" + f.MES + "/" + f.ANIO),
+                id_matricula: $("#idMatricula").val(),
+                id_tutor: $("#id_tutor").val(),
+                tipoDoc: $("#tipoDocumento").val(),
+                nroDocumento: $("#nroDocumento").val(),
+                direccion: $("#direccion").val(),
+                alumno: $("#alumno").val(),
+                horario: $("#horario").val(),
+                importe: $("#importe").val(),
+                tipoComprobante: $("#emitir").val(),
+                rucEmpresa: $("#empresa").val(),
+                formaPago: $("#formaPago").val(),
+                nroSerie: $('#serie').val(),
+                nroCorrelativo: $('#correlativo').val(),
+                idPedido: 0,
+                tipoDocumento: queryResult[0].tipo_doc,
+                numDoc: queryResult[0].numdoc,
+                cliente: queryResult[0].descripcion_tutor,
+                direccion: queryResult[0].direccion,
+                subTotal: subTotal,
+                igv: igv,
+                total: total
+            };
+            console.log(arregloCabCobro);
+            var arregloDetCobro = [{
+                id_alumno: $("#alumno").val(),
+                id_horario: $("#horario").val(),
+                horario: $("#horario").text(),
+                importe: $("#importe").val(),
+                subTotal: subTotal,
+                igv: igv,
+                total: total
+            }];
+            console.log(arregloDetCobro);
+            /*var txtMsg = "", url = "";
+            if($("#id").val() != ""){
+                url = "/EG/updCobros";
+                txtMsg = "actualizar";
+            }else{
+                url = "/EG/saveCobros";
+                txtMsg = "registrar";
+            }*/
+
+            url = "/EG/saveCabCobro";
+            txtMsg = "registrar";
+            //  console.log(url);
+            //return false;
+            if(confirm("Esta seguro de "+txtMsg+" los datos ?")){
+                fn_registrarCabCobro(arregloCabCobro, JSON.stringify(arregloDetCobro), queryResultE[0].impuesto);
+
+                /*$.ajax({
+                    type: "POST",
+                    url: url,
+                    data: datos,
+                    dataType: 'json',
+                    success: function(result){
+                        //console.log(result);
+                        if(result.status == "success") {
+                            fn_updSaldoCobro(datos);
+                            return false;
+                        }else{
+                            alert("Error: Vuelva a intentarlo");
+                            return false;
+                        }
+                    },error: function (xhr, ajaxOptions, thrownError) {
+                        alert("ERROR: " + xhr.responseText+" - "+thrownError);
+                    }
+                });*/
+            }
+        });
+
+
+        function fn_listaMatriculaCobro(fechaInicio,fechaFin, status){
+            var url = 'listaMatriculaCobro/'+fechaInicio+'/'+fechaFin+'/'+status;
+
+            $.getJSON(url, function(json) {
+                var source =
+                {
+                    datatype: "json",
+                    datafields: [
+                        { name: 'id_tutor', type: 'int' },
+                        { name: 'id_tipo_doc', type: 'int' },
+                        { name: 'numdoc', type: 'string' },
+                        { name: 'tutor', type: 'string' },
+                        { name: 'direccion', type: 'string' },
+                        { name: 'id_matricula', type: 'int' },
+                        { name: 'id_alumno', type: 'int' },
+                        { name: 'id_horario', type: 'int' },
+                        { name: 'descripcion_pedido', type: 'string' },
+                        { name: 'importe', type: 'float' },
+                        { name: 'saldo', type: 'float' }
+                    ],
+                    localdata: json.registros[0]
+                };
+                var dataAdapter = new $.jqx.dataAdapter(source);
+                $("#grid").jqxGrid(
+                {
+                    source: dataAdapter
+                });
+            });
+
+        }
+
+        $("#btnPrint").click(function() {
+            $("#viewTicket").printThis();
+        });
+
+    });
+</script>
+</body>
+</html>

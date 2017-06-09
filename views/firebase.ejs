@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+<div id="map_canvas"></div>
+
+
+
+<!--
+<script src="https://www.gstatic.com/firebasejs/3.8.0/firebase.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+-->
+<script>
+    // Initialize Firebase
+    /*
+    var config = {
+        apiKey: "AIzaSyD6sm4LOSrJFLsNdpV7TAY4RawmZpuT0yQ",
+        authDomain: "appcti-e7027.firebaseapp.com",
+        databaseURL: "https://appcti-e7027.firebaseio.com",
+        projectId: "appcti-e7027",
+        storageBucket: "appcti-e7027.appspot.com",
+        messagingSenderId: "142465055531"
+    };
+    firebase.initializeApp(config);
+    */
+
+    /*
+    function initialize_mapa() {
+        var settings = {
+            zoom: 11,
+            mapTypeControl: false,
+            mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+            navigationControl: false,
+            navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+            disableDefaultUI: true,
+            mapTypeId: google.maps.MapTypeId.ROADMAP};
+        var map = new google.maps.Map(document.getElementById("map_canvas", settings);
+        var codificador = new google.maps.Geocoder();
+        codificador.geocode({address:"buenos aires", region:"ar"},
+            function(results, status){
+                if (status == google.maps.GeocoderStatus.OK) {
+                    initialLocation = results[0].geometry.location;
+                    map.setCenter(initialLocation);
+                }
+            }
+        );
+    }
+
+
+
+    function mostrar_radio(){
+        var codificador = new google.maps.Geocoder();
+        codificador.geocode({address:$("#calle".val() + " " + $("#numero".val() + ", capital federal, buenos aires, argentina", region:"ar"},
+            function(results, status){
+                if (status == google.maps.GeocoderStatus.OK) {
+                    localizacion = results[0].geometry.location;
+                    map.setCenter(localizacion);
+                    circle = new google.maps.Circle({
+                        map: map,
+                        radius: parseInt($("#distancia".val()),
+                            fillColor: '#000077',
+                        center: localizacion,
+                        clickeable: false
+                    });
+                }
+            }
+        );
+    }
+     */
+
+</script>
+</body>
+</html>

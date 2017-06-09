@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Escuela de Gimnasia</title>
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" type="text/css" />
+
+    <style type="text/css">
+        body{
+            font-size: 11px;
+            line-height: 1;
+        }
+
+        .labelBorder{
+            border: 1px solid;
+            margin-top: 8px;
+            margin-left: 35px;
+            margin-right: 35px;
+        }
+
+        container-fluid {
+            padding-left: 0px;
+        }
+
+        /*@media print {
+            body {
+                margin-left: 5px;
+                margin-right: 0px;
+                line-height: 1;
+            }
+        }*/
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid" style="margin-left: -35px; margin-right: 0px;">
+        <div class="row" style="margin-top: 5px; background-color: #FFF;">
+            <div class="col-xs-12">
+                <p align="center">CLUB ESCUELA DE GIMNASIA</p>
+                <p align="center">AV. PETIT THOUARS NRO. 2685 LIMA - LIMA - LINCE</p>
+                <p align="center">RUC: 20601497795</p>
+                <p align="center">Telefono: (01) 4225261</p>
+                <p align="center">www.gimnasia.pe</p>
+
+                <div class="form-group row">
+                    <label for="autorizacion" class="col-xs-6 col-form-label col-form-label-sm">
+                        <p align="right">Autorizacion SUNAT Nro:</p>
+                    </label>
+                    <div class="col-xs-6" style="margin-left: -15px;">
+                        <span id="autorizacion">0023845108800</span>
+                    </div>
+                </div>
+
+                <div class="form-group row" style="margin-top: -15px;">
+                    <label for="maquina" class="col-xs-6 col-form-label col-form-label-sm text-align-right">
+                        <p align="right">Maq Regist Nro:</p>
+                    </label>
+                    <div class="col-xs-6" style="margin-left: -15px;">
+                        <span id="maquina">FFCF268000</span>
+                    </div>
+                </div>
+
+                <div class="form-group row" style="margin-top: -15px;">
+                    <label for="nroTicket" class="col-xs-6 col-form-label col-form-label-sm text-align-right">
+                        <p align="right">Ticket Boleta:</p>
+                    </label>
+                    <div class="col-xs-6" style="margin-left: -15px;">
+                        <span id="nroTicket"><%=nroCorrelativo %></span>
+                    </div>
+                </div>
+
+                <div class="form-group row" style="margin-top: -15px;">
+                    <label for="nroTicket" class="col-xs-6 col-form-label col-form-label-sm text-align-right">
+                        <p align="right">FECHA EMISION:</p>
+                    </label>
+                    <div class="col-xs-6" style="margin-left: -15px;">
+                        <span id="nroTicket"><%=fechaHoraEmision %></span>
+                    </div>
+                </div>
+
+                <div class="form-group row" style="margin-top: -15px;">
+                    <label for="nroDocumento" class="col-xs-6 col-form-label col-form-label-sm text-align-right">
+                        <p align="right">DNI / RUC:</p>
+                    </label>
+                    <div class="col-xs-6" style="margin-left: -15px;">
+                        <span id="nroDocumento"><%=idCliente %></span>
+                    </div>
+                </div>
+
+                <div class="form-group row" style="margin-top: -15px;">
+                    <label for="cliente" class="col-xs-6 col-form-label col-form-label-sm text-align-right">
+                        <p align="right">CLIENTE:</p>
+                    </label>
+                    <div class="col-xs-6" style="margin-left: -15px;">
+                        <span id="cliente"><%=cliente %></span>
+                    </div>
+                </div>
+
+                <div class="form-group row" style="margin-top: -15px;">
+                    <label for="tipoPago" class="col-xs-6 col-form-label col-form-label-sm text-align-right">
+                        <p align="right">TIPO DE PAGO:</p>
+                    </label>
+                    <div class="col-xs-6" style="margin-left: -15px;">
+                        <span id="tipoPago"><%=formaPago %></span>
+                    </div>
+                </div>
+
+                <div class="form-group row" style="margin-top: -15px;">
+                    <label for="detalle" class="col-xs-6 col-form-label col-form-label-sm text-align-right">
+                        <p align="right">DETALLE:</p>
+                    </label>
+                    <div class="col-xs-6" style="margin-left: -15px; margin-right: -15px;">
+                        <div style="margin-bottom: 3px;">
+                            Cuota mes de: Abril 2017 (VANESSA DEL ROSARIO RAMIREZ CAMPOMARES)
+                            HORARIO: (10,11,12) Sabado, de 11:00 a 13:00
+                        </div>
+                        <div style="margin-bottom: 3px;">
+                            Cuota mes de: Mayo 2017 (VANESSA DEL ROSARIO RAMIREZ CAMPOMARES)
+                            HORARIO: (10,11,12) Sabado, de 11:00 a 13:00
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row" style="margin-top: -15px;">
+                    <label class="col-xs-11 col-form-label col-form-label-sm labelBorder">
+
+                    </label>
+                </div>
+
+                <div class="form-group row" style="margin-top: -15px;">
+                    <label for="total" class="col-xs-7 col-form-label col-form-label-sm text-align-right">
+
+                    </label>
+                    <div class="col-xs-5">
+                        <span id="total" style="font-weight: bold; font-size: 12px;">TOTAL</span>
+                        <br>
+                        <span id="total" style="font-weight: bold; font-size: 12px;">S/. <%=total %></span>
+                    </div>
+                </div>
+
+                <div class="form-group row" style="margin-top: -15px;">
+                    <label class="col-xs-11 col-form-label col-form-label-sm text-align-right labelBorder">
+
+                    </label>
+                </div>
+
+                <div class="form-group row" style="margin-top: -15px;">
+                    <label class="col-xs-12 col-form-label col-form-label-sm">
+                        <p align="center" style="font-size: 13px; font-weight: normal;">Siguenos en Facebook</p>
+                        <p align="center" style="font-size: 13px; font-weight: normal;">facebook.com/escueladegimnasialima</p>
+                    </label>
+                </div>
+
+            </div>
+
+            <!--
+            <div class="col-xs-8">
+
+            </div>
+            -->
+        </div>
+    </div>
+
+    <!--<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>-->
+    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

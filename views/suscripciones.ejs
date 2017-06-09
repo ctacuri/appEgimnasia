@@ -1,0 +1,2511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Escuela de Gimnasia</title>
+    <style type="text/css">
+        .table-borderless > tbody > tr > td,
+        .table-borderless > tbody > tr > th,
+        .table-borderless > tfoot > tr > td,
+        .table-borderless > tfoot > tr > th,
+        .table-borderless > thead > tr > td,
+        .table-borderless > thead > tr > th {
+            border: none !important;
+        }
+
+        .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+            border-top: 0px !important;
+        }
+
+        @media print {
+            border-top: 0px !important;
+        }
+    </style>
+</head>
+<body>
+<% include menu %>
+
+<div id="myModal" class="modal modal-wide2 modal-high2 fade" role="dialog">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">MATRICULA</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 nopadding">
+
+                        <div class="form-group row">
+                            <label for="alumno" class="col-md-3 col-form-label col-form-label-sm">Alumno</label>
+                            <div class="col-md-9">
+                                <div id="alumno" style="float: left; position: relative;"></div>
+                                <button type="button" class="btn btn-primary btn-xs" id="btnTutor" style="float: left; margin-left: 5px; margin-top: 3px; position: relative;">Tutor</button>
+                                <button type="button" class="btn btn-secondary btn-xs" id="btnAlumno" style="float: left; margin-left: 5px; margin-top: 3px; position: relative;">Alumno</button>
+                                <input type="hidden" class="form-control form-control-sm" id="id">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="tutor" class="col-md-3 col-form-label col-form-label-sm">Tutor</label>
+                            <div class="col-md-9">
+                                <!--<div id="tutor" style="float: left; position: relative;"></div>-->
+                                <div id="txtTutor"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="horario" class="col-md-3 col-form-label col-form-label-sm">Horario</label>
+                            <div class="col-md-9">
+                                <div id="horario"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="fecha" class="col-md-3 col-form-label col-form-label-sm">Fecha</label>
+                            <div class="col-md-4">
+                                <div id="fecha"></div>
+                            </div>
+
+                            <label for="anio" class="col-md-2 col-form-label col-form-label-sm">Año</label>
+                            <div class="col-md-3">
+                                <div id="anio"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="mes" class="col-md-3 col-form-label col-form-label-sm">Mes</label>
+                            <div class="col-md-4">
+                                <div id="mes"></div>
+                            </div>
+
+                            <label for="importe" class="col-md-2 col-form-label col-form-label-sm">Importe</label>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control form-control-sm text-align-right" id="importe">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="profesor" class="col-md-3 col-form-label col-form-label-sm">Profesor</label>
+                            <div class="col-md-4">
+                                <div id="profesor"></div>
+                            </div>
+
+                            <label for="saldo" class="col-md-2 col-form-label col-form-label-sm">Total</label>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control form-control-sm text-align-right" id="saldo">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-12 text-align-right">
+                                <!--<input type="text" class="form-control form-control-sm text-align-right" id="idTutorAlumno" style="float: left; position: relative; width: 40px;">
+                                <input type="text" class="form-control form-control-sm text-align-right" id="tutorAlumno" style="float: left; position: relative; width: 200px;">-->
+                                <button type="button" class="btn btn-secondary" id="btnVerHistorico" style="margin-top: 5px;">Historico</button>
+                                <button type="button" class="btn btn-primary" id="btnAddMatricula" style="margin-top: 5px;">Agregar</button>
+                            </div>
+                        </div>
+                        <div class="form-group row" style="margin-top: 5px;">
+                            <div class="col-md-12">
+                                <div id="grid2"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row" style="margin-top: 5px;">
+                            <label for="empresa" class="col-md-3 col-form-label col-form-label-sm">Empresa</label>
+                            <div class="col-md-4">
+                                <div id="empresa"></div>
+                            </div>
+
+                            <label for="emitir" class="col-md-2 col-form-label col-form-label-sm">Emitir</label>
+                            <div class="col-md-3">
+                                <div id="emitir"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="formaPago" class="col-md-3 col-form-label col-form-label-sm">Forma Pago</label>
+                            <div class="col-md-4">
+                                <div id="formaPago"></div>
+                            </div>
+
+                            <label for="serie" class="col-md-2 col-form-label col-form-label-sm">Serie</label>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control form-control-sm text-align-right" id="serie">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="correlativo" class="col-md-3 col-form-label col-form-label-sm">Correlativo</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control form-control-sm text-align-right" id="correlativo">
+                            </div>
+
+                            <!--<label for="serie" class="col-md-2 col-form-label col-form-label-sm">Serie</label>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control form-control-sm text-align-right" id="serie">
+                            </div>-->
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer" style="margin-top: -10px;">
+                <button type="button" class="btn btn-primary" id="btnSave">Guardar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCerrar">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="myModalTicket" class="modal modal-wide-35 modal-high-ticket fade" role="dialog">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">EMISION DE TICKET</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 text-right" style="margin-top: -10px; margin-bottom: 5px;">
+                        <button type="button" class="btn btn-primary" id="btnPrint">Print</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCerrar">Cerrar</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="viewTicket">
+
+                            <p align="center">CLUB ESCUELA DE GIMNASIA</p>
+                            <p align="center">AV. PETIT THOUARS NRO. 2685 LIMA - LIMA - LINCE</p>
+                            <p align="center">RUC: 20601497795</p>
+                            <p align="center">Telefono: (01) 4225261</p>
+                            <p align="center">www.gimnasia.pe</p>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table width="100%" class='table table-sm' border="0" style="font-size: 12px;">
+                                        <tr>
+                                            <td width="49%" align="right" style="margin-bottom: 3px;">Autorizacion SUNAT</td>
+                                            <td width="2%" align="center">:</td>
+                                            <td width="49%">0023845108800</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="49%" align="right">Maq Regist Nro</td>
+                                            <td width="2%" align="center">:</td>
+                                            <td width="49%">FFCF268000</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="49%" align="right">Ticket Boleta</td>
+                                            <td width="2%" align="center">:</td>
+                                            <td width="49%"><span id="nroTicket"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="49%" align="right">FECHA EMISION</td>
+                                            <td width="2%" align="center">:</td>
+                                            <td width="49%"><span id="fechaEmision"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="49%" align="right">DNI/RUC</td>
+                                            <td width="2%" align="center">:</td>
+                                            <td width="49%"><span id="idCliente"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="49%" align="right">CLIENTE</td>
+                                            <td width="2%" align="center">:</td>
+                                            <td width="49%"><span id="cliente"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="49%" align="right">TIPO DE PAGO</td>
+                                            <td width="2%" align="center">:</td>
+                                            <td width="49%"><span id="tipoPago"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="49%" align="right">DETALLE</td>
+                                            <td width="2%" align="center">:</td>
+                                            <td width="49%">
+                                                <div id="detalle"></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="49%" align="right"><B>TOTAL</B></td>
+                                            <td width="2%" align="center"><B>:</B></td>
+                                            <td width="49%"><b><span id="totalTicket"></span></b></td>
+                                        </tr>
+                                    </table>
+
+
+                                </div>
+                            </div>
+
+
+                            <!--<div class="form-group row">
+                                <label for="autorizacion" class="col-sm-6 col-form-label col-form-label-sm">
+                                    <p align="right">Autorizacion SUNAT Nro:</p>
+                                </label>
+                                <div class="col-sm-6" style="margin-left: -15px;">
+                                    <span id="autorizacion">0023845108800</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row" style="margin-top: -15px;">
+                                <label for="maquina" class="col-sm-6 col-form-label col-form-label-sm text-align-right">
+                                    <p align="right">Maq Regist Nro:</p>
+                                </label>
+                                <div class="col-sm-6" style="margin-left: -15px;">
+                                    <span id="maquina">FFCF268000</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row" style="margin-top: -15px;">
+                                <label for="nroTicket" class="col-xs-6 col-form-label col-form-label-sm text-align-right">
+                                    <p align="right">Ticket Boleta:</p>
+                                </label>
+                                <div class="col-xs-6" style="margin-left: -15px;">
+                                    <span id="nroTicket"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row" style="margin-top: -15px;">
+                                <label for="nroTicket" class="col-xs-6 col-form-label col-form-label-sm text-align-right">
+                                    <p align="right">FECHA EMISION:</p>
+                                </label>
+                                <div class="col-xs-6" style="margin-left: -15px;">
+                                    <span id="nroTicket"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row" style="margin-top: -15px;">
+                                <label for="nroDocumento" class="col-xs-6 col-form-label col-form-label-sm text-align-right">
+                                    <p align="right">DNI / RUC:</p>
+                                </label>
+                                <div class="col-xs-6" style="margin-left: -15px;">
+                                    <span id="nroDocumento"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row" style="margin-top: -15px;">
+                                <label for="cliente" class="col-xs-6 col-form-label col-form-label-sm text-align-right">
+                                    <p align="right">CLIENTE:</p>
+                                </label>
+                                <div class="col-xs-6" style="margin-left: -15px;">
+                                    <span id="cliente"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row" style="margin-top: -15px;">
+                                <label for="tipoPago" class="col-xs-6 col-form-label col-form-label-sm text-align-right">
+                                    <p align="right">TIPO DE PAGO:</p>
+                                </label>
+                                <div class="col-xs-6" style="margin-left: -15px;">
+                                    <span id="tipoPago"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row" style="margin-top: -15px;">
+                                <label for="detalle" class="col-xs-6 col-form-label col-form-label-sm text-align-right">
+                                    <p align="right">DETALLE:</p>
+                                </label>
+                                <div class="col-xs-6" style="margin-left: -15px; margin-right: -15px;">
+                                    <div style="margin-bottom: 3px;">
+                                        Cuota mes de: Abril 2017 (VANESSA DEL ROSARIO RAMIREZ CAMPOMARES)
+                                        HORARIO: (10,11,12) Sabado, de 11:00 a 13:00
+                                    </div>
+                                    <div style="margin-bottom: 3px;">
+                                        Cuota mes de: Mayo 2017 (VANESSA DEL ROSARIO RAMIREZ CAMPOMARES)
+                                        HORARIO: (10,11,12) Sabado, de 11:00 a 13:00
+                                    </div>
+                                </div>
+                            </div>-->
+
+                            <!--<div class="form-group row" style="margin-top: -15px;">
+                                <label class="col-xs-11 col-form-label col-form-label-sm labelBorder">
+
+                                </label>
+                            </div>
+
+                            <div class="form-group row" style="margin-top: -15px;">
+                                <label for="total" class="col-xs-7 col-form-label col-form-label-sm text-align-right">
+
+                                </label>
+                                <div class="col-xs-5">
+                                    <span id="total" style="font-weight: bold; font-size: 12px;">TOTAL</span>
+                                    <br>
+                                    <span id="total" style="font-weight: bold; font-size: 12px;"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row" style="margin-top: -15px;">
+                                <label class="col-xs-11 col-form-label col-form-label-sm text-align-right labelBorder">
+
+                                </label>
+                            </div>-->
+
+                            <div class="form-group row" style="margin-top: -15px;">
+                                <label class="col-xs-12 col-form-label col-form-label-sm">
+                                    <p align="center" style="font-size: 13px; font-weight: normal;">Siguenos en Facebook</p>
+                                    <p align="center" style="font-size: 13px; font-weight: normal;">facebook.com/escueladegimnasialima</p>
+                                </label>
+                            </div>
+
+                        </div>
+                        <!--<iframe src="/ticket" style="height: 380px !important;"></iframe>-->
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="modal-footer" style="margin-top: -10px;">
+                <!--<button type="button" class="btn btn-primary" id="btnPrint">Print</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCerrar">Cerrar</button>-->
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<div id="myModalHistorico" class="modal modal-wide modal-high-400 fade" role="dialog">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">HISTORIAL DE PAGOS</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 nopadding">
+
+                        <div class="form-group row" style="margin-top: 5px;">
+                            <div class="col-md-12">
+                                <div id="grid3"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer" style="margin-top: -10px;">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCerrar">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="myModalTutor" class="modal modal-wide2 modal-high2 fade" role="dialog">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">TUTOR</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 nopadding">
+
+                        <div class="form-group row">
+                            <label for="tipoDocumento" class="col-md-3 col-form-label col-form-label-sm">Tipo doc(*)</label>
+                            <div class="col-md-4">
+                                <div id="tipoDocumento"></div>
+                                <input type="hidden" class="form-control form-control-sm" id="idTutor">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="nroDocumento" class="col-md-3 col-form-label col-form-label-sm">Nro doc(*)</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="nroDocumento">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="apellidoPaterno" class="col-md-3 col-form-label col-form-label-sm">A paterno(*)</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="apellidoPaterno">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="apellidoMaterno" class="col-md-3 col-form-label col-form-label-sm">A materno(*)</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="apellidoMaterno">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="nombres" class="col-md-3 col-form-label col-form-label-sm">Nombres(*)</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="nombres">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="fechaNacimiento" class="col-md-3 col-form-label col-form-label-sm">Fecha nac(*)</label>
+                            <div class="col-md-4">
+                                <div id="fechaNacimiento"></div>
+                            </div>
+
+                            <label for="sexo" class="col-md-2 col-form-label col-form-label-sm">Sexo(*)</label>
+                            <div class="col-md-3">
+                                <div id="sexo"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="estadoCivil" class="col-md-3 col-form-label col-form-label-sm">Estado Civil</label>
+                            <div class="col-md-4">
+                                <div id="estadoCivil"></div>
+                            </div>
+
+                            <label for="departamento" class="col-md-2 col-form-label col-form-label-sm">Dpto(*)</label>
+                            <div class="col-md-3">
+                                <div id="departamento"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="provincia" class="col-md-3 col-form-label col-form-label-sm">Provincia(*)</label>
+                            <div class="col-md-4">
+                                <div id="provincia"></div>
+                            </div>
+
+                            <label for="distrito" class="col-md-2 col-form-label col-form-label-sm">Distrito(*)</label>
+                            <div class="col-md-3">
+                                <div id="distrito"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="direccion" class="col-md-3 col-form-label col-form-label-sm">Direccion(*)</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="direccion">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="telefonoFijo" class="col-md-3 col-form-label col-form-label-sm">Telf. fijo</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control form-control-sm" id="telefonoFijo">
+                            </div>
+
+                            <label for="celular" class="col-md-2 col-form-label col-form-label-sm">Celular</label>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control form-control-sm" id="celular">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-3 col-form-label col-form-label-sm">Email</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="email">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="fechaReg" class="col-md-3 col-form-label col-form-label-sm">Fecha registro</label>
+                            <div class="col-md-9">
+                                <div id="fechaReg"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="obs" class="col-md-3 col-form-label col-form-label-sm">Observacion</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="obs">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnSaveTutor">Guardar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCerrarTutor">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModalAlumno" class="modal modal-wide fade" role="dialog">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">ALUMNO</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6 nopadding">
+
+                        <div class="form-group row">
+                            <label for="tutor" class="col-md-3 col-form-label col-form-label-sm">Tutor(*)</label>
+                            <div class="col-md-9">
+                                <div id="tutor"></div>
+                                <input type="hidden" class="form-control form-control-sm" id="idAlumno">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="apellidoPaterno2" class="col-md-3 col-form-label col-form-label-sm">A paterno(*)</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="apellidoPaterno2">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="apellidoMaterno2" class="col-md-3 col-form-label col-form-label-sm">A materno(*)</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="apellidoMaterno2">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="nombres2" class="col-md-3 col-form-label col-form-label-sm">Nombres(*)</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="nombres2">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="tipoDocumento2" class="col-md-3 col-form-label col-form-label-sm">Tipo doc(*)</label>
+                            <div class="col-md-3">
+                                <div id="tipoDocumento2"></div>
+                            </div>
+
+                            <label for="nroDocumento2" class="col-md-2 col-form-label col-form-label-sm">Numdoc(*)</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control form-control-sm" id="nroDocumento2">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="fechaNacimiento2" class="col-md-3 col-form-label col-form-label-sm">Fecha nac(*)</label>
+                            <div class="col-md-4">
+                                <div id="fechaNacimiento2"></div>
+                            </div>
+
+                            <label for="sexo2" class="col-md-2 col-form-label col-form-label-sm">Sexo(*)</label>
+                            <div class="col-md-3">
+                                <div id="sexo2"></div>
+                            </div>
+                        </div>
+
+                        <!--
+                        <div class="form-group row">
+                            <label for="celular" class="col-md-3 col-form-label col-form-label-sm">Celular</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="celular">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="telefonoFijo" class="col-md-3 col-form-label col-form-label-sm">Telf. fijo</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="telefonoFijo">
+                            </div>
+                        </div>
+                        -->
+
+                        <div class="form-group row">
+                            <label for="departamento2" class="col-md-3 col-form-label col-form-label-sm">Dpto(*)</label>
+                            <div class="col-md-9">
+                                <div id="departamento2"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="provincia2" class="col-md-3 col-form-label col-form-label-sm">Provincia(*)</label>
+                            <div class="col-md-9">
+                                <div id="provincia2"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="distrito2" class="col-md-3 col-form-label col-form-label-sm">Distrito(*)</label>
+                            <div class="col-md-9">
+                                <div id="distrito2"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="direccion2" class="col-md-3 col-form-label col-form-label-sm">Direccion(*)</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="direccion2">
+                            </div>
+                        </div>
+
+                        <!--
+                        <div class="form-group row">
+                            <label for="email" class="col-md-3 col-form-label col-form-label-sm">Email</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="email">
+                            </div>
+                        </div>
+                        -->
+
+                        <div class="form-group row">
+                            <label for="esSalud" class="col-md-3 col-form-label col-form-label-sm">EsSalud</label>
+                            <div class="col-md-3">
+                                <div id="esSalud"></div>
+                                <!--<input type="text" class="form-control form-control-sm" id="esSalud">-->
+                            </div>
+
+                            <label for="ciaSeg" class="col-md-2 col-form-label col-form-label-sm">Cia Seg</label>
+                            <div class="col-md-4">
+                                <div id="ciaSeg"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="enfermedades" class="col-md-3 col-form-label col-form-label-sm">Enfermedades</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="enfermedades">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="alergias" class="col-md-3 col-form-label col-form-label-sm">Alergias</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="alergias">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="tipoAlumno" class="col-md-3 col-form-label col-form-label-sm">Tipo Alumno</label>
+                            <div class="col-md-9">
+                                <div id="tipoAlumno"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 nopadding">
+
+
+                        <div class="form-group row">
+                            <label for="apepatMama" class="col-md-3 col-form-label col-form-label-sm">AP mama</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="apepatMama">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="apematMama" class="col-md-3 col-form-label col-form-label-sm">AM mama</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="apematMama">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="nombresMama" class="col-md-3 col-form-label col-form-label-sm">N mama</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="nombresMama">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="telefonoFijoMama" class="col-md-3 col-form-label col-form-label-sm">Telf mama</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="telefonoFijoMama">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="CelularMama" class="col-md-3 col-form-label col-form-label-sm">Cel mama</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="CelularMama">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="emailMama" class="col-md-3 col-form-label col-form-label-sm">Email mama</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="emailMama">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="apepatPapa" class="col-md-3 col-form-label col-form-label-sm">AP papa</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="apepatPapa">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="apematPapa" class="col-md-3 col-form-label col-form-label-sm">AM papa</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="apematPapa">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="nombresPapa" class="col-md-3 col-form-label col-form-label-sm">N papa</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="nombresPapa">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="telefonoFijoPapa" class="col-md-3 col-form-label col-form-label-sm">Telf papa</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="telefonoFijoPapa">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="CelularPapa" class="col-md-3 col-form-label col-form-label-sm">Cel papa</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="CelularPapa">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="emailPapa" class="col-md-3 col-form-label col-form-label-sm">Email papa</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="emailPapa">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="obs2" class="col-md-3 col-form-label col-form-label-sm">Observaciones</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm" id="obs2">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnSaveAlumno">Guardar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCerrarAlumno">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id='Menu'>
+    <ul>
+        <li>Eliminar</li>
+        <li>Imprimir</li>
+    </ul>
+</div>
+<div id='Menu2'>
+    <ul>
+        <li>Eliminar</li>
+    </ul>
+</div>
+
+<div class="row fill-height-91">
+    <div class="col-md-12 fill-height-91">
+        <div id="jqxToolBar"></div>
+        <div id="grid"></div>
+    </div>
+</div>
+
+<script type="text/javascript" src="javascripts/scripts.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var meses = [
+            { id_mes: 1, mes: "Enero"},
+            { id_mes: 2, mes: "Febrero"},
+            { id_mes: 3, mes: "Marzo"},
+            { id_mes: 4, mes: "Abril"},
+            { id_mes: 5, mes: "Mayo"},
+            { id_mes: 6, mes: "Junio"},
+            { id_mes: 7, mes: "Julio"},
+            { id_mes: 8, mes: "Agosto"},
+            { id_mes: 9, mes: "Setiembre"},
+            { id_mes: 10, mes: "Octubre"},
+            { id_mes: 11, mes: "Noviembre"},
+            { id_mes: 12, mes: "Diciembre"}
+        ];
+
+        var f = new Date();
+        var anio = [];
+
+        for(var x= f.getFullYear() + 1; x>= 2007;x--){
+            anio.push(x);
+        }
+
+        $("#jqxToolBar").jqxToolBar(
+            $.extend( {},
+                vDefaultOptionsToolBar,
+                {
+                    tools: 'custom | custom | custom | custom | custom | custom | custom | custom | custom', //| input | custom | custom | custom | custom
+                    initTools: function (type, index, tool, menuToolIninitialization) {
+                        switch (index) {
+                            case 0:
+                                var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'><b>MATRICULA &nbsp;&nbsp; </b></div>";
+                                tool.append(label);
+                                break;
+                            case 1:
+                                var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Inicio: </div>";
+                                tool.append(label);
+                                break;
+                            case 2:
+                                var fecha = $("<div id='FechaIniOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
+                                    theme: theme2,
+                                    value: new Date(anioActual, mesActual, 1),
+                                    width: 105,
+                                    height: 25,
+                                    culture: 'es-ES'
+                                });
+                                tool.append(fecha);
+                                break;
+                            case 3:
+                                var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Fin: </div>";
+                                tool.append(label);
+                                break;
+                            case 4:
+                                var fecha = $("<div id='FechaFinOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
+                                    theme: theme2,
+                                    value: new Date(anioActual, mesActual, ultimoDiaMesActual),
+                                    width: 105,
+                                    height: 25,
+                                    culture: 'es-ES'
+                                });
+                                tool.append(fecha);
+                                break;
+                            case 5:
+                                var addBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/add.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                    theme: theme2,
+                                    width: 30,
+                                    height: 19
+                                });
+                                tool.append(addBtn);
+                                addBtn.click(function (event) {
+                                    $("#id").val('');
+                                    fn_clearText();
+                                    $("#txtTutor").text("");
+                                    var arregloInputDateTime = ['fecha'];
+                                    fn_clearDateTimeInput(arregloInputDateTime);
+
+                                    var arregloInputDropDownList = ['alumno', 'horario', 'mes', 'anio', 'profesor', 'empresa', 'formaPago'];
+                                    fn_clearDropDownList(arregloInputDropDownList);
+
+                                    $("#mes").jqxDropDownList('selectItem', mesActual + 1);
+                                    $("#anio").jqxDropDownList('selectItem', anioActual);
+                                    $("#profesor").jqxDropDownList('selectItem', 4);
+
+                                    $("#btnSave").text("Guardar");
+                                    $('#myModal').modal('show');
+                                    setTimeout(function(){
+                                        $('#grid2').jqxGrid('hidecolumn', 'id_alumno');
+                                        $('#grid2').jqxGrid('hidecolumn', 'fecha');
+                                        $('#grid2').jqxGrid('hidecolumn', 'id_horario');
+                                        $('#grid2').jqxGrid('hidecolumn', 'id_mes');
+                                        $('#grid2').jqxGrid('hidecolumn', 'id_profesor');
+                                    }, 500);
+                                    $('#grid2').jqxGrid('clear');
+                                });
+                                break;
+                            case 6:
+                                var searchBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/search.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                    theme: theme2,
+                                    width: 30,
+                                    height: 19
+                                });
+                                tool.append(searchBtn);
+                                searchBtn.click(function (event) {
+                                    var tools = $("#jqxToolBar").jqxToolBar("getTools");
+
+                                    fn_listaMatricula($("#FechaIniOS").val(), $("#FechaFinOS").val());
+                                });
+                                break;
+                            case 7:
+                                var exportBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/icon_excel_02_20.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                    theme: theme2,
+                                    width: 30,
+                                    height: 19
+                                });
+                                tool.append(exportBtn);
+                                exportBtn.click(function (event) {
+                                    var tools = $("#jqxToolBar").jqxToolBar("getTools");
+                                    var JSONData = $("#grid").jqxGrid('exportdata', 'json');
+                                    fn_JSONToCSVConvertor(JSONData, "Reportematricula", "", true);
+                                });
+                                break;
+                        }
+                    }
+                }
+            )
+        )
+
+        $("#grid").jqxGrid(
+            $.extend(
+                {}, vDefaultOptionsGrid,
+                {
+                    pageable: true,
+                    pagermode: 'simple',
+                    pagesize: 20,
+                    selectionmode: 'singlerow',
+                    columns: [
+                        { text: 'Id matricula', align: 'center', datafield: 'id_matricula', cellsalign: 'right', width: '10%' },
+                        { text: 'Alumno', align: 'center', datafield: 'alumno', cellsalign: 'left', width: '30%'},
+                        { text: 'Horario', align: 'center', datafield: 'clase', cellsalign: 'left', width: '30%' },
+                        { text: 'Fecha', align: 'center', datafield: 'fecha_matricula', cellsalign: 'center', width: '10%' },
+                        { text: 'Año', align: 'center', datafield: 'anio_matricula', cellsalign: 'center', width: '10%' },
+                        { text: 'Mes', align: 'center', datafield: 'mes', cellsalign: 'left', width: '10%' },
+                        { text: 'Monto Pagado', align: 'center', datafield: 'importe', cellsalign: 'right', width: '10%', cellsformat: 'd2' },
+                        { text: 'Saldo', align: 'center', datafield: 'saldo', cellsalign: 'right', width: '10%', cellsformat: 'd2' },
+                        { text: 'Profesor', align: 'center', datafield: 'nombre_corto', cellsalign: 'left', width: '30%' }
+                    ]
+                }
+            )
+        );
+        var contextMenu = $("#Menu").jqxMenu({
+            theme: theme3,
+            width: 200,
+            height: 58,
+            autoOpenPopup: false,
+            mode: 'popup'
+        });
+        $("#grid").on('contextmenu', function () {
+            return false;
+        });
+
+        contextMenu.on('itemclick', function (event) {
+            var args = event.args;
+            var rowindex = $("#grid").jqxGrid('getselectedrowindex');
+
+            if( $.trim($(args).text()) == "Eliminar" ) {
+                var rowid = $("#grid").jqxGrid('getrowid', rowindex);
+                if(confirm("Esta seguro de eliminar la matricula?")){
+
+                    $("#grid").jqxGrid('deleterow', rowid);
+                }
+            }
+        });
+        /*$("#grid").on('rowclick', function (event) {
+            if (event.args.rightclick) {
+                $("#grid").jqxGrid('selectrow', event.args.rowindex);
+                var scrollTop = $(window).scrollTop();
+                var scrollLeft = $(window).scrollLeft();
+                contextMenu.jqxMenu('open', parseInt(event.args.originalEvent.clientX) + 5 + scrollLeft, parseInt(event.args.originalEvent.clientY) + 5 + scrollTop);
+                return false;
+            }
+        });*/
+
+        /*$('#grid').on('rowdoubleclick', function (event)
+        {
+            var args = event.args;
+            // row's bound index.
+            var boundIndex = args.rowindex;
+            var data = $('#grid').jqxGrid('getrowdata', boundIndex);
+            //console.log(data.id_tipo_doc);
+            //console.log(data.tipo_doc);
+            $("#id").val(data.id_matricula);
+            $("#alumno").jqxDropDownList('selectItem', data.id_alumno);
+            $("#horario").jqxDropDownList('selectItem', data.id_horario);
+            var f = fn_DMY_to_Array(data.fecha_matricula);
+            $("#fecha").jqxDateTimeInput({ value: new Date(f.ANIO, f.MES - 1, f.DIA) });
+            $("#anio").jqxDropDownList('selectItem', data.anio_matricula);
+            $("#mes").jqxDropDownList('selectItem', data.mes_matricula);
+            $("#importe").val(data.importe);
+            $("#profesor").jqxDropDownList('selectItem', data.id_profesor);
+
+            $('#grid2').jqxGrid('clear');
+            $("#btnSave").text("Actualizar");
+            $('#myModal').modal('show');
+            setTimeout(function(){
+                $('#grid2').jqxGrid('hidecolumn', 'id_alumno');
+                $('#grid2').jqxGrid('hidecolumn', 'fecha');
+                $('#grid2').jqxGrid('hidecolumn', 'id_horario');
+                $('#grid2').jqxGrid('hidecolumn', 'id_mes');
+                $('#grid2').jqxGrid('hidecolumn', 'id_profesor');
+            }, 500);
+        });*/
+
+        //INICIO - GRID MATRICULA MULTIPLE
+        $("#grid2").jqxGrid(
+            $.extend(
+                {}, vDefaultOptionsGrid,
+                {
+                    groupable: false,
+                    height: '200px',
+                    filterable: false,
+                    showfilterrow: false,
+                    //selectionmode: 'checkbox',
+                    columns: [
+                        //{ text: 'Matricula', align: 'center', datafield: 'matricula', columntype: 'checkbox', cellsalign: 'center', width: '5%'},
+                        { text: 'ID Alumno', align: 'center', datafield: 'id_alumno', cellsalign: 'left', width: '1%'},
+                        { text: 'Alumno', align: 'center', datafield: 'alumno', cellsalign: 'left', width: '28%', aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                            var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                            $.each(aggregates, function (key, value) {
+                                renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                            });
+                            renderstring += "</div>";
+                            return renderstring;
+                        }
+                        },
+                        { text: 'Fecha', align: 'center', datafield: 'fecha', cellsalign: 'left', width: '1%'},
+                        { text: 'ID Horario', align: 'center', datafield: 'id_horario', cellsalign: 'left', width: '1%' },
+                        { text: 'Horario', align: 'center', datafield: 'horario', cellsalign: 'left', width: '28%', aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                            var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                            $.each(aggregates, function (key, value) {
+                                renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                            });
+                            renderstring += "</div>";
+                            return renderstring;
+                            }
+                        },
+                        { text: 'Año', align: 'center', datafield: 'anio', cellsalign: 'center', width: '11%', aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                            var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                            $.each(aggregates, function (key, value) {
+                                renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                            });
+                            renderstring += "</div>";
+                            return renderstring;
+                            }
+                        },
+                        { text: 'ID Mes', align: 'center', datafield: 'id_mes', cellsalign: 'left', width: '1%' },
+                        { text: 'Mes', align: 'center', datafield: 'mes', cellsalign: 'left', width: '14%', aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                            var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                            $.each(aggregates, function (key, value) {
+                                renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                            });
+                            renderstring += "</div>";
+                            return renderstring;
+                            }
+                        },
+                        { text: 'Importe', align: 'center', datafield: 'importe', cellsalign: 'right', width: '14%', cellsformat: 'd2' , aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },
+                        { text: 'Saldo', align: 'center', datafield: 'saldo', cellsalign: 'right', width: '14%', cellsformat: 'd2' , aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },
+                        { text: 'Profesor', align: 'center', datafield: 'id_profesor', cellsalign: 'left', width: '1%' }
+                    ]
+                }
+            )
+        );
+        var contextMenu2 = $("#Menu2").jqxMenu({
+            theme: theme3,
+            width: 100,
+            height: 30,
+            autoOpenPopup: false,
+            mode: 'popup'
+        });
+        $("#grid2").on('contextmenu', function () {
+            return false;
+        });
+
+        contextMenu2.on('itemclick', function (event) {
+            var args = event.args;
+            var rowindex = $("#grid2").jqxGrid('getselectedrowindex');
+
+            if( $.trim($(args).text()) == "Eliminar" ) {
+                var rowid = $("#grid2").jqxGrid('getrowid', rowindex);
+                $("#grid2").jqxGrid('deleterow', rowid);
+            }
+        });
+        $("#grid2").on('rowclick', function (event) {
+            if (event.args.rightclick) {
+                $("#grid2").jqxGrid('selectrow', event.args.rowindex);
+                var scrollTop = $(window).scrollTop();
+                var scrollLeft = $(window).scrollLeft();
+                contextMenu2.jqxMenu('open', parseInt(event.args.originalEvent.clientX) + 5 + scrollLeft, parseInt(event.args.originalEvent.clientY) + 5 + scrollTop);
+                return false;
+            }
+        });
+
+        $("#btnAddMatricula").click(function() {
+            if($("#alumno").val() == ""){
+                alert("Error: elija un alumno valido");
+                return false;
+            }
+            if($("#horario").val() == ""){
+                alert("Error: elija un horario valido");
+                return false;
+            }
+            if($("#importe").val() == ""){
+                alert("Error: ingrese un importe valido");
+                return false;
+            }
+
+            var datos = {
+                //id: $("#id").val(),
+                id_alumno: $("#alumno").val(),
+                alumno: $("#alumno").text(),
+                id_horario: $("#horario").val(),
+                horario: $("#horario").text(),
+                fecha: fn_convertFecha_DMY_to_SQL($("#fecha").val()),
+                anio: $("#anio").val(),
+                id_mes: $("#mes").val(),
+                mes: $("#mes").text(),
+                importe: $("#importe").val(),
+                saldo: parseFloat($("#saldo").val() - $("#importe").val()),
+                id_profesor: $("#profesor").val()
+            };
+
+            var rows = $('#grid2').jqxGrid('getrows');
+            for(var i = 0; i < rows.length; i++)
+            {
+                var row = rows[i];
+                if(row.id_horario == datos.id_horario && row.id_mes == datos.id_mes && row.anio == datos.anio){
+                    alert("Error: No es posible agregar matricula con el mismo periodo");
+                    datos = [];
+                    return false;
+                }
+            }
+
+            $("#grid2").jqxGrid('addrow', null, datos);
+            datos = [];
+            //var rows = $('#grid2').jqxGrid('getrows');
+            //console.log(rows);
+        });
+        //FIN - GRID MATRICULA MULTIPLE
+
+
+
+        //INICIO - GRID HISTORIAL DE PAGOS
+        $("#grid3").jqxGrid(
+            $.extend(
+                {}, vDefaultOptionsGrid,
+                {
+                    groupable: false,
+                    height: '250px',
+                    filterable: false,
+                    showfilterrow: false,
+                    //selectionmode: 'checkbox',
+                    columns: [
+                        { text: 'Clase', align: 'center', datafield: 'clase', cellsalign: 'left', width: '34%', aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                            var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                            $.each(aggregates, function (key, value) {
+                                renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                            });
+                            renderstring += "</div>";
+                            return renderstring;
+                        }
+                        },
+                        { text: 'Mes', align: 'center', datafield: 'mes_matricula', cellsalign: 'left', width: '10%' , aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                            var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                            $.each(aggregates, function (key, value) {
+                                renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                            });
+                            renderstring += "</div>";
+                            return renderstring;
+                        }
+                        },
+                        { text: 'Año', align: 'center', datafield: 'anio_matricula', cellsalign: 'center', width: '10%' , aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                            var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                            $.each(aggregates, function (key, value) {
+                                renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                            });
+                            renderstring += "</div>";
+                            return renderstring;
+                        }
+                        },
+                        { text: 'Fecha', align: 'center', datafield: 'fecha_matricula', cellsalign: 'center', width: '10%' , aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                            var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                            $.each(aggregates, function (key, value) {
+                                renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                            });
+                            renderstring += "</div>";
+                            return renderstring;
+                        }
+                        },
+                        { text: 'Monto Total', align: 'center', datafield: 'importe', cellsalign: 'right', width: '12%', cellsformat: 'd2' , aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },
+                        { text: 'Monto Pagado', align: 'center', datafield: 'importe_pagado', cellsalign: 'right', width: '12%', cellsformat: 'd2' , aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },
+                        { text: 'Monto Restante', align: 'center', datafield: 'saldo', cellsalign: 'right', width: '12%', cellsformat: 'd2' , aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        }
+                    ]
+                }
+            )
+        );
+        $("#grid3").on('contextmenu', function () {
+            return false;
+        });
+        //FIN - GRID HISTORIAL DE PAGOS
+
+
+        $("#fecha").jqxDateTimeInput(
+            $.extend(
+                {}, vDefaultOptionsDateTimeInput, {
+                    width: '120',
+                    formatString: 'dd/MM/yyyy',
+                    showTimeButton: false
+                }
+            )
+        );
+
+        $("#anio").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%',
+                    source: anio
+                }
+            )
+        );
+
+        $("#mes").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%',
+                    source: meses,
+                    displayMember: "mes",
+                    valueMember: "id_mes"
+                }
+            )
+        );
+
+        $("#alumno").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '62%',
+                    dropDownWidth: 400
+                }
+            )
+        );
+
+
+
+        $("#horario").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%'
+                }
+            )
+        );
+
+        $("#profesor").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%',
+                    dropDownWidth: 250,
+                    dropDownHeight: 150
+                }
+            )
+        );
+
+        $("#emitir").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%'
+                }
+            )
+        );
+
+        $("#empresa").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%',
+                    dropDownWidth: 350
+                }
+            )
+        );
+
+        $("#formaPago").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%'
+                }
+            )
+        );
+
+        var arregloAlumnos = [], arregloHorarios = [], arregloEmpresas = [];
+        $.when(
+            $.ajax("/listaAlumnosSimple"),
+            $.ajax("/listaHorariosSimple"),
+            $.ajax("/listaProfesoresSimple"),
+            $.ajax("/listaComprobanteVenta"),
+            $.ajax("/listaEmpresas"),
+            $.ajax("/listaFormaPago")
+        ).done(function( json1, json2, json3, json4, json5, json6) {
+            //console.log(json2[0].registros[0].length);
+            for(var j = 0; j<json1[0].registros[0].length; j++){
+                arregloAlumnos.push(
+                    {
+                        id_alumno: json1[0].registros[0][j].id_alumno,
+                        descripcion: json1[0].registros[0][j].descripcion,
+                        id_tutor: json1[0].registros[0][j].id_tutor,
+                        tipo_doc: json1[0].registros[0][j].tipo_doc,
+                        numdoc: json1[0].registros[0][j].numdoc,
+                        descripcion_tutor: json1[0].registros[0][j].descripcion_tutor,
+                        direccion: json1[0].registros[0][j].direccion
+                    }
+                );
+            }
+            //console.log(arregloAlumnos);
+            for(var y = 0; y<json2[0].registros[0].length; y++){
+                arregloHorarios.push(
+                    {
+                        id_horario: json2[0].registros[0][y].id_horario,
+                        clase: json2[0].registros[0][y].clase,
+                        id_profesor: json2[0].registros[0][y].id_profesor,
+                        importe: json2[0].registros[0][y].importe
+                    }
+                );
+            }
+
+            for(var x = 0; x<json5[0].registros[0].length; x++){
+                arregloEmpresas.push(
+                    {
+                        id_parametro: json5[0].registros[0][x].id_parametro,
+                        numdoc: json5[0].registros[0][x].numdoc,
+                        descripcion: json5[0].registros[0][x].descripcion,
+                        impuesto: json5[0].registros[0][x].impuesto,
+                        nro_serie_ticket: json5[0].registros[0][x].nro_serie_ticket,
+                        nro_ticket: json5[0].registros[0][x].nro_ticket,
+                        nro_serie_boleta: json5[0].registros[0][x].nro_serie_boleta,
+                        nro_boleta: json5[0].registros[0][x].nro_boleta,
+                        nro_serie_factura: json5[0].registros[0][x].nro_serie_factura,
+                        nro_factura: json5[0].registros[0][x].nro_factura
+                    }
+                );
+            }
+
+            if(json1[0].status == "success"){
+                $("#alumno").jqxDropDownList({
+                    source: json1[0].registros[0],
+                    displayMember: "descripcion",
+                    valueMember: "id_alumno",
+                    dropDownHeight: 250,
+                    filterable: true,
+                    searchMode: 'containsignorecase'
+                });
+            }else{
+                alert("Error: al cargar alumnos");
+                return false;
+            }
+
+            if(json2[0].status == "success"){
+                $("#horario").jqxDropDownList({
+                    source: arregloHorarios,
+                    displayMember: "clase",
+                    valueMember: "id_horario",
+                    dropDownHeight: 250,
+                    filterable: true,
+                    searchMode: 'containsignorecase'
+                });
+            }else{
+                alert("Error: al cargar horarios");
+                return false;
+            }
+
+            if(json3[0].status == "success"){
+                $("#profesor").jqxDropDownList({
+                    source: json3[0].registros,
+                    displayMember: "nombre_corto",
+                    valueMember: "id_profesor",
+                    dropDownHeight: 250,
+                    filterable: true,
+                    searchMode: 'containsignorecase'
+                });
+            }else{
+                alert("Error: al cargar profesores");
+                return false;
+            }
+
+
+            if(json4[0].status == "success"){
+                $("#emitir").jqxDropDownList({
+                    source: json4[0].registros[0],
+                    displayMember: "descripcion",
+                    valueMember: "id_comprobante",
+                    dropDownWidth: 200,
+                    dropDownHorizontalAlignment: 'right',
+                    autoDropDownHeight: true,
+                    selectedIndex: 0
+                });
+            }else{
+                alert("Error: al cargar documenros de venta");
+                return false;
+            }
+
+            if(json5[0].status == "success"){
+                $("#empresa").jqxDropDownList({
+                    source: arregloEmpresas,
+                    displayMember: "descripcion",
+                    valueMember: "numdoc",
+                    autoDropDownHeight: true
+                });
+            }else{
+                alert("Error: al cargar empresa");
+                return false;
+            }
+
+            if(json6[0].status == "success"){
+                $("#formaPago").jqxDropDownList({
+                    source: json6[0].registros[0],
+                    displayMember: "descripcion",
+                    valueMember: "id_tipo_pago",
+                    autoDropDownHeight: true
+                });
+
+                setTimeout(function(){
+                    $("#formaPago").jqxDropDownList('selectItem', 1);
+                }, 2000);
+
+            }else{
+                alert("Error: al cargar forma de pago");
+                return false;
+            }
+
+        });
+
+        $('#alumno').on('change', function (event)
+        {
+            var args = event.args;
+            if (args) {
+                // index represents the item's index.
+                var index = args.index;
+                var item = args.item;
+                var value = item.value;
+
+                var queryResult = Enumerable.From(arregloAlumnos)
+                    .Where("$.id_alumno == '"+value+"'")
+                    .Select()
+                    .ToArray();
+                //console.log(queryResult);
+                $("#txtTutor").text(queryResult[0].numdoc +" - "+queryResult[0].descripcion_tutor);
+                //$("#tutorAlumno").val(queryResult[0].descripcion_tutor);
+            }
+        });
+
+        $('#horario').on('change', function (event)
+        {
+            var args = event.args;
+            if (args) {
+                // index represents the item's index.
+                var index = args.index;
+                var item = args.item;
+                var value = item.value;
+
+                var queryResult = Enumerable.From(arregloHorarios)
+                    .Where("$.id_horario == '"+value+"'")
+                    .Select()
+                    .ToArray();
+                //console.log(queryResult);
+                $("#profesor").jqxDropDownList('selectItem', queryResult[0].id_profesor);
+                $("#importe").val(queryResult[0].importe);
+                $("#saldo").val(queryResult[0].importe);
+            }
+        });
+
+        $("#importe").change(function(){
+            if(parseFloat($("#importe").val()) > parseFloat($("#saldo").val())){
+                alert("Error: el importe no puede ser mayor al total");
+                $("#importe").val( parseFloat($("#saldo").val()) );
+                return false;
+            }
+        });
+
+
+        $('#empresa').on('change', function (event)
+        {
+            //console.log("PINTA DESDE CHANGE");
+            //console.log(fn_updArreglos());
+            //return false;
+            var args = event.args;
+            if (args) {
+                var index = args.index;
+                var item = args.item;
+                var value = item.value;
+                //fn_updArreglos();
+                //var arreglo = [];
+                $.when(
+                    $.ajax("/listaEmpresas")
+                ).done(function( json5 ) {
+                    //console.log(json5.registros[0]);
+                    var queryResult = Enumerable.From(json5.registros[0])
+                        .Where("$.numdoc == '"+value+"'")
+                        .Select()
+                        .ToArray();
+                        console.log(queryResult);
+                    switch($("#emitir").text()){
+                        case 'TICKET':
+                            $("#serie").val(queryResult[0].nro_serie_ticket);
+                            $("#correlativo").val(queryResult[0].nro_ticket);
+                            break;
+                        case 'BOLETA':
+                            $("#serie").val(queryResult[0].nro_serie_boleta);
+                            $("#correlativo").val(queryResult[0].nro_boleta);
+                            break;
+                        case 'FACTURA':
+                            $("#serie").val(queryResult[0].nro_serie_factura);
+                            $("#correlativo").val(queryResult[0].nro_factura);
+                            break;
+                        case 'SIN COMPROBANTE':
+                            $("#serie").val("");
+                            $("#correlativo").val("");
+                            break;
+                    }
+                });
+            }
+        });
+
+        $('#emitir').on('change', function (event)
+        {
+            //fn_updArreglos();
+            //return false;
+            var args = event.args;
+            if (args) {
+                var index = args.index;
+                var item = args.item;
+                var value = item.value;
+                //fn_updArreglos();
+
+                if($("#empresa").jqxDropDownList('selectedIndex') != -1){
+                    var idEmpresa = $("#empresa").val();
+                    $.when(
+                        $.ajax("/listaEmpresas")
+                    ).done(function( json5 ) {
+                        //console.log(json5.registros[0]);
+                        var queryResult = Enumerable.From(json5.registros[0])
+                            .Where("$.numdoc == '"+idEmpresa+"'")
+                            .Select()
+                            .ToArray();
+                        console.log(queryResult);
+                        switch($("#emitir").text()){
+                            case 'TICKET':
+                                $("#serie").val(queryResult[0].nro_serie_ticket);
+                                $("#correlativo").val(queryResult[0].nro_ticket);
+                                break;
+                            case 'BOLETA':
+                                $("#serie").val(queryResult[0].nro_serie_boleta);
+                                $("#correlativo").val(queryResult[0].nro_boleta);
+                                break;
+                            case 'FACTURA':
+                                $("#serie").val(queryResult[0].nro_serie_factura);
+                                $("#correlativo").val(queryResult[0].nro_factura);
+                                break;
+                            case 'SIN COMPROBANTE':
+                                $("#serie").val("");
+                                $("#correlativo").val("");
+                                break;
+                        }
+                    });
+                }
+            }
+        });
+
+        $("#btnSave").click(function() {
+
+            if($("#alumno").val() == ""){
+                alert("Error: elija un alumno valido");
+                return false;
+            }
+            if($("#horario").val() == ""){
+                alert("Error: elija un horario valido");
+                return false;
+            }
+            if($("#importe").val() == ""){
+                alert("Error: ingrese un importe valido");
+                return false;
+            }
+
+            //console.log(datos);
+            var txtMsg = "", url = "";
+            if($("#id").val() != ""){
+                url = "/EG/updMatricula";
+                txtMsg = "actualizar";
+                /*var datos = {
+                    id: $("#id").val(),
+                    alumno: $("#alumno").val(),
+                    horario: $("#horario").val(),
+                    fecha: fn_convertFecha_DMY_to_SQL($("#fecha").val()),
+                    anio: $("#anio").val(),
+                    mes: $("#mes").val(),
+                    importe: $("#importe").val(),
+                    saldo: $("#saldo").val(),
+                    profesor: $("#profesor").val()
+                };*/
+            }else{
+                url = "/EG/saveMatricula";
+                txtMsg = "registrar";
+            }
+            var datos = $('#grid2').jqxGrid('getrows');
+
+            //console.log(datos);
+            if(datos.length == 0){
+                alert("Error: agregue una matricula a la grilla");
+                return false;
+            }
+
+            /*if(datos.length > 1){
+                for(var i = 0; i < datos.length; i++){
+                    //console.log(i);
+                    console.log(datos[i]);
+                    sleep(1000);
+                }
+            }else{
+                console.log(datos[0]);
+            }
+            return false;*/
+
+            //INICIO - VALIDACION DE CONTROLES DE EMISION DE PAGOS
+            var arregloCabCobro = [];
+            if($('#emitir').jqxDropDownList('selectedIndex') == -1){
+                alert("Error: ingrese un comprobante de venta valido");
+                $("#emitir").jqxDropDownList('open');
+                return false;
+            }
+            if($('#empresa').jqxDropDownList('selectedIndex') == -1){
+                alert("Error: ingrese una empresa valida");
+                $("#empresa").jqxDropDownList('open');
+                return false;
+            }
+            if($('#formaPago').jqxDropDownList('selectedIndex') == -1){
+                alert("Error: ingrese una forma de pago valida");
+                $("#formaPago").jqxDropDownList('open');
+                return false;
+            }
+            if($('#serie').val() == ""){
+                alert("Error: ingrese una serie valida");
+                $("#serie").focus();
+                return false;
+            }
+            if($('#correlativo').val() == ""){
+                alert("Error: ingrese un correlativo valido");
+                $("#correlativo").focus();
+                return false;
+            }
+
+            //INICIO - DATOS DE TUTOR
+            var idAlumno = $("#alumno").val();
+            var queryResult = Enumerable.From(arregloAlumnos)
+                .Where("$.id_alumno == '"+idAlumno+"'")
+                .Select()
+                .ToArray();
+            //FIN - DATOS DE TUTOR
+
+            //INICIO - IMPUESTO POR EMPRESA
+            var queryResultE = Enumerable.From(arregloEmpresas)
+                .Where("$.numdoc == '"+$('#empresa').val()+"'")
+                .Select()
+                .ToArray();
+            //console.log(queryResultE[0]);
+            //FIN - IMPUESTO POR EMPRESA
+            var summaryData = $("#grid2").jqxGrid('getcolumnaggregateddata', 'importe', ['sum']);
+
+            var igv = parseFloat(summaryData.sum * queryResultE[0].impuesto);
+            var subTotal = parseFloat(summaryData.sum - igv);
+            var total = subTotal + igv;
+            //console.log(summaryData.sum);
+            arregloCabCobro.push({
+               pantallaCobro: "NO",
+               fechaEmision: fn_convertFecha_DMY_to_SQL($('#fecha').val()),
+               rucEmpresa: $('#empresa').val(),
+               tipoComprobante: $('#emitir').val(),
+               formaPago: $('#formaPago').val(),
+               nroSerie: $('#serie').val(),
+               nroCorrelativo: $('#correlativo').val(),
+               idPedido: 0,
+               tipoDocumento: queryResult[0].tipo_doc,
+               numDoc: queryResult[0].numdoc,
+               cliente: queryResult[0].descripcion_tutor,
+               direccion: queryResult[0].direccion,
+               subTotal: subTotal,
+               igv: igv,
+               total: total,
+               datosGrilla: JSON.stringify(datos)
+            });
+            //FIN - VALIDACION DE CONTROLES DE EMISION DE PAGOS
+
+            //console.log(arregloCobro[0]);
+            //fn_registrarCabCobro(arregloCabCobro[0], JSON.stringify(datos), queryResultE[0].impuesto);
+            //fn_emisionTicket(arregloCabCobro, datos);
+            //return false;
+            if(confirm("Esta seguro de "+txtMsg+" los datos ?")){
+
+                if(datos.length > 1){
+                    var cont = 0, cont2 = 0;
+                    for(var i = 0; i < datos.length; i++){
+                        //console.log(i);
+                        cont = cont + 1;
+                        $.ajax({
+                            type: "POST",
+                            url: url,
+                            data: datos[i],
+                            dataType: 'json',
+                            success: function(result){
+                                //console.log(result);
+                                if(result.status == "success") {
+                                    //console.log(cont);
+                                    //console.log(i);
+                                    cont2 = cont2 + 1;
+                                }else{
+                                    alert("Error: Vuelva a intentarlo");
+                                    return false;
+                                }
+                            },error: function (xhr, ajaxOptions, thrownError) {
+                                alert("ERROR: " + xhr.responseText+" - "+thrownError);
+                            }
+                        });
+
+                        //console.log("CONTADOR 1: " + cont);
+                        //console.log("CONTADOR 2: " + cont2);
+                        if(cont == datos.length){
+                            //alert("Proceso realizado correctamente");
+                            //UNA VEZ REGISTRADO LA MATRICULA, SE REGISTRA EL COBRO
+                            //SIEMPRE Y CUANDO LA EMSION DE COMPROBANTE SEA DIFERENCTE A "SIN COMPROBANTE"
+                            if($("#emitir").val() != 4){
+                                fn_registrarCabCobro(arregloCabCobro[0], JSON.stringify(datos), queryResultE[0].impuesto);
+                                return false;
+                            }
+                            alert("Proceso realizado correctamente (MATRICULA)");
+                            location.reload();
+                            return false;
+                        }
+                        sleep(1000);
+                    }
+                }else{
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: datos[0],
+                        dataType: 'json',
+                        success: function(result){
+                            //console.log(result);
+                            if(result.status == "success") {
+                                if($("#emitir").val() != 4){
+                                    fn_registrarCabCobro(arregloCabCobro[0], JSON.stringify(datos), queryResultE[0].impuesto);
+                                    return false;
+                                }
+                                alert("Proceso realizado correctamente (MATRICULA)");
+                                location.reload();
+                                return false;
+                            }else{
+                                alert("Error: Vuelva a intentarlo");
+                                return false;
+                            }
+                        },error: function (xhr, ajaxOptions, thrownError) {
+                            alert("ERROR: " + xhr.responseText+" - "+thrownError);
+                        }
+                    });
+                }
+            }
+
+        });
+
+
+        $("#btnTutor").click(function() {
+            $("#departamento").jqxDropDownList('selectItem', '15' );
+            setTimeout(function(){
+                $("#provincia").jqxDropDownList('selectItem', '01' );
+            }, 1000);
+            $('#myModalTutor').modal('show');
+        });
+
+        $("#btnVerHistorico").click(function() {
+            if($("#alumno").val() != ""){
+                fn_listaHistoricoMatricula($("#alumno").val());
+                $('#myModalHistorico').modal('show');
+            }else{
+                alert("Error: Elija un alumno valido");
+                return false;
+            }
+        });
+
+        $("#btnAlumno").click(function() {
+            $("#departamento2").jqxDropDownList('selectItem', '15' );
+            setTimeout(function(){
+                $("#provincia2").jqxDropDownList('selectItem', '01' );
+            }, 1000);
+            $('#myModalAlumno').modal('show');
+        });
+
+        // CONTROLES TUTOR
+        $("#tipoDocumento").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%'
+                }
+            )
+        );
+        $("#sexo").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%'
+                }
+            )
+        );
+        $("#fechaNacimiento").jqxDateTimeInput(
+            $.extend(
+                {}, vDefaultOptionsDateTimeInput, {
+                    width: '120',
+                    formatString: 'dd/MM/yyyy',
+                    showTimeButton: false
+                }
+            )
+        );
+        $("#fechaNacimiento2").jqxDateTimeInput(
+            $.extend(
+                {}, vDefaultOptionsDateTimeInput, {
+                    width: '120',
+                    formatString: 'dd/MM/yyyy',
+                    showTimeButton: false
+                }
+            )
+        );
+        $("#fechaReg").jqxDateTimeInput(
+            $.extend(
+                {}, vDefaultOptionsDateTimeInput, {
+                    width: '120',
+                    formatString: 'dd/MM/yyyy',
+                    showTimeButton: false
+                }
+            )
+        );
+
+        $("#estadoCivil").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%'
+                }
+            )
+        );
+
+        $("#departamento").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%',
+                    dropDownWidth: 250,
+                    dropDownHorizontalAlignment: 'right'
+                }
+            )
+        );
+        $('#departamento').on('change', function (event)
+        {
+            var args = event.args;
+            if (args) {
+                // index represents the item's index.
+                var index = args.index;
+                var item = args.item;
+                // get item's label and value.
+                var label = item.label;
+                var value = item.value;
+
+                //console.log(arrayProv[0]);
+                var queryResult = Enumerable.From(arrayProv[0])
+                    .Where("$.ccod_dpto == '"+value+"'")
+                    .Select()
+                    .ToArray();
+
+                var height = false;
+                if(queryResult.length >= 10){
+                    height = false;
+                }else{
+                    height = true;
+                }
+                $("#provincia").jqxDropDownList({
+                    source: queryResult,
+                    displayMember: "descripcion",
+                    valueMember: "ccod_prov",
+                    dropDownWidth: 250,
+                    dropDownHeight: 250,
+                    autoDropDownHeight: height
+                });
+            }
+        });
+        $("#provincia").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%'
+                }
+            )
+        );
+        $('#provincia').on('change', function (event)
+        {
+            var args = event.args;
+            if (args) {
+                // index represents the item's index.
+                var index = args.index;
+                var item = args.item;
+                // get item's label and value.
+                var label = item.label;
+                var value = item.value;
+
+                //console.log(arrayDist[0]);
+                var queryResult = Enumerable.From(arrayDist[0])
+                    .Where("$.ccod_dpto == '"+$("#departamento").val()+"' && $.ccod_prov == '"+value+"'")
+                    .Select()
+                    .ToArray();
+
+                var height = false;
+                if(queryResult.length >= 10){
+                    height = false;
+                }else{
+                    height = true;
+                }
+                $("#distrito").jqxDropDownList({
+                    source: queryResult,
+                    displayMember: "descripcion",
+                    valueMember: "ccod_dist",
+                    dropDownWidth: 250,
+                    dropDownHeight: 250,
+                    filterable: true,
+                    searchMode: 'containsignorecase',
+                    autoDropDownHeight: height
+                });
+            }
+        });
+        $("#distrito").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%'
+                }
+            )
+        );
+        $("#btnSaveTutor").click(function() {
+            var datos = {
+                id: $("#idTutor").val(),
+                tipoDoc: $("#tipoDocumento").val(),
+                nroDocumento: $("#nroDocumento").val(),
+                nombres: $("#nombres").val(),
+                apepat: $("#apellidoPaterno").val(),
+                apemat: $("#apellidoMaterno").val(),
+                fechaNac: fn_convertFecha_DMY_to_SQL($("#fechaNacimiento").val()),
+                sexo: $("#sexo").val(),
+                estadoCivil: $("#estadoCivil").val(),
+                dpto: $("#departamento").val(),
+                prov: $("#provincia").val(),
+                dist: $("#distrito").val(),
+                direccion: $("#direccion").val(),
+                telefonoFijo: $("#telefonoFijo").val(),
+                celular: $("#celular").val(),
+                email: $("#email").val(),
+                fechaReg: fn_convertFecha_DMY_to_SQL($("#fechaReg").val()),
+                obs: $("#obs").val()
+            };
+            console.log(datos);
+            //return false;
+            var txtMsg = "", url = "";
+            if($("#idTutor").val() != ""){
+                url = "/EG/updTutores";
+                txtMsg = "actualizar";
+            }else{
+                url = "/EG/saveTutores";
+                txtMsg = "registrar";
+            }
+            if(!fn_validarTutor(datos)){
+                return false;
+            };
+            if(confirm("Esta seguro de "+txtMsg+" los datos ?")){
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: datos,
+                    dataType: 'json',
+                    success: function(result){
+                        //console.log(result);
+                        if(result.status == "success") {
+                            alert("Proceso realizado correctamente");
+                            location.reload();
+                            return false;
+                        }else{
+                            alert("Error: Vuelva a intentarlo");
+                            return false;
+                        }
+                    },error: function (xhr, ajaxOptions, thrownError) {
+                        alert("ERROR: " + xhr.responseText+" - "+thrownError);
+                    }
+                });
+            }
+        });
+
+
+
+
+
+
+
+        // CONTROLES DE ALUMNO
+        $("#tutor").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%',
+                    dropDownWidth: 400,
+                    filterable: true,
+                    searchMode: 'containsignorecase'
+                }
+            )
+        );
+        $("#tipoDocumento2").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%'
+                }
+            )
+        );
+        $("#sexo2").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%'
+                }
+            )
+        );
+        $("#departamento2").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%',
+                    //dropDownWidth: 250,
+                    dropDownHorizontalAlignment: 'right'
+                }
+            )
+        );
+        $('#departamento2').on('change', function (event)
+        {
+            var args = event.args;
+            if (args) {
+                // index represents the item's index.
+                var index = args.index;
+                var item = args.item;
+                // get item's label and value.
+                var label = item.label;
+                var value = item.value;
+
+                //console.log(arrayProv[0]);
+                var queryResult = Enumerable.From(arrayProv[0])
+                    .Where("$.ccod_dpto == '"+value+"'")
+                    .Select()
+                    .ToArray();
+
+                var height = false;
+                if(queryResult.length >= 10){
+                    height = false;
+                }else{
+                    height = true;
+                }
+                $("#provincia2").jqxDropDownList({
+                    source: queryResult,
+                    displayMember: "descripcion",
+                    valueMember: "ccod_prov",
+                    //dropDownWidth: 250,
+                    dropDownHeight: 250,
+                    autoDropDownHeight: height
+                });
+            }
+        });
+        $("#provincia2").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%'
+                }
+            )
+        );
+        $('#provincia2').on('change', function (event)
+        {
+            var args = event.args;
+            if (args) {
+                // index represents the item's index.
+                var index = args.index;
+                var item = args.item;
+                // get item's label and value.
+                var label = item.label;
+                var value = item.value;
+
+                //console.log(arrayDist[0]);
+                var queryResult = Enumerable.From(arrayDist[0])
+                    .Where("$.ccod_dpto == '"+$("#departamento2").val()+"' && $.ccod_prov == '"+value+"'")
+                    .Select()
+                    .ToArray();
+
+                var height = false;
+                if(queryResult.length >= 10){
+                    height = false;
+                }else{
+                    height = true;
+                }
+                $("#distrito2").jqxDropDownList({
+                    source: queryResult,
+                    displayMember: "descripcion",
+                    valueMember: "ccod_dist",
+                    //dropDownWidth: 250,
+                    dropDownHeight: 250,
+                    filterable: true,
+                    searchMode: 'containsignorecase',
+                    autoDropDownHeight: height
+                });
+            }
+        });
+        $("#distrito2").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%'
+                }
+            )
+        );
+        var vEsSalud = ['SI','NO'];
+        $("#esSalud").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%',
+                    source: vEsSalud,
+                    autoDropDownHeight: true
+                }
+            )
+        );
+        $("#ciaSeg").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%'
+                }
+            )
+        );
+        $("#tipoAlumno").jqxDropDownList(
+            $.extend(
+                {}, vDefaultOptionsDropDownList, {
+                    width: '100%'
+                }
+            )
+        );
+
+
+        $("#btnSaveAlumno").click(function() {
+            var datos = {
+                id: $("#idAlumno").val(),
+                idTutor: $("#tutor").val(),
+                tipoDoc: $("#tipoDocumento2").val(),
+                nroDocumento: $("#nroDocumento2").val(),
+                nombres: $("#nombres2").val(),
+                apepat: $("#apellidoPaterno2").val(),
+                apemat: $("#apellidoMaterno2").val(),
+                fechaNac: fn_convertFecha_DMY_to_SQL($("#fechaNacimiento2").val()),
+                sexo: $("#sexo2").val(),
+                dpto: $("#departamento2").val(),
+                prov: $("#provincia2").val(),
+                dist: $("#distrito2").val(),
+                direccion: $("#direccion2").val(),
+                esSalud: $("#esSalud").val(),
+                ciaSeguro: $("#ciaSeg").val(),
+                enfermedades: $("#enfermedades").val(),
+                alergias: $("#alergias").val(),
+
+                apepatMama: $("#apepatMama").val(),
+                apematMama: $("#apematMama").val(),
+                nombresMama: $("#nombresMama").val(),
+                telefonoFijoMama: $("#telefonoFijoMama").val(),
+                CelularMama: $("#CelularMama").val(),
+                emailMama: $("#emailMama").val(),
+
+                apepatPapa: $("#apepatPapa").val(),
+                apematPapa: $("#apematPapa").val(),
+                nombresPapa: $("#nombresPapa").val(),
+                telefonoFijoPapa: $("#telefonoFijoPapa").val(),
+                CelularPapa: $("#CelularPapa").val(),
+                emailPapa: $("#emailPapa").val(),
+
+                obs: $("#obs2").val()
+            };
+            console.log(datos);
+            if(!fn_validarAlumno(datos)){
+                return false;
+            };
+
+            //return false;
+            var txtMsg = "", url = "";
+            if($("#idAlumno").val() != ""){
+                url = "/EG/updAlumnos";
+                txtMsg = "actualizar";
+            }else{
+                url = "/EG/SaveAlumnos";
+                txtMsg = "registrar";
+            }
+
+            if(confirm("Esta seguro de "+txtMsg+" los datos ?")){
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: datos,
+                    dataType: 'json',
+                    success: function(result){
+                        //console.log(result);
+                        if(result.status == "success") {
+                            alert("Proceso realizado correctamente");
+                            location.reload();
+                            return false;
+                        }else{
+                            alert("Error: Vuelva a intentarlo");
+                            return false;
+                        }
+                    },error: function (xhr, ajaxOptions, thrownError) {
+                        alert("ERROR: " + xhr.responseText+" - "+thrownError);
+                    }
+                });
+            }
+        });
+
+
+        $("#btnPrint").click(function() {
+            $("#viewTicket").printThis();
+        });
+
+        var arrayProv = [], arrayDist = [];
+        $.when(
+            $.ajax("/listaTipoDoc"),
+            $.ajax("/listaEstadoCivil"),
+            $.ajax("/listaSexo"),
+            $.ajax("/listaDepartamentos"),
+            $.ajax("/listaProvincias"),
+            $.ajax("/listaDistritos"),
+            $.ajax("/listaTutoresSimple"),
+            $.ajax("/listaCiaSeguro"),
+            $.ajax("/listaTipoAlumno")
+        ).done(function( json1, json2, json3, json4, json5, json6, json7, json8, json9 ) {
+            //console.log(json1[0].registros[0]);
+            if(json1[0].status == "success"){
+                $("#tipoDocumento").jqxDropDownList({
+                    source: json1[0].registros[0],
+                    displayMember: "descripcion",
+                    valueMember: "id_tipo_documento",
+                    autoDropDownHeight: true
+                });
+                $("#tipoDocumento2").jqxDropDownList({
+                    source: json1[0].registros[0],
+                    displayMember: "descripcion",
+                    valueMember: "id_tipo_documento",
+                    autoDropDownHeight: true
+                });
+            }else{
+                alert("Error: al cargar los tipo de documentos");
+                return false;
+            }
+
+            if(json2[0].status == "success"){
+                $("#estadoCivil").jqxDropDownList({
+                    source: json2[0].registros,
+                    displayMember: "descripcion",
+                    valueMember: "id_estado_civil",
+                    autoDropDownHeight: true
+                });
+            }else{
+                alert("Error: al cargar estado civil");
+                return false;
+            }
+
+            if(json3[0].status == "success"){
+                $("#sexo").jqxDropDownList({
+                    source: json3[0].registros,
+                    displayMember: "descripcion",
+                    valueMember: "id_sexo",
+                    autoDropDownHeight: true
+                });
+                $("#sexo2").jqxDropDownList({
+                    source: json3[0].registros,
+                    displayMember: "descripcion",
+                    valueMember: "id_sexo",
+                    autoDropDownHeight: true
+                });
+            }else{
+                alert("Error: al cargar datos de sexo");
+                return false;
+            }
+
+            if(json4[0].status == "success"){
+                $("#departamento").jqxDropDownList({
+                    source: json4[0].registros,
+                    displayMember: "descripcion",
+                    valueMember: "ccod_dpto",
+                    dropDownHeight: 250
+                });
+                $("#departamento2").jqxDropDownList({
+                    source: json4[0].registros,
+                    displayMember: "descripcion",
+                    valueMember: "ccod_dpto",
+                    dropDownHeight: 250
+                });
+            }else{
+                alert("Error: al cargar departamentos");
+                return false;
+            }
+
+            if(json5[0].status == "success"){
+                arrayProv.push(json5[0].registros);
+            }else{
+                alert("Error: al cargar provincias");
+                return false;
+            }
+
+            if(json6[0].status == "success"){
+                arrayDist.push(json6[0].registros);
+            }else{
+                alert("Error: al cargar provincias");
+                return false;
+            }
+
+            if(json7[0].status == "success"){
+                //console.log(json2[0].registros);
+                $("#tutor").jqxDropDownList({
+                    source: json7[0].registros,
+                    displayMember: "descripcion",
+                    valueMember: "id_tutor",
+                    dropDownHeight: 250
+                });
+            }else{
+                alert("Error: al cargar tutores");
+                return false;
+            }
+
+            if(json8[0].status == "success"){
+                $("#ciaSeg").jqxDropDownList({
+                    source: json8[0].registros[0],
+                    displayMember: "descripcion",
+                    valueMember: "id_seguro_medico",
+                    dropDownWidth: 150,
+                    autoDropDownHeight: true
+                });
+            }else{
+                alert("Error: al cargar cia seguros");
+                return false;
+            }
+
+            if(json9[0].status == "success"){
+                $("#tipoAlumno").jqxDropDownList({
+                    source: json9[0].registros[0],
+                    displayMember: "descripcion",
+                    valueMember: "id",
+                    selectedIndex: 0,
+                    autoDropDownHeight: true
+                });
+            }else{
+                alert("Error: al cargar datos de tipo de alumno");
+                return false;
+            }
+
+        });
+
+
+        function fn_listaMatricula(fechaIni, fechaFin){
+            var fechaIniSql = fn_convertFecha_DMY_to_SQL(fechaIni);
+            var fechaFinSql = fn_convertFecha_DMY_to_SQL(fechaFin);
+
+            $.getJSON('/listaMatricula/'+fechaIniSql+'/'+fechaFinSql, function(json) {
+                //console.log(json);
+                var source =
+                    {
+                        datatype: "json",
+                        datafields: [
+                            { name: 'id_matricula', type: 'int'},
+                            { name: 'id_alumno', type: 'int'},
+                            { name: 'alumno', type: 'string'},
+                            { name: 'id_horario', type: 'int'},
+                            { name: 'clase', type: 'string'},
+                            { name: 'fecha_matricula', type: 'string'},
+                            { name: 'anio_matricula', type: 'int'},
+                            { name: 'mes_matricula', type: 'int'},
+                            { name: 'mes', type: 'string'},
+                            { name: 'importe', type: 'float'},
+                            { name: 'saldo', type: 'float'},
+                            { name: 'id_profesor', type: 'int'},
+                            { name: 'nombre_corto', type: 'string'}
+                        ],
+                        localdata: json.registros[0]
+                    };
+                var dataAdapter = new $.jqx.dataAdapter(source);
+
+                $("#grid").jqxGrid(
+                {
+                    source: dataAdapter
+                });
+            });
+        }
+
+        fn_listaMatricula($("#FechaIniOS").val(), $("#FechaFinOS").val());
+
+
+        function fn_listaHistoricoMatricula(idAlumno){
+            $.getJSON('/listaHistorialMatricula/'+idAlumno, function(json) {
+                //console.log(json);
+                var source =
+                {
+                    datatype: "json",
+                    datafields: [
+                        { name: 'clase', type: 'string'},
+                        { name: 'mes_matricula', type: 'string'},
+                        { name: 'anio_matricula', type: 'int'},
+                        { name: 'fecha_matricula', type: 'string'},
+                        { name: 'importe', type: 'float'},
+                        { name: 'importe_pagado', type: 'float'},
+                        { name: 'saldo', type: 'float'}
+                    ],
+                    localdata: json.registros[0]
+                };
+                var dataAdapter = new $.jqx.dataAdapter(source);
+
+                $("#grid3").jqxGrid(
+                {
+                    source: dataAdapter
+                });
+            });
+        }
+
+        //$("#viewTicket").load( "/ticket" );
+        //$('#myModalTicket').modal('show');
+        /*setTimeout(function(){
+            printDiv();
+            $("#viewTicket").printThis();
+            $('#viewTicket').printElement();
+        }, 2000);*/
+
+        function printDiv()
+        {
+            var divToPrint=document.getElementById('viewTicket');
+            var newWin=window.open('','Print-Window');
+            newWin.document.open();
+            newWin.document.write('<html><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>');
+            newWin.document.close();
+            setTimeout(function(){newWin.close();},10);
+        }
+    });
+</script>
+</body>
+</html>

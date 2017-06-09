@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Escuela de Gimnasia</title>
+
+
+</head>
+<body>
+    <% include menu %>
+
+    <div id="myModal" class="modal modal-wide2 modal-high2 fade" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">EDADES</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 nopadding">
+
+                            <div class="form-group row">
+                                <label for="descripcion" class="col-md-3 col-form-label col-form-label-sm">Descripcion</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-sm" id="descripcion">
+                                    <input type="hidden" class="form-control form-control-sm" id="id">
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnSave">Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCerrar">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id='Menu'>
+        <ul>
+            <li>Eliminar</li>
+        </ul>
+    </div>
+
+    <div id='Menu2'>
+        <ul>
+            <li>Eliminar</li>
+        </ul>
+    </div>
+
+    <div id="myModal2" class="modal modal-wide2 modal-high2 fade" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">DIAS</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 nopadding">
+
+                            <div class="form-group row">
+                                <label for="descripcion2" class="col-md-3 col-form-label col-form-label-sm">Descripcion</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-sm" id="descripcion2">
+                                    <input type="hidden" class="form-control form-control-sm" id="id2">
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnSave2">Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCerrar2">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row fill-height-91">
+        <div class="col-md-6 fill-height-91">
+            <div id="jqxToolBar"></div>
+            <div id="grid"></div>
+        </div>
+        <div class="col-md-6 fill-height-91">
+            <div id="jqxToolBar2"></div>
+            <div id="grid2"></div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="javascripts/scripts.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#jqxToolBar").jqxToolBar(
+                $.extend( {},
+                    vDefaultOptionsToolBar,
+                    {
+                        tools: 'custom | custom | custom',
+                        initTools: function (type, index, tool, menuToolIninitialization) {
+                            switch (index) {
+                                case 0:
+                                    var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'><b>EDADES &nbsp;&nbsp; </b></div>";
+                                    tool.append(label);
+                                    break;
+                                case 1:
+                                    var addBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/add.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                        theme: theme2,
+                                        width: 30,
+                                        height: 19
+                                    });
+                                    tool.append(addBtn);
+                                    addBtn.click(function (event) {
+                                        $("#btnSave").text("Guardar");
+                                        $("#id").val("");
+                                        $("#descripcion").val("");
+                                        $('#myModal').modal('show');
+                                    });
+                                    break;
+                                case 2:
+                                    var exportBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/icon_excel_02_20.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                        theme: theme2,
+                                        width: 30,
+                                        height: 19
+                                    });
+                                    tool.append(exportBtn);
+                                    exportBtn.click(function (event) {
+                                        var JSONData = $("#grid").jqxGrid('exportdata', 'json');
+                                        fn_JSONToCSVConvertor(JSONData, "ReporteEdades", "", true);
+                                    });
+                                    break;
+                            }
+                        }
+                    }
+                )
+            )
+
+            $("#jqxToolBar2").jqxToolBar(
+                $.extend( {},
+                    vDefaultOptionsToolBar,
+                    {
+                        tools: 'custom | custom | custom',
+                        initTools: function (type, index, tool, menuToolIninitialization) {
+                            switch (index) {
+                                case 0:
+                                    var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'><b>DIAS &nbsp;&nbsp; </b></div>";
+                                    tool.append(label);
+                                    break;
+                                case 1:
+                                    var addBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/add.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                        theme: theme2,
+                                        width: 30,
+                                        height: 19
+                                    });
+                                    tool.append(addBtn);
+                                    addBtn.click(function (event) {
+                                        $("#btnSave2").text("Guardar");
+                                        $("#id2").val("");
+                                        $("#descripcion2").val("");
+                                        $('#myModal2').modal('show');
+                                    });
+                                    break;
+                                case 2:
+                                    var exportBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/icon_excel_02_20.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                        theme: theme2,
+                                        width: 30,
+                                        height: 19
+                                    });
+                                    tool.append(exportBtn);
+                                    exportBtn.click(function (event) {
+                                        var JSONData = $("#grid2").jqxGrid('exportdata', 'json');
+                                        fn_JSONToCSVConvertor(JSONData, "ReporteEdades", "", true);
+                                    });
+                                    break;
+                            }
+                        }
+                    }
+                )
+            )
+
+
+            $.when(
+                $.ajax("/listaEdades"),
+                $.ajax("/listaDias")
+            ).done(function( json1, json2) {
+                //console.log(json1[0].registros);
+                var source =
+                    {
+                        datatype: "json",
+                        datafields: [
+                            { name: 'id_edad', type: 'int'},
+                            { name: 'descripcion', type: 'string'},
+                            { name: 'estado', type: 'string'}
+                        ],
+                        localdata: json1[0].registros
+                    };
+                var dataAdapter = new $.jqx.dataAdapter(source);
+
+                $("#grid").jqxGrid(
+                {
+                    source: dataAdapter
+                });
+
+                //console.log(json2.registros);
+                var source2 =
+                    {
+                        datatype: "json",
+                        datafields: [
+                            { name: 'id', type: 'int'},
+                            { name: 'descripcion', type: 'string'},
+                            { name: 'estado', type: 'string'}
+                        ],
+                        localdata: json2[0].registros
+                    };
+                var dataAdapter2 = new $.jqx.dataAdapter(source2);
+
+                $("#grid2").jqxGrid(
+                {
+                    source: dataAdapter2
+                });
+
+
+            });
+
+
+            /*$.getJSON('/listaEdades/', function(json) {
+
+                //console.log(json.registros);
+                var source =
+                    {
+                        datatype: "json",
+                        datafields: [
+                            { name: 'id_edad', type: 'int'},
+                            { name: 'descripcion', type: 'string'},
+                            { name: 'estado', type: 'string'}
+                        ],
+                        localdata: json.registros
+                    };
+                var dataAdapter = new $.jqx.dataAdapter(source);
+
+                $("#grid").jqxGrid(
+                {
+                    source: dataAdapter
+                });
+
+            });*/
+
+            $("#grid").jqxGrid(
+                $.extend(
+                    {}, vDefaultOptionsGrid,
+                    {
+                        groupable: false,
+                        selectionmode: 'singlerow',
+                        columns: [
+                            { text: 'Codigo', align: 'center', datafield: 'id_edad', cellsalign: 'right', width: '15%' },
+                            { text: 'Descripcion edades', align: 'center', datafield: 'descripcion', cellsalign: 'left', width: '85%' }
+                        ]
+                    }
+                )
+            );
+            var contextMenu = $("#Menu").jqxMenu({
+                theme: theme3,
+                width: 150,
+                height: 30,
+                autoOpenPopup: false,
+                mode: 'popup'
+            });
+            $("#grid").on('contextmenu', function () {
+                return false;
+            });
+
+            $("#Menu").on('itemclick', function (event) {
+                var args = event.args;
+                var rowindex = $("#grid").jqxGrid('getselectedrowindex');
+                var dataRecord = $("#grid").jqxGrid('getrowdata', rowindex);
+
+                //console.log(dataRecord);
+                //return false;
+                if ( $.trim($(args).text()) == "Editar" ) {
+
+                } else if( $.trim($(args).text()) == "Eliminar" ) {
+                    if(confirm("Esta seguro de eliminar el registro?")) {
+                        var rowid = $("#grid").jqxGrid('getrowid', rowindex);
+                        var datos = {
+                            id: dataRecord.id_edad,
+                            tabla: 'gim_edades'
+                        };
+                        $.ajax({
+                            type: "POST",
+                            url: '/EG/eliminarRegistroTabla/',
+                            data: datos,
+                            dataType: 'json',
+                            success: function (result) {
+                                //console.log(result);
+                                if (result.status == "success") {
+                                    //alert("Proceso realizado correctamente");
+                                    $("#grid").jqxGrid('deleterow', rowid);
+                                    return false;
+                                } else {
+                                    alert("Error: Vuelva a intentarlo");
+                                    return false;
+                                }
+                            }, error: function (xhr, ajaxOptions, thrownError) {
+                                alert("ERROR: " + xhr.responseText + " - " + thrownError);
+                            }
+                        });
+                    }
+                }
+            });
+            $("#grid").on('rowclick', function (event) {
+                if (event.args.rightclick) {
+                    $("#grid").jqxGrid('selectrow', event.args.rowindex);
+                    var scrollTop = $(window).scrollTop();
+                    var scrollLeft = $(window).scrollLeft();
+                    contextMenu.jqxMenu('open', parseInt(event.args.originalEvent.clientX) + 5 + scrollLeft, parseInt(event.args.originalEvent.clientY) + 5 + scrollTop);
+                    return false;
+                }
+            });
+            $('#grid').on('rowdoubleclick', function (event)
+            {
+                var args = event.args;
+                // row's bound index.
+                var boundIndex = args.rowindex;
+                var data = $('#grid').jqxGrid('getrowdata', boundIndex);
+                $("#id").val(data.id_edad);
+                $("#descripcion").val(data.descripcion);
+
+                $("#btnSave").text("Actualizar");
+                $('#myModal').modal('show');
+            })
+
+
+            $("#grid2").jqxGrid(
+                $.extend(
+                    {}, vDefaultOptionsGrid,
+                    {
+                        groupable: false,
+                        selectionmode: 'singlerow',
+                        columns: [
+                            { text: 'Codigo', align: 'center', datafield: 'id', cellsalign: 'right', width: '15%' },
+                            { text: 'Descripcion dias', align: 'center', datafield: 'descripcion', cellsalign: 'left', width: '85%' }
+                        ]
+                    }
+                )
+            );
+            var contextMenu2 = $("#Menu2").jqxMenu({
+                theme: theme3,
+                width: 150,
+                height: 30,
+                autoOpenPopup: false,
+                mode: 'popup'
+            });
+            $("#grid2").on('contextmenu', function () {
+                return false;
+            });
+
+            $("#Menu2").on('itemclick', function (event) {
+                var args = event.args;
+                var rowindex = $("#grid2").jqxGrid('getselectedrowindex');
+                var dataRecord = $("#grid2").jqxGrid('getrowdata', rowindex);
+
+                //console.log(dataRecord);
+                //return false;
+                if ( $.trim($(args).text()) == "Editar" ) {
+
+                } else if( $.trim($(args).text()) == "Eliminar" ) {
+                    if(confirm("Esta seguro de eliminar el registro?")) {
+                        //var rowid = $("#grid").jqxGrid('getrowid', rowindex);
+                        var datos = {
+                            id: dataRecord.id,
+                            tabla: 'gim_dias'
+                        };
+                        $.ajax({
+                            type: "POST",
+                            url: '/EG/eliminarRegistroTabla/',
+                            data: datos,
+                            dataType: 'json',
+                            success: function (result) {
+                                //console.log(result);
+                                if (result.status == "success") {
+                                    //alert("Proceso realizado correctamente");
+                                    $("#grid2").jqxGrid('deleterow', rowid);
+                                    return false;
+                                } else {
+                                    alert("Error: Vuelva a intentarlo");
+                                    return false;
+                                }
+                            }, error: function (xhr, ajaxOptions, thrownError) {
+                                alert("ERROR: " + xhr.responseText + " - " + thrownError);
+                            }
+                        });
+                    }
+                }
+            });
+            $("#grid2").on('rowclick', function (event) {
+                if (event.args.rightclick) {
+                    $("#grid").jqxGrid('selectrow', event.args.rowindex);
+                    var scrollTop = $(window).scrollTop();
+                    var scrollLeft = $(window).scrollLeft();
+                    contextMenu2.jqxMenu('open', parseInt(event.args.originalEvent.clientX) + 5 + scrollLeft, parseInt(event.args.originalEvent.clientY) + 5 + scrollTop);
+                    return false;
+                }
+            });
+            $('#grid2').on('rowdoubleclick', function (event)
+            {
+                var args = event.args;
+                // row's bound index.
+                var boundIndex = args.rowindex;
+                var data = $('#grid2').jqxGrid('getrowdata', boundIndex);
+                $("#id2").val(data.id);
+                $("#descripcion2").val(data.descripcion);
+
+                $("#btnSave2").text("Actualizar");
+                $('#myModal2').modal('show');
+            })
+
+
+            $("#btnSave").click(function() {
+                var datos = {
+                    id: $("#id").val(),
+                    descripcion: $("#descripcion").val()
+                };
+                console.log(datos);
+                var txtMsg = "", url = "";
+                if($("#id").val() != ""){
+                    url = "/EG/updEdades";
+                    txtMsg = "actualizar";
+                }else{
+                    url = "/EG/saveEdades";
+                    txtMsg = "registrar";
+                }
+
+                if(confirm("Esta seguro de "+txtMsg+" los datos ?")){
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: datos,
+                        dataType: 'json',
+                        success: function(result){
+                            //console.log(result);
+                            if(result.status == "success") {
+                                alert("Proceso realizado correctamente");
+                                location.reload();
+                                return false;
+                            }else{
+                                alert("Error: Vuelva a intentarlo");
+                                return false;
+                            }
+                        },error: function (xhr, ajaxOptions, thrownError) {
+                            alert("ERROR: " + xhr.responseText+" - "+thrownError);
+                        }
+                    });
+                }
+            });
+
+            $("#btnSave2").click(function() {
+                var datos = {
+                    id: $("#id2").val(),
+                    descripcion: $("#descripcion2").val()
+                };
+                console.log(datos);
+                var txtMsg = "", url = "";
+                if($("#id2").val() != ""){
+                    url = "/EG/updDias";
+                    txtMsg = "actualizar";
+                }else{
+                    url = "/EG/saveDias";
+                    txtMsg = "registrar";
+                }
+
+                if(confirm("Esta seguro de "+txtMsg+" los datos ?")){
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: datos,
+                        dataType: 'json',
+                        success: function(result){
+                            //console.log(result);
+                            if(result.status == "success") {
+                                alert("Proceso realizado correctamente");
+                                location.reload();
+                                return false;
+                            }else{
+                                alert("Error: Vuelva a intentarlo");
+                                return false;
+                            }
+                        },error: function (xhr, ajaxOptions, thrownError) {
+                            alert("ERROR: " + xhr.responseText+" - "+thrownError);
+                        }
+                    });
+                }
+            });
+
+
+
+        });
+    </script>
+</body>
+</html>

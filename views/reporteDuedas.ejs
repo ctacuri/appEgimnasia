@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Escuela de Gimnasia</title>
+
+</head>
+<body>
+<% include menu %>
+
+
+
+
+<script type="text/javascript" src="javascripts/scripts.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $("#jqxToolBar").jqxToolBar(
+            $.extend( {},
+                vDefaultOptionsToolBar,
+                {
+                    tools: 'custom | custom | custom | custom | custom | custom | custom | custom | custom', //| input | custom | custom | custom | custom
+                    initTools: function (type, index, tool, menuToolIninitialization) {
+                        switch (index) {
+                            case 0:
+                                var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'><b>MATRICULA &nbsp;&nbsp; </b></div>";
+                                tool.append(label);
+                                break;
+                            case 1:
+                                var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Inicio: </div>";
+                                tool.append(label);
+                                break;
+                            case 2:
+                                var fecha = $("<div id='FechaIniOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
+                                    theme: theme2,
+                                    value: new Date(anioActual, mesActual, 1),
+                                    width: 105,
+                                    height: 25,
+                                    culture: 'es-ES'
+                                });
+                                tool.append(fecha);
+                                break;
+                            case 3:
+                                var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Fin: </div>";
+                                tool.append(label);
+                                break;
+                            case 4:
+                                var fecha = $("<div id='FechaFinOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
+                                    theme: theme2,
+                                    value: new Date(anioActual, mesActual, ultimoDiaMesActual),
+                                    width: 105,
+                                    height: 25,
+                                    culture: 'es-ES'
+                                });
+                                tool.append(fecha);
+                                break;
+                            case 5:
+                                var toggleBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/notepad-20.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxToggleButton({
+                                    theme: theme2,
+                                    width: 30,
+                                    height: 19,
+                                    toggled: true
+                                });
+                                tool.append(toggleBtn);
+                                toggleBtn.click(function (event) {
+                                    var toggled = toggleBtn.jqxToggleButton('toggled');
+                                    if (toggled) {
+                                        console.log('Toggled On');
+                                    } else {
+                                        console.log('Toggled Off');
+                                    }
+                                });
+                                break;
+                            case 6:
+                                var searchBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/search.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                    theme: theme2,
+                                    width: 30,
+                                    height: 19
+                                });
+                                tool.append(searchBtn);
+                                searchBtn.click(function (event) {
+                                    var tools = $("#jqxToolBar").jqxToolBar("getTools");
+                                    var fechaIni = $("#FechaIniOS").val();
+                                    var fechaFin = $("#FechaFinOS").val();
+                                    var fechaIniSql = fechaIni.substring(6,10)+'-'+fechaIni.substring(3,5)+"-"+fechaIni.substring(0,2);
+                                    var fechaFinSql = fechaFin.substring(6,10)+'-'+fechaFin.substring(3,5)+"-"+fechaFin.substring(0,2);
+
+                                    fn_listaTrabGridMap(fechaIniSql,fechaFinSql,usuario);
+                                });
+                                break;
+                            case 7:
+                                var exportBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/icon_excel_02_20.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                    theme: theme2,
+                                    width: 30,
+                                    height: 19
+                                });
+                                tool.append(exportBtn);
+                                exportBtn.click(function (event) {
+                                    var tools = $("#jqxToolBar").jqxToolBar("getTools");
+                                    var fechaIni = $("#FechaIniOS").val();
+                                    var fechaFin = $("#FechaFinOS").val();
+                                    var fechaIniSql = fechaIni.substring(6,10)+'-'+fechaIni.substring(3,5)+"-"+fechaIni.substring(0,2);
+                                    var fechaFinSql = fechaFin.substring(6,10)+'-'+fechaFin.substring(3,5)+"-"+fechaFin.substring(0,2);
+
+                                });
+                                break;
+                        }
+                    }
+                }
+            )
+        )
+
+
+        $("#grid").jqxGrid(
+            $.extend(
+                {}, vDefaultOptionsGrid,
+                {
+                    pageable: true,
+                    pagermode: 'simple',
+                    selectionmode: 'singlerow',
+                    columns: [
+                        { text: 'Id matricula', align: 'center', datafield: 'CODIGO_VEHICULO', cellsalign: 'center', width: '10%' },
+                        { text: 'Alumno', align: 'center', datafield: 'NUMBER_BOX', cellsalign: 'right', width: '30%'},
+                        { text: 'Horario', align: 'center', datafield: 'ESTADO_DISP', cellsalign: 'center', width: '30%' },
+                        { text: 'Fecha', align: 'center', datafield: 'ACTIVACION', cellsalign: 'right', width: '10%' },
+                        { text: 'Año', align: 'center', datafield: 'RESPUESTA', cellsalign: 'right', width: '10%' },
+                        { text: 'Mes', align: 'center', datafield: 'UBICACION', cellsalign: 'right', width: '10%' },
+                        { text: 'Profesor', align: 'center', datafield: 'FECHA_DMY', cellsalign: 'center', width: '30%' }
+                    ]
+                }
+            )
+        );
+
+    });
+</script>
+</body>
+</html>

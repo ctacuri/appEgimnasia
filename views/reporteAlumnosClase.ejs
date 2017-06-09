@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Escuela de Gimnasia</title>
+
+</head>
+<body>
+<% include menu %>
+
+<div class="row fill-height-91">
+    <div class="col-md-12 fill-height-91">
+        <div id="jqxToolBar"></div>
+        <div id="grid"></div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="javascripts/scripts.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var meses = [
+            { id_mes: 1, mes: "Enero"},
+            { id_mes: 2, mes: "Febrero"},
+            { id_mes: 3, mes: "Marzo"},
+            { id_mes: 4, mes: "Abril"},
+            { id_mes: 5, mes: "Mayo"},
+            { id_mes: 6, mes: "Junio"},
+            { id_mes: 7, mes: "Julio"},
+            { id_mes: 8, mes: "Agosto"},
+            { id_mes: 9, mes: "Setiembre"},
+            { id_mes: 10, mes: "Octubre"},
+            { id_mes: 11, mes: "Noviembre"},
+            { id_mes: 12, mes: "Diciembre"}
+        ];
+
+        var f = new Date();
+        var anios = [];
+
+        for(var x= f.getFullYear() + 1; x>= 2007;x--){
+            anios.push(x);
+        }
+
+        $("#jqxToolBar").jqxToolBar(
+                $.extend( {},
+                        vDefaultOptionsToolBar,
+                        {
+                            tools: 'custom | custom | dropdownlist | custom | dropdownlist | custom | dropdownlist | custom | custom', //| input | custom | custom | custom | custom
+                            initTools: function (type, index, tool, menuToolIninitialization) {
+                                switch (index) {
+                                    case 0:
+                                        var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'><b>ALUMNOS POR CLASE &nbsp;&nbsp; </b></div>";
+                                        tool.append(label);
+                                        break;
+                                    case 1:
+                                        var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Mes: </div>";
+                                        tool.append(label);
+                                        break;
+                                    case 2:
+                                        tool.jqxDropDownList(
+                                            $.extend(
+                                                {}, vDefaultOptionsDropDownList, {
+                                                    width: 80,
+                                                    source: meses,
+                                                    displayMember: "mes",
+                                                    valueMember: "id_mes",
+                                                    dropDownHeight: 100
+                                                }
+                                            )
+                                        );
+                                        tool.jqxDropDownList('selectItem', mesActual + 1);
+                                        break;
+                                    case 3:
+                                        var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Año: </div>";
+                                        tool.append(label);
+                                        break;
+                                    case 4:
+                                        tool.jqxDropDownList(
+                                            $.extend(
+                                                {}, vDefaultOptionsDropDownList, {
+                                                    width: 80,
+                                                    source: anios,
+                                                    dropDownHeight: 100
+                                                }
+                                            )
+                                        );
+                                        tool.jqxDropDownList('selectItem', anioActual);
+                                        break;
+                                    case 5:
+                                        var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Horario: </div>";
+                                        tool.append(label);
+                                        break;
+                                    case 6:
+                                        tool.jqxDropDownList(
+                                            $.extend(
+                                                {}, vDefaultOptionsDropDownList, {
+                                                    width: 120
+                                                }
+                                            )
+                                        );
+                                        break;
+                                    case 7:
+                                        var searchBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/search.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                            theme: theme2,
+                                            width: 30,
+                                            height: 19
+                                        });
+                                        tool.append(searchBtn);
+                                        searchBtn.click(function (event) {
+                                            var tools = $("#jqxToolBar").jqxToolBar("getTools");
+                                            var mes = tools[2].tool.jqxDropDownList('val');
+                                            var anio = tools[4].tool.jqxDropDownList('val');
+                                            var id_horario = tools[6].tool.jqxDropDownList('val');
+                                            if(id_horario != ""){
+                                                fn_reporteAlumnosClase(mes, anio, id_horario);
+                                            }else{
+                                                alert("Error: debe elegir un horario valido");
+                                                return false;
+                                            }
+                                        });
+                                        break;
+                                    case 8:
+                                        var exportBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/icon_excel_02_20.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                            theme: theme2,
+                                            width: 30,
+                                            height: 19
+                                        });
+                                        tool.append(exportBtn);
+                                        exportBtn.click(function (event) {
+                                            var tools = $("#jqxToolBar").jqxToolBar("getTools");
+                                            var JSONData = $("#grid").jqxGrid('exportdata', 'json');
+                                            fn_JSONToCSVConvertor(JSONData, "RepAlumnos_x_Clase", "", true);
+                                        });
+                                        break;
+                                }
+                            }
+                        }
+                )
+        )
+
+        var arregloHorarios = [];
+        $.when(
+            $.ajax("/listaHorariosSimple")
+        ).done(function( json1 ) {
+            console.log(json1.registros[0]);
+            for(var y = 0; y<json1.registros[0].length; y++){
+                arregloHorarios.push(
+                    {
+                        id_horario: json1.registros[0][y].id_horario,
+                        clase: json1.registros[0][y].clase,
+                        id_profesor: json1.registros[0][y].id_profesor,
+                        importe: json1.registros[0][y].importe
+                    }
+                );
+            }
+
+            var tools = $("#jqxToolBar").jqxToolBar("getTools");
+
+            if(json1.status == "success"){
+                var arrarHorarioTodos = [{
+                    id_horario: 0,
+                    clase: "TODOS"
+                }];
+
+                tools[6].tool.jqxDropDownList({
+                    source: arregloHorarios.concat(arrarHorarioTodos).sort().reverse(),
+                    displayMember: "clase",
+                    valueMember: "id_horario",
+                    dropDownWidth: 350,
+                    dropDownHeight: 250,
+                    filterable: true,
+                    searchMode: 'containsignorecase'
+                });
+            }else{
+                alert("Error: al cargar horarios");
+                return false;
+            }
+
+        });
+
+        $("#grid").jqxGrid(
+            $.extend(
+                {}, vDefaultOptionsGrid,
+                {
+                    pageable: true,
+                    pagermode: 'simple',
+                    selectionmode: 'singlerow',
+                    columns: [
+                        { text: 'Año', align: 'center', datafield: 'anio_matricula', cellsalign: 'right', width: '8%' },
+                        { text: 'Mes', align: 'center', datafield: 'mes_matricula', cellsalign: 'right', width: '8%' },
+                        //{ text: 'Sexo', align: 'center', datafield: 'SEXO', cellsalign: 'right', width: '10%' },
+                        //{ text: 'Edades', align: 'center', datafield: 'EDADES', cellsalign: 'right', width: '10%' },
+                        //{ text: 'Dias', align: 'center', datafield: 'DIAS', cellsalign: 'center', width: '10%' },
+                        { text: 'Horario', align: 'center', datafield: 'horario', cellsalign: 'left', width: '30%' },
+                        { text: 'Profesor', align: 'center', datafield: 'profesor', cellsalign: 'left', width: '30%' },
+                        { text: 'Id Alumno', align: 'center', datafield: 'id_alumno', cellsalign: 'right', width: '7%' },
+                        { text: 'Apellidos', align: 'center', datafield: 'apellidos_alumno', cellsalign: 'left', width: '20%' },
+                        { text: 'Nombres', align: 'center', datafield: 'nombres_alumno', cellsalign: 'left', width: '20%' },
+                        { text: 'Saldo', align: 'center', datafield: 'saldo', cellsalign: 'right', width: '7%', cellsformat: 'd2' },
+                        { text: 'Tutor', align: 'center', datafield: 'tutor', cellsalign: 'left', width: '30%' },
+                        { text: 'Telefono', align: 'center', datafield: 'telefono_tutor', cellsalign: 'right', width: '10%' },
+                        { text: 'Celular', align: 'center', datafield: 'celular_tutor', cellsalign: 'right', width: '10%' },
+                        { text: 'Email', align: 'center', datafield: 'email_tutor', cellsalign: 'left', width: '30%' }
+                    ]
+                }
+            )
+        );
+
+        function fn_reporteAlumnosClase(mes, anio, id_horario){
+            $.getJSON('/reporteAlumnosClase/'+mes+'/'+anio+'/'+id_horario, function(json) {
+                //console.log(json);
+                var source =
+                {
+                    datatype: "json",
+                    datafields: [
+                        { name: 'anio_matricula', type: 'int'},
+                        { name: 'mes_matricula', type: 'int'},
+                        { name: 'id_horario', type: 'int'},
+                        { name: 'horario', type: 'string'},
+                        { name: 'id_profesor', type: 'int'},
+                        { name: 'profesor', type: 'string'},
+                        { name: 'id_alumno', type: 'int'},
+                        { name: 'apellidos_alumno', type: 'string'},
+                        { name: 'nombres_alumno', type: 'string'},
+                        //{ name: 'id_matricula', type: 'int'},
+                        { name: 'saldo', type: 'float'},
+                        { name: 'tutor', type: 'string'},
+                        { name: 'telefono_tutor', type: 'string'},
+                        { name: 'celular_tutor', type: 'string'},
+                        { name: 'email_tutor', type: 'string'}
+                    ],
+                    localdata: json.registros[0]
+                };
+                var dataAdapter = new $.jqx.dataAdapter(source);
+
+                $("#grid").jqxGrid(
+                {
+                    source: dataAdapter
+                });
+            });
+        }
+
+    });
+</script>
+</body>
+</html>

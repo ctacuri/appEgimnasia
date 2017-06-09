@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Escuela de Gimnasia</title>
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" type="text/css" />
+    <style type="text/css">
+        page[size="A4"] {
+            background: white;
+            width: 22cm;
+            height: 29.7cm;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 0.5cm;
+            /*box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);*/
+        }
+
+        .form-group {
+            margin-bottom: 3px;
+        }
+
+        .huellaDigital {
+            width: 150px;
+            height: 160px;
+            border: 1px solid;
+        }
+
+        @media print {
+            body {
+                margin-left: 35px;
+                margin-right: 35px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row" style="margin-top: 25px;">
+            <div class="col-xs-4">
+                <img src="/images/logoEG.png">
+            </div>
+            <div class="col-xs-8">
+                <h2><p class="text-xs-center" style="margin-top: 10px; margin-bottom: 0px;">REGISTRO DE PADRON DE SOCIOS</p></h2>
+                    <br>
+                <h4><p class="text-xs-center" style="margin-top: -30px; margin-bottom: 25px;">SOLICITUD DE INGRESO</p></h4>
+            </div>
+
+            <div class="col-xs-12">
+                <p>
+                    Sr. Presidente(a) del Club Escuela de Gimnasia.-
+                </p>
+                <p style="margin-bottom: 15px;">
+                    Por el presente SOLICITO a Ud. Mi ingreso como socio ordinario del Club Escuela de Gimnasia
+                </p>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group row">
+                    <label for="fechaIngreso" class="col-xs-4 col-form-label col-form-label-sm">FECHA DE INGRESO</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control form-control-sm" id="fechaIngreso">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group row">
+                    <label for="carnet" class="col-xs-4 col-form-label col-form-label-sm">CARNET NRO</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control form-control-sm" id="carnet">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <div class="form-group row">
+                    <label for="nombres" class="col-xs-2 col-form-label col-form-label-sm">NOMBRES</label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control form-control-sm" id="nombres">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <div class="form-group row">
+                    <label for="apepat" class="col-xs-2 col-form-label col-form-label-sm">APELLIDO PATERNO</label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control form-control-sm" id="apepat">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <div class="form-group row">
+                    <label for="apemat" class="col-xs-2 col-form-label col-form-label-sm">APELLIDO MATERNO</label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control form-control-sm" id="apemat">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group row">
+                    <label for="nroDocumento" class="col-xs-4 col-form-label col-form-label-sm">DNI/CE</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control form-control-sm" id="nroDocumento">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group row">
+                    <label for="fechaNac" class="col-xs-4 col-form-label col-form-label-sm">FECHA NAC</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control form-control-sm" id="fechaNac">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <div class="form-group row">
+                    <label for="direccion" class="col-xs-2 col-form-label col-form-label-sm">DIRECCION</label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control form-control-sm" id="direccion">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group row">
+                    <label for="direccionCont" class="col-xs-4 col-form-label col-form-label-sm"></label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control form-control-sm" id="direccionCont">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group row">
+                    <label for="distrito" class="col-xs-4 col-form-label col-form-label-sm">DISTRITO</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control form-control-sm" id="distrito">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group row">
+                    <label for="telefono" class="col-xs-4 col-form-label col-form-label-sm">TELEFONO FIJO</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control form-control-sm" id="telefono">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group row">
+                    <label for="celular" class="col-xs-4 col-form-label col-form-label-sm">CELULAR</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control form-control-sm" id="celular">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <div class="form-group row">
+                    <label for="email" class="col-xs-2 col-form-label col-form-label-sm">EMAIL</label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control form-control-sm" id="email">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <p style="font-weight: bold;">HIJA (O)(S)</p>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group row">
+                    <label for="nombreHijo1" class="col-xs-4 col-form-label col-form-label-sm">NOMBRES</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control form-control-sm" id="nombreHijo1">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group row">
+                    <label for="apellidosHijo1" class="col-xs-4 col-form-label col-form-label-sm">APELLIDOS</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control form-control-sm" id="apellidosHijo1">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group row">
+                    <label for="nombreHijo2" class="col-xs-4 col-form-label col-form-label-sm">NOMBRES</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control form-control-sm" id="nombreHijo2">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group row">
+                    <label for="apellidosHijo2" class="col-xs-4 col-form-label col-form-label-sm">APELLIDOS</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control form-control-sm" id="apellidosHijo2">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group row">
+                    <label for="nombreHijo3" class="col-xs-4 col-form-label col-form-label-sm">NOMBRES</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control form-control-sm" id="nombreHijo3">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group row">
+                    <label for="apellidosHijo3" class="col-xs-4 col-form-label col-form-label-sm">APELLIDOS</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control form-control-sm" id="apellidosHijo3">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <p style="margin-top: 20px;" >
+                    DECLARACION JURADA DEL SOCIO (PADRE-MADRE-TUTOR):
+                </psty>
+                <p>
+                    Por medio de este documento declaro que:
+                </p>
+                <p style="text-align: justify;">
+                    Todos los datos indicados son verdaderos; Que conozco, entiendo y acato
+                    sin restricciones todo lo establecido en el Estatuto, Reglamento Interno
+                    del Club Escuela de Gimnasia y lo que se acuerde en las Asambleas Generales
+                    de los Asociados, así como del Comité Directivo; Que entiendo que la práctica
+                    del deporte de la Gimnasia puede provocar golpes, caídas y lesiones, y relevo
+                    al Club Escuela de Gimnasia, a sus empleados, directivos y entrenadores de la
+                    responsabilidad de cualquier accidente que mi hija(o) sufra durante la práctica
+                    y competencia; Que con la firma de este documento, autorizo al club para la
+                    emisión de imágenes y videos de mi hija(o), relacionados con la actividad
+                    del club, y para fines exclusivamente deportivos y marketing del Club;
+                    Cumpliré con mis deberes y obligaciones como miembro asociado, y trabajaré por
+                    el bienestar y progreso del Club.
+                </p>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group row" style="margin-top: 20px;">
+                    <label for="fechaRegistroPadron" class="col-xs-12 col-form-label col-form-label-sm">
+                        Lima _____ de _____________ 2017
+                    </label>
+
+                    <br><br><br><br><br>
+                    <label for="fechaInscrito" class="col-xs-12 col-form-label col-form-label-sm">
+                    Inscrito / Aprobado el _____ de ____________ del 2017
+                    </label>
+
+                    <br><br><br><br>
+                    <label for="firmas" class="col-xs-6 col-form-label col-form-label-sm">
+                        ____________________<br><span style="margin-left: 20px;">PRESIDENTE(A)</span>
+                    </label>
+                    <label for="firmas" class="col-xs-6 col-form-label col-form-label-sm">
+                        ____________________<br><span style="margin-left: 20px;">SECRETARIO(A)</span>
+                    </label>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group row">
+                    <label for="huella" class="col-xs-6 col-form-label col-form-label-sm" style="margin-top: 25px;">
+                        <span style="margin-left: 25px;">Huella Digital</span>
+                        <div class="huellaDigital">
+
+                        </div>
+                    </label>
+                    <label for="firmaTitular" class="col-xs-6 col-form-label col-form-label-sm" style="margin-top: 105px;">
+                        ____________________<br><span style="margin-left: 20px;">FIRMA TITULAR</span>
+                    </label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

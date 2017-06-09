@@ -1,0 +1,64 @@
+/*
+ * Start Bootstrap - Logo Nav (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+*/
+
+body {
+    padding-top: 80px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+}
+
+.navbar {
+    font-size: 14px;
+    /*background: -webkit-linear-gradient(top, #6E091B 0%, #4A110C 100%);
+    background-color: #4A110C;
+
+    background: linear-gradient(to bottom, #6E091B 0%, #4A110C 100%);*/
+}
+
+/*
+.navbar-inverse .navbar-nav>.active>a,
+.navbar-inverse .navbar-nav>.active>a:focus,
+.navbar-inverse .navbar-nav>.active>a:hover {
+    color: #fff;
+    background-color: #4A110C !important;
+}
+
+.navbar-inverse .navbar-toggle {
+    border-color: #ccc;
+}
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+    background-color: #4A110C !important;
+    color: #fff;
+}
+.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #ccc;
+}
+.navbar-inverse .navbar-toggle:hover .icon-bar,
+.navbar-inverse .navbar-toggle:focus .icon-bar {
+    background-color: #fff;
+}*/
+
+.navbar-fixed-top .nav {
+    padding: 15px 0;
+    /*background-color: #4A110C;
+    background: -webkit-linear-gradient(top, #6E091B 0%, #4A110C 100%);
+    background: linear-gradient(to bottom, #6E091B 0%, #4A110C 100%);*/
+}
+
+.navbar-fixed-top .navbar-brand {
+    padding: 0 15px;
+    margin-top: 10px;
+}
+
+@media(min-width:768px) {
+    body {
+        padding-top: 80px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+    }
+
+    .navbar-fixed-top .navbar-brand {
+        padding: 15px 0;
+
+    }
+}

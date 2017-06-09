@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Escuela de Gimnasia</title>
+
+</head>
+<body>
+    <% include menu %>
+
+    <div class="row fill-height-91">
+        <div class="col-md-12 fill-height-91">
+            <div id="jqxToolBar"></div>
+            <div id="grid"></div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="javascripts/scripts.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#jqxToolBar").jqxToolBar(
+                    $.extend( {},
+                            vDefaultOptionsToolBar,
+                            {
+                                tools: 'custom | custom | custom | custom | custom | custom | custom | custom ', //| input | custom | custom | custom | custom
+                                initTools: function (type, index, tool, menuToolIninitialization) {
+                                    switch (index) {
+                                        case 0:
+                                            var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'><b>REGISTRO DE VENTAS &nbsp;&nbsp; </b></div>";
+                                            tool.append(label);
+                                            break;
+                                        case 1:
+                                            var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Inicio: </div>";
+                                            tool.append(label);
+                                            break;
+                                        case 2:
+                                            var fecha = $("<div id='FechaIni' style='margin-top: -2px;'></div>").jqxDateTimeInput({
+                                                theme: theme2,
+                                                value: new Date(anioActual, mesActual, 1),
+                                                width: 105,
+                                                height: 25,
+                                                culture: 'es-ES'
+                                            });
+                                            tool.append(fecha);
+                                            break;
+                                        case 3:
+                                            var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Fin: </div>";
+                                            tool.append(label);
+                                            break;
+                                        case 4:
+                                            var fecha = $("<div id='FechaFin' style='margin-top: -2px;'></div>").jqxDateTimeInput({
+                                                theme: theme2,
+                                                value: new Date(anioActual, mesActual, ultimoDiaMesActual),
+                                                width: 105,
+                                                height: 25,
+                                                culture: 'es-ES'
+                                            });
+                                            tool.append(fecha);
+                                            break;
+                                        /*case 5:
+                                            var toggleBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/notepad-20.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxToggleButton({
+                                                theme: theme2,
+                                                width: 30,
+                                                height: 19,
+                                                toggled: true
+                                            });
+                                            tool.append(toggleBtn);
+                                            toggleBtn.click(function (event) {
+                                                var toggled = toggleBtn.jqxToggleButton('toggled');
+                                                if (toggled) {
+                                                    console.log('Toggled On');
+                                                } else {
+                                                    console.log('Toggled Off');
+                                                }
+                                            });
+                                            break;*/
+                                        case 5:
+                                            var searchBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/search.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                                theme: theme2,
+                                                width: 30,
+                                                height: 19
+                                            });
+                                            tool.append(searchBtn);
+                                            searchBtn.click(function (event) {
+                                                //var tools = $("#jqxToolBar").jqxToolBar("getTools");
+                                                //console.log($("#FechaIni").val());
+                                                //return false;
+                                                var fechaInicio = fn_convertFecha_DMY_to_SQL($("#FechaIni").val());
+                                                var fechaFin = fn_convertFecha_DMY_to_SQL($("#FechaFin").val());
+
+                                                fn_reporteRegistroVentas(fechaInicio, fechaFin);
+                                            });
+                                            break;
+                                        case 6:
+                                            var exportBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/icon_excel_02_20.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                                theme: theme2,
+                                                width: 30,
+                                                height: 19
+                                            });
+                                            tool.append(exportBtn);
+                                            exportBtn.click(function (event) {
+                                                var tools = $("#jqxToolBar").jqxToolBar("getTools");
+                                                var JSONData = $("#grid").jqxGrid('exportdata', 'json');
+                                                fn_JSONToCSVConvertor(JSONData, "RegistroVentas", "", true);
+                                            });
+                                            break;
+                                    }
+                                }
+                            }
+                    )
+            )
+
+
+            $("#grid").jqxGrid(
+                    $.extend(
+                            {}, vDefaultOptionsGrid,
+                            {
+                                pageable: true,
+                                selectionmode: 'singlerow',
+                                columns: [
+                                    //{ text: 'Id', align: 'center', datafield: 'id', cellsalign: 'center', width: '10%' },
+                                    { text: 'Fecha', align: 'center', datafield: 'fecha_emision', cellsalign: 'center', width: '10%'},
+                                    { text: 'Tipo Comprobante', align: 'center', datafield: 'tipo_comprobante', cellsalign: 'center', width: '15%' },
+                                    { text: 'Nro. Serie', align: 'center', datafield: 'nro_serie', cellsalign: 'right', width: '10%' },
+                                    { text: 'Nro. Correlativo', align: 'center', datafield: 'nro_correlativo', cellsalign: 'right', width: '10%' },
+                                    { text: 'Tipo Documento', align: 'center', datafield: 'tipo_documento', cellsalign: 'center', width: '10%' },
+                                    { text: 'Nro. documento', align: 'center', datafield: 'numdoc', cellsalign: 'right', width: '10%' },
+                                    { text: 'Nombres', align: 'center', datafield: 'cliente', width: '30%' },
+                                    { text: 'Importe', align: 'center', cellsalign: 'right', datafield: 'subtotal', width: '10%', cellsformat: 'd2' },
+                                    { text: 'Igv', align: 'center', cellsalign: 'right', datafield: 'igv', width: '10%', cellsformat: 'd2' },
+                                    { text: 'Total', align: 'center', cellsalign: 'right', datafield: 'total', width: '10%', cellsformat: 'd2' },
+                                    { text: 'Tipo Pago', align: 'center', cellsalign: 'left', datafield: 'forma_pago', width: '20%' }
+                                ]
+                            }
+                    )
+            );
+
+            function fn_reporteRegistroVentas(fechaInicio, fechaFin){
+                var url = '/reporteRegistroVentas/'+fechaInicio+"/"+fechaFin;
+                //console.log(url);
+                $.getJSON(url, function(json) {
+                    //console.log(json);
+                    var source =
+                        {
+                            datatype: "json",
+                            datafields: [
+                                { name: 'id_cobro', type: 'int'},
+                                { name: 'fecha_emision', type: 'string'},
+                                { name: 'id_tipo_comprobante', type: 'int'},
+                                { name: 'tipo_comprobante', type: 'string'},
+                                { name: 'nro_serie', type: 'string'},
+                                { name: 'nro_correlativo', type: 'string'},
+                                { name: 'tipo_documento', type: 'string'},
+                                { name: 'numdoc', type: 'int'},
+                                { name: 'cliente', type: 'string'},
+                                { name: 'subtotal', type: 'float'},
+                                { name: 'igv', type: 'float'},
+                                { name: 'total', type: 'float'},
+                                { name: 'forma_pago', type: 'float'}
+                            ],
+                            localdata: json.registros[0]
+                        };
+                    var dataAdapter = new $.jqx.dataAdapter(source);
+
+                    $("#grid").jqxGrid(
+                        {
+                            source: dataAdapter
+                        });
+                });
+            }
+
+        });
+    </script>
+</body>
+</html>

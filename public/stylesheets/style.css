@@ -1,0 +1,298 @@
+html, body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 100% !important;
+  padding: 0px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.center {
+  display:table-cell;
+  vertical-align:middle;
+  float:none;
+}
+
+.jqx-scrollbar-mobile .jqx-scrollbar-thumb-state-normal-horizontal, .jqx-scrollbar-mobile .jqx-scrollbar-thumb-state-normal {
+  z-index: 1;
+  /* border-radius: 0px !important; */
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background-color: #eaeaea;
+  border-left: 1px solid #ccc;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa;
+}
+
+fieldset.scheduler-border {
+  border: 1.5px solid #c7c7c7 !important;
+  padding: 0 1.4em 0.3em 1.4em !important;
+  margin: 0 0 0.5em 0 !important;
+  -webkit-box-shadow:  0px 0px 0px 0px #000;
+  box-shadow:  0px 0px 0px 0px #000;
+}
+
+.marginLeftRight{
+  margin-left: 5px !important;
+  margin-right: 5px !important;
+}
+
+.text-align-right{
+  text-align: right;
+}
+
+legend.scheduler-border {
+  font-size: 1.0em !important;
+  font-weight: bold !important;
+  text-align: left !important;
+  width: auto;
+  padding: 0 5px;
+  border-bottom: none;
+  margin-bottom: 5px;
+}
+
+label {
+  margin-top: 5px;
+  margin-bottom: 0px;
+  font-weight: normal;
+}
+
+.navbar-fixed-top{
+  position: relative;
+}
+
+.form-group {
+  margin-bottom: 1px;
+}
+
+.form-control {
+  height: 29px;
+  padding: 6px 6px;
+}
+
+.h3, h3 {
+  font-size: 20px;
+}
+
+div[class^="container"] {
+  height: 100%;
+}
+
+input[type=text] {
+
+}
+
+.row {
+   margin-right: 0px;
+   margin-left: 0px;
+}
+
+.rowMain{
+  margin-top: 85px;
+  height: 87%;
+}
+
+.rowMainWithOutToolbar{
+  margin-top: 80px;
+}
+
+.col50{
+  height: 50%;
+}
+
+.fill-width {
+  min-width: 100%;
+  width: 100% !important;
+}
+
+.fill-height {
+  min-height: 100%;
+  height: 100% !important;
+}
+
+.fill-height-99 {
+  min-height: 99%;
+  height: 99% !important;
+}
+
+.fill-height-98 {
+  min-height: 98%;
+  height: 98% !important;
+}
+
+.fill-height-91 {
+  min-height: 91%;
+  height: 91% !important;
+}
+.fill-height-92 {
+  min-height: 92%;
+  height: 92% !important;
+}
+.fill-height-93 {
+  min-height: 93%;
+  height: 93% !important;
+}
+
+.fill-height-90 {
+  min-height: 90%;
+  height: 90% !important;
+}
+
+.fill-height-80 {
+  min-height: 80%;
+  height: 80% !important;
+}
+
+.fill-height-20 {
+  min-height: 20%;
+  height: 20% !important;
+}
+
+.fill-height-40 {
+  min-height: 80% !important;
+  height: 80% !important;
+}
+
+/*rect {
+  fill: #54120F;
+}*/
+
+.map {
+  height: 100%;
+  min-height: 100%;
+}
+
+.container {
+  height: 100%;
+}
+
+.fill{
+  height: 100%;
+  min-height: 100%;
+  padding: 5px;
+}
+
+.btnFloat{
+  position: relative;
+  float: right;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.nopadding {
+  padding: 0px; !important;
+  margin: 0px; !important;
+}
+
+.floatLeft{
+  position: relative;
+  float: left;
+  margin-left: 10px;
+}
+
+.floatLeftDato{
+  position: absolute;
+  float: left;
+  margin-left: 10px;
+}
+
+#serieDispositivo{
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#estadoDipositivo{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.colorRed{
+  color: #730000;
+}
+
+.colorBlue{
+  color: #000099;
+}
+
+#ordenServicio{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#ordenTrabajo{
+  font-size: 20px;
+  font-weight: bold;
+  color: #000099;
+}
+
+.img-info{
+  float: right;
+  margin-top: -22px;
+  margin-right: 5px;
+  padding: 0px;
+  cursor: pointer;
+  content: url(../images/info3.png);
+}
+
+a {
+  color: #00B7FF;
+}
+
+
+/* modal */
+.modal {
+  margin-top: 0px;
+}
+
+.modal.modal-wide .modal-dialog {
+  width: 70% !important;
+}
+.modal.modal-wide-30 .modal-dialog {
+  width: 30% !important;
+}
+.modal.modal-wide-35 .modal-dialog {
+  width: 35% !important;
+}
+.modal.modal-high .modal-dialog {
+  height: 600px !important;
+}
+
+.modal.modal-high-ticket .modal-dialog .modal-body {
+  height: 300px !important;
+  min-height: 250px !important;
+}
+
+.modal.modal-high-400 .modal-dialog .modal-body {
+  min-height: 250px !important;
+}
+
+iframe{
+  width: 100% !important;
+  height: 600px !important;
+  border-width: 0px;
+}
+.modal-wide .modal-body {
+  overflow-y: auto;
+  min-height: 550px !important;
+}
+
+@media (max-width: 768px) {
+  .modal.modal-wide .modal-dialog {
+    width: 96% !important;
+  }
+}
+@media (min-width : 769px)
+and (max-width : 991px) {
+  .modal.modal-wide .modal-dialog {
+    width: 90% !important;
+  }
+}
+/* modal */
