@@ -132,11 +132,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="connMYSQL.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="connMYSQL.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/connection/connMYSQL.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="66" lean-forward="false" selection-start-line="21" selection-start-column="66" selection-end-line="21" selection-end-column="66" />
+            <state relative-caret-position="270">
+              <caret line="38" column="14" lean-forward="true" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -145,7 +145,7 @@
       <file leaf-file-name="generarAsistencia.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/generarAsistencia.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
+            <state relative-caret-position="1965">
               <caret line="131" column="72" lean-forward="false" selection-start-line="131" selection-start-column="72" selection-end-line="131" selection-end-column="72" />
               <folding />
             </state>
@@ -155,17 +155,17 @@
       <file leaf-file-name="controllerEG.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/controllerEG.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="531">
+            <state relative-caret-position="19320">
               <caret line="1288" column="0" lean-forward="false" selection-start-line="1288" selection-start-column="0" selection-end-line="1288" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modelEG.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="modelEG.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/modelEG.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
+            <state relative-caret-position="15456">
               <caret line="644" column="47" lean-forward="false" selection-start-line="644" selection-start-column="47" selection-end-line="644" selection-end-column="47" />
               <folding />
             </state>
@@ -246,7 +246,6 @@
         <option value="$PROJECT_DIR$/bin/www" />
         <option value="$PROJECT_DIR$/public/javascripts/config.js" />
         <option value="$PROJECT_DIR$/views/reporteAlumnosClase.ejs" />
-        <option value="$PROJECT_DIR$/connection/connMYSQL.js" />
         <option value="$PROJECT_DIR$/views/reporteDeudas.ejs" />
         <option value="$PROJECT_DIR$/views/tomarAsistencia.ejs" />
         <option value="$PROJECT_DIR$/views/reportePagosMatriculados.ejs" />
@@ -263,6 +262,7 @@
         <option value="$PROJECT_DIR$/routes/routes.js" />
         <option value="$PROJECT_DIR$/views/firebase.ejs" />
         <option value="$PROJECT_DIR$/views/generarAsistencia.ejs" />
+        <option value="$PROJECT_DIR$/connection/connMYSQL.js" />
       </list>
     </option>
   </component>
@@ -297,8 +297,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -429,6 +427,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -545,11 +545,12 @@
       <workItem from="1492106311473" duration="34592000" />
       <workItem from="1492566628929" duration="24473000" />
       <workItem from="1495857551919" duration="714000" />
+      <workItem from="1497070032134" duration="574000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="330851000" />
+    <option name="totallyTimeSpent" value="331425000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -562,7 +563,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="821" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17054264" sideWeight="0.49506348" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32863188" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -570,7 +571,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13460183" sideWeight="0.5049365" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13742071" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28165007" sideWeight="0.48625794" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28165007" sideWeight="0.48625794" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1065,17 +1066,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5265">
           <caret line="351" column="72" lean-forward="false" selection-start-line="351" selection-start-column="20" selection-end-line="351" selection-end-column="72" />
-          <folding>
-            <marker date="1493259469000" expanded="true" signature="8721:8768" ph="..." />
-            <marker date="1493259469000" expanded="true" signature="8781:8787" ph="..." />
-            <marker date="1493259469000" expanded="true" signature="8787:8793" ph="..." />
-            <marker date="1493259469000" expanded="true" signature="11027:11112" ph="..." />
-            <marker date="1493259469000" expanded="true" signature="11126:11180" ph="..." />
-            <marker date="1493259469000" expanded="true" signature="11217:11254" ph="..." />
-            <marker date="1493259469000" expanded="true" signature="14465:14550" ph="..." />
-            <marker date="1493259469000" expanded="true" signature="14564:14618" ph="..." />
-            <marker date="1493259469000" expanded="true" signature="14668:14705" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1083,17 +1073,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10515">
           <caret line="701" column="56" lean-forward="false" selection-start-line="701" selection-start-column="56" selection-end-line="701" selection-end-column="56" />
-          <folding>
-            <marker date="1493259662000" expanded="true" signature="17576:17623" ph="..." />
-            <marker date="1493259662000" expanded="true" signature="17636:17642" ph=" " />
-            <marker date="1493259662000" expanded="true" signature="17642:17648" ph=" " />
-            <marker date="1493259662000" expanded="true" signature="19751:19836" ph="..." />
-            <marker date="1493259662000" expanded="true" signature="19850:19904" ph="..." />
-            <marker date="1493259662000" expanded="true" signature="19941:19978" ph="..." />
-            <marker date="1493259662000" expanded="true" signature="23046:23131" ph="..." />
-            <marker date="1493259662000" expanded="true" signature="23145:23199" ph="..." />
-            <marker date="1493259662000" expanded="true" signature="23249:23286" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1160,14 +1139,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/connection/connMYSQL.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="66" lean-forward="false" selection-start-line="21" selection-start-column="66" selection-end-line="21" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/routes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1080">
@@ -1211,7 +1182,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/generarAsistencia.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
+        <state relative-caret-position="1965">
           <caret line="131" column="72" lean-forward="false" selection-start-line="131" selection-start-column="72" selection-end-line="131" selection-end-column="72" />
           <folding />
         </state>
@@ -1219,7 +1190,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/controllerEG.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="531">
+        <state relative-caret-position="19320">
           <caret line="1288" column="0" lean-forward="false" selection-start-line="1288" selection-start-column="0" selection-end-line="1288" selection-end-column="28" />
           <folding />
         </state>
@@ -1227,8 +1198,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/modelEG.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
+        <state relative-caret-position="15456">
           <caret line="644" column="47" lean-forward="false" selection-start-line="644" selection-start-column="47" selection-end-line="644" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/connection/connMYSQL.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="38" column="14" lean-forward="true" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
           <folding />
         </state>
       </provider>
