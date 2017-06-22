@@ -8,11 +8,11 @@ var mysql = require("mysql"),
 	};
 
 	opciones2 = {
-		host: "localhost",
+		host: "192.169.177.117",
 		port: 3306,
 		user: "root",
-		password: "",
-		database: "gim_escuela"
+		password: "Admin2016Juego",
+		database: "gimnasio"
 	};
 
 /*
@@ -30,7 +30,7 @@ conexion.connect(fnConectado);
 
 var connection;
 function handleDisconnect() {
-    connection = mysql.createConnection(opciones); 		// Recreate the connection, since
+    connection = mysql.createConnection(opciones2); 		// Recreate the connection, since
                                                     		// the old one cannot be reused.
     connection.connect(function(err) {              		// The server is either down
         if(err) {                                     			// or restarting (takes a while sometimes).

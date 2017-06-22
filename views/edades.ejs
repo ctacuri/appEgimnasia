@@ -406,7 +406,7 @@
             });
             $("#grid2").on('rowclick', function (event) {
                 if (event.args.rightclick) {
-                    $("#grid").jqxGrid('selectrow', event.args.rowindex);
+                    $("#grid2").jqxGrid('selectrow', event.args.rowindex);
                     var scrollTop = $(window).scrollTop();
                     var scrollLeft = $(window).scrollLeft();
                     contextMenu2.jqxMenu('open', parseInt(event.args.originalEvent.clientX) + 5 + scrollLeft, parseInt(event.args.originalEvent.clientY) + 5 + scrollTop);

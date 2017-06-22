@@ -150,6 +150,7 @@
                                             });
                                             tool.append(addBtn);
                                             addBtn.click(function (event) {
+                                                $("#id").val("");
                                                 $("#usuario").val("");
                                                 $("#contrasena").val("");
                                                 $("#btnSave").text("Guardar");
@@ -363,16 +364,7 @@
                     alert("ERROR: Ingrese una contraseña valida");
                     return false;
                 }
-                var rows = $('#grid').jqxGrid('getrows');
-                for(var i = 0; i < rows.length; i++)
-                {
-                    var row = rows[i];
-                    if(row.usuario == $("#usuario").val()){
-                        alert("ERROR: El usuario ya exuste");
-                        return false;
-                    }
-                    //console.log(row.usuario);
-                }
+
                 //return false;
                 var cont = 0;
                 var states = "";
@@ -404,8 +396,21 @@
                 }else{
                     url = "/EG/saveUsuarios";
                     txtMsg = "registrar";
+
+                    var rows = $('#grid').jqxGrid('getrows');
+                    for(var i = 0; i < rows.length; i++)
+                    {
+                        var row = rows[i];
+                        if(row.usuario == $("#usuario").val()){
+                            alert("ERROR: El usuario ya exuste");
+                            return false;
+                        }
+                        //console.log(row.usuario);
+                    }
+
                 }
                 if(confirm("Esta seguro de "+txtMsg+" los datos ?")){
+                    //return false;
                     $.ajax({
                         type: "POST",
                         url: url,

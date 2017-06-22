@@ -957,14 +957,14 @@
                     pagesize: 20,
                     selectionmode: 'singlerow',
                     columns: [
-                        { text: 'Id matricula', align: 'center', datafield: 'id_matricula', cellsalign: 'right', width: '10%' },
-                        { text: 'Alumno', align: 'center', datafield: 'alumno', cellsalign: 'left', width: '30%'},
-                        { text: 'Horario', align: 'center', datafield: 'clase', cellsalign: 'left', width: '30%' },
-                        { text: 'Fecha', align: 'center', datafield: 'fecha_matricula', cellsalign: 'center', width: '10%' },
-                        { text: 'Año', align: 'center', datafield: 'anio_matricula', cellsalign: 'center', width: '10%' },
-                        { text: 'Mes', align: 'center', datafield: 'mes', cellsalign: 'left', width: '10%' },
-                        { text: 'Monto Pagado', align: 'center', datafield: 'importe', cellsalign: 'right', width: '10%', cellsformat: 'd2' },
-                        { text: 'Saldo', align: 'center', datafield: 'saldo', cellsalign: 'right', width: '10%', cellsformat: 'd2' },
+                        { text: 'Id matricula', align: 'center', datafield: 'id_matricula', cellsalign: 'right', width: '8%' },
+                        { text: 'Alumno', align: 'center', datafield: 'alumno', cellsalign: 'left', width: '25%'},
+                        { text: 'Horario', align: 'center', datafield: 'clase', cellsalign: 'left', width: '25%' },
+                        { text: 'Fecha', align: 'center', datafield: 'fecha_matricula', cellsalign: 'center', width: '8%' },
+                        { text: 'Año', align: 'center', datafield: 'anio_matricula', cellsalign: 'center', width: '7%' },
+                        { text: 'Mes', align: 'center', datafield: 'mes', cellsalign: 'left', width: '7%' },
+                        { text: 'Monto Pagado', align: 'center', datafield: 'importe', cellsalign: 'right', width: '8%', cellsformat: 'd2' },
+                        { text: 'Saldo', align: 'center', datafield: 'saldo', cellsalign: 'right', width: '8%', cellsformat: 'd2' },
                         { text: 'Profesor', align: 'center', datafield: 'nombre_corto', cellsalign: 'left', width: '30%' }
                     ]
                 }
@@ -1046,7 +1046,7 @@
                     columns: [
                         //{ text: 'Matricula', align: 'center', datafield: 'matricula', columntype: 'checkbox', cellsalign: 'center', width: '5%'},
                         { text: 'ID Alumno', align: 'center', datafield: 'id_alumno', cellsalign: 'left', width: '1%'},
-                        { text: 'Alumno', align: 'center', datafield: 'alumno', cellsalign: 'left', width: '28%', aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                        { text: 'Alumno', align: 'center', datafield: 'alumno', cellsalign: 'left', width: '26%', aggregatesrenderer: function (aggregates, column, element, summaryData) {
                             var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
                             $.each(aggregates, function (key, value) {
                                 renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
@@ -1057,7 +1057,7 @@
                         },
                         { text: 'Fecha', align: 'center', datafield: 'fecha', cellsalign: 'left', width: '1%'},
                         { text: 'ID Horario', align: 'center', datafield: 'id_horario', cellsalign: 'left', width: '1%' },
-                        { text: 'Horario', align: 'center', datafield: 'horario', cellsalign: 'left', width: '28%', aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                        { text: 'Horario', align: 'center', datafield: 'horario', cellsalign: 'left', width: '26%', aggregatesrenderer: function (aggregates, column, element, summaryData) {
                             var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
                             $.each(aggregates, function (key, value) {
                                 renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
@@ -1066,7 +1066,7 @@
                             return renderstring;
                             }
                         },
-                        { text: 'Año', align: 'center', datafield: 'anio', cellsalign: 'center', width: '11%', aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                        { text: 'Año', align: 'center', datafield: 'anio', cellsalign: 'center', width: '10%', aggregatesrenderer: function (aggregates, column, element, summaryData) {
                             var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
                             $.each(aggregates, function (key, value) {
                                 renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
@@ -1085,7 +1085,7 @@
                             return renderstring;
                             }
                         },
-                        { text: 'Importe', align: 'center', datafield: 'importe', cellsalign: 'right', width: '14%', cellsformat: 'd2' , aggregates: ['sum'],
+                        { text: 'Importe', align: 'center', datafield: 'importe', cellsalign: 'right', width: '13%', cellsformat: 'd2' , aggregates: ['sum'],
                             aggregatesrenderer: function (aggregates, column, element, summaryData) {
                                 var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
                                 $.each(aggregates, function (key, value) {
@@ -1095,7 +1095,7 @@
                                 return renderstring;
                             }
                         },
-                        { text: 'Saldo', align: 'center', datafield: 'saldo', cellsalign: 'right', width: '14%', cellsformat: 'd2' , aggregates: ['sum'],
+                        { text: 'Saldo', align: 'center', datafield: 'saldo', cellsalign: 'right', width: '13%', cellsformat: 'd2' , aggregates: ['sum'],
                             aggregatesrenderer: function (aggregates, column, element, summaryData) {
                                 var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
                                 $.each(aggregates, function (key, value) {
