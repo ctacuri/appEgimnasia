@@ -26,8 +26,8 @@
       <file leaf-file-name="clases.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/clases.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="30" column="102" lean-forward="true" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="102" />
+            <state relative-caret-position="450">
+              <caret line="30" column="102" lean-forward="false" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="102" />
               <folding>
                 <marker date="1498099019000" expanded="true" signature="4926:4973" ph="..." />
                 <marker date="1498099019000" expanded="true" signature="4987:4993" ph="..." />
@@ -46,8 +46,8 @@
       <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="72" column="24" lean-forward="false" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
+            <state relative-caret-position="-1454">
+              <caret line="78" column="25" lean-forward="false" selection-start-line="78" selection-start-column="12" selection-end-line="78" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -56,7 +56,7 @@
       <file leaf-file-name="usuarios.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/usuarios.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
+            <state relative-caret-position="450">
               <caret line="30" column="55" lean-forward="false" selection-start-line="30" selection-start-column="55" selection-end-line="30" selection-end-column="55" />
               <folding>
                 <marker date="1498154664000" expanded="true" signature="5344:5391" ph="..." />
@@ -73,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="www" pinned="false" current-in-tab="true">
+      <file leaf-file-name="www" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bin/www">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="315">
-              <caret line="21" column="36" lean-forward="true" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
+              <caret line="21" column="36" lean-forward="false" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -86,7 +86,7 @@
       <file leaf-file-name="suscripciones.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/suscripciones.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
+            <state relative-caret-position="20460">
               <caret line="1364" column="39" lean-forward="false" selection-start-line="1364" selection-start-column="21" selection-end-line="1364" selection-end-column="39" />
               <folding>
                 <marker date="1498155811000" expanded="true" signature="43936:43983" ph="..." />
@@ -139,7 +139,7 @@
       <file leaf-file-name="edades.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/edades.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="786">
+            <state relative-caret-position="6120">
               <caret line="408" column="29" lean-forward="false" selection-start-line="408" selection-start-column="29" selection-end-line="408" selection-end-column="29" />
               <folding>
                 <marker date="1498097852000" expanded="true" signature="4330:4377" ph="..." />
@@ -168,29 +168,19 @@
       <file leaf-file-name="connMYSQL.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/connection/connMYSQL.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="32" column="49" lean-forward="false" selection-start-line="32" selection-start-column="49" selection-end-line="32" selection-end-column="49" />
+            <state relative-caret-position="120">
+              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="alumnos.ejs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/alumnos.ejs">
+      <file leaf-file-name="controllerEG.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/controllers/controllerEG.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4740">
-              <caret line="316" column="32" lean-forward="false" selection-start-line="316" selection-start-column="32" selection-end-line="316" selection-end-column="32" />
-              <folding>
-                <marker date="1493259662000" expanded="true" signature="17576:17623" ph="..." />
-                <marker date="1493259662000" expanded="true" signature="17636:17642" ph=" " />
-                <marker date="1493259662000" expanded="true" signature="17642:17648" ph=" " />
-                <marker date="1493259662000" expanded="true" signature="19751:19836" ph="..." />
-                <marker date="1493259662000" expanded="true" signature="19850:19904" ph="..." />
-                <marker date="1493259662000" expanded="true" signature="19941:19978" ph="..." />
-                <marker date="1493259662000" expanded="true" signature="23046:23131" ph="..." />
-                <marker date="1493259662000" expanded="true" signature="23145:23199" ph="..." />
-                <marker date="1493259662000" expanded="true" signature="23249:23286" ph="..." />
-              </folding>
+            <state relative-caret-position="196">
+              <caret line="1440" column="2" lean-forward="true" selection-start-line="1440" selection-start-column="2" selection-end-line="1440" selection-end-column="2" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -198,8 +188,8 @@
       <file leaf-file-name="registroVentas.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/registroVentas.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="68" column="14" lean-forward="true" selection-start-line="68" selection-start-column="14" selection-end-line="68" selection-end-column="14" />
+            <state relative-caret-position="1020">
+              <caret line="68" column="14" lean-forward="false" selection-start-line="68" selection-start-column="14" selection-end-line="68" selection-end-column="14" />
               <folding>
                 <marker date="1493176276000" expanded="true" signature="1275:1322" ph="..." />
                 <marker date="1493176276000" expanded="true" signature="1346:1352" ph=" " />
@@ -222,8 +212,8 @@
       <file leaf-file-name="modelEG.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/modelEG.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="350" column="40" lean-forward="true" selection-start-line="350" selection-start-column="40" selection-end-line="350" selection-end-column="40" />
+            <state relative-caret-position="5250">
+              <caret line="350" column="40" lean-forward="false" selection-start-line="350" selection-start-column="40" selection-end-line="350" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -241,7 +231,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Aler</find>
       <find>for=&quot;alergias&quot;</find>
       <find>ciaSeg</find>
       <find>updAlumnos</find>
@@ -271,6 +260,7 @@
       <find>click</find>
       <find>lista</find>
       <find>listaAlumnosSimple</find>
+      <find>listaProfe</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -307,7 +297,6 @@
         <option value="$PROJECT_DIR$/views/reportePagosMatriculados.ejs" />
         <option value="$PROJECT_DIR$/views/registroVentas.ejs" />
         <option value="$PROJECT_DIR$/models/modelEG.js" />
-        <option value="$PROJECT_DIR$/controllers/controllerEG.js" />
         <option value="$PROJECT_DIR$/views/tutores.ejs" />
         <option value="$PROJECT_DIR$/views/alumnos.ejs" />
         <option value="$PROJECT_DIR$/views/profesores.ejs" />
@@ -320,6 +309,7 @@
         <option value="$PROJECT_DIR$/views/suscripciones.ejs" />
         <option value="$PROJECT_DIR$/connection/connMYSQL.js" />
         <option value="$PROJECT_DIR$/bin/www" />
+        <option value="$PROJECT_DIR$/controllers/controllerEG.js" />
       </list>
     </option>
   </component>
@@ -337,7 +327,7 @@
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="829" />
+    <option name="height" value="825" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -484,8 +474,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -605,12 +595,13 @@
       <workItem from="1497070032134" duration="1649000" />
       <workItem from="1497843042804" duration="70000" />
       <workItem from="1497844851751" duration="753000" />
-      <workItem from="1498054302487" duration="3352000" />
+      <workItem from="1498054302487" duration="3550000" />
+      <workItem from="1498620400851" duration="932000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="336675000" />
+    <option name="totallyTimeSpent" value="337805000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -622,8 +613,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="829" extended-state="0" />
-    <editor active="false" />
+    <frame x="0" y="23" width="1440" height="825" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17054264" sideWeight="0.49506348" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32863188" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -631,7 +622,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13460183" sideWeight="0.5049365" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13742071" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28129396" sideWeight="0.48625794" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28005657" sideWeight="0.48625794" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1133,15 +1124,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1965">
           <caret line="131" column="72" lean-forward="false" selection-start-line="131" selection-start-column="72" selection-end-line="131" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/controllerEG.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19320">
-          <caret line="1288" column="0" lean-forward="false" selection-start-line="1288" selection-start-column="0" selection-end-line="1288" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1165,8 +1147,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/registroVentas.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="68" column="14" lean-forward="true" selection-start-line="68" selection-start-column="14" selection-end-line="68" selection-end-column="14" />
+        <state relative-caret-position="1020">
+          <caret line="68" column="14" lean-forward="false" selection-start-line="68" selection-start-column="14" selection-end-line="68" selection-end-column="14" />
           <folding>
             <marker date="1493176276000" expanded="true" signature="1275:1322" ph="..." />
             <marker date="1493176276000" expanded="true" signature="1346:1352" ph=" " />
@@ -1185,17 +1167,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="72" column="24" lean-forward="false" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/edades.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="786">
+        <state relative-caret-position="6120">
           <caret line="408" column="29" lean-forward="false" selection-start-line="408" selection-start-column="29" selection-end-line="408" selection-end-column="29" />
           <folding>
             <marker date="1498097852000" expanded="true" signature="4330:4377" ph="..." />
@@ -1222,8 +1196,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/clases.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="30" column="102" lean-forward="true" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="102" />
+        <state relative-caret-position="450">
+          <caret line="30" column="102" lean-forward="false" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="102" />
           <folding>
             <marker date="1498099019000" expanded="true" signature="4926:4973" ph="..." />
             <marker date="1498099019000" expanded="true" signature="4987:4993" ph="..." />
@@ -1240,7 +1214,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/usuarios.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
+        <state relative-caret-position="450">
           <caret line="30" column="55" lean-forward="false" selection-start-line="30" selection-start-column="55" selection-end-line="30" selection-end-column="55" />
           <folding>
             <marker date="1498154664000" expanded="true" signature="5344:5391" ph="..." />
@@ -1258,7 +1232,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/suscripciones.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
+        <state relative-caret-position="20460">
           <caret line="1364" column="39" lean-forward="false" selection-start-line="1364" selection-start-column="21" selection-end-line="1364" selection-end-column="39" />
           <folding>
             <marker date="1498155811000" expanded="true" signature="43936:43983" ph="..." />
@@ -1309,16 +1283,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/modelEG.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="350" column="40" lean-forward="true" selection-start-line="350" selection-start-column="40" selection-end-line="350" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/connection/connMYSQL.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="49" lean-forward="false" selection-start-line="32" selection-start-column="49" selection-end-line="32" selection-end-column="49" />
+        <state relative-caret-position="5250">
+          <caret line="350" column="40" lean-forward="false" selection-start-line="350" selection-start-column="40" selection-end-line="350" selection-end-column="40" />
           <folding />
         </state>
       </provider>
@@ -1326,7 +1292,31 @@
     <entry file="file://$PROJECT_DIR$/bin/www">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
-          <caret line="21" column="36" lean-forward="true" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
+          <caret line="21" column="36" lean-forward="false" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1454">
+          <caret line="78" column="25" lean-forward="false" selection-start-line="78" selection-start-column="12" selection-end-line="78" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/connection/connMYSQL.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/controllerEG.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="1440" column="2" lean-forward="true" selection-start-line="1440" selection-start-column="2" selection-end-line="1440" selection-end-column="2" />
           <folding />
         </state>
       </provider>

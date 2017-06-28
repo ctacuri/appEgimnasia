@@ -14,6 +14,9 @@ controller.listaDias = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -30,6 +33,9 @@ controller.listaTutores = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -69,6 +75,9 @@ controller.saveTutores = function(req, res, next){
             }else{
                 res.status(200).json({"status": "sinDatos"});
             }*/
+            res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+            res.header("Pragma", "no-cache");
+            res.header("Expires", 0);
             res.status(200).json({"status": "success"});
         }
     });
@@ -106,6 +115,9 @@ controller.updTutores = function(req, res, next){
             }else{
                 res.status(200).json({"status": "sinDatos"});
             }*/
+            res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+            res.header("Pragma", "no-cache");
+            res.header("Expires", 0);
             res.status(200).json({"status": "success"});
         }
     });
@@ -118,6 +130,9 @@ controller.listaTutoresSimple = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -134,6 +149,9 @@ controller.listaCiaSeguro = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -150,6 +168,9 @@ controller.listaProfesores = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -166,6 +187,9 @@ controller.listaProfesoresSimple = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -195,6 +219,9 @@ controller.saveProfesores = function(req, res, next){
              }else{
              res.status(200).json({"status": "sinDatos"});
              }*/
+            res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+            res.header("Pragma", "no-cache");
+            res.header("Expires", 0);
             res.status(200).json({"status": "success"});
         }
     });
@@ -221,6 +248,9 @@ controller.updProfesores = function(req, res, next){
              }else{
              res.status(200).json({"status": "sinDatos"});
              }*/
+            res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+            res.header("Pragma", "no-cache");
+            res.header("Expires", 0);
             res.status(200).json({"status": "success"});
         }
     });
@@ -249,6 +279,9 @@ controller.saveParametros = function(req, res, next){
              }else{
              res.status(200).json({"status": "sinDatos"});
              }*/
+            res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+            res.header("Pragma", "no-cache");
+            res.header("Expires", 0);
             res.status(200).json({"status": "success"});
         }
     });
@@ -277,6 +310,9 @@ controller.updParametros = function(req, res, next){
              }else{
              res.status(200).json({"status": "sinDatos"});
              }*/
+            res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+            res.header("Pragma", "no-cache");
+            res.header("Expires", 0);
             res.status(200).json({"status": "success"});
         }
     });
@@ -290,6 +326,9 @@ controller.listaAlumnos = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -306,6 +345,9 @@ controller.listaAlumnosSimple = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -361,6 +403,9 @@ controller.saveAlumnos = function(req, res, next){
              }else{
              res.status(200).json({"status": "sinDatos"});
              }*/
+            res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+            res.header("Pragma", "no-cache");
+            res.header("Expires", 0);
             res.status(200).json({"status": "success"});
         }
     });
@@ -414,6 +459,9 @@ controller.updAlumnos = function(req, res, next){
              }else{
              res.status(200).json({"status": "sinDatos"});
              }*/
+            res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+            res.header("Pragma", "no-cache");
+            res.header("Expires", 0);
             res.status(200).json({"status": "success"});
         }
     });
@@ -427,6 +475,9 @@ controller.listaTipoDoc = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -443,6 +494,9 @@ controller.listaEstadoCivil = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -459,6 +513,9 @@ controller.listaSexo = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -475,6 +532,9 @@ controller.listaDepartamentos = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -491,6 +551,9 @@ controller.listaProvincias = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -507,6 +570,9 @@ controller.listaDistritos = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -523,6 +589,9 @@ controller.listaUsuarios = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -539,6 +608,9 @@ controller.listaParametros = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -567,6 +639,9 @@ controller.saveUsuarios = function(req, res, next){
              }else{
              res.status(200).json({"status": "sinDatos"});
              }*/
+            res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+            res.header("Pragma", "no-cache");
+            res.header("Expires", 0);
             res.status(200).json({"status": "success"});
         }
     });
@@ -592,6 +667,9 @@ controller.updUsuarios = function(req, res, next){
              }else{
              res.status(200).json({"status": "sinDatos"});
              }*/
+            res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+            res.header("Pragma", "no-cache");
+            res.header("Expires", 0);
             res.status(200).json({"status": "success"});
         }
     });
@@ -604,6 +682,9 @@ controller.listaEdades = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -620,6 +701,9 @@ controller.listaHorarios = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -637,6 +721,9 @@ controller.listaHorariosSimple = function(req, res, next){
         }else{
             if(registros.length > 0){
                 //console.log(datos);
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
                 res.status(200).json({"status": "sinDatos"});
@@ -660,6 +747,9 @@ controller.saveEdades = function(req, res, next){
              }else{
              res.status(200).json({"status": "sinDatos"});
              }*/
+            res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+            res.header("Pragma", "no-cache");
+            res.header("Expires", 0);
             res.status(200).json({"status": "success"});
         }
     });
@@ -682,6 +772,9 @@ controller.updEdades = function(req, res, next){
              }else{
              res.status(200).json({"status": "sinDatos"});
              }*/
+            res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+            res.header("Pragma", "no-cache");
+            res.header("Expires", 0);
             res.status(200).json({"status": "success"});
         }
     });
@@ -702,6 +795,9 @@ controller.saveDias = function(req, res, next){
              }else{
              res.status(200).json({"status": "sinDatos"});
              }*/
+            res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+            res.header("Pragma", "no-cache");
+            res.header("Expires", 0);
             res.status(200).json({"status": "success"});
         }
     });
@@ -724,6 +820,9 @@ controller.updDias = function(req, res, next){
              }else{
              res.status(200).json({"status": "sinDatos"});
              }*/
+            res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+            res.header("Pragma", "no-cache");
+            res.header("Expires", 0);
             res.status(200).json({"status": "success"});
         }
     });
@@ -754,6 +853,9 @@ controller.saveHorarios = function(req, res, next){
              }else{
              res.status(200).json({"status": "sinDatos"});
              }*/
+            res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+            res.header("Pragma", "no-cache");
+            res.header("Expires", 0);
             res.status(200).json({"status": "success"});
         }
     });
@@ -782,6 +884,9 @@ controller.updHorarios = function(req, res, next){
              }else{
              res.status(200).json({"status": "sinDatos"});
              }*/
+            res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+            res.header("Pragma", "no-cache");
+            res.header("Expires", 0);
             res.status(200).json({"status": "success"});
         }
     });
@@ -799,6 +904,9 @@ controller.listaMatricula = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(registros);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -840,6 +948,9 @@ controller.saveMatricula = function(req, res, next){
              }else{
              res.status(200).json({"status": "sinDatos"});
              }*/
+            res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+            res.header("Pragma", "no-cache");
+            res.header("Expires", 0);
             res.status(200).json({"status": "success"});
         }
     });
@@ -863,6 +974,9 @@ controller.saveAsistenciaHorario = function(req, res, next){
              }else{
              res.status(200).json({"status": "sinDatos"});
              }*/
+            res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+            res.header("Pragma", "no-cache");
+            res.header("Expires", 0);
             res.status(200).json({"status": "success"});
         }
     });
@@ -892,6 +1006,9 @@ controller.saveCabCobro = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
                 res.status(200).json({"status": "sinDatos"});
@@ -939,6 +1056,9 @@ controller.saveDetCobro = function(req, res, next){
                          res.status(200).json({"status": "sinDatos"});
                          }*/
                         //console.log(x);
+                        res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                        res.header("Pragma", "no-cache");
+                        res.header("Expires", 0);
                         res.status(200).json({"status": "success", "registros": x });
                     }
                 }catch (err) {
@@ -972,6 +1092,9 @@ controller.updMatricula = function(req, res, next){
              }else{
              res.status(200).json({"status": "sinDatos"});
              }*/
+            res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+            res.header("Pragma", "no-cache");
+            res.header("Expires", 0);
             res.status(200).json({"status": "success"});
         }
     });
@@ -984,6 +1107,9 @@ controller.listaEmpresas = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -1000,6 +1126,9 @@ controller.listaFormaPago = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -1016,6 +1145,9 @@ controller.listaComprobanteVenta = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -1037,6 +1169,9 @@ controller.listaMatriculaCobro = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -1056,6 +1191,9 @@ controller.listaHistorialPagos = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -1075,6 +1213,9 @@ controller.listaHistorialMatricula = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -1094,6 +1235,9 @@ controller.listarAsistenciaHorario = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -1113,6 +1257,9 @@ controller.listaAlumnosHorario = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -1129,6 +1276,9 @@ controller.listaTipoAlumno = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -1150,6 +1300,9 @@ controller.reporteAlumnosClase = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -1171,6 +1324,9 @@ controller.reporteDeudasMatriculados = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -1191,6 +1347,9 @@ controller.reportePagosMatriculadosAlumnos = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -1212,6 +1371,9 @@ controller.reporteRegistroVentas = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -1233,6 +1395,9 @@ controller.listarAsistenciaHorarioAlumno = function(req, res, next){
             res.status(200).json({"status": "error"});
         }else{
             if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
                 //console.log(datos);
                 res.status(200).json({"status": "success", "registros": registros});
             }else{
@@ -1258,6 +1423,9 @@ controller.eliminarRegistroTabla = function(req, res, next){
              }else{
              res.status(200).json({"status": "sinDatos"});
              }*/
+            res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+            res.header("Pragma", "no-cache");
+            res.header("Expires", 0);
             res.status(200).json({"status": "success"});
         }
     });
