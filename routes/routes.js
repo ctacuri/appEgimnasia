@@ -11,60 +11,117 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 router.get('/main', fnEstaAutenticado, function(req, res, next) {
-  res.render('main', { usuario: req.user });
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
+    res.render('main', { usuario: req.user });
 });
 router.get('/alumnos', fnEstaAutenticado, function(req, res, next) {
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
   res.render('alumnos', { usuario: req.user });
 });
 router.get('/profesores', fnEstaAutenticado, function(req, res, next) {
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
   res.render('profesores', { usuario: req.user });
 });
 router.get('/tutores', fnEstaAutenticado, function(req, res, next) {
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
   res.render('tutores', { usuario: req.user });
 });
 router.get('/usuarios', fnEstaAutenticado, function(req, res, next) {
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
   res.render('usuarios', { usuario: req.user });
 });
 router.get('/suscripciones', fnEstaAutenticado, function(req, res, next) {
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
   res.render('suscripciones', { usuario: req.user });
 });
 router.get('/cobros', fnEstaAutenticado, function(req, res, next) {
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
   res.render('cobros', { usuario: req.user });
 });
 router.get('/asistencia', fnEstaAutenticado, function(req, res, next) {
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
     res.render('asistencia', { usuario: req.user });
 });
 router.get('/evaluacion', fnEstaAutenticado, function(req, res, next) {
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
     res.render('evaluacion', { usuario: req.user });
 });
 router.get('/clases', fnEstaAutenticado, function(req, res, next) {
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
   res.render('clases', { usuario: req.user });
 });
 router.get('/parametros', fnEstaAutenticado, function(req, res, next) {
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
     res.render('parametros', { usuario: req.user });
 });
 router.get('/edades', fnEstaAutenticado, function(req, res, next) {
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
     res.render('edades', { usuario: req.user });
 });
 router.get('/registroVentas', fnEstaAutenticado, function(req, res, next) {
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
   res.render('registroVentas', { usuario: req.user });
 });
 router.get('/reporteDeudas', fnEstaAutenticado, function(req, res, next) {
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
     res.render('reporteDeudas', { usuario: req.user });
 });
 router.get('/reporteAlumnosClase', fnEstaAutenticado, function(req, res, next) {
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
     res.render('reporteAlumnosClase', { usuario: req.user });
 });
 router.get('/reportePagosMatriculados', fnEstaAutenticado, function(req, res, next) {
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
     res.render('reportePagosMatriculados', { usuario: req.user });
 });
 router.get('/padronSocios', fnEstaAutenticado, function(req, res, next) {
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
     res.render('formatoRegistroPadronSocios', { usuario: req.user });
 });
 router.get('/generarAsistencia', fnEstaAutenticado, function(req, res, next) {
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
     res.render('generarAsistencia', { usuario: req.user });
 });
 router.get('/tomarAsistencia', fnEstaAutenticado, function(req, res, next) {
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
     res.render('tomarAsistencia', { usuario: req.user });
 });
 router.get('/ticket', fnEstaAutenticado, controladorEG.emisionTicket);
@@ -177,15 +234,25 @@ router.get('/successjson', function(req, res) {
     res.status(200).json({"status": "error3", "datos": ""});
     return false;
   }*/
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
   res.status(200).json({"status": "success", "datos": req.user});
 });
 
 router.get('/failurejson', function(req, res) {
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
   res.status(200).json({"status": "error", "datos": ""});
 });
 
 router.get("/logout", function(req, res){
-      req.logout();
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
+
+    req.logout();
       res.redirect("/");
     }
 );
@@ -194,6 +261,9 @@ function fnEstaAutenticado(req, res, next){
   if(req.isAuthenticated()) {
     next();
   } else {
+      res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+      res.header("Pragma", "no-cache");
+      res.header("Expires", 0);
     res.redirect("/");
   }
 }
