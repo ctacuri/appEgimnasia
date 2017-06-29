@@ -28,6 +28,7 @@ var conexion = mysql.createConnection(opciones);
 conexion.connect(fnConectado);
 */
 
+/*
 var connection;
 function handleDisconnect() {
     connection = mysql.createConnection(opciones2); 		// Recreate the connection, since
@@ -52,5 +53,27 @@ function handleDisconnect() {
 }
 
 handleDisconnect();
+*/
+
+var connection;
+function startConnection() {
+    console.error('CONNECTING');
+    connection = mysql.createConnection(opciones2);
+    connection.connect(function(err) {
+        if (err) {
+            console.error('CONNECT FAILED', err.code);
+            startConnection();
+        }
+        else
+            console.error('CONNECTED');
+    });
+    connection.on('error', function(err) {
+        if (err.fatal)
+            startConnection();
+    });
+}
+
+startConnection();
+
 
 module.exports = connection;
