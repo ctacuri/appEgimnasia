@@ -165,7 +165,7 @@ controller.listaProfesores = function(req, res, next){
     model.listaProfesores(function(err, registros){
         if(err){
             //console.log("Error: " + err);
-            res.status(200).json({"status": "error"});
+            res.status(200).json({"status": "error", "error": err});
         }else{
             if(registros.length > 0){
                 res.header("Cache-Control", "no-cache, no-store, must-revalidate");
