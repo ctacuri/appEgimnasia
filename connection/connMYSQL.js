@@ -4,7 +4,10 @@ var mysql = require("mysql"),
 		port: 8889,
 		user: "root",
 		password: "root",
-		database: "gimnasio"
+		database: "gimnasio",
+        connectionLimit: 50,
+        queueLimit: 0,
+        waitForConnection: true
 	};
 
 	opciones2 = {
@@ -12,7 +15,10 @@ var mysql = require("mysql"),
 		port: 3306,
 		user: "root",
 		password: "Admin2016Juego",
-		database: "gimnasio"
+		database: "gimnasio",
+        connectionLimit: 50,
+        queueLimit: 0,
+        waitForConnection: true
 	};
 
 /*
@@ -58,8 +64,10 @@ handleDisconnect();
 var connection;
 function startConnection() {
     console.error('CONNECTING');
-    connection = mysql.createConnection(opciones2);
-    connection.connect(function(err) {
+    //connection = mysql.createConnection(opciones2);
+    connection = mysql.createPool(opciones2);
+
+    connection.getConnection(function(err) {
         if (err) {
             console.error('CONNECT FAILED', err.code);
             startConnection();
