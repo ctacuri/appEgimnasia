@@ -350,9 +350,11 @@ model.saveAlumnos = function(datos, cb){
     sentenciaSQL += datos.idTutor + ",";
     sentenciaSQL += datos.tipoDoc + ",";
     sentenciaSQL += "'" + datos.nroDocumento + "',";
+
     sentenciaSQL += "'" + datos.apepat + "',";
     sentenciaSQL += "'" + datos.apemat + "',";
     sentenciaSQL += "'" + datos.nombres + "',";
+
     sentenciaSQL += "'" + datos.fechaNac + "',";
     sentenciaSQL += "'" + datos.sexo + "',";
     sentenciaSQL += "'" + datos.dpto + "',";
