@@ -1,3 +1,9 @@
+="INSERT INTO gim_tutores VALUES("&A1&","&B1&",'"&C1&"','"&D1&"','"&E1&"','"&F1&"','"&G1&"',"&H1&","&I1&",'"&J1&"','"&K1&"','"&L1&"','"&M1&"','"&N1&"','"&O1&"','"&P1&"','"&Q1&"','"&R1&"','"&S1&"')"
+
+="INSERT INTO gim_alumnos VALUES("&A1&","&B1&","&C1&",'"&D1&"','"&E1&"','"&F1&"','"&G1&"','"&H1&"',"&I1&",'"&J1&"','"&K1&"','"&L1&"','"&M1&"','"&N1&"','"&O1&"','"&P1&"','"&Q1&"','"&R1&"')"
+
+
+
 /* CARGAR ESTADO CIVIL */
 INSERT INTO gim_seguro_medico (id_seguro_medico, descripcion, estado)
 SELECT id_seguro_medico, nombre, 'V' 

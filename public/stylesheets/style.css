@@ -281,7 +281,7 @@ iframe{
 }
 .modal-wide .modal-body {
   overflow-y: auto;
-  min-height: 550px !important;
+  min-height: 525px !important;
 }
 
 @media (max-width: 768px) {

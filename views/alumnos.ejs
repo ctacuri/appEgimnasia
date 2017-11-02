@@ -8,6 +8,18 @@
     <meta name="author" content="">
     <title>Escuela de Gimnasia</title>
     <script type="text/javascript" src="javascripts/scripts.js"></script>
+    <style type="text/css">
+        .modal-dialog,
+        .modal-content {
+            /* 80% of window height*/
+            height: 90%;
+        }
+        .modal-body {
+            /* 100% = dialog height, 120px = header + footer */
+            max-height: calc(100% - 200px);
+            overflow-y: scroll;
+        }
+    </style>
 </head>
     <body>
         <% include menu %>
@@ -280,12 +292,17 @@
                                     </div>
                                 </div>
 
+
+                                <div class="form-group row text-align-right" style="margin-top: 10px; margin-right: 15px;">
+                                    <button type="button" class="btn btn-primary" id="btnSave">Guardar</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCerrar">Cerrar</button>
+                                </div>
+
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="btnSave">Guardar</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCerrar">Cerrar</button>
+
                     </div>
                 </div>
             </div>
@@ -543,7 +560,9 @@
                 $("#ciaSeg").jqxDropDownList(
                     $.extend(
                         {}, vDefaultOptionsDropDownList, {
-                            width: '100%'
+                            width: '100%',
+                            source: vEsSalud,
+                            autoDropDownHeight: true
                         }
                     )
                 );
@@ -741,6 +760,8 @@
                     // row's bound index.
                     var boundIndex = args.rowindex;
                     var data = $('#grid').jqxGrid('getrowdata', boundIndex);
+                    //console.log(data);
+                    //return false;
                     $("#id").val(data.id_alumno);
                     $("#tutor").jqxDropDownList('selectItem', data.id_tutor);
                     $("#tipoDocumento").jqxDropDownList('selectItem', data.id_tipo_doc);
@@ -767,6 +788,7 @@
                     }, 1500);
 
                     $("#direccion").val(data.direccion);
+                    $("#esSalud").jqxDropDownList('selectItem', data.essalud);
                     $("#ciaSeg").jqxDropDownList('selectItem', data.id_cia_seguro);
 
                     $("#enfermedades").val(data.enfermedades);
@@ -831,13 +853,13 @@
                     }
 
                     if(json3[0].status == "success"){
-                        $("#ciaSeg").jqxDropDownList({
+                        /*$("#ciaSeg").jqxDropDownList({
                             source: json3[0].registros[0],
                             displayMember: "descripcion",
                             valueMember: "id_seguro_medico",
                             dropDownWidth: 150,
                             autoDropDownHeight: true
-                        });
+                        });*/
                     }else{
                         alert("Error: al cargar cia seguros");
                         return false;
@@ -902,9 +924,11 @@
                         idTutor: $("#tutor").val(),
                         tipoDoc: $("#tipoDocumento").val(),
                         nroDocumento: $("#nroDocumento").val(),
+
                         nombres: $("#nombres").val(),
                         apepat: $("#apellidoPaterno").val(),
                         apemat: $("#apellidoMaterno").val(),
+
                         fechaNac: fn_convertFecha_DMY_to_SQL($("#fechaNacimiento").val()),
                         sexo: $("#sexo").val(),
                         dpto: $("#departamento").val(),
@@ -933,7 +957,7 @@
 
                         obs: $("#obs").val()
                     };
-                    //console.log(datos);
+                    console.log(datos);
 
                     var txtMsg = "", url = "";
                     if($("#id").val() != ""){

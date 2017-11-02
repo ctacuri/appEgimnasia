@@ -81,7 +81,7 @@ model.updTutores = function(datos, cb){
 }
 
 model.listaTutoresSimple = function(cb){
-    var sentenciaSQL = "SELECT t.id_tutor, t.tipo_doc, t.numdoc, CONCAT(t.nombres,' ',t.apepat,' ',t.apemat) AS descripcion, t.direccion FROM gim_tutores t ";
+    var sentenciaSQL = "SELECT t.id_tutor, t.tipo_doc, t.numdoc, CONCAT(t.apepat,' ',t.apemat,' ',t.nombres) AS descripcion, t.direccion FROM gim_tutores t ORDER BY descripcion ";
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -391,9 +391,11 @@ model.updAlumnos = function(datos, cb){
     sentenciaSQL += datos.idTutor + ",";
     sentenciaSQL += datos.tipoDoc + ",";
     sentenciaSQL += "'" + datos.nroDocumento + "',";
-    sentenciaSQL += "'" + datos.nombres + "',";
+
     sentenciaSQL += "'" + datos.apepat + "',";
     sentenciaSQL += "'" + datos.apemat + "',";
+    sentenciaSQL += "'" + datos.nombres + "',";
+
     sentenciaSQL += "'" + datos.fechaNac + "',";
     sentenciaSQL += "'" + datos.sexo + "',";
     sentenciaSQL += "'" + datos.dpto + "',";
