@@ -81,7 +81,7 @@ model.updTutores = function(datos, cb){
 }
 
 model.listaTutoresSimple = function(cb){
-    var sentenciaSQL = "SELECT t.id_tutor, t.tipo_doc, t.numdoc, CONCAT(t.apepat,' ',t.apemat,' ',t.nombres) AS descripcion, t.direccion FROM gim_tutores t ORDER BY descripcion ";
+    var sentenciaSQL = "SELECT t.id_tutor, t.tipo_doc, t.numdoc, CONCAT(t.apepat,' ',t.apemat,', ',t.nombres) AS descripcion, t.direccion FROM gim_tutores t ORDER BY descripcion ";
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -363,6 +363,9 @@ model.saveAlumnos = function(datos, cb){
     sentenciaSQL += "'" + datos.direccion + "',";
     sentenciaSQL += "'" + datos.esSalud + "',";
     sentenciaSQL += "'" + datos.ciaSeguro + "',";
+
+    sentenciaSQL += "'" + datos.nombreCiaSeguro + "',";
+
     sentenciaSQL += "'" + datos.enfermedades + "',";
     sentenciaSQL += "'" + datos.alergias + "',";
 
@@ -406,6 +409,9 @@ model.updAlumnos = function(datos, cb){
     sentenciaSQL += "'" + datos.direccion + "',";
     sentenciaSQL += "'" + datos.esSalud + "',";
     sentenciaSQL += "'" + datos.ciaSeguro + "',";
+
+    sentenciaSQL += "'" + datos.nombreCiaSeguro + "',";
+
     sentenciaSQL += "'" + datos.enfermedades + "',";
     sentenciaSQL += "'" + datos.alergias + "',";
 

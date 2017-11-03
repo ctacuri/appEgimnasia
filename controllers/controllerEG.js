@@ -373,6 +373,9 @@ controller.saveAlumnos = function(req, res, next){
         direccion: req.body.direccion,
         esSalud: req.body.esSalud,
         ciaSeguro: req.body.ciaSeguro,
+
+        nombreCiaSeguro: req.body.nombreCiaSeguro,
+
         enfermedades: req.body.enfermedades,
         alergias: req.body.alergias,
 
@@ -428,6 +431,9 @@ controller.updAlumnos = function(req, res, next){
         direccion: req.body.direccion,
         esSalud: req.body.esSalud,
         ciaSeguro: req.body.ciaSeguro,
+
+        nombreCiaSeguro: req.body.nombreCiaSeguro,
+
         enfermedades: req.body.enfermedades,
         alergias: req.body.alergias,
 

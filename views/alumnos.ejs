@@ -177,6 +177,13 @@
                                 </div>
 
                                 <div class="form-group row">
+                                    <label for="nombreCiaSeg" class="col-md-3 col-form-label col-form-label-sm">Nombre Cia</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control form-control-sm" id="nombreCiaSeg">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
                                     <label for="enfermedades" class="col-md-3 col-form-label col-form-label-sm">Enfermedades</label>
                                     <div class="col-md-9">
                                         <input type="text" class="form-control form-control-sm" id="enfermedades">
@@ -201,6 +208,7 @@
                             <div class="col-md-6 nopadding">
 
 
+                                <!--
                                 <div class="form-group row">
                                     <label for="apepatMama" class="col-md-3 col-form-label col-form-label-sm">AP mama</label>
                                     <div class="col-md-9">
@@ -213,7 +221,7 @@
                                     <div class="col-md-9">
                                         <input type="text" class="form-control form-control-sm" id="apematMama">
                                     </div>
-                                </div>
+                                </div>-->
 
                                 <div class="form-group row">
                                     <label for="nombresMama" class="col-md-3 col-form-label col-form-label-sm">N mama</label>
@@ -243,6 +251,7 @@
                                     </div>
                                 </div>
 
+                                <!--
                                 <div class="form-group row">
                                     <label for="apepatPapa" class="col-md-3 col-form-label col-form-label-sm">AP papa</label>
                                     <div class="col-md-9">
@@ -256,6 +265,7 @@
                                         <input type="text" class="form-control form-control-sm" id="apematPapa">
                                     </div>
                                 </div>
+                                -->
 
                                 <div class="form-group row">
                                     <label for="nombresPapa" class="col-md-3 col-form-label col-form-label-sm">N papa</label>
@@ -609,6 +619,7 @@
                             { name: 'essalud', type: 'string'},
                             { name: 'id_cia_seguro', type: 'int'},
                             { name: 'cia_seguro', type: 'string'},
+                            { name: 'nombre_cia_seguro', type: 'string'},
                             { name: 'enfermedades', type: 'string'},
                             { name: 'alergias', type: 'string'},
                             { name: 'nombre_mama', type: 'string'},
@@ -667,19 +678,20 @@
                                 //{ text: 'Email', align: 'center', datafield: 'email', width: '20%' },
                                 { text: 'Essalud', align: 'center', datafield: 'essalud', cellsalign: 'left', width: '10%' },
                                 { text: 'Cia. Seguro', align: 'center', datafield: 'cia_seguro', width: '10%' },
+                                { text: 'Nombre Cia', align: 'center', datafield: 'nombre_cia_seguro', width: '20%' },
                                 { text: 'Enfermedades', align: 'center', datafield: 'enfermedades', width: '10%' },
                                 { text: 'Alergias', align: 'center', datafield: 'alergias', width: '10%' },
 
                                 { text: 'Nombre mama', align: 'center', datafield: 'nombre_mama', width: '20%' },
-                                { text: 'Apepat mama', align: 'center', datafield: 'apepat_mama', width: '20%' },
-                                { text: 'Apemat mama', align: 'center', datafield: 'apemat_mama', width: '20%' },
+                                //{ text: 'Apepat mama', align: 'center', datafield: 'apepat_mama', width: '20%' },
+                                //{ text: 'Apemat mama', align: 'center', datafield: 'apemat_mama', width: '20%' },
                                 { text: 'Telf. Fijo mama', align: 'center', datafield: 'tel_fijo_mama', width: '20%' },
                                 { text: 'Celular mama', align: 'center', datafield: 'tel_cel_mama', width: '20%' },
                                 { text: 'Email mama', align: 'center', datafield: 'email_mama', width: '20%' },
 
                                 { text: 'Nombre papa', align: 'center', datafield: 'nombre_papa', width: '20%' },
-                                { text: 'Apepat papa', align: 'center', datafield: 'apepat_papa', width: '20%' },
-                                { text: 'Apemat papa', align: 'center', datafield: 'apemat_papa', width: '20%' },
+                                //{ text: 'Apepat papa', align: 'center', datafield: 'apepat_papa', width: '20%' },
+                                //{ text: 'Apemat papa', align: 'center', datafield: 'apemat_papa', width: '20%' },
                                 { text: 'Telf. Fijo papa', align: 'center', datafield: 'tel_fijo_papa', width: '20%' },
                                 { text: 'Celular papa', align: 'center', datafield: 'tel_cel_papa', width: '20%' },
                                 { text: 'Email papa', align: 'center', datafield: 'email_papa', width: '20%' },
@@ -790,6 +802,8 @@
                     $("#direccion").val(data.direccion);
                     $("#esSalud").jqxDropDownList('selectItem', data.essalud);
                     $("#ciaSeg").jqxDropDownList('selectItem', data.id_cia_seguro);
+
+                    $("#nombreCiaSeg").val(data.nombre_cia_seguro);
 
                     $("#enfermedades").val(data.enfermedades);
                     $("#alergias").val(data.alergias);
@@ -937,18 +951,23 @@
                         direccion: $("#direccion").val(),
                         esSalud: $("#esSalud").val(),
                         ciaSeguro: $("#ciaSeg").val(),
+                        nombreCiaSeguro: $("#nombreCiaSeg").val(),
                         enfermedades: $("#enfermedades").val(),
                         alergias: $("#alergias").val(),
 
-                        apepatMama: $("#apepatMama").val(),
-                        apematMama: $("#apematMama").val(),
+                        //$("#apepatMama").val()
+                        //$("#apematMama").val()
+                        apepatMama: '',
+                        apematMama: '',
                         nombresMama: $("#nombresMama").val(),
                         telefonoFijoMama: $("#telefonoFijoMama").val(),
                         CelularMama: $("#CelularMama").val(),
                         emailMama: $("#emailMama").val(),
 
-                        apepatPapa: $("#apepatPapa").val(),
-                        apematPapa: $("#apematPapa").val(),
+                        //$("#apepatPapa").val()
+                        //$("#apematPapa").val()
+                        apepatPapa: '',
+                        apematPapa: '',
                         nombresPapa: $("#nombresPapa").val(),
                         telefonoFijoPapa: $("#telefonoFijoPapa").val(),
                         CelularPapa: $("#CelularPapa").val(),
@@ -958,7 +977,7 @@
                         obs: $("#obs").val()
                     };
                     console.log(datos);
-
+                    //return false;
                     var txtMsg = "", url = "";
                     if($("#id").val() != ""){
                         url = "/EG/updAlumnos";
