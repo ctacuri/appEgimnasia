@@ -786,15 +786,28 @@
                     $("#sexo").jqxDropDownList('selectItem', data.sexo);
 
                     setTimeout(function() {
-                        $("#departamento").jqxDropDownList('selectItem', data.departamento);
+                        if(data.departamento == ""){
+                            $("#departamento").jqxDropDownList({selectedIndex: -1 });
+                        }else{
+                            $("#departamento").jqxDropDownList('selectItem', data.departamento);
+                        }
                     }, 500);
 
                     setTimeout(function(){
-                        $("#provincia").jqxDropDownList('selectItem', data.provincia);
+                        if(data.provincia == ""){
+                            $("#provincia").jqxDropDownList({selectedIndex: -1 });
+                        }else{
+                            $("#provincia").jqxDropDownList('selectItem', data.provincia);
+                        }
                     }, 1000);
 
                     setTimeout(function(){
-                        $("#distrito").jqxDropDownList('selectItem', data.distrito);
+                        if(data.distrito == ""){
+                            $("#distrito").jqxDropDownList('clearSelection');
+                            $("#distrito").jqxDropDownList({selectedIndex: -1 });
+                        }else{
+                            $("#distrito").jqxDropDownList('selectItem', data.distrito);
+                        }
                         $("#provincia").jqxDropDownList("close");
                         $("#distrito").jqxDropDownList("close");
                     }, 1500);

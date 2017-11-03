@@ -43,7 +43,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="www" pinned="false" current-in-tab="true">
+      <file leaf-file-name="www" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bin/www">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="22">
@@ -146,21 +146,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="alumnos.ejs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="alumnos.ejs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/alumnos.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="686" column="34" lean-forward="false" selection-start-line="686" selection-start-column="34" selection-end-line="686" selection-end-column="34" />
+            <state relative-caret-position="185">
+              <caret line="811" column="64" lean-forward="true" selection-start-line="811" selection-start-column="64" selection-end-line="811" selection-end-column="64" />
               <folding>
-                <marker date="1509721890000" expanded="true" signature="18662:18709" ph="..." />
-                <marker date="1509721890000" expanded="true" signature="18722:18728" ph=" " />
-                <marker date="1509721890000" expanded="true" signature="18728:18734" ph=" " />
-                <marker date="1509721890000" expanded="true" signature="20837:20922" ph="..." />
-                <marker date="1509721890000" expanded="true" signature="20936:20990" ph="..." />
-                <marker date="1509721890000" expanded="true" signature="21027:21064" ph="..." />
-                <marker date="1509721890000" expanded="true" signature="24132:24217" ph="..." />
-                <marker date="1509721890000" expanded="true" signature="24231:24285" ph="..." />
-                <marker date="1509721890000" expanded="true" signature="24335:24372" ph="..." />
+                <marker date="1509725698000" expanded="true" signature="18662:18709" ph="..." />
+                <marker date="1509725698000" expanded="true" signature="18722:18728" ph=" " />
+                <marker date="1509725698000" expanded="true" signature="18728:18734" ph=" " />
+                <marker date="1509725698000" expanded="true" signature="20837:20922" ph="..." />
+                <marker date="1509725698000" expanded="true" signature="20936:20990" ph="..." />
+                <marker date="1509725698000" expanded="true" signature="21027:21064" ph="..." />
+                <marker date="1509725698000" expanded="true" signature="24132:24217" ph="..." />
+                <marker date="1509725698000" expanded="true" signature="24231:24285" ph="..." />
+                <marker date="1509725698000" expanded="true" signature="24335:24372" ph="..." />
               </folding>
             </state>
           </provider>
@@ -226,8 +226,8 @@
       <find>saveAl</find>
       <find>#grid</find>
       <find>cia_seguro</find>
-      <find>double</find>
       <find>listaAlumnos</find>
+      <find>double</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -275,8 +275,8 @@
         <option value="$PROJECT_DIR$/connection/connMYSQL.js" />
         <option value="$PROJECT_DIR$/controllers/controllerEG.js" />
         <option value="$PROJECT_DIR$/models/modelEG.js" />
-        <option value="$PROJECT_DIR$/views/alumnos.ejs" />
         <option value="$PROJECT_DIR$/bin/www" />
+        <option value="$PROJECT_DIR$/views/alumnos.ejs" />
       </list>
     </option>
   </component>
@@ -567,12 +567,12 @@
       <workItem from="1498750001236" duration="1236000" />
       <workItem from="1498807496736" duration="2100000" />
       <workItem from="1508897834251" duration="12760000" />
-      <workItem from="1509712764751" duration="4326000" />
+      <workItem from="1509712764751" duration="5014000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="359746000" />
+    <option name="totallyTimeSpent" value="360434000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -585,7 +585,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="831" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17054264" sideWeight="0.49506348" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32863188" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -594,7 +594,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13460183" sideWeight="0.5049365" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13742071" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.7349229" sideWeight="0.48625794" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4333801" sideWeight="0.48625794" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1227,29 +1227,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/alumnos.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="686" column="34" lean-forward="false" selection-start-line="686" selection-start-column="34" selection-end-line="686" selection-end-column="34" />
-          <folding>
-            <marker date="1509721890000" expanded="true" signature="18662:18709" ph="..." />
-            <marker date="1509721890000" expanded="true" signature="18722:18728" ph=" " />
-            <marker date="1509721890000" expanded="true" signature="18728:18734" ph=" " />
-            <marker date="1509721890000" expanded="true" signature="20837:20922" ph="..." />
-            <marker date="1509721890000" expanded="true" signature="20936:20990" ph="..." />
-            <marker date="1509721890000" expanded="true" signature="21027:21064" ph="..." />
-            <marker date="1509721890000" expanded="true" signature="24132:24217" ph="..." />
-            <marker date="1509721890000" expanded="true" signature="24231:24285" ph="..." />
-            <marker date="1509721890000" expanded="true" signature="24335:24372" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bin/www">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
           <caret line="14" column="50" lean-forward="false" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/alumnos.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="811" column="64" lean-forward="true" selection-start-line="811" selection-start-column="64" selection-end-line="811" selection-end-column="64" />
+          <folding>
+            <marker date="1509725698000" expanded="true" signature="18662:18709" ph="..." />
+            <marker date="1509725698000" expanded="true" signature="18722:18728" ph=" " />
+            <marker date="1509725698000" expanded="true" signature="18728:18734" ph=" " />
+            <marker date="1509725698000" expanded="true" signature="20837:20922" ph="..." />
+            <marker date="1509725698000" expanded="true" signature="20936:20990" ph="..." />
+            <marker date="1509725698000" expanded="true" signature="21027:21064" ph="..." />
+            <marker date="1509725698000" expanded="true" signature="24132:24217" ph="..." />
+            <marker date="1509725698000" expanded="true" signature="24231:24285" ph="..." />
+            <marker date="1509725698000" expanded="true" signature="24335:24372" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
