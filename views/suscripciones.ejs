@@ -29,7 +29,7 @@
 <body>
 <% include menu %>
 
-<div id="myModal" class="modal modal-wide2 modal-high2 fade" role="dialog">
+<div id="myModal" class="modal modal-wide-60 modal-high2 fade" role="dialog">
     <div class="modal-dialog">
 
         <div class="modal-content">
@@ -42,33 +42,33 @@
                     <div class="col-md-12 nopadding">
 
                         <div class="form-group row">
-                            <label for="alumno" class="col-md-3 col-form-label col-form-label-sm">Alumno</label>
-                            <div class="col-md-9">
+                            <label for="alumno" class="col-md-2 col-form-label col-form-label-sm">Alumno</label>
+                            <div class="col-md-10">
                                 <div id="alumno" style="float: left; position: relative;"></div>
-                                <button type="button" class="btn btn-primary btn-xs" id="btnTutor" style="float: left; margin-left: 5px; margin-top: 3px; position: relative;">Tutor</button>
-                                <button type="button" class="btn btn-secondary btn-xs" id="btnAlumno" style="float: left; margin-left: 5px; margin-top: 3px; position: relative;">Alumno</button>
+                                <button type="button" class="btn btn-primary btn-sm" id="btnTutor" style="float: left; margin-left: 5px; margin-top: -2px; position: relative;">Tutor</button>
+                                <button type="button" class="btn btn-secondary btn-sm" id="btnAlumno" style="float: left; margin-left: 5px; margin-top: -2px; position: relative;">Alumno</button>
                                 <input type="hidden" class="form-control form-control-sm" id="id">
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="tutor" class="col-md-3 col-form-label col-form-label-sm">Tutor</label>
-                            <div class="col-md-9">
+                            <label for="tutor" class="col-md-2 col-form-label col-form-label-sm">Tutor</label>
+                            <div class="col-md-10">
                                 <!--<div id="tutor" style="float: left; position: relative;"></div>-->
-                                <div id="txtTutor"></div>
+                                <div id="txtTutor" style="margin-top: 3px;"></div>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="horario" class="col-md-3 col-form-label col-form-label-sm">Horario</label>
-                            <div class="col-md-9">
+                            <label for="horario" class="col-md-2 col-form-label col-form-label-sm">Horario</label>
+                            <div class="col-md-10">
                                 <div id="horario"></div>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="fecha" class="col-md-3 col-form-label col-form-label-sm">Fecha</label>
-                            <div class="col-md-4">
+                            <label for="fecha" class="col-md-2 col-form-label col-form-label-sm">Fecha</label>
+                            <div class="col-md-5">
                                 <div id="fecha"></div>
                             </div>
 
@@ -79,8 +79,8 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="mes" class="col-md-3 col-form-label col-form-label-sm">Mes</label>
-                            <div class="col-md-4">
+                            <label for="mes" class="col-md-2 col-form-label col-form-label-sm">Mes</label>
+                            <div class="col-md-5">
                                 <div id="mes"></div>
                             </div>
 
@@ -91,8 +91,8 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="profesor" class="col-md-3 col-form-label col-form-label-sm">Profesor</label>
-                            <div class="col-md-4">
+                            <label for="profesor" class="col-md-2 col-form-label col-form-label-sm">Profesor</label>
+                            <div class="col-md-5">
                                 <div id="profesor"></div>
                             </div>
 
@@ -117,8 +117,8 @@
                         </div>
 
                         <div class="form-group row" style="margin-top: 5px;">
-                            <label for="empresa" class="col-md-3 col-form-label col-form-label-sm">Empresa</label>
-                            <div class="col-md-4">
+                            <label for="empresa" class="col-md-2 col-form-label col-form-label-sm">Empresa</label>
+                            <div class="col-md-5">
                                 <div id="empresa"></div>
                             </div>
 
@@ -129,8 +129,8 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="formaPago" class="col-md-3 col-form-label col-form-label-sm">Forma Pago</label>
-                            <div class="col-md-4">
+                            <label for="formaPago" class="col-md-2 col-form-label col-form-label-sm">Forma Pago</label>
+                            <div class="col-md-5">
                                 <div id="formaPago"></div>
                             </div>
 
@@ -141,8 +141,8 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="correlativo" class="col-md-3 col-form-label col-form-label-sm">Correlativo</label>
-                            <div class="col-md-4">
+                            <label for="correlativo" class="col-md-2 col-form-label col-form-label-sm">Correlativo</label>
+                            <div class="col-md-5">
                                 <input type="text" class="form-control form-control-sm text-align-right" id="correlativo">
                             </div>
 
@@ -1039,7 +1039,7 @@
                 {}, vDefaultOptionsGrid,
                 {
                     groupable: false,
-                    height: '200px',
+                    height: '170px',
                     filterable: false,
                     showfilterrow: false,
                     //selectionmode: 'checkbox',

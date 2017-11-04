@@ -61,6 +61,15 @@
                                 </div>
                             </div>
 
+                            <!--
+                            <div class="form-group row">
+                                <label for="clase" class="col-md-3 col-form-label col-form-label-sm">Clase</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-sm text-align-left" id="clase" readonly>
+                                </div>
+                            </div>
+                            -->
+
                             <div class="form-group row">
                                 <label for="profesor" class="col-md-3 col-form-label col-form-label-sm">Profesor</label>
                                 <div class="col-md-4">
@@ -85,7 +94,6 @@
             </div>
         </div>
     </div>
-
 
     <div id='Menu'>
         <ul>
@@ -208,7 +216,7 @@
             $("#fechaFin").jqxDateTimeInput(
                 $.extend(
                     {}, vDefaultOptionsDateTimeInput, {
-                        width: '120',
+                        width: '110',
                         showTimeButton: true,
                         showCalendarButton: false,
                         formatString: 'HH:mm'
@@ -388,7 +396,6 @@
             );
 
 
-
             $.when(
                 $.ajax("/listaDias"),
                 $.ajax("/listaEdades"),
@@ -401,7 +408,8 @@
                         source: json1[0].registros,
                         displayMember: "descripcion",
                         valueMember: "id",
-                        autoDropDownHeight: true
+                        //autoDropDownHeight: true
+                        dropDownHeight: 200
                     });
                 }else{
                     alert("Error: al cargar los dias");
@@ -414,7 +422,7 @@
                         source: json2[0].registros,
                         displayMember: "descripcion",
                         valueMember: "id_edad",
-                        dropDownHeight: 250
+                        dropDownHeight: 200
                     });
                 }else{
                     alert("Error: al cargar las edades");
@@ -499,7 +507,6 @@
                     });
                 }
             });
-
 
         });
     </script>

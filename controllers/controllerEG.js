@@ -844,7 +844,10 @@ controller.saveHorarios = function(req, res, next){
         fechaFin: req.body.fechaFin,
         sexo: req.body.sexo,
         sexo_txt: req.body.sexo_txt,
-        clase: req.body.sexo_txt+'-'+req.body.edades_txt+'-'+req.body.dias_txt+'-('+req.body.fechaInicio+'-'+req.body.fechaFin+')',
+
+        //clase: req.body.sexo_txt+'-'+req.body.edades_txt+'-'+req.body.dias_txt+'-('+req.body.fechaInicio+'-'+req.body.fechaFin+')',
+        clase: req.body.dias_txt+'-'+req.body.edades_txt+'-('+req.body.fechaInicio+'-'+req.body.fechaFin+')',
+
         importe: req.body.importe,
         profesor: req.body.profesor
     };
@@ -875,7 +878,10 @@ controller.updHorarios = function(req, res, next){
         fechaInicio: req.body.fechaInicio,
         fechaFin: req.body.fechaFin,
         sexo: req.body.sexo,
-        clase: req.body.sexo_txt+'-'+req.body.edades_txt+'-'+req.body.dias+'-('+req.body.fechaInicio+'-'+req.body.fechaFin+')',
+
+        //clase: req.body.sexo_txt+'-'+req.body.edades_txt+'-'+req.body.dias+'-('+req.body.fechaInicio+'-'+req.body.fechaFin+')',
+        clase: req.body.dias_txt+'-'+req.body.edades_txt+'-('+req.body.fechaInicio+'-'+req.body.fechaFin+')',
+
         importe: req.body.importe,
         profesor: req.body.profesor
     };

@@ -252,6 +252,14 @@ a {
   margin-top: 0px;
 }
 
+.modal.modal-wide-60 .modal-dialog {
+  width: 60% !important;
+}
+
+.modal.modal-wide-70 .modal-dialog {
+  width: 70% !important;
+}
+
 .modal.modal-wide .modal-dialog {
   width: 70% !important;
 }
