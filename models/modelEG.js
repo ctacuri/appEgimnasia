@@ -6,15 +6,15 @@ var conn = require("../connection/connMYSQL");
 var model = function(){};
 
 model.validar = function(datos, cb){
-    //var sentenciaSQL = "SELECT * FROM gim_usuarios WHERE usuario = '"+datos.username+"' AND contrasena = '"+datos.password+"'";
-    var sentenciaSQL = "SELECT * FROM gim_usuarios WHERE usuario = 'admin' AND contrasena = '1114'";
+    var sentenciaSQL = "SELECT * FROM gim_usuarios WHERE usuario = '"+datos.username+"' AND contrasena = '"+datos.password+"'";
+    //var sentenciaSQL = "SELECT * FROM gim_usuarios WHERE usuario = 'admin' AND contrasena = '1114'";
     //console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
 
 model.detalleUsuario = function(usuario, cb) {
-    //var sentenciaSQL = "SELECT * FROM gim_usuarios WHERE id_usuario = "+usuario.id+" AND contrasena = '"+usuario.contrasena+"'";
-    var sentenciaSQL = "SELECT * FROM gim_usuarios WHERE usuario = 'admin' AND contrasena = '1114'";
+    var sentenciaSQL = "SELECT * FROM gim_usuarios WHERE id_usuario = "+usuario.id+" AND contrasena = '"+usuario.contrasena+"'";
+    //var sentenciaSQL = "SELECT * FROM gim_usuarios WHERE usuario = 'admin' AND contrasena = '1114'";
     console.log("2do. Query : " + sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
