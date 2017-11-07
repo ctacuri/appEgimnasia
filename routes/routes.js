@@ -206,6 +206,8 @@ router.get('/listarAsistenciaHorarioAlumno/:id_horario/:idAlumno', fnEstaAutenti
 
 router.post('/EG/eliminarRegistroTabla/', fnEstaAutenticado, controladorEG.eliminarRegistroTabla);
 
+router.post('/EG/updCorrelativo/', fnEstaAutenticado, controladorEG.updCorrelativo);
+
 
 router.post('/loguear',
 

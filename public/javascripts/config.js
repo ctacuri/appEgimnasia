@@ -967,8 +967,11 @@ function fn_emisionTicket(arregloCab, arregloDet){
     $("#detalle").html(html);
     $("#totalTicket").text("S/. " + arregloCab.total);
     $('#myModal').modal('hide');
+
+    //$('#myModalTicket').modal('show');
     //return false;
-    var url = "/updCorrelativo";
+
+    var url = "/EG/updCorrelativo/";
     var arregloUpdCorrelativo = {
       rucEmpresa: arregloCab.rucEmpresa,
       idFormaPago: arregloCab.formaPago
