@@ -236,7 +236,8 @@ model.saveMatricula = function(datos, cb){
     sentenciaSQL += datos.mes + ",";
     sentenciaSQL += datos.importe + ",";
     sentenciaSQL += datos.saldo + ",";
-    sentenciaSQL += datos.profesor + ");";
+    sentenciaSQL += datos.profesor + ",";
+    sentenciaSQL += "'" + datos.comentario + "')";
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -253,14 +254,16 @@ model.saveAsistenciaHorario = function(datos, cb){
 
 model.updMatricula = function(datos, cb){
     var sentenciaSQL = "CALL sp_updMatricula(";
-    sentenciaSQL += datos.alumno + ",";
-    sentenciaSQL += datos.horario + ",";
+    sentenciaSQL += datos.id + ",";
+    sentenciaSQL += datos.id_alumno + ",";
+    sentenciaSQL += datos.id_horario + ",";
     sentenciaSQL += "'" + datos.fecha + "',";
     sentenciaSQL += datos.anio + ",";
-    sentenciaSQL += datos.mes + ",";
+    sentenciaSQL += datos.id_mes + ",";
     sentenciaSQL += datos.importe + ",";
     sentenciaSQL += datos.saldo + ",";
-    sentenciaSQL += datos.profesor + ")";
+    sentenciaSQL += datos.id_profesor + ",";
+    sentenciaSQL += "'" + datos.comentario + "')";
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }

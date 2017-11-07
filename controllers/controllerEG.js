@@ -937,7 +937,8 @@ controller.saveMatricula = function(req, res, next){
         mes: req.body.id_mes,
         importe: req.body.importe,
         saldo: req.body.saldo,
-        profesor: req.body.id_profesor
+        profesor: req.body.id_profesor,
+        comentario: req.body.comentario
     };
     /*var datos = {
         empresa: req.body.empresa,
@@ -1084,16 +1085,17 @@ controller.saveDetCobro = function(req, res, next){
 controller.updMatricula = function(req, res, next){
     var datos = {
         id: req.body.id,
-        alumno: req.body.alumno,
-        horario: req.body.horario,
+        id_alumno: req.body.id_alumno,
+        id_horario: req.body.id_horario,
         fecha: req.body.fecha,
         anio: req.body.anio,
-        mes: req.body.mes,
+        id_mes: req.body.id_mes,
         importe: req.body.importe,
         saldo: req.body.saldo,
-        profesor: req.body.profesor
+        id_profesor: req.body.id_profesor,
+        comentario: req.body.comentario
     };
-    //console.log(datos);
+    console.log(datos);
     model.updMatricula(datos, function(err, registros){
         if(err){
             //console.log("Error: " + err);

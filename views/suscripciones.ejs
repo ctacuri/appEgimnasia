@@ -110,7 +110,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-md-12 text-align-right">
+                            <label for="comentario" class="col-md-2 col-form-label col-form-label-sm">Comentario</label>
+                            <div class="col-md-5">
+                                <textarea id="comentario" style="width: 100%; resize: none;"></textarea>
+                            </div>
+
+                            <div class="col-md-5 text-align-right">
                                 <!--<input type="text" class="form-control form-control-sm text-align-right" id="idTutorAlumno" style="float: left; position: relative; width: 40px;">
                                 <input type="text" class="form-control form-control-sm text-align-right" id="tutorAlumno" style="float: left; position: relative; width: 200px;">-->
                                 <button type="button" class="btn btn-secondary" id="btnVerHistorico" style="margin-top: 5px;">Historico</button>
@@ -910,6 +915,12 @@
                                     $("#mes").jqxDropDownList('selectItem', mesActual + 1);
                                     $("#anio").jqxDropDownList('selectItem', anioActual);
                                     $("#profesor").jqxDropDownList('selectItem', 4);
+                                    $("#comentario").val("");
+
+                                    $("#correlativo").prop('disabled', false);
+                                    $("#serie").prop('disabled', false);
+                                    $("#empresa").jqxDropDownList({ selectedIndex: -1, disabled: false });
+                                    $("#formaPago").jqxDropDownList({ selectedIndex: -1, disabled: false });
 
                                     $("#btnSave").text("Guardar");
                                     $('#myModal').modal('show');
@@ -919,6 +930,8 @@
                                         $('#grid2').jqxGrid('hidecolumn', 'id_horario');
                                         $('#grid2').jqxGrid('hidecolumn', 'id_mes');
                                         $('#grid2').jqxGrid('hidecolumn', 'id_profesor');
+                                        $('#grid2').jqxGrid('hidecolumn', 'comentario');
+                                        $('#grid2').jqxGrid('hidecolumn', 'id');
                                     }, 500);
                                     $('#grid2').jqxGrid('clear');
                                 });
@@ -972,7 +985,8 @@
                         { text: 'Mes', align: 'center', datafield: 'mes', cellsalign: 'left', width: '7%' },
                         { text: 'Monto Pagado', align: 'center', datafield: 'importe', cellsalign: 'right', width: '8%', cellsformat: 'd2' },
                         { text: 'Saldo', align: 'center', datafield: 'saldo', cellsalign: 'right', width: '8%', cellsformat: 'd2' },
-                        { text: 'Profesor', align: 'center', datafield: 'nombre_corto', cellsalign: 'left', width: '30%' }
+                        { text: 'Profesor', align: 'center', datafield: 'nombre_corto', cellsalign: 'left', width: '30%' },
+                        { text: 'Comentario', align: 'center', datafield: 'comentario', cellsalign: 'left', width: '30%' }
                     ]
                 }
             )
@@ -1052,17 +1066,31 @@
             $("#mes").jqxDropDownList('selectItem', data.mes_matricula);
             $("#importe").val(data.importe);
             $("#profesor").jqxDropDownList('selectItem', data.id_profesor);
+            $("#comentario").val(data.comentario);
 
             $('#grid2').jqxGrid('clear');
             $("#btnSave").text("Actualizar");
             $('#myModal').modal('show');
+
             setTimeout(function(){
                 $('#grid2').jqxGrid('hidecolumn', 'id_alumno');
                 $('#grid2').jqxGrid('hidecolumn', 'fecha');
                 $('#grid2').jqxGrid('hidecolumn', 'id_horario');
                 $('#grid2').jqxGrid('hidecolumn', 'id_mes');
                 $('#grid2').jqxGrid('hidecolumn', 'id_profesor');
+                $('#grid2').jqxGrid('hidecolumn', 'comentario');
+                $('#grid2').jqxGrid('hidecolumn', 'id');
+                //Trigger Click btnMatricula
+                //$("#btnAddMatricula").click();
             }, 500);
+
+            setTimeout(function(){
+                $("#correlativo").prop('disabled', true);
+                $("#serie").prop('disabled', true);
+                $("#empresa").jqxDropDownList({ selectedIndex: -1, disabled: true });
+                $("#formaPago").jqxDropDownList({ selectedIndex: -1, disabled: true });
+                $("#emitir").jqxDropDownList({ disabled: true });
+            }, 1000);
         });
 
         //INICIO - GRID MATRICULA MULTIPLE
@@ -1078,7 +1106,7 @@
                     columns: [
                         //{ text: 'Matricula', align: 'center', datafield: 'matricula', columntype: 'checkbox', cellsalign: 'center', width: '5%'},
                         { text: 'ID Alumno', align: 'center', datafield: 'id_alumno', cellsalign: 'left', width: '1%'},
-                        { text: 'Alumno', align: 'center', datafield: 'alumno', cellsalign: 'left', width: '26%', aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                        { text: 'Alumno', align: 'center', datafield: 'alumno', cellsalign: 'left', width: '30%', aggregatesrenderer: function (aggregates, column, element, summaryData) {
                             var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
                             $.each(aggregates, function (key, value) {
                                 renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
@@ -1089,7 +1117,7 @@
                         },
                         { text: 'Fecha', align: 'center', datafield: 'fecha', cellsalign: 'left', width: '1%'},
                         { text: 'ID Horario', align: 'center', datafield: 'id_horario', cellsalign: 'left', width: '1%' },
-                        { text: 'Horario', align: 'center', datafield: 'horario', cellsalign: 'left', width: '26%', aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                        { text: 'Horario', align: 'center', datafield: 'horario', cellsalign: 'left', width: '29%', aggregatesrenderer: function (aggregates, column, element, summaryData) {
                             var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
                             $.each(aggregates, function (key, value) {
                                 renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
@@ -1098,7 +1126,7 @@
                             return renderstring;
                             }
                         },
-                        { text: 'Año', align: 'center', datafield: 'anio', cellsalign: 'center', width: '10%', aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                        { text: 'Año', align: 'center', datafield: 'anio', cellsalign: 'center', width: '7%', aggregatesrenderer: function (aggregates, column, element, summaryData) {
                             var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
                             $.each(aggregates, function (key, value) {
                                 renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
@@ -1108,7 +1136,7 @@
                             }
                         },
                         { text: 'ID Mes', align: 'center', datafield: 'id_mes', cellsalign: 'left', width: '1%' },
-                        { text: 'Mes', align: 'center', datafield: 'mes', cellsalign: 'left', width: '14%', aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                        { text: 'Mes', align: 'center', datafield: 'mes', cellsalign: 'left', width: '13%', aggregatesrenderer: function (aggregates, column, element, summaryData) {
                             var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
                             $.each(aggregates, function (key, value) {
                                 renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
@@ -1117,7 +1145,7 @@
                             return renderstring;
                             }
                         },
-                        { text: 'Importe', align: 'center', datafield: 'importe', cellsalign: 'right', width: '13%', cellsformat: 'd2' , aggregates: ['sum'],
+                        { text: 'Importe', align: 'center', datafield: 'importe', cellsalign: 'right', width: '11%', cellsformat: 'd2', aggregates: ['sum'],
                             aggregatesrenderer: function (aggregates, column, element, summaryData) {
                                 var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
                                 $.each(aggregates, function (key, value) {
@@ -1127,7 +1155,7 @@
                                 return renderstring;
                             }
                         },
-                        { text: 'Saldo', align: 'center', datafield: 'saldo', cellsalign: 'right', width: '13%', cellsformat: 'd2' , aggregates: ['sum'],
+                        { text: 'Saldo', align: 'center', datafield: 'saldo', cellsalign: 'right', width: '10%', cellsformat: 'd2', aggregates: ['sum'],
                             aggregatesrenderer: function (aggregates, column, element, summaryData) {
                                 var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
                                 $.each(aggregates, function (key, value) {
@@ -1137,7 +1165,9 @@
                                 return renderstring;
                             }
                         },
-                        { text: 'Profesor', align: 'center', datafield: 'id_profesor', cellsalign: 'left', width: '1%' }
+                        { text: 'Profesor', align: 'center', datafield: 'id_profesor', cellsalign: 'left', width: '1%' },
+                        { text: 'Comentario', align: 'center', datafield: 'comentario', cellsalign: 'left', width: '1%' },
+                        { text: 'id', align: 'center', datafield: 'id', cellsalign: 'left', width: '1%' }
                     ]
                 }
             )
@@ -1187,7 +1217,7 @@
             }
 
             var datos = {
-                //id: $("#id").val(),
+                id: $("#id").val(),
                 id_alumno: $("#alumno").val(),
                 alumno: $("#alumno").text(),
                 id_horario: $("#horario").val(),
@@ -1198,6 +1228,7 @@
                 mes: $("#mes").text(),
                 importe: $("#importe").val(),
                 saldo: parseFloat($("#saldo").val() - $("#importe").val()),
+                comentario: $("#comentario").val(),
                 id_profesor: $("#profesor").val()
             };
 
@@ -1218,8 +1249,6 @@
             //console.log(rows);
         });
         //FIN - GRID MATRICULA MULTIPLE
-
-
 
         //INICIO - GRID HISTORIAL DE PAGOS
         $("#grid3").jqxGrid(
@@ -1378,8 +1407,7 @@
         $("#empresa").jqxDropDownList(
             $.extend(
                 {}, vDefaultOptionsDropDownList, {
-                    width: '100%',
-                    dropDownWidth: 350
+                    width: '100%'
                 }
             )
         );
@@ -1486,13 +1514,12 @@
                 return false;
             }
 
-
             if(json4[0].status == "success"){
                 $("#emitir").jqxDropDownList({
                     source: json4[0].registros[0],
                     displayMember: "descripcion",
                     valueMember: "id_comprobante",
-                    dropDownWidth: 200,
+                    //dropDownWidth: 200,
                     dropDownHorizontalAlignment: 'right',
                     autoDropDownHeight: true,
                     selectedIndex: 0
@@ -1670,7 +1697,6 @@
         });
 
         $("#btnSave").click(function() {
-
             if($("#alumno").val() == ""){
                 alert("Error: elija un alumno valido");
                 return false;
@@ -1683,7 +1709,7 @@
                 alert("Error: ingrese un importe valido");
                 return false;
             }
-            //console.log(datos);
+
             var txtMsg = "", url = "";
             if($("#id").val() != ""){
                 url = "/EG/updMatricula";
@@ -1704,13 +1730,12 @@
                 txtMsg = "registrar";
             }
             var datos = $('#grid2').jqxGrid('getrows');
-
             //console.log(datos);
+            //return false;
             if(datos.length == 0){
                 alert("Error: agregue una matricula a la grilla");
                 return false;
             }
-
             /*if(datos.length > 1){
                 for(var i = 0; i < datos.length; i++){
                     //console.log(i);
@@ -1721,83 +1746,85 @@
                 console.log(datos[0]);
             }
             return false;*/
-
             //INICIO - VALIDACION DE CONTROLES DE EMISION DE PAGOS
-            var arregloCabCobro = [];
-            if($('#emitir').jqxDropDownList('selectedIndex') == -1){
-                alert("Error: ingrese un comprobante de venta valido");
-                $("#emitir").jqxDropDownList('open');
-                return false;
-            }
-            if($('#empresa').jqxDropDownList('selectedIndex') == -1){
-                alert("Error: ingrese una empresa valida");
-                $("#empresa").jqxDropDownList('open');
-                return false;
-            }
-            if($('#formaPago').jqxDropDownList('selectedIndex') == -1){
-                alert("Error: ingrese una forma de pago valida");
-                $("#formaPago").jqxDropDownList('open');
-                return false;
-            }
-            if($('#serie').val() == ""){
-                alert("Error: ingrese una serie valida");
-                $("#serie").focus();
-                return false;
-            }
-            if($('#correlativo').val() == ""){
-                alert("Error: ingrese un correlativo valido");
-                $("#correlativo").focus();
-                return false;
-            }
+            if(txtMsg != "actualizar") {
+                var arregloCabCobro = [];
+                if ($('#emitir').jqxDropDownList('selectedIndex') == -1) {
+                    alert("Error: ingrese un comprobante de venta valido");
+                    $("#emitir").jqxDropDownList('open');
+                    return false;
+                }
+                if ($('#empresa').jqxDropDownList('selectedIndex') == -1) {
+                    alert("Error: ingrese una empresa valida");
+                    $("#empresa").jqxDropDownList('open');
+                    return false;
+                }
+                if ($('#formaPago').jqxDropDownList('selectedIndex') == -1) {
+                    alert("Error: ingrese una forma de pago valida");
+                    $("#formaPago").jqxDropDownList('open');
+                    return false;
+                }
+                if ($('#serie').val() == "") {
+                    alert("Error: ingrese una serie valida");
+                    $("#serie").focus();
+                    return false;
+                }
+                if ($('#correlativo').val() == "") {
+                    alert("Error: ingrese un correlativo valido");
+                    $("#correlativo").focus();
+                    return false;
+                }
 
-            //INICIO - DATOS DE TUTOR
-            var idAlumno = $("#alumno").val();
-            var queryResult = Enumerable.From(arregloAlumnos)
-                .Where("$.id_alumno == '"+idAlumno+"'")
-                .Select()
-                .ToArray();
-            //FIN - DATOS DE TUTOR
+                //INICIO - DATOS DE TUTOR
+                var idAlumno = $("#alumno").val();
+                var queryResult = Enumerable.From(arregloAlumnos)
+                    .Where("$.id_alumno == '"+idAlumno+"'")
+                    .Select()
+                    .ToArray();
+                //FIN - DATOS DE TUTOR
 
-            //INICIO - IMPUESTO POR EMPRESA
-            var queryResultE = Enumerable.From(arregloEmpresas)
-                .Where("$.numdoc == '"+$('#empresa').val()+"'")
-                .Select()
-                .ToArray();
-            //console.log(queryResultE[0]);
-            //FIN - IMPUESTO POR EMPRESA
-            var summaryData = $("#grid2").jqxGrid('getcolumnaggregateddata', 'importe', ['sum']);
+                //INICIO - IMPUESTO POR EMPRESA
+                var queryResultE = Enumerable.From(arregloEmpresas)
+                    .Where("$.numdoc == '"+$('#empresa').val()+"'")
+                    .Select()
+                    .ToArray();
+                //console.log(queryResultE[0]);
+                //FIN - IMPUESTO POR EMPRESA
+                var summaryData = $("#grid2").jqxGrid('getcolumnaggregateddata', 'importe', ['sum']);
 
-            var igv = parseFloat(summaryData.sum * queryResultE[0].impuesto);
-            var subTotal = parseFloat(summaryData.sum - igv);
-            var total = subTotal + igv;
-            //console.log(summaryData.sum);
-            arregloCabCobro.push({
-               pantallaCobro: "NO",
-               fechaEmision: fn_convertFecha_DMY_to_SQL($('#fecha').val()),
-               rucEmpresa: $('#empresa').val(),
-               tipoComprobante: $('#emitir').val(),
-               formaPago: $('#formaPago').val(),
-               nroSerie: $('#serie').val(),
-               nroCorrelativo: $('#correlativo').val(),
-               idPedido: 0,
-               tipoDocumento: queryResult[0].tipo_doc,
-               numDoc: queryResult[0].numdoc,
-               cliente: queryResult[0].descripcion_tutor,
-               direccion: queryResult[0].direccion,
-               subTotal: subTotal,
-               igv: igv,
-               total: total,
-               datosGrilla: JSON.stringify(datos)
-            });
-            //FIN - VALIDACION DE CONTROLES DE EMISION DE PAGOS
+                var igv = parseFloat(summaryData.sum * queryResultE[0].impuesto);
+                var subTotal = parseFloat(summaryData.sum - igv);
+                var total = subTotal + igv;
 
-            //console.log(arregloCobro[0]);
-            //fn_registrarCabCobro(arregloCabCobro[0], JSON.stringify(datos), queryResultE[0].impuesto);
-            //fn_emisionTicket(arregloCabCobro, datos);
+                //console.log(summaryData.sum);
+                arregloCabCobro.push({
+                    pantallaCobro: "NO",
+                    fechaEmision: fn_convertFecha_DMY_to_SQL($('#fecha').val()),
+                    rucEmpresa: $('#empresa').val(),
+                    tipoComprobante: $('#emitir').val(),
+                    formaPago: $('#formaPago').val(),
+                    nroSerie: $('#serie').val(),
+                    nroCorrelativo: $('#correlativo').val(),
+                    idPedido: 0,
+                    tipoDocumento: queryResult[0].tipo_doc,
+                    numDoc: queryResult[0].numdoc,
+                    cliente: queryResult[0].descripcion_tutor,
+                    direccion: queryResult[0].direccion,
+                    subTotal: subTotal,
+                    igv: igv,
+                    total: total,
+                    datosGrilla: JSON.stringify(datos)
+                });
+                //FIN - VALIDACION DE CONTROLES DE EMISION DE PAGOS
+                //console.log(arregloCobro[0]);
+                //fn_registrarCabCobro(arregloCabCobro[0], JSON.stringify(datos), queryResultE[0].impuesto);
+                //fn_emisionTicket(arregloCabCobro, datos);
+            }
             //return false;
             if(confirm("Esta seguro de "+txtMsg+" los datos ?")){
-
                 if(datos.length > 1){
+                    //console.log("AAAAA");
+                    //return false;
                     var cont = 0, cont2 = 0;
                     for(var i = 0; i < datos.length; i++){
                         //console.log(i);
@@ -1839,6 +1866,9 @@
                         sleep(1000);
                     }
                 }else{
+                    //console.log("BBBBB");
+                    //console.log(datos[0]);
+                    //return false;
                     $.ajax({
                         type: "POST",
                         url: url,
@@ -1847,10 +1877,13 @@
                         success: function(result){
                             //console.log(result);
                             if(result.status == "success") {
-                                if($("#emitir").val() != 4){
+                                //EN LA ACTUALIZACION DE MATRICULA
+                                //NO SE ALTERA NINGUNA INFORMACION
+                                //DE COBRO
+                                /*if($("#emitir").val() != 4){
                                     fn_registrarCabCobro(arregloCabCobro[0], JSON.stringify(datos), queryResultE[0].impuesto);
                                     return false;
-                                }
+                                }*/
                                 alert("Proceso realizado correctamente (MATRICULA)");
                                 location.reload();
                                 return false;
@@ -2458,7 +2491,6 @@
         function fn_listaMatricula(fechaIni, fechaFin){
             var fechaIniSql = fn_convertFecha_DMY_to_SQL(fechaIni);
             var fechaFinSql = fn_convertFecha_DMY_to_SQL(fechaFin);
-
             $.getJSON('/listaMatricula/'+fechaIniSql+'/'+fechaFinSql, function(json) {
                 //console.log(json);
                 var source =
@@ -2477,7 +2509,8 @@
                             { name: 'importe', type: 'float'},
                             { name: 'saldo', type: 'float'},
                             { name: 'id_profesor', type: 'int'},
-                            { name: 'nombre_corto', type: 'string'}
+                            { name: 'nombre_corto', type: 'string'},
+                            { name: 'comentario', type: 'string'}
                         ],
                         localdata: json.registros[0]
                     };
@@ -2489,9 +2522,7 @@
                 });
             });
         }
-
         fn_listaMatricula($("#FechaIniOS").val(), $("#FechaFinOS").val());
-
 
         function fn_listaHistoricoMatricula(idAlumno){
             $.getJSON('/listaHistorialMatricula/'+idAlumno, function(json) {
