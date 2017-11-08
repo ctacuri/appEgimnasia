@@ -273,6 +273,16 @@ a {
   height: 600px !important;
 }
 
+.modal .modal-high-500 .modal-dialog {
+  height: 500px !important;
+  min-height: 500px !important;
+}
+
+.modal-high-500 {
+  height: 500px !important;
+  min-height: 500px !important;
+}
+
 .modal.modal-high-ticket .modal-dialog .modal-body {
   height: 300px !important;
   min-height: 250px !important;

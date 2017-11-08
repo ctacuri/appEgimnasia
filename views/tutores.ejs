@@ -103,6 +103,7 @@
                                 </div>
                             </div>
 
+                            <!--
                             <div class="form-group row">
                                 <label for="telefonoFijo" class="col-md-3 col-form-label col-form-label-sm">Telf. fijo</label>
                                 <div class="col-md-4">
@@ -121,16 +122,17 @@
                                     <input type="text" class="form-control form-control-sm" id="email">
                                 </div>
                             </div>
+                            -->
 
                             <div class="form-group row">
-                                <label for="fechaReg" class="col-md-3 col-form-label col-form-label-sm">Fecha registro</label>
+                                <label for="fechaReg" class="col-md-3 col-form-label col-form-label-sm">Fecha reg.(*)</label>
                                 <div class="col-md-9">
                                     <div id="fechaReg"></div>
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="obs" class="col-md-3 col-form-label col-form-label-sm">Observacion</label>
+                                <label for="obs" class="col-md-3 col-form-label col-form-label-sm">Observacion(*)</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control form-control-sm" id="obs">
                                 </div>
@@ -559,7 +561,6 @@
                 }
             });
 
-
             $("#distrito").jqxDropDownList(
                 $.extend(
                     {}, vDefaultOptionsDropDownList, {
@@ -656,13 +657,21 @@
                     prov: $("#provincia").val(),
                     dist: $("#distrito").val(),
                     direccion: $("#direccion").val(),
+
+                    /*
                     telefonoFijo: $("#telefonoFijo").val(),
                     celular: $("#celular").val(),
                     email: $("#email").val(),
+                    */
+
+                    telefonoFijo: '',
+                    celular: '',
+                    email: '',
+
                     fechaReg: fn_convertFecha_DMY_to_SQL($("#fechaReg").val()),
                     obs: $("#obs").val()
                 };
-                console.log(datos);
+                //console.log(datos);
                 var txtMsg = "", url = "";
                 if($("#id").val() != ""){
                     url = "/EG/updTutores";
