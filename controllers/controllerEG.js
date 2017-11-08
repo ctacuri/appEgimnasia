@@ -392,10 +392,12 @@ controller.saveAlumnos = function(req, res, next){
         telefonoFijoPapa: req.body.telefonoFijoPapa,
         CelularPapa: req.body.CelularPapa,
         emailPapa: req.body.emailPapa,
-        tipoALumno: req.body.tipoAlumno,
+        tipoAlumno: req.body.tipoAlumno,
 
         obs: req.body.obs
     };
+    //console.log(datos);
+    //return false;
     model.saveAlumnos(datos, function(err, registros){
         if(err){
             //console.log("Error: " + err);
