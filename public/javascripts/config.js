@@ -780,7 +780,8 @@ function fn_validarAlumno(datos){
         alert("Error: ingrese un sexo valido");
         return false;
     }
-    if(datos.dpto == ""){
+
+    /*if(datos.dpto == ""){
         alert("Error: ingrese un departamento valido");
         return false;
     }
@@ -795,8 +796,7 @@ function fn_validarAlumno(datos){
     if(datos.direccion == ""){
         alert("Error: ingrese una direccion valida");
         return false;
-    }
-
+    }*/
     return true;
 }
 
