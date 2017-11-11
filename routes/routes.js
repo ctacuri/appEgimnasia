@@ -208,6 +208,9 @@ router.post('/EG/eliminarRegistroTabla/', fnEstaAutenticado, controladorEG.elimi
 
 router.post('/EG/updCorrelativo/', fnEstaAutenticado, controladorEG.updCorrelativo);
 
+router.get('/EG/search/tutor/:dni', fnEstaAutenticado, controladorEG.searchTutor);
+router.get('/EG/search/alumno/:dni', fnEstaAutenticado, controladorEG.searchAlumno);
+
 
 router.post('/loguear',
 

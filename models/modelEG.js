@@ -685,4 +685,20 @@ model.updCorrelativo = function(datos, cb){
     conn.query(sentenciaSQL, cb);
 }
 
+model.searchTutor = function(datos, cb){
+    var sentenciaSQL = "SELECT count(numdoc) as CANT FROM gim_tutores ";
+    sentenciaSQL += "WHERE numdoc = ";
+    sentenciaSQL += "'" + datos.dni + "'";
+    console.log(sentenciaSQL);
+    conn.query(sentenciaSQL, cb);
+}
+
+model.searchAlumno = function(datos, cb){
+    var sentenciaSQL = "SELECT count(numdoc) as CANT FROM gim_alumnos ";
+    sentenciaSQL += "WHERE numdoc = ";
+    sentenciaSQL += "'" + datos.dni + "'";
+    console.log(sentenciaSQL);
+    conn.query(sentenciaSQL, cb);
+}
+
 module.exports = model;

@@ -7,329 +7,176 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Escuela de Gimnasia</title>
-
-</head>
-<body>
-    <% include menu %>
-
-    <div id="myModal" class="modal modal-wide2 modal-high2 fade" role="dialog">
-        <div class="modal-dialog">
-
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">TUTOR</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-12 nopadding">
-
-                            <div class="form-group row">
-                                <label for="tipoDocumento" class="col-md-3 col-form-label col-form-label-sm">Tipo doc(*)</label>
-                                <div class="col-md-4">
-                                    <div id="tipoDocumento"></div>
-                                    <input type="hidden" class="form-control form-control-sm" id="id">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="nroDocumento" class="col-md-3 col-form-label col-form-label-sm">Nro doc(*)</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control form-control-sm" id="nroDocumento">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="apellidoPaterno" class="col-md-3 col-form-label col-form-label-sm">A. paterno(*)</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control form-control-sm" id="apellidoPaterno">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="apellidoMaterno" class="col-md-3 col-form-label col-form-label-sm">A. materno(*)</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control form-control-sm" id="apellidoMaterno">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="nombres" class="col-md-3 col-form-label col-form-label-sm">Nombres(*)</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control form-control-sm" id="nombres">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="fechaNacimiento" class="col-md-3 col-form-label col-form-label-sm">Fecha nac(*)</label>
-                                <div class="col-md-4">
-                                    <div id="fechaNacimiento"></div>
-                                </div>
-
-                                <label for="sexo" class="col-md-2 col-form-label col-form-label-sm">Sexo(*)</label>
-                                <div class="col-md-3">
-                                    <div id="sexo"></div>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="estadoCivil" class="col-md-3 col-form-label col-form-label-sm">Estado Civil</label>
-                                <div class="col-md-4">
-                                    <div id="estadoCivil"></div>
-                                </div>
-
-                                <label for="departamento" class="col-md-2 col-form-label col-form-label-sm">Dpto(*)</label>
-                                <div class="col-md-3">
-                                    <div id="departamento"></div>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="provincia" class="col-md-3 col-form-label col-form-label-sm">Provincia(*)</label>
-                                <div class="col-md-4">
-                                    <div id="provincia"></div>
-                                </div>
-
-                                <label for="distrito" class="col-md-2 col-form-label col-form-label-sm">Distrito(*)</label>
-                                <div class="col-md-3">
-                                    <div id="distrito"></div>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="direccion" class="col-md-3 col-form-label col-form-label-sm">Direccion(*)</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control form-control-sm" id="direccion">
-                                </div>
-                            </div>
-
-                            <!--
-                            <div class="form-group row">
-                                <label for="telefonoFijo" class="col-md-3 col-form-label col-form-label-sm">Telf. fijo</label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control form-control-sm" id="telefonoFijo">
-                                </div>
-
-                                <label for="celular" class="col-md-2 col-form-label col-form-label-sm">Celular</label>
-                                <div class="col-md-3">
-                                    <input type="text" class="form-control form-control-sm" id="celular">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="email" class="col-md-3 col-form-label col-form-label-sm">Email</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control form-control-sm" id="email">
-                                </div>
-                            </div>
-                            -->
-
-                            <div class="form-group row">
-                                <label for="fechaReg" class="col-md-3 col-form-label col-form-label-sm">Fecha reg.(*)</label>
-                                <div class="col-md-9">
-                                    <div id="fechaReg"></div>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="obs" class="col-md-3 col-form-label col-form-label-sm">Observacion(*)</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control form-control-sm" id="obs">
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="btnSave">Guardar</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCerrar">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div id='Menu'>
-        <ul>
-            <li>Eliminar</li>
-        </ul>
-    </div>
-
-    <div class="row fill-height-91">
-        <div class="col-md-12 fill-height-91">
-            <div id="jqxToolBar"></div>
-            <div id="grid"></div>
-        </div>
-    </div>
-
     <script type="text/javascript" src="javascripts/scripts.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $("#jqxToolBar").jqxToolBar(
-                    $.extend( {},
-                            vDefaultOptionsToolBar,
-                            {
-                                tools: 'custom | custom | custom',
-                                initTools: function (type, index, tool, menuToolIninitialization) {
-                                    switch (index) {
-                                        case 0:
-                                            var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'><b>TUTORES &nbsp;&nbsp; </b></div>";
-                                            tool.append(label);
-                                            break;
-                                            /*case 1:
-                                             var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Inicio: </div>";
-                                             tool.append(label);
-                                             break;
-                                             case 2:
-                                             var fecha = $("<div id='FechaIniOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
-                                             theme: theme2,
-                                             value: new Date(anioActual, mesActual, 1),
-                                             width: 105,
-                                             height: 25,
-                                             culture: 'es-ES'
-                                             });
-                                             tool.append(fecha);
-                                             break;
-                                             case 3:
-                                             var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Fin: </div>";
-                                             tool.append(label);
-                                             break;
-                                             case 4:
-                                             var fecha = $("<div id='FechaFinOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
-                                             theme: theme2,
-                                             value: new Date(anioActual, mesActual, ultimoDiaMesActual),
-                                             width: 105,
-                                             height: 25,
-                                             culture: 'es-ES'
-                                             });
-                                             tool.append(fecha);
-                                             break;*/
-                                        case 1:
-                                            var addBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/add.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
-                                                theme: theme2,
-                                                width: 30,
-                                                height: 19
-                                            });
-                                            tool.append(addBtn);
-                                            addBtn.click(function (event) {
-                                                $("#id").val('');
-                                                fn_clearText();
-                                                var arregloInputDateTime = ['fechaNacimiento', 'fechaReg'];
-                                                fn_clearDateTimeInput(arregloInputDateTime);
-                                                var arregloInputDropDownList = ['sexo', 'estadoCivil', 'departamento', 'provincia', 'distrito'];
-                                                fn_clearDropDownList(arregloInputDropDownList);
+                $.extend( {},
+                    vDefaultOptionsToolBar,
+                    {
+                        tools: 'custom | custom | custom',
+                        initTools: function (type, index, tool, menuToolIninitialization) {
+                            switch (index) {
+                                case 0:
+                                    var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'><b>TUTORES &nbsp;&nbsp; </b></div>";
+                                    tool.append(label);
+                                    break;
+                                    /*case 1:
+                                     var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Inicio: </div>";
+                                     tool.append(label);
+                                     break;
+                                     case 2:
+                                     var fecha = $("<div id='FechaIniOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
+                                     theme: theme2,
+                                     value: new Date(anioActual, mesActual, 1),
+                                     width: 105,
+                                     height: 25,
+                                     culture: 'es-ES'
+                                     });
+                                     tool.append(fecha);
+                                     break;
+                                     case 3:
+                                     var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Fin: </div>";
+                                     tool.append(label);
+                                     break;
+                                     case 4:
+                                     var fecha = $("<div id='FechaFinOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
+                                     theme: theme2,
+                                     value: new Date(anioActual, mesActual, ultimoDiaMesActual),
+                                     width: 105,
+                                     height: 25,
+                                     culture: 'es-ES'
+                                     });
+                                     tool.append(fecha);
+                                     break;*/
+                                case 1:
+                                    var addBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/add.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                        theme: theme2,
+                                        width: 30,
+                                        height: 19
+                                    });
+                                    tool.append(addBtn);
+                                    addBtn.click(function (event) {
+                                        $("#id").val('');
+                                        fn_clearText();
+                                        var arregloInputDateTime = ['fechaNacimiento', 'fechaReg'];
+                                        fn_clearDateTimeInput(arregloInputDateTime);
+                                        var arregloInputDropDownList = ['sexo', 'estadoCivil', 'departamento', 'provincia', 'distrito'];
+                                        fn_clearDropDownList(arregloInputDropDownList);
 
-                                                $("#departamento").jqxDropDownList('selectItem', '15' );
-                                                setTimeout(function(){
-                                                    $("#provincia").jqxDropDownList('selectItem', '01' );
-                                                }, 1000);
+                                        $("#departamento").jqxDropDownList('selectItem', '15' );
+                                        setTimeout(function(){
+                                            $("#provincia").jqxDropDownList('selectItem', '01' );
+                                        }, 1000);
 
-                                                $("#btnSave").text("Guardar");
-                                                $('#myModal').modal('show');
-                                            });
-                                            break;
-                                            /*case 2:
-                                             var searchBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/search.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
-                                             theme: theme2,
-                                             width: 30,
-                                             height: 19
-                                             });
-                                             tool.append(searchBtn);
-                                             searchBtn.click(function (event) {
-                                             var tools = $("#jqxToolBar").jqxToolBar("getTools");
-                                             var fechaIni = $("#FechaIniOS").val();
-                                             var fechaFin = $("#FechaFinOS").val();
-                                             var fechaIniSql = fechaIni.substring(6,10)+'-'+fechaIni.substring(3,5)+"-"+fechaIni.substring(0,2);
-                                             var fechaFinSql = fechaFin.substring(6,10)+'-'+fechaFin.substring(3,5)+"-"+fechaFin.substring(0,2);
+                                        $("#btnSave").removeAttr('disabled');
+                                        $("#btnSave").text("Guardar");
+                                        $('#myModal').modal('show');
+                                    });
+                                    break;
+                                    /*case 2:
+                                     var searchBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/search.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                     theme: theme2,
+                                     width: 30,
+                                     height: 19
+                                     });
+                                     tool.append(searchBtn);
+                                     searchBtn.click(function (event) {
+                                     var tools = $("#jqxToolBar").jqxToolBar("getTools");
+                                     var fechaIni = $("#FechaIniOS").val();
+                                     var fechaFin = $("#FechaFinOS").val();
+                                     var fechaIniSql = fechaIni.substring(6,10)+'-'+fechaIni.substring(3,5)+"-"+fechaIni.substring(0,2);
+                                     var fechaFinSql = fechaFin.substring(6,10)+'-'+fechaFin.substring(3,5)+"-"+fechaFin.substring(0,2);
 
-                                             fn_listaTrabGridMap(fechaIniSql,fechaFinSql,usuario);
-                                             });
-                                             break;*/
-                                        case 2:
-                                            var exportBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/icon_excel_02_20.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
-                                                theme: theme2,
-                                                width: 30,
-                                                height: 19
-                                            });
-                                            tool.append(exportBtn);
-                                            exportBtn.click(function (event) {
-                                                var JSONData = $("#grid").jqxGrid('exportdata', 'json');
-                                                fn_JSONToCSVConvertor(JSONData, "ReporteTutores", "", true);
-                                            });
-                                            break;
-                                    }
-                                }
+                                     fn_listaTrabGridMap(fechaIniSql,fechaFinSql,usuario);
+                                     });
+                                     break;*/
+                                case 2:
+                                    var exportBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/icon_excel_02_20.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                        theme: theme2,
+                                        width: 30,
+                                        height: 19
+                                    });
+                                    tool.append(exportBtn);
+                                    exportBtn.click(function (event) {
+                                        var JSONData = $("#grid").jqxGrid('exportdata', 'json');
+                                        fn_JSONToCSVConvertor(JSONData, "ReporteTutores", "", true);
+                                    });
+                                    break;
                             }
-                    )
+                        }
+                    }
+                )
             )
 
             $.getJSON('/listaTutores/', function(json) {
                 //console.log(json.registros[0]);
                 var source =
-                {
-                    datatype: "json",
-                    datafields: [
-                        { name: 'id_tutor', type: 'int'},
-                        { name: 'id_tipo_doc', type: 'int'},
-                        { name: 'tipo_doc', type: 'string'},
-                        { name: 'numdoc', type: 'string'},
-                        { name: 'apepat', type: 'string'},
-                        { name: 'apemat', type: 'string'},
-                        { name: 'nombres', type: 'string'},
-                        { name: 'fecha_nac', type: 'string'},
-                        { name: 'sexo', type: 'string'},
-                        { name: 'id_estado_civil', type: 'int'},
-                        { name: 'estado_civil', type: 'string'},
-                        { name: 'departamento', type: 'string'},
-                        { name: 'provincia', type: 'string'},
-                        { name: 'distrito', type: 'string'},
-                        { name: 'direccion', type: 'string'},
-                        { name: 'telefono', type: 'string'},
-                        { name: 'celular', type: 'string'},
-                        { name: 'email', type: 'string'},
-                        { name: 'fecha_ingreso', type: 'string'},
-                        { name: 'observacion', type: 'string'},
-                        { name: 'estado', type: 'string'}
-                    ],
-                    localdata: json.registros[0]
-                };
+                    {
+                        datatype: "json",
+                        datafields: [
+                            { name: 'id_tutor', type: 'int'},
+                            { name: 'id_tipo_doc', type: 'int'},
+                            { name: 'tipo_doc', type: 'string'},
+                            { name: 'numdoc', type: 'string'},
+                            { name: 'apepat', type: 'string'},
+                            { name: 'apemat', type: 'string'},
+                            { name: 'nombres', type: 'string'},
+                            { name: 'fecha_nac', type: 'string'},
+                            { name: 'sexo', type: 'string'},
+                            { name: 'id_estado_civil', type: 'int'},
+                            { name: 'estado_civil', type: 'string'},
+                            { name: 'departamento', type: 'string'},
+                            { name: 'provincia', type: 'string'},
+                            { name: 'distrito', type: 'string'},
+                            { name: 'direccion', type: 'string'},
+                            { name: 'telefono', type: 'string'},
+                            { name: 'celular', type: 'string'},
+                            { name: 'email', type: 'string'},
+                            { name: 'fecha_ingreso', type: 'string'},
+                            { name: 'observacion', type: 'string'},
+                            { name: 'estado', type: 'string'}
+                        ],
+                        localdata: json.registros[0]
+                    };
                 var dataAdapter = new $.jqx.dataAdapter(source);
 
                 $("#grid").jqxGrid(
-                {
-                    source: dataAdapter
-                });
+                    {
+                        source: dataAdapter
+                    });
             });
 
             $("#grid").jqxGrid(
-                    $.extend(
-                        {}, vDefaultOptionsGrid,
-                        {
-                            selectionmode: 'singlerow',
-                            columns: [
-                                { text: 'Id tutor', align: 'center', datafield: 'id_tutor', cellsalign: 'center', width: '5%' },
-                                { text: 'Tipo de documento', align: 'center', datafield: 'tipo_doc', cellsalign: 'center', width: '10%' },
-                                { text: 'Nro. Documento', align: 'center', datafield: 'numdoc', cellsalign: 'right', width: '10%' },
-                                { text: 'Nombres', align: 'center', datafield: 'nombres', cellsalign: 'left', width: '15%' },
-                                { text: 'Apellido Paterno', align: 'center', datafield: 'apepat', cellsalign: 'left', width: '15%'},
-                                { text: 'Apellido Materno', align: 'center', datafield: 'apemat', cellsalign: 'left', width: '15%' },
-                                { text: 'Fecha de Nac.', align: 'center', datafield: 'fecha_nac', cellsalign: 'left', width: '10%' },
-                                { text: 'Sexo', align: 'center', datafield: 'sexo', cellsalign: 'center', width: '10%' },
-                                { text: 'Estado Civil', align: 'center', datafield: 'estado_civil', cellsalign: 'left', width: '10%' },
-                                { text: 'Direccion', align: 'center', datafield: 'direccion', cellsalign: 'left', width: '25%' },
-                                { text: 'Departamento', align: 'center', datafield: 'departamento', cellsalign: 'left', width: '10%' },
-                                { text: 'Provincia', align: 'center', datafield: 'provincia', cellsalign: 'left', width: '10%' },
-                                { text: 'Distrito', align: 'center', datafield: 'distrito', cellsalign: 'left', width: '10%' },
-                                { text: 'Telefono Fijo', align: 'center', datafield: 'telefono', cellsalign: 'left', width: '10%' },
-                                { text: 'Telefono Celular', align: 'center', datafield: 'celular', cellsalign: 'center', width: '10%' },
-                                { text: 'Email', align: 'center', datafield: 'email', cellsalign: 'left', width: '30%' },
-                                { text: 'Fecha Ingreso', align: 'center', datafield: 'fecha_ingreso', cellsalign: 'center', width: '10%' },
-                                { text: 'Observaciones', align: 'center', datafield: 'observacion', cellsalign: 'left', width: '30%' }
-                            ]
-                        }
-                    )
+                $.extend(
+                    {}, vDefaultOptionsGrid,
+                    {
+                        pageable: true,
+                        pagesize: 20,
+                        pagermode: 'simple',
+                        selectionmode: 'singlerow',
+                        columns: [
+                            { text: 'Id tutor', align: 'center', datafield: 'id_tutor', cellsalign: 'center', width: '5%' },
+                            { text: 'Tipo de documento', align: 'center', datafield: 'tipo_doc', cellsalign: 'center', width: '10%' },
+                            { text: 'Nro. Documento', align: 'center', datafield: 'numdoc', cellsalign: 'right', width: '10%' },
+                            { text: 'Nombres', align: 'center', datafield: 'nombres', cellsalign: 'left', width: '15%' },
+                            { text: 'Apellido Paterno', align: 'center', datafield: 'apepat', cellsalign: 'left', width: '15%'},
+                            { text: 'Apellido Materno', align: 'center', datafield: 'apemat', cellsalign: 'left', width: '15%' },
+                            { text: 'Fecha de Nac.', align: 'center', datafield: 'fecha_nac', cellsalign: 'left', width: '10%' },
+                            { text: 'Sexo', align: 'center', datafield: 'sexo', cellsalign: 'center', width: '10%' },
+                            { text: 'Estado Civil', align: 'center', datafield: 'estado_civil', cellsalign: 'left', width: '10%' },
+                            { text: 'Direccion', align: 'center', datafield: 'direccion', cellsalign: 'left', width: '25%' },
+                            { text: 'Departamento', align: 'center', datafield: 'departamento', cellsalign: 'left', width: '10%' },
+                            { text: 'Provincia', align: 'center', datafield: 'provincia', cellsalign: 'left', width: '10%' },
+                            { text: 'Distrito', align: 'center', datafield: 'distrito', cellsalign: 'left', width: '10%' },
+                            { text: 'Telefono Fijo', align: 'center', datafield: 'telefono', cellsalign: 'left', width: '10%' },
+                            { text: 'Telefono Celular', align: 'center', datafield: 'celular', cellsalign: 'center', width: '10%' },
+                            { text: 'Email', align: 'center', datafield: 'email', cellsalign: 'left', width: '30%' },
+                            { text: 'Fecha Ingreso', align: 'center', datafield: 'fecha_ingreso', cellsalign: 'center', width: '10%' },
+                            { text: 'Observaciones', align: 'center', datafield: 'observacion', cellsalign: 'left', width: '30%' }
+                        ]
+                    }
+                )
             );
             var contextMenu = $("#Menu").jqxMenu({
                 theme: theme3,
@@ -427,6 +274,7 @@
                 $('#fechaReg').jqxDateTimeInput({ value: new Date(f2.ANIO, f2.MES - 1, f2.DIA) });
                 $("#observacion").val(data.observacion);
 
+                $("#btnSave").removeAttr('disabled');
                 $("#btnSave").text("Actualizar");
                 $('#myModal').modal('show');
             });
@@ -584,7 +432,8 @@
                         source: json1[0].registros[0],
                         displayMember: "descripcion",
                         valueMember: "id_tipo_documento",
-                        autoDropDownHeight: true
+                        autoDropDownHeight: true,
+                        selectedIndex: 0
                     });
                 }else{
                     alert("Error: al cargar los tipo de documentos");
@@ -659,10 +508,10 @@
                     direccion: $("#direccion").val(),
 
                     /*
-                    telefonoFijo: $("#telefonoFijo").val(),
-                    celular: $("#celular").val(),
-                    email: $("#email").val(),
-                    */
+                     telefonoFijo: $("#telefonoFijo").val(),
+                     celular: $("#celular").val(),
+                     email: $("#email").val(),
+                     */
 
                     telefonoFijo: '',
                     celular: '',
@@ -706,8 +555,196 @@
                 }
             });
 
+            $( "#nroDocumento" ).blur(function() {
+                if($("#nroDocumento").val() != "" && $("#id").val() == ""){
+                    $.ajax({
+                        type: "GET",
+                        url: '/EG/search/tutor/'+$("#nroDocumento").val(),
+                        //data: datos,
+                        dataType: 'json',
+                        success: function(result){
+                            //console.log(result);
+                            if(result.status == "success") {
+                                if(result.registros[0].CANT > 0){
+                                    alert("Error: Tutor ya existe");
+                                    $("#btnSave").attr('disabled','disabled');
+                                    return false;
+                                }else{
+                                    $("#btnSave").removeAttr('disabled');
+                                }
+                                //return false;
+                            }else{
+                                alert("Error: al buscar, vuelva a intentarlo");
+                                return false;
+                            }
+                        },error: function (xhr, ajaxOptions, thrownError) {
+                            alert("ERROR: " + xhr.responseText+" - "+thrownError);
+                        }
+                    });
+                }
+            });
 
         });
     </script>
+</head>
+<body>
+
+    <% include menu %>
+
+    <div id='Menu'>
+        <ul>
+            <li>Eliminar</li>
+        </ul>
+    </div>
+
+
+
+    <div id="myModal" class="modal modal-wide2 modal-high2 fade" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">TUTOR</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 nopadding">
+
+                            <div class="form-group row">
+                                <label for="tipoDocumento" class="col-md-3 col-form-label col-form-label-sm">Tipo doc(*)</label>
+                                <div class="col-md-4">
+                                    <div id="tipoDocumento"></div>
+                                    <input type="hidden" class="form-control form-control-sm" id="id">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="nroDocumento" class="col-md-3 col-form-label col-form-label-sm">Nro doc(*)</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-sm" id="nroDocumento">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="apellidoPaterno" class="col-md-3 col-form-label col-form-label-sm">A. paterno(*)</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-sm" id="apellidoPaterno">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="apellidoMaterno" class="col-md-3 col-form-label col-form-label-sm">A. materno(*)</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-sm" id="apellidoMaterno">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="nombres" class="col-md-3 col-form-label col-form-label-sm">Nombres(*)</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-sm" id="nombres">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="fechaNacimiento" class="col-md-3 col-form-label col-form-label-sm">Fecha nac(*)</label>
+                                <div class="col-md-4">
+                                    <div id="fechaNacimiento"></div>
+                                </div>
+
+                                <label for="sexo" class="col-md-2 col-form-label col-form-label-sm">Sexo(*)</label>
+                                <div class="col-md-3">
+                                    <div id="sexo"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="estadoCivil" class="col-md-3 col-form-label col-form-label-sm">Estado Civil</label>
+                                <div class="col-md-4">
+                                    <div id="estadoCivil"></div>
+                                </div>
+
+                                <label for="departamento" class="col-md-2 col-form-label col-form-label-sm">Dpto(*)</label>
+                                <div class="col-md-3">
+                                    <div id="departamento"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="provincia" class="col-md-3 col-form-label col-form-label-sm">Provincia(*)</label>
+                                <div class="col-md-4">
+                                    <div id="provincia"></div>
+                                </div>
+
+                                <label for="distrito" class="col-md-2 col-form-label col-form-label-sm">Distrito(*)</label>
+                                <div class="col-md-3">
+                                    <div id="distrito"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="direccion" class="col-md-3 col-form-label col-form-label-sm">Direccion(*)</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-sm" id="direccion">
+                                </div>
+                            </div>
+
+                            <!--
+                            <div class="form-group row">
+                                <label for="telefonoFijo" class="col-md-3 col-form-label col-form-label-sm">Telf. fijo</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control form-control-sm" id="telefonoFijo">
+                                </div>
+
+                                <label for="celular" class="col-md-2 col-form-label col-form-label-sm">Celular</label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control form-control-sm" id="celular">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="email" class="col-md-3 col-form-label col-form-label-sm">Email</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-sm" id="email">
+                                </div>
+                            </div>
+                            -->
+
+                            <div class="form-group row">
+                                <label for="fechaReg" class="col-md-3 col-form-label col-form-label-sm">Fecha reg.(*)</label>
+                                <div class="col-md-9">
+                                    <div id="fechaReg"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="obs" class="col-md-3 col-form-label col-form-label-sm">Observacion</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-sm" id="obs">
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnSave">Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCerrar">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row fill-height-91">
+        <div class="col-md-12 fill-height-91">
+            <div id="jqxToolBar"></div>
+            <div id="grid"></div>
+        </div>
+    </div>
+
+
 </body>
 </html>

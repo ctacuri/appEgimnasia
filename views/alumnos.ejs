@@ -405,6 +405,7 @@
                                                 $("#provincia").jqxDropDownList('selectItem', '01' );
                                             }, 1000);*/
 
+                                            $("#btnSave").removeAttr('disabled');
                                             $("#btnSave").text("Guardar");
                                             $('#myModal').modal('show');
                                         });
@@ -848,6 +849,7 @@
                     $("#tipoAlumno").jqxDropDownList('selectItem', data.id_tipo_alumno);
                     $("#obs").val(data.observaciones);
 
+                    $("#btnSave").removeAttr('disabled');
                     $("#btnSave").text("Actualizar");
                     $('#myModal').modal('show');
                 });
@@ -1033,6 +1035,35 @@
                                     return false;
                                 }else{
                                     alert("Error: Vuelva a intentarlo");
+                                    return false;
+                                }
+                            },error: function (xhr, ajaxOptions, thrownError) {
+                                alert("ERROR: " + xhr.responseText+" - "+thrownError);
+                            }
+                        });
+                    }
+                });
+
+                $( "#nroDocumento" ).blur(function() {
+                    if($("#nroDocumento").val() != "" && $("#id").val() == ""){
+                        $.ajax({
+                            type: "GET",
+                            url: '/EG/search/alumno/'+$("#nroDocumento").val(),
+                            //data: datos,
+                            dataType: 'json',
+                            success: function(result){
+                                //console.log(result);
+                                if(result.status == "success") {
+                                    if(result.registros[0].CANT > 0){
+                                        alert("Error: Alumno ya existe");
+                                        $("#btnSave").attr('disabled','disabled');
+                                        return false;
+                                    }else{
+                                        $("#btnSave").removeAttr('disabled');
+                                    }
+                                    //return false;
+                                }else{
+                                    alert("Error: al buscar, vuelva a intentarlo");
                                     return false;
                                 }
                             },error: function (xhr, ajaxOptions, thrownError) {

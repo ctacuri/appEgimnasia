@@ -744,10 +744,10 @@ function fn_validarTutor(datos) {
         alert("Error: ingrese una direccion valida");
         return false;
     }
-    if(datos.obs == ""){
+    /*if(datos.obs == ""){
         alert("Error: ingrese una observacion valida");
         return false;
-    }
+    }*/
     return true;
 }
 
