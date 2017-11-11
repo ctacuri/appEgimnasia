@@ -653,10 +653,20 @@
                         localdata: json.registros[0]
                     };
                     var dataAdapter = new $.jqx.dataAdapter(source);
-
+                    var records = json.registros[0];
                     $("#grid").jqxGrid(
                     {
-                        source: dataAdapter
+                        source: dataAdapter,
+                        virtualmode: true,
+                        rendergridrows: function (params) {
+                            var start = params.startindex;
+                            var end = params.endindex;
+                            var array = new Array();
+                            for (i = start; i < end; i++) {
+                                array[i] = records[i];
+                            }
+                            return array;
+                        }
                     });
                 });
 
