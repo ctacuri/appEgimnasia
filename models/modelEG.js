@@ -81,7 +81,7 @@ model.updTutores = function(datos, cb){
 }
 
 model.listaTutoresSimple = function(cb){
-    var sentenciaSQL = "SELECT t.id_tutor, t.tipo_doc, t.numdoc, CONCAT(t.apepat,' ',t.apemat,', ',t.nombres) AS descripcion, t.direccion FROM gim_tutores t ORDER BY descripcion ";
+    var sentenciaSQL = "SELECT t.id_tutor, t.tipo_doc, t.numdoc, CONCAT(t.apepat,' ',t.apemat,', ',t.nombres) AS descripcion, t.direccion FROM gim_tutores t WHERE estado = 'V' ORDER BY descripcion ";
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -93,7 +93,7 @@ model.listaProfesores = function(cb){
 }
 
 model.listaProfesoresSimple = function(cb){
-    var sentenciaSQL = "SELECT p.id_profesor, p.nombre_corto FROM gim_profesores p";
+    var sentenciaSQL = "SELECT p.id_profesor, p.nombre_corto FROM gim_profesores p WHERE estado = 'V'";
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -688,7 +688,8 @@ model.updCorrelativo = function(datos, cb){
 model.searchTutor = function(datos, cb){
     var sentenciaSQL = "SELECT count(numdoc) as CANT FROM gim_tutores ";
     sentenciaSQL += "WHERE numdoc = ";
-    sentenciaSQL += "'" + datos.dni + "'";
+    sentenciaSQL += "'" + datos.dni + "' ";
+    sentenciaSQL += "AND estado = 'V'";
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -696,7 +697,8 @@ model.searchTutor = function(datos, cb){
 model.searchAlumno = function(datos, cb){
     var sentenciaSQL = "SELECT count(numdoc) as CANT FROM gim_alumnos ";
     sentenciaSQL += "WHERE numdoc = ";
-    sentenciaSQL += "'" + datos.dni + "'";
+    sentenciaSQL += "'" + datos.dni + "' ";
+    sentenciaSQL += "AND estado = 'V'";
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }

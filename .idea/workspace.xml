@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f34f7079-dc81-4b1b-96d1-ceb27fcabfa8" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/db/~$v-06-2.docx" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/alumnos.ejs" afterPath="$PROJECT_DIR$/views/alumnos.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/tutores.ejs" afterPath="$PROJECT_DIR$/views/tutores.ejs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/modelEG.js" afterPath="$PROJECT_DIR$/models/modelEG.js" />
     </list>
     <ignored path="appEgimnasia.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -57,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="alumnos.ejs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="alumnos.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/alumnos.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="655" column="22" lean-forward="false" selection-start-line="655" selection-start-column="22" selection-end-line="655" selection-end-column="22" />
+            <state relative-caret-position="106">
+              <caret line="653" column="22" lean-forward="false" selection-start-line="653" selection-start-column="22" selection-end-line="653" selection-end-column="22" />
               <folding>
                 <marker date="1510453498000" expanded="true" signature="19071:19118" ph="..." />
                 <marker date="1510453498000" expanded="true" signature="19131:19137" ph=" " />
@@ -160,11 +160,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modelEG.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="modelEG.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/modelEG.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="696" column="69" lean-forward="false" selection-start-line="696" selection-start-column="69" selection-end-line="696" selection-end-column="69" />
+            <state relative-caret-position="193">
+              <caret line="347" column="33" lean-forward="true" selection-start-line="347" selection-start-column="33" selection-end-line="347" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -217,9 +217,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ALUMNO</find>
-      <find>grid</find>
-      <find>Eliminar</find>
       <find>vali</find>
       <find>observacio</find>
       <find>observacion</find>
@@ -247,6 +244,9 @@
       <find>Tutor</find>
       <find>Elimi</find>
       <find>Menu</find>
+      <find>simple</find>
+      <find>tutor</find>
+      <find>Simple</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -294,11 +294,11 @@
         <option value="$PROJECT_DIR$/views/edades.ejs" />
         <option value="$PROJECT_DIR$/views/cobros.ejs" />
         <option value="$PROJECT_DIR$/public/javascripts/config.js" />
-        <option value="$PROJECT_DIR$/models/modelEG.js" />
         <option value="$PROJECT_DIR$/controllers/controllerEG.js" />
         <option value="$PROJECT_DIR$/routes/routes.js" />
         <option value="$PROJECT_DIR$/views/tutores.ejs" />
         <option value="$PROJECT_DIR$/views/alumnos.ejs" />
+        <option value="$PROJECT_DIR$/models/modelEG.js" />
       </list>
     </option>
   </component>
@@ -623,12 +623,12 @@
       <workItem from="1509712764751" duration="9686000" />
       <workItem from="1510010216401" duration="5061000" />
       <workItem from="1510277041479" duration="700000" />
-      <workItem from="1510365694289" duration="6322000" />
+      <workItem from="1510365694289" duration="6948000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="393600000" />
+    <option name="totallyTimeSpent" value="394226000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -650,7 +650,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13460183" sideWeight="0.5049365" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13742071" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08382353" sideWeight="0.48625794" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31470588" sideWeight="0.48625794" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1391,14 +1391,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/modelEG.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="696" column="69" lean-forward="false" selection-start-line="696" selection-start-column="69" selection-end-line="696" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/controllerEG.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="457">
@@ -1427,8 +1419,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/alumnos.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="655" column="22" lean-forward="false" selection-start-line="655" selection-start-column="22" selection-end-line="655" selection-end-column="22" />
+        <state relative-caret-position="106">
+          <caret line="653" column="22" lean-forward="false" selection-start-line="653" selection-start-column="22" selection-end-line="653" selection-end-column="22" />
           <folding>
             <marker date="1510453498000" expanded="true" signature="19071:19118" ph="..." />
             <marker date="1510453498000" expanded="true" signature="19131:19137" ph=" " />
@@ -1440,6 +1432,14 @@
             <marker date="1510453498000" expanded="true" signature="24727:24781" ph="..." />
             <marker date="1510453498000" expanded="true" signature="24831:24868" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/modelEG.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="347" column="33" lean-forward="true" selection-start-line="347" selection-start-column="33" selection-end-line="347" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
