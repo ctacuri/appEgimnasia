@@ -1380,7 +1380,7 @@ controller.reporteRegistroVentas = function(req, res, next){
         fechaInicio: req.params.fechaInicio,
         fechaFin: req.params.fechaFin
     };
-    console.log(datos);
+    //console.log(datos);
     model.reporteRegistroVentas(datos, function(err, registros){
         if(err){
             //console.log("Error: " + err);
@@ -1497,6 +1497,50 @@ controller.searchAlumno = function(req, res, next){
         dni: req.params.dni
     };
     model.searchAlumno(datos, function(err, registros){
+        if(err){
+            //console.log("Error: " + err);
+            res.status(200).json({"status": "error"});
+        }else{
+            if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
+                //console.log(datos);
+                res.status(200).json({"status": "success", "registros": registros});
+            }else{
+                res.status(200).json({"status": "sinDatos"});
+            }
+        }
+    });
+}
+
+controller.listaCobroCab = function(req, res, next){
+    var datos = {
+        id: req.params.idCobro
+    };
+    model.listaCobroCab(datos, function(err, registros){
+        if(err){
+            //console.log("Error: " + err);
+            res.status(200).json({"status": "error"});
+        }else{
+            if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
+                //console.log(datos);
+                res.status(200).json({"status": "success", "registros": registros});
+            }else{
+                res.status(200).json({"status": "sinDatos"});
+            }
+        }
+    });
+}
+
+controller.listaCobroDet = function(req, res, next){
+    var datos = {
+        id: req.params.idCobro
+    };
+    model.listaCobroDet(datos, function(err, registros){
         if(err){
             //console.log("Error: " + err);
             res.status(200).json({"status": "error"});

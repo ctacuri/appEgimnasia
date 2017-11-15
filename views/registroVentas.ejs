@@ -13,6 +13,225 @@
 <body>
     <% include menu %>
 
+    <div id="myModalTicket" class="modal modal-wide-35 modal-high-ticket fade" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">EMISION DE TICKET</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 text-right" style="margin-top: -10px; margin-bottom: 5px;">
+                            <button type="button" class="btn btn-primary" id="btnPrint">Print</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCerrar">Cerrar</button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="viewTicket">
+
+                                <p align="center">CLUB ESCUELA DE GIMNASIA</p>
+                                <p align="center">AV. PETIT THOUARS NRO. 2685 LIMA - LIMA - LINCE</p>
+                                <p align="center">RUC: 20601497795</p>
+                                <p align="center">Telefono: (01) 4225261</p>
+                                <p align="center">www.gimnasia.pe</p>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table width="100%" class='table table-sm' border="0" style="font-size: 12px;">
+                                            <tr>
+                                                <td width="49%" align="right" style="margin-bottom: 3px;">Autorizacion SUNAT</td>
+                                                <td width="2%" align="center">:</td>
+                                                <td width="49%">0023845108800</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="49%" align="right">Maq Regist Nro</td>
+                                                <td width="2%" align="center">:</td>
+                                                <td width="49%">FFCF268000</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="49%" align="right">Ticket Boleta</td>
+                                                <td width="2%" align="center">:</td>
+                                                <td width="49%"><span id="nroTicket"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="49%" align="right">FECHA EMISION</td>
+                                                <td width="2%" align="center">:</td>
+                                                <td width="49%"><span id="fechaEmision"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="49%" align="right">DNI/RUC</td>
+                                                <td width="2%" align="center">:</td>
+                                                <td width="49%"><span id="idCliente"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="49%" align="right">CLIENTE</td>
+                                                <td width="2%" align="center">:</td>
+                                                <td width="49%"><span id="cliente"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="49%" align="right">TIPO DE PAGO</td>
+                                                <td width="2%" align="center">:</td>
+                                                <td width="49%"><span id="tipoPago"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="49%" align="right">DETALLE</td>
+                                                <td width="2%" align="center">:</td>
+                                                <td width="49%">
+                                                    <div id="detalle"></div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="49%" align="right"><B>TOTAL</B></td>
+                                                <td width="2%" align="center"><B>:</B></td>
+                                                <td width="49%"><b><span id="totalTicket"></span></b></td>
+                                            </tr>
+                                        </table>
+
+
+                                    </div>
+                                </div>
+
+
+                                <!--<div class="form-group row">
+                                    <label for="autorizacion" class="col-sm-6 col-form-label col-form-label-sm">
+                                        <p align="right">Autorizacion SUNAT Nro:</p>
+                                    </label>
+                                    <div class="col-sm-6" style="margin-left: -15px;">
+                                        <span id="autorizacion">0023845108800</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row" style="margin-top: -15px;">
+                                    <label for="maquina" class="col-sm-6 col-form-label col-form-label-sm text-align-right">
+                                        <p align="right">Maq Regist Nro:</p>
+                                    </label>
+                                    <div class="col-sm-6" style="margin-left: -15px;">
+                                        <span id="maquina">FFCF268000</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row" style="margin-top: -15px;">
+                                    <label for="nroTicket" class="col-xs-6 col-form-label col-form-label-sm text-align-right">
+                                        <p align="right">Ticket Boleta:</p>
+                                    </label>
+                                    <div class="col-xs-6" style="margin-left: -15px;">
+                                        <span id="nroTicket"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row" style="margin-top: -15px;">
+                                    <label for="nroTicket" class="col-xs-6 col-form-label col-form-label-sm text-align-right">
+                                        <p align="right">FECHA EMISION:</p>
+                                    </label>
+                                    <div class="col-xs-6" style="margin-left: -15px;">
+                                        <span id="nroTicket"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row" style="margin-top: -15px;">
+                                    <label for="nroDocumento" class="col-xs-6 col-form-label col-form-label-sm text-align-right">
+                                        <p align="right">DNI / RUC:</p>
+                                    </label>
+                                    <div class="col-xs-6" style="margin-left: -15px;">
+                                        <span id="nroDocumento"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row" style="margin-top: -15px;">
+                                    <label for="cliente" class="col-xs-6 col-form-label col-form-label-sm text-align-right">
+                                        <p align="right">CLIENTE:</p>
+                                    </label>
+                                    <div class="col-xs-6" style="margin-left: -15px;">
+                                        <span id="cliente"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row" style="margin-top: -15px;">
+                                    <label for="tipoPago" class="col-xs-6 col-form-label col-form-label-sm text-align-right">
+                                        <p align="right">TIPO DE PAGO:</p>
+                                    </label>
+                                    <div class="col-xs-6" style="margin-left: -15px;">
+                                        <span id="tipoPago"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row" style="margin-top: -15px;">
+                                    <label for="detalle" class="col-xs-6 col-form-label col-form-label-sm text-align-right">
+                                        <p align="right">DETALLE:</p>
+                                    </label>
+                                    <div class="col-xs-6" style="margin-left: -15px; margin-right: -15px;">
+                                        <div style="margin-bottom: 3px;">
+                                            Cuota mes de: Abril 2017 (VANESSA DEL ROSARIO RAMIREZ CAMPOMARES)
+                                            HORARIO: (10,11,12) Sabado, de 11:00 a 13:00
+                                        </div>
+                                        <div style="margin-bottom: 3px;">
+                                            Cuota mes de: Mayo 2017 (VANESSA DEL ROSARIO RAMIREZ CAMPOMARES)
+                                            HORARIO: (10,11,12) Sabado, de 11:00 a 13:00
+                                        </div>
+                                    </div>
+                                </div>-->
+
+                                <!--<div class="form-group row" style="margin-top: -15px;">
+                                    <label class="col-xs-11 col-form-label col-form-label-sm labelBorder">
+
+                                    </label>
+                                </div>
+
+                                <div class="form-group row" style="margin-top: -15px;">
+                                    <label for="total" class="col-xs-7 col-form-label col-form-label-sm text-align-right">
+
+                                    </label>
+                                    <div class="col-xs-5">
+                                        <span id="total" style="font-weight: bold; font-size: 12px;">TOTAL</span>
+                                        <br>
+                                        <span id="total" style="font-weight: bold; font-size: 12px;"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row" style="margin-top: -15px;">
+                                    <label class="col-xs-11 col-form-label col-form-label-sm text-align-right labelBorder">
+
+                                    </label>
+                                </div>-->
+
+                                <div class="form-group row" style="margin-top: -15px;">
+                                    <label class="col-xs-12 col-form-label col-form-label-sm">
+                                        <p align="center" style="font-size: 13px; font-weight: normal;">Siguenos en Facebook</p>
+                                        <p align="center" style="font-size: 13px; font-weight: normal;">facebook.com/escueladegimnasialima</p>
+                                    </label>
+                                </div>
+
+                            </div>
+                            <!--<iframe src="/ticket" style="height: 380px !important;"></iframe>-->
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="modal-footer" style="margin-top: -10px;">
+                    <!--<button type="button" class="btn btn-primary" id="btnPrint">Print</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCerrar">Cerrar</button>-->
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id='Menu'>
+        <ul>
+            <li>Imprimir</li>
+            <!--<li>Eliminar</li>
+            <li>Ver detalle</li>-->
+        </ul>
+    </div>
+
     <div class="row fill-height-91">
         <div class="col-md-12 fill-height-91">
             <div id="jqxToolBar"></div>
@@ -116,28 +335,88 @@
 
 
             $("#grid").jqxGrid(
-                    $.extend(
-                            {}, vDefaultOptionsGrid,
-                            {
-                                pageable: true,
-                                selectionmode: 'singlerow',
-                                columns: [
-                                    //{ text: 'Id', align: 'center', datafield: 'id', cellsalign: 'center', width: '10%' },
-                                    { text: 'Fecha', align: 'center', datafield: 'fecha_emision', cellsalign: 'center', width: '10%'},
-                                    { text: 'Tipo Comprobante', align: 'center', datafield: 'tipo_comprobante', cellsalign: 'center', width: '15%' },
-                                    { text: 'Nro. Serie', align: 'center', datafield: 'nro_serie', cellsalign: 'right', width: '10%' },
-                                    { text: 'Nro. Correlativo', align: 'center', datafield: 'nro_correlativo', cellsalign: 'right', width: '10%' },
-                                    { text: 'Tipo Documento', align: 'center', datafield: 'tipo_documento', cellsalign: 'center', width: '10%' },
-                                    { text: 'Nro. documento', align: 'center', datafield: 'numdoc', cellsalign: 'right', width: '10%' },
-                                    { text: 'Nombres', align: 'center', datafield: 'cliente', width: '30%' },
-                                    { text: 'Importe', align: 'center', cellsalign: 'right', datafield: 'subtotal', width: '10%', cellsformat: 'd2' },
-                                    { text: 'Igv', align: 'center', cellsalign: 'right', datafield: 'igv', width: '10%', cellsformat: 'd2' },
-                                    { text: 'Total', align: 'center', cellsalign: 'right', datafield: 'total', width: '10%', cellsformat: 'd2' },
-                                    { text: 'Tipo Pago', align: 'center', cellsalign: 'left', datafield: 'forma_pago', width: '20%' }
-                                ]
-                            }
-                    )
+                $.extend(
+                    {}, vDefaultOptionsGrid,
+                    {
+                        pageable: true,
+                        selectionmode: 'singlerow',
+                        columns: [
+                            //{ text: 'Id', align: 'center', datafield: 'id', cellsalign: 'center', width: '10%' },
+                            { text: 'Fecha', align: 'center', datafield: 'fecha_emision', cellsalign: 'center', width: '10%'},
+                            { text: 'Tipo Comprobante', align: 'center', datafield: 'tipo_comprobante', cellsalign: 'center', width: '15%' },
+                            { text: 'Nro. Serie', align: 'center', datafield: 'nro_serie', cellsalign: 'right', width: '10%' },
+                            { text: 'Nro. Correlativo', align: 'center', datafield: 'nro_correlativo', cellsalign: 'right', width: '10%' },
+                            { text: 'Tipo Documento', align: 'center', datafield: 'tipo_documento', cellsalign: 'center', width: '10%' },
+                            { text: 'Nro. documento', align: 'center', datafield: 'numdoc', cellsalign: 'right', width: '10%' },
+                            { text: 'Nombres', align: 'center', datafield: 'cliente', width: '30%' },
+                            { text: 'Importe', align: 'center', cellsalign: 'right', datafield: 'subtotal', width: '10%', cellsformat: 'd2' },
+                            { text: 'Igv', align: 'center', cellsalign: 'right', datafield: 'igv', width: '10%', cellsformat: 'd2' },
+                            { text: 'Total', align: 'center', cellsalign: 'right', datafield: 'total', width: '10%', cellsformat: 'd2' },
+                            { text: 'Tipo Pago', align: 'center', cellsalign: 'left', datafield: 'forma_pago', width: '20%' }
+                        ]
+                    }
+                )
             );
+            var contextMenu = $("#Menu").jqxMenu({
+                theme: theme3,
+                width: 150,
+                height: 30,
+                autoOpenPopup: false,
+                mode: 'popup'
+            });
+            $("#grid").on('contextmenu', function () {
+                return false;
+            });
+            $("#Menu").on('itemclick', function (event) {
+                var args = event.args;
+                var rowindex = $("#grid").jqxGrid('getselectedrowindex');
+                var dataRecord = $("#grid").jqxGrid('getrowdata', rowindex);
+
+                if ( $.trim($(args).text()) == "Imprimir" ) {
+                    editrow = rowindex;
+                    var dataRecord = $("#grid").jqxGrid('getrowdata', editrow);
+                    //$("#firstName").val(dataRecord.firstname);
+                    //console.log(dataRecord);
+                    // show the popup window.
+                    fn_viewTicket(dataRecord.id_cobro);
+                } else if( $.trim($(args).text()) == "Eliminar" ) {
+                    if(confirm("Esta seguro de eliminar el registro?")) {
+                        var rowid = $("#grid").jqxGrid('getrowid', rowindex);
+                        var datos = {
+                            id: dataRecord.id_alumno,
+                            tabla: 'gim_alumnos'
+                        };
+                        /*$.ajax({
+                            type: "POST",
+                            url: '/EG/eliminarRegistroTabla/',
+                            data: datos,
+                            dataType: 'json',
+                            success: function (result) {
+                                //console.log(result);
+                                if (result.status == "success") {
+                                    //alert("Proceso realizado correctamente");
+                                    $("#grid").jqxGrid('deleterow', rowid);
+                                    return false;
+                                } else {
+                                    alert("Error: Vuelva a intentarlo");
+                                    return false;
+                                }
+                            }, error: function (xhr, ajaxOptions, thrownError) {
+                                alert("ERROR: " + xhr.responseText + " - " + thrownError);
+                            }
+                        });*/
+                    }
+                }
+            });
+            $("#grid").on('rowclick', function (event) {
+                if (event.args.rightclick) {
+                    $("#grid").jqxGrid('selectrow', event.args.rowindex);
+                    var scrollTop = $(window).scrollTop();
+                    var scrollLeft = $(window).scrollLeft();
+                    contextMenu.jqxMenu('open', parseInt(event.args.originalEvent.clientX) + 5 + scrollLeft, parseInt(event.args.originalEvent.clientY) + 5 + scrollTop);
+                    return false;
+                }
+            });
 
             function fn_reporteRegistroVentas(fechaInicio, fechaFin){
                 var url = '/reporteRegistroVentas/'+fechaInicio+"/"+fechaFin;
@@ -172,6 +451,10 @@
                         });
                 });
             }
+
+            $("#btnPrint").click(function() {
+                $("#viewTicket").printThis();
+            });
 
         });
     </script>

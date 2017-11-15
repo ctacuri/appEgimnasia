@@ -211,6 +211,9 @@ router.post('/EG/updCorrelativo/', fnEstaAutenticado, controladorEG.updCorrelati
 router.get('/EG/search/tutor/:dni', fnEstaAutenticado, controladorEG.searchTutor);
 router.get('/EG/search/alumno/:dni', fnEstaAutenticado, controladorEG.searchAlumno);
 
+router.get('/EG/listaCobroCab/:idCobro', fnEstaAutenticado, controladorEG.listaCobroCab);
+router.get('/EG/listaCobroDet/:idCobro', fnEstaAutenticado, controladorEG.listaCobroDet);
+
 
 router.post('/loguear',
 

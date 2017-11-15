@@ -951,6 +951,56 @@ function fn_registrarCabCobro(arregloCab, arregloDet, impuesto){
 }
 
 
+function fn_viewTicket(idCobro){
+
+    $.when(
+        $.ajax("/EG/listaCobroCab/"+idCobro),
+        $.ajax("/EG/listaCobroDet/"+idCobro)
+    ).done(function( json1, json2 ) {
+
+        if(json1[0].status == "success"){
+            //console.log("CAB");
+            //console.log(json1[0].registros[0]);
+        }else{
+            alert("Error: al cargar cobroCab");
+            return false;
+        }
+
+        if(json2[0].status == "success"){
+            console.log("DET");
+            console.log(json2[0].registros);
+        }else{
+            alert("Error: al cargar cobroDet");
+            return false;
+        }
+
+        //var objDet = JSON.parse(json2[0].registros);
+        console.log("EMISION DE TICKET");
+        //console.log(arregloCab);
+        //console.log(objDet);
+        $("#nroTicket").text(json1[0].registros[0].nro_correlativo);
+        $("#fechaEmision").text(fn_convertFecha_SQL_to_DMY(json1[0].registros[0].fecha_emision));
+        $("#idCliente").text(json1[0].registros[0].numdoc);
+        $("#cliente").text(json1[0].registros[0].cliente);
+        $("#tipoPago").text( (json1[0].registros[0].formaPago == 1) ? 'EFECTIVO' : 'CREDITO' );
+
+        var html = "";
+        for(var x = 0; x < json2[0].registros.length; x++){
+            html += "Cuota mes de: " + json2[0].registros[x].mes + "("+json2[0].registros[x].alumno+")" + "("+json2[0].registros[x].horario+")" + " <b>S/." + json2[0].registros[x].total+"</b>";
+            html += "<br>";
+        }
+
+        $("#detalle").html(html);
+        $("#totalTicket").text("S/. " + json1[0].registros[0].total);
+
+        $('#myModalTicket').modal('show');
+
+    });
+
+    //return false;
+}
+
+
 function fn_emisionTicket(arregloCab, arregloDet){
     var objDet = JSON.parse(arregloDet);
     console.log("EMISION DE TICKET");

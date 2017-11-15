@@ -1,14 +1,13 @@
 /**
  * Created by Cesar on 15/02/17.
- */
+*/
 var conn = require("../connection/connMYSQL");
-
 var model = function(){};
 
 model.validar = function(datos, cb){
     var sentenciaSQL = "SELECT * FROM gim_usuarios WHERE usuario = '"+datos.username+"' AND contrasena = '"+datos.password+"'";
     //var sentenciaSQL = "SELECT * FROM gim_usuarios WHERE usuario = 'admin' AND contrasena = '1114'";
-    //console.log(sentenciaSQL);
+    console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
 
@@ -51,6 +50,7 @@ model.saveTutores = function(datos, cb){
     sentenciaSQL += "'" + datos.fechaReg + "',";
     sentenciaSQL += "'" + datos.obs + "',";
     sentenciaSQL += "'V')";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -76,6 +76,7 @@ model.updTutores = function(datos, cb){
     sentenciaSQL += "'" + datos.fechaReg + "',";
     sentenciaSQL += "'" + datos.obs + "',";
     sentenciaSQL += "'V');";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -99,7 +100,7 @@ model.listaProfesoresSimple = function(cb){
 }
 
 model.saveProfesores = function(datos, cb){
-    var sentenciaSQL = "CALL sp_saveProfesor(";
+    var sentenciaSQL = "CALL sp_saveProfesor( ";
     sentenciaSQL += datos.tipoDoc + ",";
     sentenciaSQL += "'" + datos.nroDocumento + "',";
     sentenciaSQL += "'" + datos.nombres + "',";
@@ -107,12 +108,13 @@ model.saveProfesores = function(datos, cb){
     sentenciaSQL += "'" + datos.apemat + "',";
     sentenciaSQL += "'" + datos.nombreCorto + "',";
     sentenciaSQL += "'" + datos.sexo + "')";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
 
 model.updProfesores = function(datos, cb){
-    var sentenciaSQL = "CALL sp_updProfesor(";
+    var sentenciaSQL = "CALL sp_updProfesor( ";
     sentenciaSQL += datos.id + ",";
     sentenciaSQL += datos.tipoDoc + ",";
     sentenciaSQL += "'" + datos.nroDocumento + "',";
@@ -122,12 +124,13 @@ model.updProfesores = function(datos, cb){
     sentenciaSQL += "'" + datos.nombreCorto + "',";
     sentenciaSQL += "'" + datos.sexo + "',";
     sentenciaSQL += "'V');";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
 
 model.saveParametros = function(datos, cb){
-    var sentenciaSQL = "INSERT INTO gim_parametros (";
+    var sentenciaSQL = "INSERT INTO gim_parametros( ";
     sentenciaSQL += "numdoc,";
     sentenciaSQL += "descripcion,";
     sentenciaSQL += "impuesto,";
@@ -146,6 +149,7 @@ model.saveParametros = function(datos, cb){
     sentenciaSQL += datos.nroBoleta + ",";
     sentenciaSQL += "'" + datos.serieFactura + "',";
     sentenciaSQL += datos.nroFactura + ");";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -162,26 +166,27 @@ model.updParametros = function(datos, cb){
     sentenciaSQL += "nro_serie_factura = '" + datos.serieFactura + "',";
     sentenciaSQL += "nro_factura = " + datos.nroFactura + " WHERE ";
     sentenciaSQL += "id_parametro = " + datos.id + ";";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
 
 model.listaHorarios = function(cb){
     var sentenciaSQL = "CALL sp_listaHorarios ";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
 
 model.listaHorariosSimple = function(cb){
     var sentenciaSQL = "CALL sp_listaHorariosSimple ";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
 
-
-
 model.saveHorarios = function(datos, cb){
-    var sentenciaSQL = "INSERT INTO gim_horarios (";
+    var sentenciaSQL = "INSERT INTO gim_horarios( ";
     sentenciaSQL += "dias,";
     sentenciaSQL += "edades,";
     sentenciaSQL += "sexo,";
@@ -200,6 +205,7 @@ model.saveHorarios = function(datos, cb){
     sentenciaSQL += datos.importe + ",";
     sentenciaSQL += "'" + datos.profesor + "',";
     sentenciaSQL += "'V');";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -215,20 +221,22 @@ model.updHorarios = function(datos, cb){
     sentenciaSQL += "importe = " + datos.importe + ",";
     sentenciaSQL += "id_profesor = " + datos.profesor + " WHERE ";
     sentenciaSQL += "id_horario = " + datos.id + ";";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
 
 model.listaMatricula = function(datos, cb){
-    var sentenciaSQL = "CALL sp_listaMatricula (";
+    var sentenciaSQL = "CALL sp_listaMatricula( ";
     sentenciaSQL += "'" + datos.fechaInicio + "',";
     sentenciaSQL += "'" + datos.fechaFin + "')";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
 
 model.saveMatricula = function(datos, cb){
-    var sentenciaSQL = "CALL sp_saveMatricula (";
+    var sentenciaSQL = "CALL sp_saveMatricula( ";
     sentenciaSQL += datos.alumno + ",";
     sentenciaSQL += datos.horario + ",";
     sentenciaSQL += "'" + datos.fecha + "',";
@@ -238,16 +246,18 @@ model.saveMatricula = function(datos, cb){
     sentenciaSQL += datos.saldo + ",";
     sentenciaSQL += datos.profesor + ",";
     sentenciaSQL += "'" + datos.comentario + "')";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
 
 model.saveAsistenciaHorario = function(datos, cb){
-    var sentenciaSQL = "CALL sp_saveAsistenciaHorario (";
+    var sentenciaSQL = "CALL sp_saveAsistenciaHorario( ";
     sentenciaSQL += datos.idHorario + ",";
     sentenciaSQL += datos.anio + ",";
     sentenciaSQL += datos.mes + ",";
     sentenciaSQL += "'" + datos.fecha + "')";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -264,6 +274,7 @@ model.updMatricula = function(datos, cb){
     sentenciaSQL += datos.saldo + ",";
     sentenciaSQL += datos.id_profesor + ",";
     sentenciaSQL += "'" + datos.comentario + "')";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -284,6 +295,7 @@ model.saveCabCobro = function(datos, cb){
     sentenciaSQL += datos.subTotal + ",";
     sentenciaSQL += datos.igv + ",";
     sentenciaSQL += datos.total + ")";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -300,6 +312,7 @@ model.saveDetCobro = function(datos, cb){
     sentenciaSQL += datos.subTotal + ",";
     sentenciaSQL += datos.igv + ",";
     sentenciaSQL += datos.total + ")";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -308,6 +321,7 @@ model.saveEdades = function(datos, cb){
     var sentenciaSQL = "INSERT INTO gim_edades (";
     sentenciaSQL += "descripcion)";
     sentenciaSQL += " VALUES('" + datos.descripcion + "')";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -316,6 +330,7 @@ model.updEdades = function(datos, cb){
     var sentenciaSQL = "UPDATE gim_edades SET ";
     sentenciaSQL += "descripcion = '" + datos.descripcion + "' WHERE ";
     sentenciaSQL += "id_edad = " + datos.id + ";";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -324,6 +339,7 @@ model.saveDias = function(datos, cb){
     var sentenciaSQL = "INSERT INTO gim_dias (";
     sentenciaSQL += "descripcion)";
     sentenciaSQL += " VALUES('" + datos.descripcion + "')";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -332,18 +348,21 @@ model.updDias = function(datos, cb){
     var sentenciaSQL = "UPDATE gim_dias SET ";
     sentenciaSQL += "descripcion = '" + datos.descripcion + "' WHERE ";
     sentenciaSQL += "id = " + datos.id + ";";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
 
 model.listaAlumnos = function(cb){
     var sentenciaSQL = "CALL sp_listaAlumnos ";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
 
 model.listaAlumnosSimple = function(cb){
     var sentenciaSQL = "CALL sp_listaAlumnosSimple ";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -389,6 +408,7 @@ model.saveAlumnos = function(datos, cb){
 
     sentenciaSQL += "'" + datos.obs + "',";
     sentenciaSQL += "'V')";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -442,60 +462,70 @@ model.updAlumnos = function(datos, cb){
 
 model.listaTipoDoc = function(cb){
     var sentenciaSQL = "CALL sp_listaTipoDoc ";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
 
 model.listaEstadoCivil = function(cb){
     var sentenciaSQL = "SELECT * FROM gim_estado_civil ";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
 
 model.listaSexo = function(cb){
     var sentenciaSQL = "SELECT * FROM gim_sexo WHERE id_sexo <> 3 ";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
 
 model.listaDepartamentos = function(cb){
     var sentenciaSQL = "SELECT * FROM gim_ubigeo_dpto ";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
 
 model.listaProvincias = function(cb){
     var sentenciaSQL = "SELECT * FROM gim_ubigeo_prov ";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
 
 model.listaDistritos = function(cb){
     var sentenciaSQL = "SELECT * FROM gim_ubigeo_dist ";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
 
 model.listaUsuarios = function(cb){
-    var sentenciaSQL = "SELECT * FROM gim_usuarios ";
+    var sentenciaSQL = "SELECT * FROM gim_usuarios WHERE estado = 'V'";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
 
 model.listaParametros = function(cb){
     var sentenciaSQL = "SELECT * FROM gim_parametros ";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
 
 model.listaEdades = function(cb){
     var sentenciaSQL = "SELECT * FROM gim_edades WHERE estado = 'V' order by descripcion";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
 
 model.listaCiaSeguro = function(cb){
     var sentenciaSQL = "CALL sp_listaCiaSeguro ";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -536,6 +566,7 @@ model.saveUsuarios = function(datos, cb){
     sentenciaSQL += datos.suscripciones + ",";
     sentenciaSQL += datos.cobros + ",";*/
     sentenciaSQL += "'V')";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -562,6 +593,7 @@ model.updUsuarios = function(datos, cb){
     sentenciaSQL += datos.states[14] + ",";
     sentenciaSQL += datos.states[15] + ",";
     sentenciaSQL += "'V');";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -589,6 +621,7 @@ model.listaMatriculaCobro = function(datos, cb){
     sentenciaSQL += "'" + datos.fechaInicio + "',";
     sentenciaSQL += "'" + datos.fechaFin + "',";
     sentenciaSQL += "'" + datos.status + "')";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -596,6 +629,7 @@ model.listaMatriculaCobro = function(datos, cb){
 model.listaHistorialPagos = function(datos, cb){
     var sentenciaSQL = "CALL sp_listaHistorialPagos(";
     sentenciaSQL += datos.idAlumno + ")";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -603,6 +637,7 @@ model.listaHistorialPagos = function(datos, cb){
 model.listaHistorialMatricula = function(datos, cb){
     var sentenciaSQL = "CALL sp_listaHistorialMatricula(";
     sentenciaSQL += datos.idAlumno + ")";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -610,6 +645,7 @@ model.listaHistorialMatricula = function(datos, cb){
 model.listarAsistenciaHorario = function(datos, cb){
     var sentenciaSQL = "CALL sp_listarAsistenciaHorario(";
     sentenciaSQL += datos.idHorario + ")";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -617,12 +653,14 @@ model.listarAsistenciaHorario = function(datos, cb){
 model.listaAlumnosHorario = function(datos, cb){
     var sentenciaSQL = "CALL sp_listaAlumnosHorario(";
     sentenciaSQL += datos.idHorario + ")";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
 
 model.listaTipoAlumno = function(cb){
     var sentenciaSQL = "CALL sp_listaTipoAlumno ";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -632,6 +670,7 @@ model.reporteAlumnosClase = function(datos, cb){
     sentenciaSQL += datos.mes + ",";
     sentenciaSQL += datos.anio + ",";
     sentenciaSQL += datos.id_horario + ")";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -641,6 +680,7 @@ model.reporteDeudasMatriculados = function(cb){
     /*sentenciaSQL += datos.mes + ",";
     sentenciaSQL += datos.anio + ",";
     sentenciaSQL += datos.id_horario + ")";*/
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -649,6 +689,7 @@ model.reportePagosMatriculadosAlumnos = function(datos, cb){
     var sentenciaSQL = "CALL sp_reportePagosMatriculados(";
     sentenciaSQL += "'" + datos.fechaInicio + "',";
     sentenciaSQL += "'" + datos.fechaFin + "')";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -657,6 +698,7 @@ model.reporteRegistroVentas = function(datos, cb){
     var sentenciaSQL = "CALL sp_reporteRegistroVentas(";
     sentenciaSQL += "'" + datos.fechaInicio + "',";
     sentenciaSQL += "'" + datos.fechaFin + "')";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -665,6 +707,7 @@ model.listarAsistenciaHorarioAlumno = function(datos, cb){
     var sentenciaSQL = "CALL sp_listarAsistenciaHorarioAlumno(";
     sentenciaSQL += datos.idHorario + ",";
     sentenciaSQL += datos.idAlumno + ")";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -673,6 +716,7 @@ model.eliminarRegistroTabla = function(datos, cb){
     var sentenciaSQL = "CALL sp_eliminarRegistroTabla(";
     sentenciaSQL += datos.id + ",";
     sentenciaSQL += "'" + datos.tabla + "')";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -681,24 +725,60 @@ model.updCorrelativo = function(datos, cb){
     var sentenciaSQL = "CALL sp_updCorrelativo(";
     sentenciaSQL += "'" + datos.rucEmpresa + "',";
     sentenciaSQL += datos.idFormaPago + ")";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
 
 model.searchTutor = function(datos, cb){
-    var sentenciaSQL = "SELECT count(numdoc) as CANT FROM gim_tutores ";
+    var sentenciaSQL = "SELECT count(numdoc) as CANT FROM gim_tutores WHERE estado = 'V' ";
     sentenciaSQL += "WHERE numdoc = ";
     sentenciaSQL += "'" + datos.dni + "' ";
     sentenciaSQL += "AND estado = 'V'";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
 
 model.searchAlumno = function(datos, cb){
-    var sentenciaSQL = "SELECT count(numdoc) as CANT FROM gim_alumnos ";
+    var sentenciaSQL = "SELECT count(numdoc) as CANT FROM gim_alumnos WHERE estado = 'V' ";
     sentenciaSQL += "WHERE numdoc = ";
     sentenciaSQL += "'" + datos.dni + "' ";
     sentenciaSQL += "AND estado = 'V'";
+
+    console.log(sentenciaSQL);
+    conn.query(sentenciaSQL, cb);
+}
+
+model.listaCobroCab = function(datos, cb){
+    var sentenciaSQL = "SELECT * FROM gim_cobro_cab WHERE id_cobro = " + datos.id;
+
+    console.log(sentenciaSQL);
+    conn.query(sentenciaSQL, cb);
+}
+
+model.listaCobroDet = function(datos, cb){
+    //var sentenciaSQL = "SELECT * FROM gim_cobro_det WHERE id_cobro = "  + datos.id;
+    var sentenciaSQL = "";
+    sentenciaSQL += "SELECT DISTINCT ";
+    //sentenciaSQL += "d.id_cobro_det ";
+    sentenciaSQL += "d.id_cobro ";
+    sentenciaSQL += ",d.id_alumno ";
+    sentenciaSQL += ",CONCAT(a.apepat,' ',a.apemat,', ',a.nombres) as alumno ";
+    sentenciaSQL += ",d.cantidad ";
+    sentenciaSQL += ",fn_nombreMes(m.mes_matricula) as mes ";
+    sentenciaSQL += ",d.id_horario ";
+    sentenciaSQL += ",d.descripcion as horario ";
+    sentenciaSQL += ",d.subtotal ";
+    sentenciaSQL += ",d.igv ";
+    sentenciaSQL += ",d.total ";
+    sentenciaSQL += "FROM gim_cobro_det d ";
+    sentenciaSQL += "inner join gim_alumnos a on d.id_alumno = a.id_alumno ";
+    sentenciaSQL += "inner join gim_matricula m on m.id_alumno = a.id_alumno and m.id_horario = d.id_horario and m.estado = 'V' ";
+    sentenciaSQL += "WHERE d.id_cobro = "+datos.id+" ";
+    sentenciaSQL += "AND d.estado = 'V' ";
+    sentenciaSQL += "ORDER BY m.anio_matricula, m.mes_matricula ";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
