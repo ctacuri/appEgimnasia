@@ -697,8 +697,8 @@ model.reportePagosMatriculadosAlumnos = function(datos, cb){
 model.reporteRegistroVentas = function(datos, cb){
     var sentenciaSQL = "CALL sp_reporteRegistroVentas(";
     sentenciaSQL += "'" + datos.fechaInicio + "',";
-    sentenciaSQL += "'" + datos.fechaFin + "')";
-
+    sentenciaSQL += "'" + datos.fechaFin + "',";
+    sentenciaSQL += "'" + datos.rucEmpresa + "')";
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }

@@ -261,6 +261,16 @@ controller.saveParametros = function(req, res, next){
     var datos = {
         nroDocumento: req.body.nroDocumento,
         descripcion: req.body.descripcion,
+
+        departamento: req.body.departamento,
+        provincia: req.body.provincia,
+        distrito: req.body.distrito,
+        direccion: req.body.direccion,
+        paginaWeb: req.body.paginaWeb,
+        facebook: req.body.facebook,
+        autorizacionSunat: req.body.autorizacionSunat,
+        nroMaquina: req.body.nroMaquina,
+
         impuesto: req.body.impuesto,
         serieTicket: req.body.serieTicket,
         nroTicket: req.body.nroTicket,
@@ -292,6 +302,16 @@ controller.updParametros = function(req, res, next){
         id: req.body.id,
         nroDocumento: req.body.nroDocumento,
         descripcion: req.body.descripcion,
+
+        departamento: req.body.departamento,
+        provincia: req.body.provincia,
+        distrito: req.body.distrito,
+        direccion: req.body.direccion,
+        paginaWeb: req.body.paginaWeb,
+        facebook: req.body.facebook,
+        autorizacionSunat: req.body.autorizacionSunat,
+        nroMaquina: req.body.nroMaquina,
+
         impuesto: req.body.impuesto,
         serieTicket: req.body.serieTicket,
         nroTicket: req.body.nroTicket,
@@ -1378,7 +1398,8 @@ controller.reportePagosMatriculadosAlumnos = function(req, res, next){
 controller.reporteRegistroVentas = function(req, res, next){
     var datos = {
         fechaInicio: req.params.fechaInicio,
-        fechaFin: req.params.fechaFin
+        fechaFin: req.params.fechaFin,
+        rucEmpresa: req.params.rucEmpresa
     };
     //console.log(datos);
     model.reporteRegistroVentas(datos, function(err, registros){

@@ -201,7 +201,7 @@ router.get('/listaTipoAlumno', fnEstaAutenticado, controladorEG.listaTipoAlumno)
 router.get('/reporteAlumnosClase/:mes/:anio/:id_horario', fnEstaAutenticado, controladorEG.reporteAlumnosClase);
 router.get('/reporteDeudasMatriculados', fnEstaAutenticado, controladorEG.reporteDeudasMatriculados);
 router.get('/reportePagosMatriculadosAlumnos/:fechaInicio/:fechaFin', fnEstaAutenticado, controladorEG.reportePagosMatriculadosAlumnos);
-router.get('/reporteRegistroVentas/:fechaInicio/:fechaFin', fnEstaAutenticado, controladorEG.reporteRegistroVentas);
+router.get('/reporteRegistroVentas/:fechaInicio/:fechaFin/:rucEmpresa', fnEstaAutenticado, controladorEG.reporteRegistroVentas);
 router.get('/listarAsistenciaHorarioAlumno/:id_horario/:idAlumno', fnEstaAutenticado, controladorEG.listarAsistenciaHorarioAlumno);
 
 router.post('/EG/eliminarRegistroTabla/', fnEstaAutenticado, controladorEG.eliminarRegistroTabla);

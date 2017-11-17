@@ -227,8 +227,8 @@
     <div id='Menu'>
         <ul>
             <li>Imprimir</li>
-            <!--<li>Eliminar</li>
-            <li>Ver detalle</li>-->
+            <li>Eliminar</li>
+            <!--<li>Ver detalle</li>-->
         </ul>
     </div>
 
@@ -245,7 +245,7 @@
                 $.extend( {},
                     vDefaultOptionsToolBar,
                     {
-                        tools: 'custom | custom | custom | custom | custom | custom | custom | custom ', //| input | custom | custom | custom | custom
+                        tools: 'custom | custom | custom | custom | custom | dropdownlist | custom | custom | custom', //| input | custom | custom | custom | custom
                         initTools: function (type, index, tool, menuToolIninitialization) {
                             switch (index) {
                                 case 0:
@@ -280,24 +280,53 @@
                                     });
                                     tool.append(fecha);
                                     break;
-                                /*case 5:
-                                    var toggleBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/notepad-20.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxToggleButton({
-                                        theme: theme2,
-                                        width: 30,
-                                        height: 19,
-                                        toggled: true
-                                    });
-                                    tool.append(toggleBtn);
-                                    toggleBtn.click(function (event) {
-                                        var toggled = toggleBtn.jqxToggleButton('toggled');
-                                        if (toggled) {
-                                            console.log('Toggled On');
-                                        } else {
-                                            console.log('Toggled Off');
+                                case 5:
+                                    var arregloEmpresas = [];
+                                    $.when(
+                                        $.ajax("/listaEmpresas")
+                                    ).done(function(json5) {
+                                        console.log(json5.status);
+                                        console.log(json5.registros[0][0]);
+                                        for(var x = 0; x<json5.registros.length; x++){
+                                            arregloEmpresas.push(
+                                                {
+                                                    id_parametro: json5.registros[0][x].id_parametro,
+                                                    numdoc: json5.registros[0][x].numdoc,
+                                                    descripcion: json5.registros[0][x].descripcion,
+                                                    impuesto: json5.registros[0][x].impuesto,
+                                                    nro_serie_ticket: json5.registros[0][x].nro_serie_ticket,
+                                                    nro_ticket: json5.registros[0][x].nro_ticket,
+                                                    nro_serie_boleta: json5.registros[0][x].nro_serie_boleta,
+                                                    nro_boleta: json5.registros[0][x].nro_boleta,
+                                                    nro_serie_factura: json5.registros[0][x].nro_serie_factura,
+                                                    nro_factura: json5.registros[0][x].nro_factura
+                                                }
+                                            );
+                                        }
+                                        if(json5.status == "success"){
+                                            tool.jqxDropDownList({
+                                                theme: theme2,
+                                                selectedIndex: 0,
+                                                source: arregloEmpresas,
+                                                displayMember: "descripcion",
+                                                valueMember: "numdoc",
+                                                filterable: false,
+                                                searchMode: 'containsignorecase',
+                                                width: 200,
+                                                height: 24,
+                                                dropDownWidth: 380
+                                            });
+                                            tool.jqxDropDownList({
+                                                selectedIndex: 0
+                                            });
+                                            tool.css("margin-top", "-5");
+                                        }else{
+                                            alert("Error: al cargar empresa");
+                                            return false;
                                         }
                                     });
-                                    break;*/
-                                case 5:
+                                    break;
+                                case 6:
                                     var searchBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/search.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
                                         theme: theme2,
                                         width: 30,
@@ -305,16 +334,17 @@
                                     });
                                     tool.append(searchBtn);
                                     searchBtn.click(function (event) {
-                                        //var tools = $("#jqxToolBar").jqxToolBar("getTools");
-                                        //console.log($("#FechaIni").val());
+                                        var tools = $("#jqxToolBar").jqxToolBar("getTools");
+                                        var rucEmpresa =  tools[5].tool.val();
+                                        //alert(rucEmpresa);
                                         //return false;
                                         var fechaInicio = fn_convertFecha_DMY_to_SQL($("#FechaIni").val());
                                         var fechaFin = fn_convertFecha_DMY_to_SQL($("#FechaFin").val());
 
-                                        fn_reporteRegistroVentas(fechaInicio, fechaFin);
+                                        fn_reporteRegistroVentas(fechaInicio, fechaFin, rucEmpresa);
                                     });
                                     break;
-                                case 6:
+                                case 7:
                                     var exportBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/icon_excel_02_20.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
                                         theme: theme2,
                                         width: 30,
@@ -361,7 +391,7 @@
             var contextMenu = $("#Menu").jqxMenu({
                 theme: theme3,
                 width: 150,
-                height: 30,
+                height: 58,
                 autoOpenPopup: false,
                 mode: 'popup'
             });
@@ -384,10 +414,11 @@
                     if(confirm("Esta seguro de eliminar el registro?")) {
                         var rowid = $("#grid").jqxGrid('getrowid', rowindex);
                         var datos = {
-                            id: dataRecord.id_alumno,
-                            tabla: 'gim_alumnos'
+                            id: dataRecord.id_cobro,
+                            tabla: 'gim_cobro_cab'
                         };
-                        /*$.ajax({
+                        //console.log(datos);
+                        $.ajax({
                             type: "POST",
                             url: '/EG/eliminarRegistroTabla/',
                             data: datos,
@@ -405,7 +436,7 @@
                             }, error: function (xhr, ajaxOptions, thrownError) {
                                 alert("ERROR: " + xhr.responseText + " - " + thrownError);
                             }
-                        });*/
+                        });
                     }
                 }
             });
@@ -419,8 +450,8 @@
                 }
             });
 
-            function fn_reporteRegistroVentas(fechaInicio, fechaFin){
-                var url = '/reporteRegistroVentas/'+fechaInicio+"/"+fechaFin;
+            function fn_reporteRegistroVentas(fechaInicio, fechaFin, rucEmpresa){
+                var url = '/reporteRegistroVentas/'+fechaInicio+"/"+fechaFin+"/"+rucEmpresa;
                 //console.log(url);
                 $.getJSON(url, function(json) {
                     //console.log(json);

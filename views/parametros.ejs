@@ -40,6 +40,63 @@
                             </div>
 
                             <div class="form-group row">
+                                <label for="departamento" class="col-md-3 col-form-label col-form-label-sm">Departamento</label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control form-control-sm text-align-right" id="departamento">
+                                </div>
+
+                                <label for="provincia" class="col-md-3 col-form-label col-form-label-sm">Provincia</label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control form-control-sm text-align-right" id="provincia">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="distrito" class="col-md-3 col-form-label col-form-label-sm">Distrito</label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control form-control-sm text-align-right" id="distrito">
+                                </div>
+
+                                <label for="telefono" class="col-md-3 col-form-label col-form-label-sm">Telefono</label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control form-control-sm text-align-right" id="telefono">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="direccion" class="col-md-3 col-form-label col-form-label-sm">Direccion</label>
+                                <div class="col-md-9">
+                                    <textarea id="direccion" class="form-control form-control-sm" style="width: 100%; resize: none;" rows="3"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="paginaWeb" class="col-md-3 col-form-label col-form-label-sm">Pagina Web</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-sm text-align-left" id="paginaWeb">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="facebook" class="col-md-3 col-form-label col-form-label-sm">Facebook</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-sm text-align-left" id="facebook">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="autorizacionSunat" class="col-md-3 col-form-label col-form-label-sm">Aut. SUNAT</label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control form-control-sm text-align-right" id="autorizacionSunat">
+                                </div>
+
+                                <label for="nroMaquina" class="col-md-3 col-form-label col-form-label-sm">Maq. Regist. Nro.</label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control form-control-sm text-align-right" id="nroMaquina">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label for="impuesto" class="col-md-3 col-form-label col-form-label-sm">Impuesto</label>
                                 <div class="col-md-3">
                                     <input type="text" class="form-control form-control-sm text-align-right" id="impuesto">
@@ -271,6 +328,16 @@
                     id: $("#id").val(),
                     nroDocumento: $("#nroDocumento").val(),
                     descripcion: $("#descripcion").val(),
+
+                    departamento: $("#departamento").val(),
+                    provincia: $("#provincia").val(),
+                    distrito: $("#distrito").val(),
+                    direccion: $("#direccion").val(),
+                    paginaWeb: $("#paginaWeb").val(),
+                    facebook: $("#facebook").val(),
+                    autorizacionSunat: $("#autorizacionSunat").val(),
+                    nroMaquina: $("#nroMaquina").val(),
+
                     impuesto: $("#impuesto").val(),
                     serieTicket: $("#serieTicket").val(),
                     nroTicket: $("#nroTicket").val(),
