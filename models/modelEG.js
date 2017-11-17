@@ -133,6 +133,16 @@ model.saveParametros = function(datos, cb){
     var sentenciaSQL = "INSERT INTO gim_parametros( ";
     sentenciaSQL += "numdoc,";
     sentenciaSQL += "descripcion,";
+
+    sentenciaSQL += "departamento,";
+    sentenciaSQL += "provincia,";
+    sentenciaSQL += "distrito,";
+    sentenciaSQL += "direccion,";
+    sentenciaSQL += "pagina_web,";
+    sentenciaSQL += "facebook,";
+    sentenciaSQL += "autorizacion_sunat,";
+    sentenciaSQL += "nro_maquina,";
+
     sentenciaSQL += "impuesto,";
     sentenciaSQL += "nro_serie_ticket,";
     sentenciaSQL += "nro_ticket,";
@@ -142,6 +152,16 @@ model.saveParametros = function(datos, cb){
     sentenciaSQL += "nro_factura)";
     sentenciaSQL += " VALUES('" + datos.nroDocumento + "',";
     sentenciaSQL += "'" + datos.descripcion + "',";
+
+    sentenciaSQL += datos.departamento + ",";
+    sentenciaSQL += datos.provincia + ",";
+    sentenciaSQL += datos.distrito + ",";
+    sentenciaSQL += "'" + datos.direccion + "',";
+    sentenciaSQL += "'" + datos.paginaWeb + "',";
+    sentenciaSQL += "'" + datos.facebook + "',";
+    sentenciaSQL += "'" + datos.autorizacionSunat + "',";
+    sentenciaSQL += "'" + datos.nroMaquina + "',";
+
     sentenciaSQL += datos.impuesto + ",";
     sentenciaSQL += "'" + datos.serieTicket + "',";
     sentenciaSQL += datos.nroTicket + ",";
@@ -158,6 +178,16 @@ model.updParametros = function(datos, cb){
     var sentenciaSQL = "UPDATE gim_parametros SET ";
     sentenciaSQL += "numdoc = '" + datos.nroDocumento + "',";
     sentenciaSQL += "descripcion = '" + datos.descripcion + "',";
+
+    sentenciaSQL += "departamento = " + datos.departamento + ",";
+    sentenciaSQL += "provincia = " + datos.provincia + ",";
+    sentenciaSQL += "distrito = " + datos.distrito + ",";
+    sentenciaSQL += "direccion = '" + datos.direccion + "',";
+    sentenciaSQL += "pagina_web = '" + datos.paginaWeb + "',";
+    sentenciaSQL += "facebook = '" + datos.facebook + "',";
+    sentenciaSQL += "autorizacion_sunat = '" + datos.autorizacionSunat + "',";
+    sentenciaSQL += "nro_maquina = '" + datos.nroMaquina + "',";
+
     sentenciaSQL += "impuesto = " + datos.impuesto + ",";
     sentenciaSQL += "nro_serie_ticket = '" + datos.serieTicket + "',";
     sentenciaSQL += "nro_ticket = " + datos.nroTicket + ",";
