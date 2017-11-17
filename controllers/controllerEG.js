@@ -266,6 +266,7 @@ controller.saveParametros = function(req, res, next){
         provincia: req.body.provincia,
         distrito: req.body.distrito,
         direccion: req.body.direccion,
+        telefono: req.body.telefono,
         paginaWeb: req.body.paginaWeb,
         facebook: req.body.facebook,
         autorizacionSunat: req.body.autorizacionSunat,
@@ -307,6 +308,7 @@ controller.updParametros = function(req, res, next){
         provincia: req.body.provincia,
         distrito: req.body.distrito,
         direccion: req.body.direccion,
+        telefono: req.body.telefono,
         paginaWeb: req.body.paginaWeb,
         facebook: req.body.facebook,
         autorizacionSunat: req.body.autorizacionSunat,
@@ -320,6 +322,8 @@ controller.updParametros = function(req, res, next){
         serieFactura: req.body.serieFactura,
         nroFactura: req.body.nroFactura
     };
+    //console.log(datos);
+    //return false;
     model.updParametros(datos, function(err, registros){
         if(err){
             //console.log("Error: " + err);
@@ -337,7 +341,6 @@ controller.updParametros = function(req, res, next){
         }
     });
 }
-
 
 controller.listaAlumnos = function(req, res, next){
     model.listaAlumnos(function(err, registros){

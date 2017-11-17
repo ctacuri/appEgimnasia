@@ -153,9 +153,9 @@ model.saveParametros = function(datos, cb){
     sentenciaSQL += " VALUES('" + datos.nroDocumento + "',";
     sentenciaSQL += "'" + datos.descripcion + "',";
 
-    sentenciaSQL += datos.departamento + ",";
-    sentenciaSQL += datos.provincia + ",";
-    sentenciaSQL += datos.distrito + ",";
+    sentenciaSQL += "'" +datos.departamento + "',";
+    sentenciaSQL += "'" +datos.provincia + "',";
+    sentenciaSQL += "'" +datos.distrito + "',";
     sentenciaSQL += "'" + datos.direccion + "',";
     sentenciaSQL += "'" + datos.paginaWeb + "',";
     sentenciaSQL += "'" + datos.facebook + "',";
@@ -179,10 +179,11 @@ model.updParametros = function(datos, cb){
     sentenciaSQL += "numdoc = '" + datos.nroDocumento + "',";
     sentenciaSQL += "descripcion = '" + datos.descripcion + "',";
 
-    sentenciaSQL += "departamento = " + datos.departamento + ",";
-    sentenciaSQL += "provincia = " + datos.provincia + ",";
-    sentenciaSQL += "distrito = " + datos.distrito + ",";
+    sentenciaSQL += "departamento = '" + datos.departamento + "',";
+    sentenciaSQL += "provincia = '" + datos.provincia + "',";
+    sentenciaSQL += "distrito = '" + datos.distrito + "',";
     sentenciaSQL += "direccion = '" + datos.direccion + "',";
+    sentenciaSQL += "telefono = '" + datos.telefono + "',";
     sentenciaSQL += "pagina_web = '" + datos.paginaWeb + "',";
     sentenciaSQL += "facebook = '" + datos.facebook + "',";
     sentenciaSQL += "autorizacion_sunat = '" + datos.autorizacionSunat + "',";
@@ -540,8 +541,34 @@ model.listaUsuarios = function(cb){
 }
 
 model.listaParametros = function(cb){
-    var sentenciaSQL = "SELECT * FROM gim_parametros ";
-
+    var sentenciaSQL = "SELECT ";
+    sentenciaSQL += "p.id_parametro ";
+    sentenciaSQL += ",p.numdoc ";
+    sentenciaSQL += ",p.descripcion ";
+    sentenciaSQL += ",p.departamento ";
+    sentenciaSQL += ",dpto.descripcion as departamento_name ";
+    sentenciaSQL += ",p.provincia ";
+    sentenciaSQL += ",prov.descripcion as provincia_name ";
+    sentenciaSQL += ",p.distrito ";
+    sentenciaSQL += ",dist.descripcion as distrito_name ";
+    sentenciaSQL += ",p.direccion ";
+    sentenciaSQL += ",p.telefono ";
+    sentenciaSQL += ",p.pagina_web ";
+    sentenciaSQL += ",p.facebook ";
+    sentenciaSQL += ",p.autorizacion_sunat ";
+    sentenciaSQL += ",p.nro_maquina ";
+    sentenciaSQL += ",p.impuesto ";
+    sentenciaSQL += ",p.nro_serie_ticket ";
+    sentenciaSQL += ",p.nro_ticket ";
+    sentenciaSQL += ",p.nro_serie_boleta ";
+    sentenciaSQL += ",p.nro_boleta ";
+    sentenciaSQL += ",p.nro_serie_factura ";
+    sentenciaSQL += ",p.nro_factura ";
+    sentenciaSQL += ",p.estado ";
+    sentenciaSQL += "FROM gim_parametros p ";
+    sentenciaSQL += "left join gim_ubigeo_dpto dpto on dpto.ccod_dpto = p.departamento ";
+    sentenciaSQL += "left join gim_ubigeo_prov prov on prov.ccod_dpto = p.departamento and prov.ccod_prov = p.provincia ";
+    sentenciaSQL += "left join gim_ubigeo_dist dist on dist.ccod_dpto = p.departamento and dist.ccod_prov = p.provincia and dist.ccod_dist = p.distrito ";
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }

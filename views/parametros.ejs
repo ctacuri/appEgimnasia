@@ -42,19 +42,19 @@
                             <div class="form-group row">
                                 <label for="departamento" class="col-md-3 col-form-label col-form-label-sm">Departamento</label>
                                 <div class="col-md-3">
-                                    <input type="text" class="form-control form-control-sm text-align-right" id="departamento">
+                                    <div id="departamento"></div>
                                 </div>
 
                                 <label for="provincia" class="col-md-3 col-form-label col-form-label-sm">Provincia</label>
                                 <div class="col-md-3">
-                                    <input type="text" class="form-control form-control-sm text-align-right" id="provincia">
+                                    <div id="provincia"></div>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="distrito" class="col-md-3 col-form-label col-form-label-sm">Distrito</label>
                                 <div class="col-md-3">
-                                    <input type="text" class="form-control form-control-sm text-align-right" id="distrito">
+                                    <div id="distrito"></div>
                                 </div>
 
                                 <label for="telefono" class="col-md-3 col-form-label col-form-label-sm">Telefono</label>
@@ -198,6 +198,14 @@
                                         $("#id").val("");
                                         fn_clearText();
 
+                                        var arregloInputDropDownList = ['departamento', 'provincia', 'distrito'];
+                                        fn_clearDropDownList(arregloInputDropDownList);
+
+                                        $("#departamento").jqxDropDownList('selectItem', '15' );
+                                        setTimeout(function(){
+                                            $("#provincia").jqxDropDownList('selectItem', '01' );
+                                        }, 1000);
+
                                         $("#btnSave").text("Guardar");
                                         $('#myModal').modal('show');
                                     });
@@ -220,6 +228,135 @@
                 )
             )
 
+            $("#departamento").jqxDropDownList(
+                $.extend(
+                    {}, vDefaultOptionsDropDownList, {
+                        width: '100%',
+                        dropDownWidth: 250,
+                        dropDownHorizontalAlignment: 'right'
+                    }
+                )
+            );
+            $('#departamento').on('change', function (event)
+            {
+                var args = event.args;
+                if (args) {
+                    // index represents the item's index.
+                    var index = args.index;
+                    var item = args.item;
+                    // get item's label and value.
+                    var label = item.label;
+                    var value = item.value;
+
+                    //console.log(arrayProv[0]);
+                    var queryResult = Enumerable.From(arrayProv[0])
+                        .Where("$.ccod_dpto == '"+value+"'")
+                        .Select()
+                        .ToArray();
+
+                    var height = false;
+                    if(queryResult.length >= 10){
+                        height = false;
+                    }else{
+                        height = true;
+                    }
+                    $("#provincia").jqxDropDownList({
+                        source: queryResult,
+                        displayMember: "descripcion",
+                        valueMember: "ccod_prov",
+                        dropDownWidth: 250,
+                        dropDownHeight: 250,
+                        autoDropDownHeight: height
+                    });
+                }
+            });
+
+            $("#provincia").jqxDropDownList(
+                $.extend(
+                    {}, vDefaultOptionsDropDownList, {
+                        width: '100%'
+                    }
+                )
+            );
+            $('#provincia').on('change', function (event)
+            {
+                var args = event.args;
+                if (args) {
+                    // index represents the item's index.
+                    var index = args.index;
+                    var item = args.item;
+                    // get item's label and value.
+                    var label = item.label;
+                    var value = item.value;
+
+                    //console.log(arrayDist[0]);
+                    var queryResult = Enumerable.From(arrayDist[0])
+                        .Where("$.ccod_dpto == '"+$("#departamento").val()+"' && $.ccod_prov == '"+value+"'")
+                        .Select()
+                        .ToArray();
+
+                    var height = false;
+                    if(queryResult.length >= 10){
+                        height = false;
+                    }else{
+                        height = true;
+                    }
+                    $("#distrito").jqxDropDownList({
+                        source: queryResult,
+                        displayMember: "descripcion",
+                        valueMember: "ccod_dist",
+                        dropDownWidth: 250,
+                        dropDownHeight: 250,
+                        filterable: true,
+                        searchMode: 'containsignorecase',
+                        autoDropDownHeight: height
+                    });
+                }
+            });
+
+            $("#distrito").jqxDropDownList(
+                $.extend(
+                    {}, vDefaultOptionsDropDownList, {
+                        width: '100%'
+                    }
+                )
+            );
+
+            var arrayProv = [], arrayDist = [];
+            $.when(
+                $.ajax("/listaDepartamentos"),
+                $.ajax("/listaProvincias"),
+                $.ajax("/listaDistritos")
+            ).done(function(json4, json5, json6 ) {
+                //console.log(json1[0].registros[0]);
+                if(json4[0].status == "success"){
+                    $("#departamento").jqxDropDownList({
+                        source: json4[0].registros,
+                        displayMember: "descripcion",
+                        valueMember: "ccod_dpto",
+                        dropDownHeight: 250
+                    });
+                }else{
+                    alert("Error: al cargar departamentos");
+                    return false;
+                }
+
+                if(json5[0].status == "success"){
+                    arrayProv.push(json5[0].registros);
+                }else{
+                    alert("Error: al cargar provincias");
+                    return false;
+                }
+
+                if(json6[0].status == "success"){
+                    arrayDist.push(json6[0].registros);
+                }else{
+                    alert("Error: al cargar provincias");
+                    return false;
+                }
+            });
+
+
             $.getJSON('/listaParametros/', function(json) {
                 //console.log(json.registros);
                 var source =
@@ -229,6 +366,20 @@
                             { name: 'id_parametro', type: 'int'},
                             { name: 'numdoc', type: 'string'},
                             { name: 'descripcion', type: 'string'},
+
+                            { name: 'departamento', type: 'string'},
+                            { name: 'departamento_name', type: 'string'},
+                            { name: 'provincia', type: 'string'},
+                            { name: 'provincia_name', type: 'string'},
+                            { name: 'distrito', type: 'string'},
+                            { name: 'distrito_name', type: 'string'},
+                            { name: 'direccion', type: 'string'},
+                            { name: 'telefono', type: 'string'},
+                            { name: 'pagina_web', type: 'string'},
+                            { name: 'facebook', type: 'string'},
+                            { name: 'autorizacion_sunat', type: 'string'},
+                            { name: 'nro_maquina', type: 'string'},
+
                             { name: 'impuesto', type: 'float'},
                             { name: 'nro_serie_ticket', type: 'string'},
                             { name: 'nro_ticket', type: 'int'},
@@ -243,9 +394,9 @@
                 var dataAdapter = new $.jqx.dataAdapter(source);
 
                 $("#grid").jqxGrid(
-                    {
-                        source: dataAdapter
-                    });
+                {
+                    source: dataAdapter
+                });
             });
 
             $("#grid").jqxGrid(
@@ -256,7 +407,18 @@
                         selectionmode: 'singlerow',
                         columns: [
                             { text: 'Ruc', align: 'center', datafield: 'numdoc', cellsalign: 'right', width: '8%' },
-                            { text: 'Razon Social', align: 'center', datafield: 'descripcion', cellsalign: 'left', width: '36%' },
+                            { text: 'Razon Social', align: 'center', datafield: 'descripcion', cellsalign: 'left', width: '30%' },
+
+                            { text: 'Departamento', align: 'center', datafield: 'departamento_name', cellsalign: 'left', width: '10%' },
+                            { text: 'Provincia', align: 'center', datafield: 'provincia_name', cellsalign: 'left', width: '10%' },
+                            { text: 'Distrito', align: 'center', datafield: 'distrito_name', cellsalign: 'left', width: '10%' },
+                            { text: 'Direccion', align: 'center', datafield: 'direccion', cellsalign: 'left', width: '15%' },
+                            { text: 'Telefono', align: 'center', datafield: 'telefono', cellsalign: 'left', width: '10%' },
+                            { text: 'Pagina Web', align: 'center', datafield: 'pagina_web', cellsalign: 'left', width: '15%' },
+                            { text: 'Facebook', align: 'center', datafield: 'facebook', cellsalign: 'left', width: '15%' },
+                            { text: 'Autorizacion Sunat', align: 'center', datafield: 'autorizacion_sunat', cellsalign: 'left', width: '15%' },
+                            { text: 'Nro. Maquina', align: 'center', datafield: 'nro_maquina', cellsalign: 'left', width: '15%' },
+
                             { text: 'Impuesto', align: 'center', datafield: 'impuesto', cellsalign: 'right', width: '8%' },
                             { text: 'Serie Ticket', align: 'center', datafield: 'nro_serie_ticket', cellsalign: 'right', width: '8%' },
                             { text: 'Nro. Ticket', align: 'center', datafield: 'nro_ticket', cellsalign: 'right', width: '8%' },
@@ -307,9 +469,37 @@
                 // row's bound index.
                 var boundIndex = args.rowindex;
                 var data = $('#grid').jqxGrid('getrowdata', boundIndex);
+                console.log(data);
                 $("#id").val(data.id_parametro);
                 $("#nroDocumento").val(data.numdoc);
                 $("#descripcion").val(data.descripcion);
+
+                setTimeout(function() {
+                    $("#departamento").jqxDropDownList('selectItem', data.departamento);
+                    //console.log(data.departamento);
+                }, 500);
+
+                setTimeout(function(){
+                    $("#provincia").jqxDropDownList('selectItem', data.provincia);
+                }, 1000);
+
+                setTimeout(function(){
+                    $("#distrito").jqxDropDownList('selectItem', data.distrito);
+                    $("#provincia").jqxDropDownList("close");
+                    $("#distrito").jqxDropDownList("close");
+                }, 1500);
+
+                //$("#departamento").val(data.departamento);
+                //$("#provincia").val(data.provincia);
+                //$("#distrito").val(data.distrito);
+                $("#direccion").val(data.direccion);
+
+                $("#telefono").val(data.telefono);
+                $("#paginaWeb").val(data.pagina_web);
+                $("#facebook").val(data.facebook);
+                $("#autorizacionSunat").val(data.autorizacion_sunat);
+                $("#nroMaquina").val(data.nro_maquina);
+
                 $("#impuesto").val(data.impuesto);
                 $("#serieTicket").val(data.nro_serie_ticket);
                 $("#nroTicket").val(data.nro_ticket);
@@ -333,6 +523,7 @@
                     provincia: $("#provincia").val(),
                     distrito: $("#distrito").val(),
                     direccion: $("#direccion").val(),
+                    telefono: $("#telefono").val(),
                     paginaWeb: $("#paginaWeb").val(),
                     facebook: $("#facebook").val(),
                     autorizacionSunat: $("#autorizacionSunat").val(),
@@ -346,7 +537,8 @@
                     serieFactura: $("#serieFactura").val(),
                     nroFactura: $("#nroFactura").val()
                 };
-                console.log(datos);
+                //console.log(datos);
+                //return false;
                 var txtMsg = "", url = "";
                 if($("#id").val() != ""){
                     url = "/EG/updParametros";
