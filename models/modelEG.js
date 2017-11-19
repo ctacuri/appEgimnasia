@@ -808,8 +808,46 @@ model.searchAlumno = function(datos, cb){
 }
 
 model.listaCobroCab = function(datos, cb){
-    var sentenciaSQL = "SELECT * FROM gim_cobro_cab WHERE id_cobro = " + datos.id;
+    //var sentenciaSQL = "SELECT * FROM gim_cobro_cab WHERE id_cobro = " + datos.id;
+    var sentenciaSQL = "";
+    sentenciaSQL += "SELECT ";
+    sentenciaSQL += "c.id_cobro ";
+    sentenciaSQL += ",c.ruc_empresa ";
+    sentenciaSQL += ",p.descripcion as empresa ";
+    sentenciaSQL += ",p.direccion as direccion_empresa ";
 
+    sentenciaSQL += ",p.departamento ";
+    sentenciaSQL += ",dpto.descripcion as departamento_name ";
+    sentenciaSQL += ",p.provincia ";
+    sentenciaSQL += ",prov.descripcion as provincia_name ";
+    sentenciaSQL += ",p.distrito ";
+    sentenciaSQL += ",dist.descripcion as distrito_name ";
+
+    sentenciaSQL += ",p.telefono as telefono_empresa ";
+    sentenciaSQL += ",p.pagina_web ";
+    sentenciaSQL += ",p.facebook ";
+    sentenciaSQL += ",p.autorizacion_sunat ";
+    sentenciaSQL += ",p.nro_maquina ";
+    sentenciaSQL += ",c.tipo_comprobante ";
+    sentenciaSQL += ",c.nro_serie ";
+    sentenciaSQL += ",c.nro_correlativo ";
+    sentenciaSQL += ",c.fecha_emision ";
+    sentenciaSQL += ",c.id_pedido ";
+    sentenciaSQL += ",c.tipo_documento ";
+    sentenciaSQL += ",c.numdoc ";
+    sentenciaSQL += ",c.cliente ";
+    sentenciaSQL += ",c.direccion ";
+    sentenciaSQL += ",c.forma_pago ";
+    sentenciaSQL += ",c.subtotal ";
+    sentenciaSQL += ",c.igv ";
+    sentenciaSQL += ",c.total ";
+    sentenciaSQL += "FROM gim_cobro_cab c ";
+    sentenciaSQL += "left join gim_parametros p on c.ruc_empresa = p.numdoc ";
+    sentenciaSQL += "left join gim_ubigeo_dpto dpto on dpto.ccod_dpto = p.departamento ";
+    sentenciaSQL += "left join gim_ubigeo_prov prov on prov.ccod_dpto = p.departamento and prov.ccod_prov = p.provincia ";
+    sentenciaSQL += "left join gim_ubigeo_dist dist on dist.ccod_dpto = p.departamento and dist.ccod_prov = p.provincia and dist.ccod_dist = p.distrito ";
+    sentenciaSQL += "WHERE c.id_cobro = " + datos.id;
+    sentenciaSQL += " AND c.estado = 'V' ";
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }

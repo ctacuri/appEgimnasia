@@ -8,7 +8,31 @@
     <meta name="author" content="">
     <title>Escuela de Gimnasia</title>
     <script type="text/javascript" src="javascripts/scripts.js"></script>
+    <style type="text/css">
+        .table-borderless > tbody > tr > td,
+        .table-borderless > tbody > tr > th,
+        .table-borderless > tfoot > tr > td,
+        .table-borderless > tfoot > tr > th,
+        .table-borderless > thead > tr > td,
+        .table-borderless > thead > tr > th {
+            border: none !important;
+        }
 
+        .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+            padding: 1px !important;
+            line-height: 1.42857143;
+            vertical-align: top;
+            border-top: 1px solid #ddd;
+        }
+
+        .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+            border-top: 0px !important;
+        }
+
+        @media print {
+            border-top: 0px !important;
+        }
+    </style>
 </head>
 <body>
     <% include menu %>
@@ -33,11 +57,11 @@
                         <div class="col-md-12">
                             <div id="viewTicket">
 
-                                <p align="center">CLUB ESCUELA DE GIMNASIA</p>
-                                <p align="center">AV. PETIT THOUARS NRO. 2685 LIMA - LIMA - LINCE</p>
-                                <p align="center">RUC: 20601497795</p>
-                                <p align="center">Telefono: (01) 4225261</p>
-                                <p align="center">www.gimnasia.pe</p>
+                                <p align="center" id="empresa">CLUB ESCUELA DE GIMNASIA</p>
+                                <p align="center" id="direccionEmpresa">AV. PETIT THOUARS NRO. 2685 LIMA - LIMA - LINCE</p>
+                                <p align="center">RUC: <span id="rucEmpresa">20601497795</span></p>
+                                <p align="center">Telefono: <span id="telefonoEmpresa">(01) 4225261</span></p>
+                                <p align="center" id="paginaWeb">www.gimnasia.pe</p>
 
                                 <div class="row">
                                     <div class="col-sm-12">
@@ -45,12 +69,12 @@
                                             <tr>
                                                 <td width="49%" align="right" style="margin-bottom: 3px;">Autorizacion SUNAT</td>
                                                 <td width="2%" align="center">:</td>
-                                                <td width="49%">0023845108800</td>
+                                                <td width="49%" id="autorizacionSunat">0023845108800</td>
                                             </tr>
                                             <tr>
                                                 <td width="49%" align="right">Maq Regist Nro</td>
                                                 <td width="2%" align="center">:</td>
-                                                <td width="49%">FFCF268000</td>
+                                                <td width="49%" id="nroMaquina">FFCF268000</td>
                                             </tr>
                                             <tr>
                                                 <td width="49%" align="right">Ticket Boleta</td>
@@ -201,7 +225,7 @@
                                 <div class="form-group row" style="margin-top: -15px;">
                                     <label class="col-xs-12 col-form-label col-form-label-sm">
                                         <p align="center" style="font-size: 13px; font-weight: normal;">Siguenos en Facebook</p>
-                                        <p align="center" style="font-size: 13px; font-weight: normal;">facebook.com/escueladegimnasialima</p>
+                                        <p align="center" style="font-size: 13px; font-weight: normal;" id="facebook">facebook.com/escueladegimnasialima</p>
                                     </label>
                                 </div>
 

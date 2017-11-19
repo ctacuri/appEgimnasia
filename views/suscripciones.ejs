@@ -198,11 +198,11 @@
                     <div class="col-md-12">
                         <div id="viewTicket">
 
-                            <p align="center">CLUB ESCUELA DE GIMNASIA</p>
-                            <p align="center">AV. PETIT THOUARS NRO. 2685 LIMA - LIMA - LINCE</p>
-                            <p align="center">RUC: 20601497795</p>
-                            <p align="center">Telefono: (01) 4225261</p>
-                            <p align="center">www.gimnasia.pe</p>
+                            <p align="center" id="empresa">CLUB ESCUELA DE GIMNASIA</p>
+                            <p align="center" id="direccionEmpresa">AV. PETIT THOUARS NRO. 2685 LIMA - LIMA - LINCE</p>
+                            <p align="center">RUC: <span id="rucEmpresa">20601497795</span></p>
+                            <p align="center">Telefono: <span id="telefonoEmpresa">(01) 4225261</span></p>
+                            <p align="center" id="paginaWeb">www.gimnasia.pe</p>
 
                             <div class="row">
                                 <div class="col-sm-12">
@@ -210,12 +210,12 @@
                                         <tr>
                                             <td width="49%" align="right" style="margin-bottom: 3px;">Autorizacion SUNAT</td>
                                             <td width="2%" align="center">:</td>
-                                            <td width="49%">0023845108800</td>
+                                            <td width="49%" id="autorizacionSunat">0023845108800</td>
                                         </tr>
                                         <tr>
                                             <td width="49%" align="right">Maq Regist Nro</td>
                                             <td width="2%" align="center">:</td>
-                                            <td width="49%">FFCF268000</td>
+                                            <td width="49%" id="nroMaquina">FFCF268000</td>
                                         </tr>
                                         <tr>
                                             <td width="49%" align="right">Ticket Boleta</td>
@@ -366,7 +366,7 @@
                             <div class="form-group row" style="margin-top: -15px;">
                                 <label class="col-xs-12 col-form-label col-form-label-sm">
                                     <p align="center" style="font-size: 13px; font-weight: normal;">Siguenos en Facebook</p>
-                                    <p align="center" style="font-size: 13px; font-weight: normal;">facebook.com/escueladegimnasialima</p>
+                                    <p align="center" style="font-size: 13px; font-weight: normal;" id="facebook">facebook.com/escueladegimnasialima</p>
                                 </label>
                             </div>
 
@@ -1429,7 +1429,7 @@
             $.ajax("/listaEmpresas"),
             $.ajax("/listaFormaPago")
         ).done(function( json1, json2, json3, json4, json5, json6) {
-            //console.log(json2[0].registros[0].length);
+            //console.log(json5[0].registros[0]);
             for(var j = 0; j<json1[0].registros[0].length; j++){
                 arregloAlumnos.push(
                     {
@@ -1461,6 +1461,20 @@
                         id_parametro: json5[0].registros[0][x].id_parametro,
                         numdoc: json5[0].registros[0][x].numdoc,
                         descripcion: json5[0].registros[0][x].descripcion,
+
+                        departamento: json5[0].registros[0][x].departamento,
+                        departamento_name: json5[0].registros[0][x].departamento_name,
+                        provincia: json5[0].registros[0][x].provincia,
+                        provincia_name: json5[0].registros[0][x].provincia_name,
+                        distrito: json5[0].registros[0][x].distrito,
+                        distrito_name: json5[0].registros[0][x].distrito_name,
+                        direccion_empresa: json5[0].registros[0][x].direccion_empresa,
+                        telefono_empresa: json5[0].registros[0][x].telefono_empresa,
+                        pagina_web: json5[0].registros[0][x].pagina_web,
+                        facebook: json5[0].registros[0][x].facebook,
+                        autorizacion_sunat: json5[0].registros[0][x].autorizacion_sunat,
+                        nro_maquina: json5[0].registros[0][x].nro_maquina,
+
                         impuesto: json5[0].registros[0][x].impuesto,
                         nro_serie_ticket: json5[0].registros[0][x].nro_serie_ticket,
                         nro_ticket: json5[0].registros[0][x].nro_ticket,
@@ -1686,7 +1700,7 @@
                                 $("#serie").val(queryResult[0].nro_serie_factura);
                                 $("#correlativo").val(queryResult[0].nro_factura);
                                 break;
-                            case 'SIN COMPROBANTE':
+                            case 'REGISTRO':
                                 $("#serie").val("000");
                                 $("#correlativo").val("");
                                 break;
@@ -1796,11 +1810,28 @@
                 var subTotal = parseFloat(summaryData.sum - igv);
                 var total = subTotal + igv;
 
-                //console.log(summaryData.sum);
+                //console.log($('#empresa').text());
+                //return false;
                 arregloCabCobro.push({
                     pantallaCobro: "NO",
                     fechaEmision: fn_convertFecha_DMY_to_SQL($('#fecha').val()),
                     rucEmpresa: $('#empresa').val(),
+                    empresa: $('#empresa').text(),
+
+                    departamento: queryResultE[0].departamento,
+                    departamento_name: queryResultE[0].departamento_name,
+                    provincia: queryResultE[0].provincia,
+                    provincia_name: queryResultE[0].provincia_name,
+                    distrito: queryResultE[0].distrito,
+                    distrito_name: queryResultE[0].distrito_name,
+                    direccion_empresa: queryResultE[0].direccion_empresa,
+
+                    telefono_empresa: queryResultE[0].telefono_empresa,
+                    pagina_web: queryResultE[0].pagina_web,
+                    facebook: queryResultE[0].facebook,
+                    autorizacion_sunat: queryResultE[0].autorizacion_sunat,
+                    nro_maquina: queryResultE[0].nro_maquina,
+
                     tipoComprobante: $('#emitir').val(),
                     formaPago: $('#formaPago').val(),
                     nroSerie: $('#serie').val(),
@@ -1816,9 +1847,9 @@
                     datosGrilla: JSON.stringify(datos)
                 });
                 //FIN - VALIDACION DE CONTROLES DE EMISION DE PAGOS
-                //console.log(arregloCobro[0]);
+                //console.log(arregloCabCobro[0]);
                 //fn_registrarCabCobro(arregloCabCobro[0], JSON.stringify(datos), queryResultE[0].impuesto);
-                //fn_emisionTicket(arregloCabCobro, datos);
+                //fn_emisionTicket(arregloCabCobro[0], JSON.stringify(datos));
             }
             //return false;
             if(confirm("Esta seguro de "+txtMsg+" los datos ?")){

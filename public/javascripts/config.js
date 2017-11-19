@@ -866,6 +866,9 @@ function fn_updArreglos(){
                     id_parametro: json5.registros[0][x].id_parametro,
                     numdoc: json5.registros[0][x].numdoc,
                     descripcion: json5.registros[0][x].descripcion,
+
+
+
                     impuesto: json5.registros[0][x].impuesto,
                     nro_serie_ticket: json5.registros[0][x].nro_serie_ticket,
                     nro_ticket: json5.registros[0][x].nro_ticket,
@@ -952,14 +955,13 @@ function fn_registrarCabCobro(arregloCab, arregloDet, impuesto){
 
 
 function fn_viewTicket(idCobro){
-
     $.when(
         $.ajax("/EG/listaCobroCab/"+idCobro),
         $.ajax("/EG/listaCobroDet/"+idCobro)
     ).done(function( json1, json2 ) {
 
         if(json1[0].status == "success"){
-            //console.log("CAB");
+            console.log("CAB");
             //console.log(json1[0].registros[0]);
         }else{
             alert("Error: al cargar cobroCab");
@@ -975,14 +977,39 @@ function fn_viewTicket(idCobro){
         }
 
         //var objDet = JSON.parse(json2[0].registros);
-        console.log("EMISION DE TICKET");
-        //console.log(arregloCab);
+        console.log("REIMPRESION DE TICKET");
+        //console.log(json1[0].registros[0]);
         //console.log(objDet);
+        var UBIGEO = " " + json1[0].registros[0].departamento_name + " - " + json1[0].registros[0].provincia_name + " - " + json1[0].registros[0].distrito_name;
+
+        $("#rucEmpresa").text(json1[0].registros[0].ruc_empresa);
+        $("#empresa").text(json1[0].registros[0].empresa);
+        $("#direccionEmpresa").text(json1[0].registros[0].direccion_empresa + UBIGEO);
+        $("#telefonoEmpresa").text(json1[0].registros[0].telefono_empresa);
+        $("#autorizacionSunat").text(json1[0].registros[0].autorizacion_sunat);
+        $("#nroMaquina").text(json1[0].registros[0].nro_maquina);
+        $("#paginaWeb").text(json1[0].registros[0].pagina_web);
+        $("#facebook").text(json1[0].registros[0].facebook);
         $("#nroTicket").text(json1[0].registros[0].nro_correlativo);
         $("#fechaEmision").text(fn_convertFecha_SQL_to_DMY(json1[0].registros[0].fecha_emision));
         $("#idCliente").text(json1[0].registros[0].numdoc);
         $("#cliente").text(json1[0].registros[0].cliente);
-        $("#tipoPago").text( (json1[0].registros[0].formaPago == 1) ? 'EFECTIVO' : 'CREDITO' );
+        //$("#tipoPago").text( (json1[0].registros[0].formaPago == 1) ? 'EFECTIVO' : 'CREDITO' );
+        //$("#tipoPago").text( (json1[0].registros[0].formaPago == 1) ? 'EFECTIVO' : 'CREDITO' );
+        var tipoPago = "";
+        switch(json1[0].registros[0].forma_pago){
+            case 1:
+                tipoPago = 'EFECTIVO';
+                break;
+            case 2:
+                tipoPago = 'DEBITO';
+                break;
+            case 3:
+                tipoPago = 'CREDITO';
+                break;
+        }
+        //console.log(json1[0].registros[0].forma_pago);
+        $("#tipoPago").text(tipoPago);
 
         var html = "";
         for(var x = 0; x < json2[0].registros.length; x++){
@@ -1004,13 +1031,38 @@ function fn_viewTicket(idCobro){
 function fn_emisionTicket(arregloCab, arregloDet){
     var objDet = JSON.parse(arregloDet);
     console.log("EMISION DE TICKET");
-    console.log(arregloCab);
-    console.log(objDet);
+    //console.log(arregloCab);
+    //console.log(objDet);
     $("#nroTicket").text(arregloCab.nroCorrelativo);
     $("#fechaEmision").text(fn_convertFecha_SQL_to_DMY(arregloCab.fechaEmision));
+
+    var UBIGEO = " " + arregloCab.departamento_name + " - " + arregloCab.provincia_name + " - " + arregloCab.distrito_name;
+    $("#empresa").text(arregloCab.empresa);
+    $("#direccionEmpresa").text(arregloCab.direccion_empresa + UBIGEO);
+    $("#telefonoEmpresa").text(arregloCab.telefono_empresa);
+    $("#autorizacionSunat").text(arregloCab.autorizacion_sunat);
+    $("#nroMaquina").text(arregloCab.nro_maquina);
+    $("#paginaWeb").text(arregloCab.pagina_web);
+    $("#facebook").text(arregloCab.facebook);
+    $("#nroTicket").text(arregloCab.nro_correlativo);
+
     $("#idCliente").text(arregloCab.numDoc);
     $("#cliente").text(arregloCab.cliente);
-    $("#tipoPago").text( (arregloCab.formaPago == 1) ? 'EFECTIVO' : 'CREDITO' );
+    //$("#tipoPago").text( (arregloCab.formaPago == 1) ? 'EFECTIVO' : 'CREDITO' );
+    var tipoPago = "";
+    switch(arregloCab.formaPago){
+        case "1":
+            tipoPago = 'EFECTIVO';
+            break;
+        case "2":
+            tipoPago = 'DEBITO';
+            break;
+        case "3":
+            tipoPago = 'CREDITO';
+            break;
+    }
+    //console.log(arregloCab.formaPago);
+    $("#tipoPago").text(tipoPago);
 
     var html = "";
     for(var x = 0; x < objDet.length; x++){
@@ -1022,7 +1074,8 @@ function fn_emisionTicket(arregloCab, arregloDet){
     $("#totalTicket").text("S/. " + arregloCab.total);
     $('#myModal').modal('hide');
 
-    //$('#myModalTicket').modal('show');
+    //DESCOMENTAR SOLO PARA PRUEBAS
+    $('#myModalTicket').modal('show');
     //return false;
 
     var url = "/EG/updCorrelativo/";
