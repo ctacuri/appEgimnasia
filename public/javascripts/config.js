@@ -868,14 +868,16 @@ function fn_updArreglos(){
                     descripcion: json5.registros[0][x].descripcion,
 
 
-
                     impuesto: json5.registros[0][x].impuesto,
                     nro_serie_ticket: json5.registros[0][x].nro_serie_ticket,
                     nro_ticket: json5.registros[0][x].nro_ticket,
                     nro_serie_boleta: json5.registros[0][x].nro_serie_boleta,
                     nro_boleta: json5.registros[0][x].nro_boleta,
                     nro_serie_factura: json5.registros[0][x].nro_serie_factura,
-                    nro_factura: json5.registros[0][x].nro_factura
+                    nro_factura: json5.registros[0][x].nro_factura,
+
+                    nro_serie_registro: json5.registros[0][x].nro_serie_registro,
+                    nro_registro: json5.registros[0][x].nro_registro
                 }
            );
             return JSON.stringify(arreglo);

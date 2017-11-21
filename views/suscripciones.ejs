@@ -1481,7 +1481,10 @@
                         nro_serie_boleta: json5[0].registros[0][x].nro_serie_boleta,
                         nro_boleta: json5[0].registros[0][x].nro_boleta,
                         nro_serie_factura: json5[0].registros[0][x].nro_serie_factura,
-                        nro_factura: json5[0].registros[0][x].nro_factura
+                        nro_factura: json5[0].registros[0][x].nro_factura,
+
+                        nro_serie_registro: json5[0].registros[0][x].nro_serie_registro,
+                        nro_registro: json5[0].registros[0][x].nro_registro
                     }
                 );
             }
@@ -1656,9 +1659,9 @@
                             $("#serie").val(queryResult[0].nro_serie_factura);
                             $("#correlativo").val(queryResult[0].nro_factura);
                             break;
-                        case 'SIN COMPROBANTE':
-                            $("#serie").val("000");
-                            $("#correlativo").val("");
+                        case 'REGISTRO':
+                            $("#serie").val(queryResult[0].nro_serie_registro);
+                            $("#correlativo").val(queryResult[0].nro_registro);
                             break;
                     }
                 });
@@ -1701,8 +1704,8 @@
                                 $("#correlativo").val(queryResult[0].nro_factura);
                                 break;
                             case 'REGISTRO':
-                                $("#serie").val("000");
-                                $("#correlativo").val("");
+                                $("#serie").val(queryResult[0].nro_serie_registro);
+                                $("#correlativo").val(queryResult[0].nro_registro);
                                 break;
                         }
                     });

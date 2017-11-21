@@ -278,7 +278,10 @@ controller.saveParametros = function(req, res, next){
         serieBoleta: req.body.serieBoleta,
         nroBoleta: req.body.nroBoleta,
         serieFactura: req.body.serieFactura,
-        nroFactura: req.body.nroFactura
+        nroFactura: req.body.nroFactura,
+
+        serieRegistro: req.body.serieRegistro,
+        nroRegistro: req.body.nroRegistro
     };
     model.saveParametros(datos, function(err, registros){
         if(err){
@@ -320,7 +323,10 @@ controller.updParametros = function(req, res, next){
         serieBoleta: req.body.serieBoleta,
         nroBoleta: req.body.nroBoleta,
         serieFactura: req.body.serieFactura,
-        nroFactura: req.body.nroFactura
+        nroFactura: req.body.nroFactura,
+
+        serieRegistro: req.body.serieRegistro,
+        nroRegistro: req.body.nroRegistro
     };
     //console.log(datos);
     //return false;

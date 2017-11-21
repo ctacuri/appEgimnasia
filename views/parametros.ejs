@@ -139,12 +139,17 @@
                                 </div>
                             </div>
 
-                            <!--<div class="form-group row">
-                                <label for="serieCobro" class="col-md-3 col-form-label col-form-label-sm">Serie Cobro</label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control form-control-sm text-align-right" id="serieCobro">
+                            <div class="form-group row">
+                                <label for="serieRegistro" class="col-md-3 col-form-label col-form-label-sm">Serie Registro</label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control form-control-sm text-align-right" id="serieRegistro">
                                 </div>
-                            </div>-->
+
+                                <label for="nroRegistro" class="col-md-3 col-form-label col-form-label-sm">Nro. Registro</label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control form-control-sm text-align-right" id="nroRegistro">
+                                </div>
+                            </div>
 
                         </div>
 
@@ -387,6 +392,8 @@
                             { name: 'nro_boleta', type: 'int'},
                             { name: 'nro_serie_factura', type: 'string'},
                             { name: 'nro_factura', type: 'int'},
+                            { name: 'nro_serie_registro', type: 'string'},
+                            { name: 'nro_registro', type: 'int'},
                             { name: 'estado', type: 'string'}
                         ],
                         localdata: json.registros
@@ -425,7 +432,10 @@
                             { text: 'Serie Boleta', align: 'center', datafield: 'nro_serie_boleta', cellsalign: 'right', width: '8%'},
                             { text: 'Nro. Boleta', align: 'center', datafield: 'nro_boleta', cellsalign: 'right', width: '8%' },
                             { text: 'Serie Factura', align: 'center', datafield: 'nro_serie_factura', cellsalign: 'right', width: '8%' },
-                            { text: 'Nro. Factura', align: 'center', datafield: 'nro_factura', cellsalign: 'right', width: '8%' }
+                            { text: 'Nro. Factura', align: 'center', datafield: 'nro_factura', cellsalign: 'right', width: '8%' },
+
+                            { text: 'Serie Registro', align: 'center', datafield: 'nro_serie_registro', cellsalign: 'right', width: '8%' },
+                            { text: 'Nro. Registro', align: 'center', datafield: 'nro_registro', cellsalign: 'right', width: '8%' }
                         ]
                     }
                 )
@@ -508,6 +518,9 @@
                 $("#serieFactura").val(data.nro_serie_factura);
                 $("#nroFactura").val(data.nro_factura);
 
+                $("#serieRegistro").val(data.nro_serie_registro);
+                $("#nroRegistro").val(data.nro_registro);
+
                 $("#btnSave").text("Actualizar");
                 $('#myModal').modal('show');
             });
@@ -535,7 +548,10 @@
                     serieBoleta: $("#serieBoleta").val(),
                     nroBoleta: $("#nroBoleta").val(),
                     serieFactura: $("#serieFactura").val(),
-                    nroFactura: $("#nroFactura").val()
+                    nroFactura: $("#nroFactura").val(),
+
+                    serieRegistro: $("#serieRegistro").val(),
+                    nroRegistro: $("#nroRegistro").val()
                 };
                 //console.log(datos);
                 //return false;

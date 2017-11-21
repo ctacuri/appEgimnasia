@@ -149,7 +149,10 @@ model.saveParametros = function(datos, cb){
     sentenciaSQL += "nro_serie_boleta,";
     sentenciaSQL += "nro_boleta,";
     sentenciaSQL += "nro_serie_factura,";
-    sentenciaSQL += "nro_factura)";
+    sentenciaSQL += "nro_factura,";
+
+    sentenciaSQL += "nro_serie_registro,";
+    sentenciaSQL += "nro_registro)";
     sentenciaSQL += " VALUES('" + datos.nroDocumento + "',";
     sentenciaSQL += "'" + datos.descripcion + "',";
 
@@ -168,8 +171,10 @@ model.saveParametros = function(datos, cb){
     sentenciaSQL += "'" + datos.serieBoleta + "',";
     sentenciaSQL += datos.nroBoleta + ",";
     sentenciaSQL += "'" + datos.serieFactura + "',";
-    sentenciaSQL += datos.nroFactura + ");";
+    sentenciaSQL += datos.nroFactura + ",";
 
+    sentenciaSQL += "'" + datos.serieRegistro + "',";
+    sentenciaSQL += datos.nroRegistro + ");";
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
@@ -195,8 +200,12 @@ model.updParametros = function(datos, cb){
     sentenciaSQL += "nro_serie_boleta = '" + datos.serieBoleta + "',";
     sentenciaSQL += "nro_boleta = " + datos.nroBoleta + ",";
     sentenciaSQL += "nro_serie_factura = '" + datos.serieFactura + "',";
-    sentenciaSQL += "nro_factura = " + datos.nroFactura + " WHERE ";
-    sentenciaSQL += "id_parametro = " + datos.id + ";";
+    sentenciaSQL += "nro_factura = " + datos.nroFactura + ",";
+
+    sentenciaSQL += "nro_serie_registro = '" + datos.serieRegistro + "',";
+    sentenciaSQL += "nro_registro = " + datos.nroRegistro + " ";
+
+    sentenciaSQL += "WHERE id_parametro = " + datos.id + ";";
 
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
@@ -564,6 +573,8 @@ model.listaParametros = function(cb){
     sentenciaSQL += ",p.nro_boleta ";
     sentenciaSQL += ",p.nro_serie_factura ";
     sentenciaSQL += ",p.nro_factura ";
+    sentenciaSQL += ",p.nro_serie_registro ";
+    sentenciaSQL += ",p.nro_registro ";
     sentenciaSQL += ",p.estado ";
     sentenciaSQL += "FROM gim_parametros p ";
     sentenciaSQL += "left join gim_ubigeo_dpto dpto on dpto.ccod_dpto = p.departamento ";
