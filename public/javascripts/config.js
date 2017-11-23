@@ -951,10 +951,7 @@ function fn_registrarCabCobro(arregloCab, arregloDet, impuesto){
             alert("ERROR: " + xhr.responseText+" - "+thrownError);
         }
     });
-
-    //fn_registrarDetCobro(arregloDet, 100, impuesto);
 }
-
 
 function fn_viewTicket(idCobro){
     $.when(
@@ -1025,10 +1022,8 @@ function fn_viewTicket(idCobro){
         $('#myModalTicket').modal('show');
 
     });
-
     //return false;
 }
-
 
 function fn_emisionTicket(arregloCab, arregloDet){
     var objDet = JSON.parse(arregloDet);
@@ -1076,7 +1071,7 @@ function fn_emisionTicket(arregloCab, arregloDet){
     $("#totalTicket").text("S/. " + arregloCab.total);
     $('#myModal').modal('hide');
 
-    //DESCOMENTAR SOLO PARA PRUEBAS
+    //SHOW TICKET (MENOS TIPO DOC: REGISTRO)
     $('#myModalTicket').modal('show');
     //return false;
 

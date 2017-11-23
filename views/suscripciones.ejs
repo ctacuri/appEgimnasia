@@ -1889,9 +1889,42 @@
                             //alert("Proceso realizado correctamente");
                             //UNA VEZ REGISTRADO LA MATRICULA, SE REGISTRA EL COBRO
                             //SIEMPRE Y CUANDO LA EMSION DE COMPROBANTE SEA DIFERENCTE A "SIN COMPROBANTE"
-                            if($("#emitir").val() != 4){
+                            if($("#emitir").val() == 1){
                                 fn_registrarCabCobro(arregloCabCobro[0], JSON.stringify(datos), queryResultE[0].impuesto);
                                 return false;
+                            }else{
+                                var url = "/EG/updCorrelativo/";
+                                var arregloUpdCorrelativo = {
+                                    rucEmpresa: $("#empresa").val(),
+                                    idFormaPago: $("#emitir").val()
+                                };
+                                $.ajax({
+                                    type: "POST",
+                                    url: url,
+                                    data: arregloUpdCorrelativo,
+                                    dataType: 'json',
+                                    success: function(result){
+                                        console.log("ver ticket");
+                                        console.log(result);
+                                        if(result.status == "success") {
+                                            //DESPUES DE ACTUALIZAR EL CORRELATIVO MUESTRO
+                                            //EL TICKET
+                                            //$('#myModalTicket').modal('show');
+                                            //fn_updArreglos();
+                                            /*if(arregloCabCobro[0].pantallaCobro == "SI"){
+                                                console.log("UPDATE DE SALDO DE MATRICULA");
+                                                console.log(arregloCabCobro[0]);
+                                                fn_updSaldoCobro(arregloCabCobro[0]);
+                                            }*/
+                                            return false;
+                                        }else{
+                                            alert("Error: Vuelva a intentarlo (Upd Correlativo)");
+                                            return false;
+                                        }
+                                    },error: function (xhr, ajaxOptions, thrownError) {
+                                        alert("ERROR: " + xhr.responseText+" - "+thrownError);
+                                    }
+                                });
                             }
                             alert("Proceso realizado correctamente (MATRICULA)");
                             location.reload();
@@ -1914,10 +1947,45 @@
                                 //EN LA ACTUALIZACION DE MATRICULA
                                 //NO SE ALTERA NINGUNA INFORMACION
                                 //DE COBRO
-                                /*if($("#emitir").val() != 4){
+                                if($("#emitir").val() == 1){
                                     fn_registrarCabCobro(arregloCabCobro[0], JSON.stringify(datos), queryResultE[0].impuesto);
                                     return false;
-                                }*/
+                                }else{
+                                    var url = "/EG/updCorrelativo/";
+                                    var arregloUpdCorrelativo = {
+                                        rucEmpresa: $("#empresa").val(),
+                                        idFormaPago: $("#emitir").val()
+                                    };
+                                    //console.log("arregloUpdCorrelativo");
+                                    //console.log(arregloUpdCorrelativo);
+                                    $.ajax({
+                                        type: "POST",
+                                        url: url,
+                                        data: arregloUpdCorrelativo,
+                                        dataType: 'json',
+                                        success: function(result){
+                                            console.log("ver ticket");
+                                            console.log(result);
+                                            if(result.status == "success") {
+                                                //DESPUES DE ACTUALIZAR EL CORRELATIVO MUESTRO
+                                                //EL TICKET
+                                                //$('#myModalTicket').modal('show');
+                                                /*fn_updArreglos();
+                                                if(arregloCabCobro[0].pantallaCobro == "SI"){
+                                                    console.log("UPDATE DE SALDO DE MATRICULA");
+                                                    console.log(arregloCabCobro[0]);
+                                                    fn_updSaldoCobro(arregloCabCobro[0]);
+                                                }*/
+                                                return false;
+                                            }else{
+                                                alert("Error: Vuelva a intentarlo (Upd Correlativo)");
+                                                return false;
+                                            }
+                                        },error: function (xhr, ajaxOptions, thrownError) {
+                                            alert("ERROR: " + xhr.responseText+" - "+thrownError);
+                                        }
+                                    });
+                                }
                                 alert("Proceso realizado correctamente (MATRICULA)");
                                 location.reload();
                                 return false;
@@ -1934,6 +2002,9 @@
 
         });
 
+        $('#myModalTicket').on('hidden.bs.modal', function () {
+            location.reload();
+        });
 
         $("#btnTutor").click(function() {
             $("#departamento").jqxDropDownList('selectItem', '15' );
