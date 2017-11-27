@@ -118,7 +118,7 @@ app.use(bodyParser.json({limit: '100mb'}));
 app.use(bodyParser.urlencoded({ limit: '100mb', extended: false }));
 app.use(cookieParser());
 app.use(allowCrossDomain);
-app.use(cookieSession({secret: "secreto2016"}));
+app.use(cookieSession({secret: "appEgimnasia"}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(passport.initialize());
