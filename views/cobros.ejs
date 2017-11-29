@@ -526,7 +526,8 @@
             $("#idCliente").text(arreglo.numdoc);
             $("#cliente").text(arreglo.tutor);
             $("#detalle").text(arreglo.descripcion_pedido);
-            $("#totalTicket").text(arreglo.importe);
+            //$("#totalTicket").text(arreglo.importe);
+            $("#totalTicket").text("S/. " + arreglo.importe);
         }
 
         $("#grid").on('rowclick', function (event) {

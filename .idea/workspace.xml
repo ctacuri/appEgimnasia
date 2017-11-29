@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f34f7079-dc81-4b1b-96d1-ceb27fcabfa8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/controllerEG.js" afterPath="$PROJECT_DIR$/controllers/controllerEG.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/modelEG.js" afterPath="$PROJECT_DIR$/models/modelEG.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/config.js" afterPath="$PROJECT_DIR$/public/javascripts/config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/routes.js" afterPath="$PROJECT_DIR$/routes/routes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/connection/connMYSQL.js" afterPath="$PROJECT_DIR$/connection/connMYSQL.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/cobros.ejs" afterPath="$PROJECT_DIR$/views/cobros.ejs" />
     </list>
     <ignored path="appEgimnasia.iws" />
@@ -79,7 +76,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="controllerEG.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="controllerEG.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/controllerEG.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="347">
@@ -92,8 +89,8 @@
       <file leaf-file-name="modelEG.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/modelEG.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="890" column="0" lean-forward="true" selection-start-line="890" selection-start-column="0" selection-end-line="890" selection-end-column="0" />
+            <state relative-caret-position="184">
+              <caret line="799" column="0" lean-forward="true" selection-start-line="799" selection-start-column="0" selection-end-line="799" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -102,8 +99,8 @@
       <file leaf-file-name="suscripciones.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/suscripciones.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="1823" column="0" lean-forward="false" selection-start-line="1823" selection-start-column="0" selection-end-line="1829" selection-end-column="73" />
+            <state relative-caret-position="171">
+              <caret line="254" column="84" lean-forward="false" selection-start-line="254" selection-start-column="73" selection-end-line="254" selection-end-column="84" />
               <folding>
                 <marker date="1511389846750" expanded="true" signature="44744:44791" ph="..." />
                 <marker date="1511389846750" expanded="true" signature="44806:44812" ph=" " />
@@ -155,23 +152,23 @@
       <file leaf-file-name="cobros.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/cobros.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1187">
-              <caret line="989" column="25" lean-forward="true" selection-start-line="989" selection-start-column="25" selection-end-line="989" selection-end-column="25" />
+            <state relative-caret-position="325">
+              <caret line="529" column="61" lean-forward="true" selection-start-line="529" selection-start-column="61" selection-end-line="529" selection-end-column="61" />
               <folding>
-                <marker date="1511914976204" expanded="true" signature="19303:19350" ph="..." />
-                <marker date="1511914976204" expanded="true" signature="19362:19368" ph=" " />
-                <marker date="1511914976204" expanded="true" signature="19368:19374" ph=" " />
-                <marker date="1511914976204" expanded="true" signature="19604:19651" ph="..." />
-                <marker date="1511914976204" expanded="true" signature="19903:19920" ph="..." />
-                <marker date="1511914976204" expanded="true" signature="20535:20582" ph="..." />
-                <marker date="1511914976204" expanded="true" signature="20832:20849" ph="..." />
-                <marker date="1511914976204" expanded="true" signature="22042:22092" ph="..." />
-                <marker date="1511914976204" expanded="true" signature="22883:22968" ph="..." />
-                <marker date="1511914976204" expanded="true" signature="22982:23036" ph="..." />
-                <marker date="1511914976204" expanded="true" signature="23076:23113" ph="..." />
-                <marker date="1511914976204" expanded="true" signature="24759:24844" ph="..." />
-                <marker date="1511914976204" expanded="true" signature="24858:24912" ph="..." />
-                <marker date="1511914976204" expanded="true" signature="24962:24999" ph="..." />
+                <marker date="1511963461981" expanded="true" signature="19303:19350" ph="..." />
+                <marker date="1511963461981" expanded="true" signature="19362:19368" ph=" " />
+                <marker date="1511963461981" expanded="true" signature="19368:19374" ph=" " />
+                <marker date="1511963461981" expanded="true" signature="19604:19651" ph="..." />
+                <marker date="1511963461981" expanded="true" signature="19903:19920" ph="..." />
+                <marker date="1511963461981" expanded="true" signature="20535:20582" ph="..." />
+                <marker date="1511963461981" expanded="true" signature="20832:20849" ph="..." />
+                <marker date="1511963461981" expanded="true" signature="22042:22092" ph="..." />
+                <marker date="1511963461981" expanded="true" signature="22883:22968" ph="..." />
+                <marker date="1511963461981" expanded="true" signature="22982:23036" ph="..." />
+                <marker date="1511963461981" expanded="true" signature="23076:23113" ph="..." />
+                <marker date="1511963461981" expanded="true" signature="24759:24844" ph="..." />
+                <marker date="1511963461981" expanded="true" signature="24858:24912" ph="..." />
+                <marker date="1511963461981" expanded="true" signature="24962:24999" ph="..." />
               </folding>
             </state>
           </provider>
@@ -180,18 +177,18 @@
       <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/javascripts/config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="1121" column="34" lean-forward="true" selection-start-line="1121" selection-start-column="34" selection-end-line="1121" selection-end-column="34" />
+            <state relative-caret-position="205">
+              <caret line="1019" column="23" lean-forward="false" selection-start-line="1019" selection-start-column="12" selection-end-line="1019" selection-end-column="23" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="connMYSQL.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="connMYSQL.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/connection/connMYSQL.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="682">
-              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state relative-caret-position="434">
+              <caret line="17" column="27" lean-forward="false" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -209,8 +206,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Eliminar</find>
-      <find>listaMatr</find>
       <find>listaMatriculaCobro</find>
       <find>double</find>
       <find>myModal</find>
@@ -239,6 +234,8 @@
       <find>arregloEmpresas</find>
       <find>queryResultE</find>
       <find>saldo</find>
+      <find>myModalTicket</find>
+      <find>totalTicket</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -285,12 +282,12 @@
         <option value="$PROJECT_DIR$/views/parametros.ejs" />
         <option value="$PROJECT_DIR$/views/suscripciones.ejs" />
         <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/connection/connMYSQL.js" />
         <option value="$PROJECT_DIR$/models/modelEG.js" />
         <option value="$PROJECT_DIR$/routes/routes.js" />
-        <option value="$PROJECT_DIR$/views/cobros.ejs" />
         <option value="$PROJECT_DIR$/public/javascripts/config.js" />
         <option value="$PROJECT_DIR$/controllers/controllerEG.js" />
+        <option value="$PROJECT_DIR$/views/cobros.ejs" />
+        <option value="$PROJECT_DIR$/connection/connMYSQL.js" />
       </list>
     </option>
   </component>
@@ -523,7 +520,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="470878000" />
+    <option name="totallyTimeSpent" value="473048000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1203,14 +1200,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/connection/connMYSQL.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/routes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
@@ -1219,10 +1208,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/controllerEG.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="1623" column="41" lean-forward="true" selection-start-line="1623" selection-start-column="41" selection-end-line="1623" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/suscripciones.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="1823" column="0" lean-forward="false" selection-start-line="1823" selection-start-column="0" selection-end-line="1829" selection-end-column="73" />
+        <state relative-caret-position="171">
+          <caret line="254" column="84" lean-forward="false" selection-start-line="254" selection-start-column="73" selection-end-line="254" selection-end-column="84" />
           <folding>
             <marker date="1511389846750" expanded="true" signature="44744:44791" ph="..." />
             <marker date="1511389846750" expanded="true" signature="44806:44812" ph=" " />
@@ -1270,49 +1267,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/cobros.ejs">
+    <entry file="file://$PROJECT_DIR$/public/javascripts/config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1187">
-          <caret line="989" column="25" lean-forward="true" selection-start-line="989" selection-start-column="25" selection-end-line="989" selection-end-column="25" />
-          <folding>
-            <marker date="1511914976204" expanded="true" signature="19303:19350" ph="..." />
-            <marker date="1511914976204" expanded="true" signature="19362:19368" ph=" " />
-            <marker date="1511914976204" expanded="true" signature="19368:19374" ph=" " />
-            <marker date="1511914976204" expanded="true" signature="19604:19651" ph="..." />
-            <marker date="1511914976204" expanded="true" signature="19903:19920" ph="..." />
-            <marker date="1511914976204" expanded="true" signature="20535:20582" ph="..." />
-            <marker date="1511914976204" expanded="true" signature="20832:20849" ph="..." />
-            <marker date="1511914976204" expanded="true" signature="22042:22092" ph="..." />
-            <marker date="1511914976204" expanded="true" signature="22883:22968" ph="..." />
-            <marker date="1511914976204" expanded="true" signature="22982:23036" ph="..." />
-            <marker date="1511914976204" expanded="true" signature="23076:23113" ph="..." />
-            <marker date="1511914976204" expanded="true" signature="24759:24844" ph="..." />
-            <marker date="1511914976204" expanded="true" signature="24858:24912" ph="..." />
-            <marker date="1511914976204" expanded="true" signature="24962:24999" ph="..." />
-          </folding>
+        <state relative-caret-position="205">
+          <caret line="1019" column="23" lean-forward="false" selection-start-line="1019" selection-start-column="12" selection-end-line="1019" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/config.js">
+    <entry file="file://$PROJECT_DIR$/views/cobros.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="1121" column="34" lean-forward="true" selection-start-line="1121" selection-start-column="34" selection-end-line="1121" selection-end-column="34" />
-          <folding />
+        <state relative-caret-position="325">
+          <caret line="529" column="61" lean-forward="true" selection-start-line="529" selection-start-column="61" selection-end-line="529" selection-end-column="61" />
+          <folding>
+            <marker date="1511963461981" expanded="true" signature="19303:19350" ph="..." />
+            <marker date="1511963461981" expanded="true" signature="19362:19368" ph=" " />
+            <marker date="1511963461981" expanded="true" signature="19368:19374" ph=" " />
+            <marker date="1511963461981" expanded="true" signature="19604:19651" ph="..." />
+            <marker date="1511963461981" expanded="true" signature="19903:19920" ph="..." />
+            <marker date="1511963461981" expanded="true" signature="20535:20582" ph="..." />
+            <marker date="1511963461981" expanded="true" signature="20832:20849" ph="..." />
+            <marker date="1511963461981" expanded="true" signature="22042:22092" ph="..." />
+            <marker date="1511963461981" expanded="true" signature="22883:22968" ph="..." />
+            <marker date="1511963461981" expanded="true" signature="22982:23036" ph="..." />
+            <marker date="1511963461981" expanded="true" signature="23076:23113" ph="..." />
+            <marker date="1511963461981" expanded="true" signature="24759:24844" ph="..." />
+            <marker date="1511963461981" expanded="true" signature="24858:24912" ph="..." />
+            <marker date="1511963461981" expanded="true" signature="24962:24999" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/modelEG.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="890" column="0" lean-forward="true" selection-start-line="890" selection-start-column="0" selection-end-line="890" selection-end-column="0" />
+        <state relative-caret-position="184">
+          <caret line="799" column="0" lean-forward="true" selection-start-line="799" selection-start-column="0" selection-end-line="799" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/controllerEG.js">
+    <entry file="file://$PROJECT_DIR$/connection/connMYSQL.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="1623" column="41" lean-forward="true" selection-start-line="1623" selection-start-column="41" selection-end-line="1623" selection-end-column="41" />
+        <state relative-caret-position="434">
+          <caret line="17" column="27" lean-forward="false" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
           <folding />
         </state>
       </provider>
