@@ -889,4 +889,13 @@ model.listaCobroDet = function(datos, cb){
     conn.query(sentenciaSQL, cb);
 }
 
+model.updSaldoMatricula = function(datos, cb){
+    var sentenciaSQL = "";
+    sentenciaSQL += "CALL sp_updSaldoMatricula(";
+    sentenciaSQL += datos.id_matricula + ",";
+    sentenciaSQL += datos.total + ")";
+    console.log(sentenciaSQL);
+    conn.query(sentenciaSQL, cb);
+}
+
 module.exports = model;

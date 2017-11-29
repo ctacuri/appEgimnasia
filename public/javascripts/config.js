@@ -1110,6 +1110,9 @@ function fn_emisionTicket(arregloCab, arregloDet){
 }
 
 function fn_updSaldoCobro(datos){
+    console.log("INICIO DE UPDATE SALDO");
+    console.log(datos);
+    //return false;
     var url = "/EG/updSaldoMatricula";
     $.ajax({
         type: "POST",
@@ -1117,10 +1120,12 @@ function fn_updSaldoCobro(datos){
         data: datos,
         dataType: 'json',
         success: function(result){
-            //console.log(result);
+            console.log("RESSPUESTA DE UPDATE SALDO");
+            console.log(result);
             if(result.status == "success") {
-                //alert("Proceso realizado correctamente");
+               //alert("Saldo actualizado correctamente");
                 //location.reload();
+                console.log("UPDATE SALDO - OK");
                 return false;
             }else{
                 alert("Error: Vuelva a intentarlo");

@@ -1588,6 +1588,49 @@ controller.listaCobroDet = function(req, res, next){
     });
 }
 
+controller.updSaldoMatricula = function(req, res, next){
+    var datos = {
+        alumno: req.body.alumno,
+        cliente: req.body.cliente,
+        direccion: req.body.direccion,
+        fechaEmision: req.body.fechaEmision,
+        formaPago: req.body.formaPago,
+        horario: req.body.formaPago,
+        idPedido: req.body.formaPago,
+        id_matricula: req.body.id_matricula, //
+        id_tutor: req.body.id_tutor,
+        igv: req.body.igv,
+        importe: req.body.importe,
+        nroCorrelativo: req.body.nroCorrelativo,
+        nroDocumento: req.body.nroDocumento,
+        nroSerie: req.body.nroSerie,
+        numDoc: req.body.numDoc,
+        pantallaCobro: req.body.pantallaCobro,
+        rucEmpresa: req.body.rucEmpresa,
+        subTotal: req.body.subTotal,
+        tipoComprobante: req.body.subTotal,
+        tipoDoc: req.body.tipoDoc,
+        tipoDocumento: req.body.tipoDocumento,
+        total: req.body.total //
+    };
+    model.updSaldoMatricula(datos, function(err){
+        if(err){
+            //console.log("Error: " + err);
+            res.status(200).json({"status": "error"});
+        }else{
+            //if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
+                //console.log(datos);
+                res.status(200).json({"status": "success"});
+            /*}else{
+                res.status(200).json({"status": "sinDatos"});
+            }*/
+        }
+    });
+}
+
 controller.emisionTicket = function(req, res, next){
     var datos = {
         nroCorrelativo: 123456,

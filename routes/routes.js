@@ -187,7 +187,7 @@ router.get('/listaEdades', fnEstaAutenticado, controladorEG.listaEdades);
 router.get('/listaHorarios', fnEstaAutenticado, controladorEG.listaHorarios);
 router.get('/listaHorariosSimple', fnEstaAutenticado, controladorEG.listaHorariosSimple);
 router.get('/listaMatricula/:fechaInicio/:fechaFin', fnEstaAutenticado, controladorEG.listaMatricula);
-router.get('/listaEmpresas', fnEstaAutenticado, controladorEG.listaEmpresas);
+router.get('/listaEmpresas', controladorEG.listaEmpresas);
 router.get('/listaFormaPago', fnEstaAutenticado, controladorEG.listaFormaPago);
 router.get('/listaComprobanteVenta', fnEstaAutenticado, controladorEG.listaComprobanteVenta);
 router.get('/listaMatriculaCobro/:fechaInicio/:fechaFin/:status', fnEstaAutenticado, controladorEG.listaMatriculaCobro);
@@ -214,6 +214,7 @@ router.get('/EG/search/alumno/:dni', fnEstaAutenticado, controladorEG.searchAlum
 router.get('/EG/listaCobroCab/:idCobro', fnEstaAutenticado, controladorEG.listaCobroCab);
 router.get('/EG/listaCobroDet/:idCobro', fnEstaAutenticado, controladorEG.listaCobroDet);
 
+router.post('/EG/updSaldoMatricula', fnEstaAutenticado, controladorEG.updSaldoMatricula);
 
 router.post('/loguear',
 

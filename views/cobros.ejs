@@ -567,8 +567,6 @@
 
             //$("#btnSave").text("Actualizar");
             if(data.saldo > 0){
-
-
                 $('#myModal').modal('show');
             }else{
                 alert("Error: Saldo es IGUAL a CERO no es posible el cobro");
@@ -673,6 +671,20 @@
                         id_parametro: json4[0].registros[0][x].id_parametro,
                         numdoc: json4[0].registros[0][x].numdoc,
                         descripcion: json4[0].registros[0][x].descripcion,
+
+                        departamento: json4[0].registros[0][x].departamento,
+                        departamento_name: json4[0].registros[0][x].departamento_name,
+                        provincia: json4[0].registros[0][x].provincia,
+                        provincia_name: json4[0].registros[0][x].provincia_name,
+                        distrito: json4[0].registros[0][x].distrito,
+                        distrito_name: json4[0].registros[0][x].distrito_name,
+                        direccion_empresa: json4[0].registros[0][x].direccion_empresa,
+                        telefono_empresa: json4[0].registros[0][x].telefono_empresa,
+                        pagina_web: json4[0].registros[0][x].pagina_web,
+                        facebook: json4[0].registros[0][x].facebook,
+                        autorizacion_sunat: json4[0].registros[0][x].autorizacion_sunat,
+                        nro_maquina: json4[0].registros[0][x].nro_maquina,
+
                         impuesto: json4[0].registros[0][x].impuesto,
                         nro_serie_ticket: json4[0].registros[0][x].nro_serie_ticket,
                         nro_ticket: json4[0].registros[0][x].nro_ticket,
@@ -957,6 +969,15 @@
                 importe: $("#importe").val(),
                 tipoComprobante: $("#emitir").val(),
                 rucEmpresa: $("#empresa").val(),
+
+                departamento: queryResultE[0].departamento,
+                departamento_name: queryResultE[0].departamento_name,
+                provincia: queryResultE[0].provincia,
+                provincia_name: queryResultE[0].provincia_name,
+                distrito: queryResultE[0].distrito,
+                distrito_name: queryResultE[0].distrito_name,
+                direccion_empresa: queryResultE[0].direccion_empresa,
+
                 formaPago: $("#formaPago").val(),
                 nroSerie: $('#serie').val(),
                 nroCorrelativo: $('#correlativo').val(),
@@ -995,7 +1016,6 @@
             //return false;
             if(confirm("Esta seguro de "+txtMsg+" los datos ?")){
                 fn_registrarCabCobro(arregloCabCobro, JSON.stringify(arregloDetCobro), queryResultE[0].impuesto);
-
                 /*$.ajax({
                     type: "POST",
                     url: url,
