@@ -313,3 +313,7 @@ and (max-width : 991px) {
   }
 }
 /* modal */
+
+.borderless td, .borderless th {
+  border: none;
+}

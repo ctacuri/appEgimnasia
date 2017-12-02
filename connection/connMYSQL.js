@@ -15,7 +15,7 @@ var mysql = require("mysql"),
 		port: 3306,
 		user: "root",
 		password: "Admin2016Juego",
-		database: "gimnasio",
+		database: "cesar",
         connectionLimit: 50,
         queueLimit: 0,
         waitForConnection: true

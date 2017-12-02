@@ -982,7 +982,7 @@ function fn_viewTicket(idCobro){
         var UBIGEO = " " + json1[0].registros[0].departamento_name + " - " + json1[0].registros[0].provincia_name + " - " + json1[0].registros[0].distrito_name;
 
         $("#rucEmpresa").text(json1[0].registros[0].ruc_empresa);
-        $("#empresa").text(json1[0].registros[0].empresa);
+        $("#nombreEmpresa").text(json1[0].registros[0].empresa);
         $("#direccionEmpresa").text(json1[0].registros[0].direccion_empresa + UBIGEO);
         $("#telefonoEmpresa").text(json1[0].registros[0].telefono_empresa);
         $("#autorizacionSunat").text(json1[0].registros[0].autorizacion_sunat);
@@ -1028,13 +1028,14 @@ function fn_viewTicket(idCobro){
 function fn_emisionTicket(arregloCab, arregloDet){
     var objDet = JSON.parse(arregloDet);
     console.log("EMISION DE TICKET");
-    //console.log(arregloCab);
+    console.log(arregloCab);
     //console.log(objDet);
     $("#nroTicket").text(arregloCab.nroCorrelativo);
     $("#fechaEmision").text(fn_convertFecha_SQL_to_DMY(arregloCab.fechaEmision));
 
     var UBIGEO = " " + arregloCab.departamento_name + " - " + arregloCab.provincia_name + " - " + arregloCab.distrito_name;
-    $("#empresa").text(arregloCab.empresa);
+    $("#nombreEmpresa").text(arregloCab.empresa);
+    $("#rucEmpresa").text(arregloCab.rucEmpresa);
     $("#direccionEmpresa").text(arregloCab.direccion_empresa + UBIGEO);
     $("#telefonoEmpresa").text(arregloCab.telefono_empresa);
     $("#autorizacionSunat").text(arregloCab.autorizacion_sunat);
@@ -1087,10 +1088,11 @@ function fn_emisionTicket(arregloCab, arregloDet){
         dataType: 'json',
         success: function(result){
             console.log("ver ticket");
-            console.log(result);
+            //console.log(result);
             if(result.status == "success") {
                 //DESPUES DE ACTUALIZAR EL CORRELATIVO MUESTRO
                 //EL TICKET
+                //$("#empresa").text(arregloCab.empresa);
                 $('#myModalTicket').modal('show');
                 fn_updArreglos();
                 if(arregloCab.pantallaCobro == "SI"){

@@ -29,8 +29,21 @@
             border-top: 0px !important;
         }
 
+        .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+            padding: 3px;
+            line-height: 1.42857143;
+            vertical-align: top;
+            border-top: 1px solid #ddd;
+        }
+
         @media print {
             border-top: 0px !important;
+            .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+                padding: 3px !important;
+                line-height: 1.42857143;
+                vertical-align: top;
+                border-top: 1px solid #ddd;
+            }
         }
     </style>
 </head>
@@ -57,7 +70,7 @@
                         <div class="col-md-12">
                             <div id="viewTicket">
 
-                                <p align="center" id="empresa">CLUB ESCUELA DE GIMNASIA</p>
+                                <p align="center" id="nombreEmpresa">CLUB ESCUELA DE GIMNASIA</p>
                                 <p align="center" id="direccionEmpresa">AV. PETIT THOUARS NRO. 2685 LIMA - LIMA - LINCE</p>
                                 <p align="center">RUC: <span id="rucEmpresa">20601497795</span></p>
                                 <p align="center">Telefono: <span id="telefonoEmpresa">(01) 4225261</span></p>
@@ -65,49 +78,53 @@
 
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <table width="100%" class='table table-sm' border="0" style="font-size: 12px;">
+                                        <table width="100%" class="table table-sm borderless" border="0" style="font-size: 12px;">
                                             <tr>
                                                 <td width="49%" align="right" style="margin-bottom: 3px;">Autorizacion SUNAT</td>
                                                 <td width="2%" align="center">:</td>
                                                 <td width="49%" id="autorizacionSunat">0023845108800</td>
                                             </tr>
                                             <tr>
-                                                <td width="49%" align="right">Maq Regist Nro</td>
-                                                <td width="2%" align="center">:</td>
-                                                <td width="49%" id="nroMaquina">FFCF268000</td>
+                                                <td width="49%" align="right" style="border: none;">Maq Regist Nro</td>
+                                                <td width="2%" align="center" style="border: none;">:</td>
+                                                <td width="49%" id="nroMaquina" style="border: none;">FFCF268000</td>
+                                            </tr>
+                                            <tr style="border: none;">
+                                                <td width="49%" align="right" style="border: none;">Ticket Boleta</td>
+                                                <td width="2%" align="center" style="border: none;">:</td>
+                                                <td width="49%" style="border: none;"><span id="nroTicket"></span></td>
                                             </tr>
                                             <tr>
-                                                <td width="49%" align="right">Ticket Boleta</td>
-                                                <td width="2%" align="center">:</td>
-                                                <td width="49%"><span id="nroTicket"></span></td>
+                                                <td width="49%" align="right" style="border: none;">FECHA EMISION</td>
+                                                <td width="2%" align="center" style="border: none;">:</td>
+                                                <td width="49%" style="border: none;"><span id="fechaEmision"></span></td>
                                             </tr>
                                             <tr>
-                                                <td width="49%" align="right">FECHA EMISION</td>
-                                                <td width="2%" align="center">:</td>
-                                                <td width="49%"><span id="fechaEmision"></span></td>
+                                                <td width="49%" align="right" style="border: none;">DNI/RUC</td>
+                                                <td width="2%" align="center" style="border: none;">:</td>
+                                                <td width="49%" style="border: none;"><span id="idCliente"></span></td>
                                             </tr>
                                             <tr>
-                                                <td width="49%" align="right">DNI/RUC</td>
-                                                <td width="2%" align="center">:</td>
-                                                <td width="49%"><span id="idCliente"></span></td>
+                                                <td width="49%" align="right" style="border: none;">CLIENTE</td>
+                                                <td width="2%" align="center" style="border: none;">:</td>
+                                                <td width="49%" style="border: none;"><span id="cliente"></span></td>
                                             </tr>
                                             <tr>
-                                                <td width="49%" align="right">CLIENTE</td>
-                                                <td width="2%" align="center">:</td>
-                                                <td width="49%"><span id="cliente"></span></td>
+                                                <td width="49%" align="right" style="border: none;">TIPO DE PAGO</td>
+                                                <td width="2%" align="center" style="border: none;">:</td>
+                                                <td width="49%" style="border: none;"><span id="tipoPago"></span></td>
                                             </tr>
                                             <tr>
-                                                <td width="49%" align="right">TIPO DE PAGO</td>
-                                                <td width="2%" align="center">:</td>
-                                                <td width="49%"><span id="tipoPago"></span></td>
+                                                <td width="49%" align="left" style="border: none;">DETALLE : </td>
+                                                <td width="2%" align="center" style="border: none;"></td>
+                                                <td width="49%" style="border: none;"></td>
                                             </tr>
                                             <tr>
-                                                <td width="49%" align="right">DETALLE</td>
-                                                <td width="2%" align="center">:</td>
-                                                <td width="49%">
+                                                <td width="100%" style="border: none;" colspan="3">
                                                     <div id="detalle"></div>
                                                 </td>
                                             </tr>
+
                                             <tr>
                                                 <td width="49%" align="right"><B>TOTAL</B></td>
                                                 <td width="2%" align="center"><B>:</B></td>
@@ -115,10 +132,8 @@
                                             </tr>
                                         </table>
 
-
                                     </div>
                                 </div>
-
 
                                 <!--<div class="form-group row">
                                     <label for="autorizacion" class="col-sm-6 col-form-label col-form-label-sm">
