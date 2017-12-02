@@ -1,3 +1,4 @@
+/*
 html, body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   height: 100% !important;
@@ -5,6 +6,16 @@ html, body {
   overflow-y: auto;
   overflow-x: hidden;
 }
+*/
+
+html, body {
+  font: 14px sans-serif;
+  height: 100% !important;
+  padding: 0px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 
 .center {
   display:table-cell;
