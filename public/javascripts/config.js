@@ -8,8 +8,8 @@ var theme4 = "bootstrap";
 
 var body = $('body');
 var offset = body.offset();
-var usuario = 'MIMEND';
-var perfilUsuario = 'CCENTE'; //SCCENT - CCENTE - JSCOME // STALLE - OTALM
+//var usuario = 'MIMEND';
+//var perfilUsuario = 'CCENTE'; //SCCENT - CCENTE - JSCOME // STALLE - OTALM
 
 //INICIO - LINK PANTALLAS
 /*function fn_pantalla(nomPantalla){
@@ -110,7 +110,7 @@ function fn_time(){
     var f = new Date();
     var dia = f.getDate();
     // el mes es devuelto entre 0 y 11
-    var mes = f.getMonth();
+    var mes = f.getMonth() + 1;
     var anio = f.getFullYear();
     var hora = f.getHours();
     var minuto = f.getMinutes();
@@ -867,7 +867,6 @@ function fn_updArreglos(){
                     numdoc: json5.registros[0][x].numdoc,
                     descripcion: json5.registros[0][x].descripcion,
 
-
                     impuesto: json5.registros[0][x].impuesto,
                     nro_serie_ticket: json5.registros[0][x].nro_serie_ticket,
                     nro_ticket: json5.registros[0][x].nro_ticket,
@@ -886,7 +885,6 @@ function fn_updArreglos(){
         //console.log(JSON.stringify(arreglo));
         //return JSON.stringify(arreglo);
     });
-
     //console.log("parametros actualizados");
 }
 
@@ -1012,7 +1010,7 @@ function fn_viewTicket(idCobro){
 
         var html = "";
         for(var x = 0; x < json2[0].registros.length; x++){
-            html += "Cuota mes de: " + json2[0].registros[x].mes + "("+json2[0].registros[x].alumno+")" + "("+json2[0].registros[x].horario+")" + " <b>S/." + json2[0].registros[x].total+"</b>";
+            html += "Cuota mes de: " + json2[0].registros[x].mes + "("+json2[0].registros[x].alumno+")" + "("+json2[0].registros[x].horario+")" + " <span>S/." + json2[0].registros[x].total+"</span>";
             html += "<br>";
         }
 
@@ -1020,7 +1018,6 @@ function fn_viewTicket(idCobro){
         $("#totalTicket").text("S/. " + json1[0].registros[0].total);
 
         $('#myModalTicket').modal('show');
-
     });
     //return false;
 }
@@ -1059,12 +1056,12 @@ function fn_emisionTicket(arregloCab, arregloDet){
             tipoPago = 'CREDITO';
             break;
     }
-    //console.log(arregloCab.formaPago);
+    console.log(tipoPago);
     $("#tipoPago").text(tipoPago);
 
     var html = "";
     for(var x = 0; x < objDet.length; x++){
-        html += "Cuota mes de: " + objDet[x].mes + "("+objDet[x].alumno+")" + "("+objDet[x].horario+")" + " <b>S/." + objDet[x].importe+"</b>";
+        html += "Cuota mes de: " + objDet[x].mes + "("+objDet[x].alumno+")" + "("+objDet[x].horario+")" + " <span>S/." + objDet[x].importe+"</span>";
         html += "<br>";
     }
 
@@ -1075,11 +1072,12 @@ function fn_emisionTicket(arregloCab, arregloDet){
     //SHOW TICKET (MENOS TIPO DOC: REGISTRO)
     $('#myModalTicket').modal('show');
     //return false;
-
+    console.log("UPDATE CORRELATIVO");
+    console.log(arregloCab);
     var url = "/EG/updCorrelativo/";
     var arregloUpdCorrelativo = {
       rucEmpresa: arregloCab.rucEmpresa,
-      idFormaPago: arregloCab.formaPago
+      idFormaPago: arregloCab.tipoComprobante
     };
     $.ajax({
         type: "POST",

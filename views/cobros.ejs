@@ -37,6 +37,9 @@
                 vertical-align: top;
                 border-top: 1px solid #ddd;
             }
+            #nombreEmpresa{
+                /*font-family: "Courier New";*/
+            }
         }
     </style>
 </head>
@@ -221,9 +224,9 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td width="49%" align="right"><B>TOTAL</B></td>
-                                            <td width="2%" align="center"><B>:</B></td>
-                                            <td width="49%"><b><span id="totalTicket"></span></b></td>
+                                            <td width="49%" align="right" style="font-size: 15px;"><span style="margin-top: 4px;">TOTAL</span></td>
+                                            <td width="2%" align="center" style="font-size: 13px;">:</td>
+                                            <td width="49%"><span id="totalTicket"></span></td>
                                         </tr>
                                     </table>
 
@@ -487,8 +490,9 @@
                     selectionmode: 'singlerow',
                     columnsresize: true,
                     columns: [
+                        { text: 'Fecha', align: 'center', datafield: 'fecha_emision', cellsalign: 'center', width: '10%' },
                         { text: 'Nombre del Tutor', align: 'center', datafield: 'tutor', cellsalign: 'left', width: '30%' },
-                        { text: 'Descripcion del pedido', align: 'center', datafield: 'descripcion_pedido', cellsalign: 'left', width: '50%'},
+                        { text: 'Descripcion del pedido', align: 'center', datafield: 'descripcion_pedido', cellsalign: 'left', width: '40%'},
                         { text: 'Monto pagado', align: 'center', datafield: 'importe', cellsalign: 'right', width: '10%', cellsformat: 'd2' },
                         { text: 'Saldo', align: 'center', datafield: 'saldo', cellsalign: 'right', width: '10%', cellsformat: 'd2' }
                     ]
@@ -1106,6 +1110,10 @@
 
         $("#btnPrint").click(function() {
             $("#viewTicket").printThis();
+        });
+
+        $('#myModalTicket').on('hidden.bs.modal', function () {
+            location.reload();
         });
 
     });

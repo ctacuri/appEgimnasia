@@ -793,7 +793,6 @@ model.updCorrelativo = function(datos, cb){
     var sentenciaSQL = "CALL sp_updCorrelativo(";
     sentenciaSQL += "'" + datos.rucEmpresa + "',";
     sentenciaSQL += datos.idFormaPago + ")";
-
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }

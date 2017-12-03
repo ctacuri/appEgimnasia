@@ -78,7 +78,7 @@
 
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <table width="100%" class="table table-sm borderless" border="0" style="font-size: 12px;">
+                                        <table width="100%" class="table table-sm borderless" border="0" style="font-size: 12px; font-family: Sans-Serif;">
                                             <tr>
                                                 <td width="49%" align="right" style="margin-bottom: 3px;">Aut. SUNAT</td>
                                                 <td width="2%" align="center">:</td>
@@ -125,9 +125,9 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td width="49%" align="right"><B>TOTAL</B></td>
-                                                <td width="2%" align="center"><B>:</B></td>
-                                                <td width="49%"><b><span id="totalTicket"></span></b></td>
+                                                <td width="49%" align="right" style="font-size: 15px;"><span style="margin-top: 4px;">TOTAL</span></td>
+                                                <td width="2%" align="center" style="font-size: 13px;">:</td>
+                                                <td width="49%"><span id="totalTicket"></span></td>
                                             </tr>
                                         </table>
 
@@ -406,6 +406,7 @@
                     {}, vDefaultOptionsGrid,
                     {
                         pageable: true,
+                        pagesize: 25,
                         selectionmode: 'singlerow',
                         columns: [
                             //{ text: 'Id', align: 'center', datafield: 'id', cellsalign: 'center', width: '10%' },
