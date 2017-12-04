@@ -76,8 +76,7 @@ function fn_DMY_to_Array(fechaDMYHM){
         DIA: dia,
         MES: mes,
         ANIO: anio
-    }
-
+    };
     return fech;
 }
 
@@ -420,7 +419,11 @@ function fn_JSONToCSVConvertor(JSONData, fileName, ReportTitleCSV, ShowLabel) {
     }
 }
 
+function fn_nmes(mes){
+    var monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
+    return monthNames[mes - 1];
+}
 
 /*
 Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function (color) {
@@ -897,7 +900,7 @@ function fn_registrarDetCobro(arregloDet, idCobro, impuesto, arregloCab){
     //});
     console.log("DETALLE");
     console.log(arregloCab);
-    console.log(arregloDet);
+    //console.log(arregloDet);
     //var cont = 0;
     $.ajax({
         type: "POST",
@@ -1025,8 +1028,8 @@ function fn_viewTicket(idCobro){
 function fn_emisionTicket(arregloCab, arregloDet){
     var objDet = JSON.parse(arregloDet);
     console.log("EMISION DE TICKET");
-    console.log(arregloCab);
-    //console.log(objDet);
+    //console.log(arregloCab);
+    console.log(objDet);
     $("#nroTicket").text(arregloCab.nroCorrelativo);
     $("#fechaEmision").text(fn_convertFecha_SQL_to_DMY(arregloCab.fechaEmision));
 
@@ -1056,7 +1059,7 @@ function fn_emisionTicket(arregloCab, arregloDet){
             tipoPago = 'CREDITO';
             break;
     }
-    console.log(tipoPago);
+    //console.log(tipoPago);
     $("#tipoPago").text(tipoPago);
 
     var html = "";

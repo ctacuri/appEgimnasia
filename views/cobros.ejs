@@ -994,6 +994,7 @@
                 importe: $("#importe").val(),
                 tipoComprobante: $("#emitir").val(),
                 rucEmpresa: $("#empresa").val(),
+                empresa: $('#empresa').text(),
 
                 departamento: queryResultE[0].departamento,
                 departamento_name: queryResultE[0].departamento_name,
@@ -1002,6 +1003,12 @@
                 distrito: queryResultE[0].distrito,
                 distrito_name: queryResultE[0].distrito_name,
                 direccion_empresa: queryResultE[0].direccion_empresa,
+
+                telefono_empresa: queryResultE[0].telefono_empresa,
+                pagina_web: queryResultE[0].pagina_web,
+                facebook: queryResultE[0].facebook,
+                autorizacion_sunat: queryResultE[0].autorizacion_sunat,
+                nro_maquina: queryResultE[0].nro_maquina,
 
                 formaPago: $("#formaPago").val(),
                 nroSerie: $('#serie').val(),
@@ -1018,7 +1025,9 @@
             console.log(arregloCabCobro);
             var arregloDetCobro = [{
                 id_alumno: $("#alumno").val(),
+                alumno: $("#alumno").text(),
                 id_horario: $("#horario").val(),
+                mes: fn_nmes(f.MES),
                 horario: $("#horario").text(),
                 importe: $("#importe").val(),
                 subTotal: subTotal,
