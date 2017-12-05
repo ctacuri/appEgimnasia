@@ -798,7 +798,7 @@ model.updCorrelativo = function(datos, cb){
 }
 
 model.searchTutor = function(datos, cb){
-    var sentenciaSQL = "SELECT count(numdoc) as CANT FROM gim_tutores WHERE estado = 'V' ";
+    var sentenciaSQL = "SELECT count(numdoc) as CANT FROM gim_tutores ";
     sentenciaSQL += "WHERE numdoc = ";
     sentenciaSQL += "'" + datos.dni + "' ";
     sentenciaSQL += "AND estado = 'V'";
@@ -808,7 +808,7 @@ model.searchTutor = function(datos, cb){
 }
 
 model.searchAlumno = function(datos, cb){
-    var sentenciaSQL = "SELECT count(numdoc) as CANT FROM gim_alumnos WHERE estado = 'V' ";
+    var sentenciaSQL = "SELECT count(numdoc) as CANT FROM gim_alumnos ";
     sentenciaSQL += "WHERE numdoc = ";
     sentenciaSQL += "'" + datos.dni + "' ";
     sentenciaSQL += "AND estado = 'V'";
