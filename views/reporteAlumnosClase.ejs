@@ -97,7 +97,8 @@
                                         tool.jqxDropDownList(
                                             $.extend(
                                                 {}, vDefaultOptionsDropDownList, {
-                                                    width: 120
+                                                    width: 120,
+                                                    dropDownHeight: 250
                                                 }
                                             )
                                         );
@@ -144,8 +145,8 @@
         var arregloHorarios = [];
         $.when(
             $.ajax("/listaHorariosSimple")
-        ).done(function( json1 ) {
-            console.log(json1.registros[0]);
+        ).done(function( json1, json2 ) {
+            //console.log(json2);
             for(var y = 0; y<json1.registros[0].length; y++){
                 arregloHorarios.push(
                     {
@@ -181,11 +182,28 @@
 
         });
 
+        var arregloProfesores = [];
+        $.when(
+            $.ajax("/listaProfesoresSimple")
+        ).done(function( json1 ) {
+            //console.log(json1.registros);
+            for(var x = 0; x<json1.registros.length; x++){
+                arregloProfesores.push(
+                    {
+                        id_profesor: json1.registros[x].id_profesor,
+                        nombre_corto: json1.registros[x].nombre_corto
+                    }
+                );
+            }
+        });
+        //console.log(arregloProfesores);
+
         $("#grid").jqxGrid(
             $.extend(
                 {}, vDefaultOptionsGrid,
                 {
                     pageable: true,
+                    editable: true,
                     pagermode: 'simple',
                     selectionmode: 'singlerow',
                     columns: [
@@ -200,9 +218,17 @@
                         { text: 'Nombres', align: 'center', datafield: 'nombres_alumno', cellsalign: 'left', width: '20%' },
                         { text: 'Saldo', align: 'center', datafield: 'saldo', cellsalign: 'right', width: '7%', cellsformat: 'd2' },
 
-                        { text: 'Profesor', align: 'center', datafield: 'profesor', cellsalign: 'left', width: '30%' },
+                        { text: 'Profesor', align: 'center', datafield: 'profesor', cellsalign: 'left', width: '30%', columntype: 'dropdownlist',
+                                createeditor: function (row, value, editor) {
+                                editor.jqxDropDownList({
+                                    source: arregloProfesores,
+                                    displayMember: 'nombre_corto',
+                                    valueMember: 'id_profesor',
+                                    dropDownWidth: 250
+                                });
+                            }
+                        },
                         { text: 'Tutor', align: 'center', datafield: 'tutor', cellsalign: 'left', width: '30%' },
-
 
                         { text: 'Telefono', align: 'center', datafield: 'telefono_tutor', cellsalign: 'right', width: '10%' },
                         { text: 'Celular', align: 'center', datafield: 'celular_tutor', cellsalign: 'right', width: '10%' },
@@ -218,6 +244,9 @@
                 var source =
                 {
                     datatype: "json",
+                    updaterow: function (rowid, rowdata, commit) {
+                        fn_updateRowProfesor(rowdata, commit);
+                    },
                     datafields: [
                         { name: 'anio_matricula', type: 'int'},
                         { name: 'mes_matricula', type: 'int'},
@@ -244,6 +273,39 @@
                     source: dataAdapter
                 });
                 $('#grid').jqxGrid('autoresizecolumns');
+            });
+        }
+
+
+        function fn_updateRowProfesor(rowdata, commit){
+            //commit(true);
+            //return false;
+            var datos = {
+                codigoTabla: rowdata.CODIGO_TABLA,
+                codigo: rowdata.CODIGO,
+                descripcion: rowdata.DESCRIPCION,
+                estado: rowdata.ESTADO
+            };
+            //console.log(datos);
+            //return false;
+            $.ajax({
+                type: "POST",
+                url: '/updateProfesorReporteAlumno',
+                data: datos,
+                dataType: 'json',
+                success: function(result){
+                    //console.log(result);
+                    if(result.status == "success") {
+                        commit(true);
+                        //alert("Proceso realizado satisfactoriamente");
+                        return false;
+                    }else{
+                        alert("Error: Vuelva a intentarlo");
+                        return false;
+                    }
+                },error: function (xhr, ajaxOptions, thrownError) {
+                    alert("ERROR: " + xhr.responseText+" - "+thrownError);
+                }
             });
         }
 
