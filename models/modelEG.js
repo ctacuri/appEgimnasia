@@ -897,4 +897,13 @@ model.updSaldoMatricula = function(datos, cb){
     conn.query(sentenciaSQL, cb);
 }
 
+model.updateProfesorReporteAlumno  = function(datos, cb){
+    var sentenciaSQL = "";
+    sentenciaSQL += "CALL sp_updateProfesorReporteAlumno(";
+    sentenciaSQL += datos.id_matricula + ",";
+    sentenciaSQL += "'" + datos.profesor + "')";
+    console.log(sentenciaSQL);
+    conn.query(sentenciaSQL, cb);
+}
+
 module.exports = model;

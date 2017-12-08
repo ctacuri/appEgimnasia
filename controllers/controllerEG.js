@@ -1631,6 +1631,29 @@ controller.updSaldoMatricula = function(req, res, next){
     });
 }
 
+controller.updateProfesorReporteAlumno = function(req, res, next){
+    var datos = {
+        id_matricula: req.body.id_matricula,
+        profesor: req.body.profesor
+    };
+    model.updateProfesorReporteAlumno(datos, function(err){
+        if(err){
+            //console.log("Error: " + err);
+            res.status(200).json({"status": "error"});
+        }else{
+            //if(registros.length > 0){
+            res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+            res.header("Pragma", "no-cache");
+            res.header("Expires", 0);
+            //console.log(datos);
+            res.status(200).json({"status": "success"});
+            /*}else{
+             res.status(200).json({"status": "sinDatos"});
+             }*/
+        }
+    });
+}
+
 controller.emisionTicket = function(req, res, next){
     var datos = {
         nroCorrelativo: 123456,

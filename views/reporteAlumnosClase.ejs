@@ -226,10 +226,10 @@
                                     valueMember: 'id_profesor',
                                     dropDownWidth: 250
                                 });
+
                             }
                         },
                         { text: 'Tutor', align: 'center', datafield: 'tutor', cellsalign: 'left', width: '30%' },
-
                         { text: 'Telefono', align: 'center', datafield: 'telefono_tutor', cellsalign: 'right', width: '10%' },
                         { text: 'Celular', align: 'center', datafield: 'celular_tutor', cellsalign: 'right', width: '10%' },
                         { text: 'Email', align: 'center', datafield: 'email_tutor', cellsalign: 'left', width: '30%' }
@@ -257,7 +257,7 @@
                         { name: 'id_alumno', type: 'int'},
                         { name: 'apellidos_alumno', type: 'string'},
                         { name: 'nombres_alumno', type: 'string'},
-                        //{ name: 'id_matricula', type: 'int'},
+                        { name: 'id_matricula', type: 'int'},
                         { name: 'saldo', type: 'float'},
                         { name: 'tutor', type: 'string'},
                         { name: 'telefono_tutor', type: 'string'},
@@ -279,14 +279,14 @@
 
         function fn_updateRowProfesor(rowdata, commit){
             //commit(true);
+            //console.log(rowdata);
             //return false;
             var datos = {
-                codigoTabla: rowdata.CODIGO_TABLA,
-                codigo: rowdata.CODIGO,
-                descripcion: rowdata.DESCRIPCION,
-                estado: rowdata.ESTADO
+                id_matricula: rowdata.id_matricula,
+                //id_profesor: rowdata.id_profesor,
+                profesor: rowdata.profesor
             };
-            //console.log(datos);
+            console.log(datos);
             //return false;
             $.ajax({
                 type: "POST",
@@ -297,6 +297,7 @@
                     //console.log(result);
                     if(result.status == "success") {
                         commit(true);
+                        $('#grid').jqxGrid('autoresizecolumns');
                         //alert("Proceso realizado satisfactoriamente");
                         return false;
                     }else{
