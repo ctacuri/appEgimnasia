@@ -997,7 +997,8 @@
                         { text: 'Fecha', align: 'center', datafield: 'fecha_matricula', cellsalign: 'center', width: '8%' },
                         { text: 'Año', align: 'center', datafield: 'anio_matricula', cellsalign: 'center', width: '7%' },
                         { text: 'Mes', align: 'center', datafield: 'mes', cellsalign: 'left', width: '7%' },
-                        { text: 'Monto Pagado', align: 'center', datafield: 'importe', cellsalign: 'right', width: '8%', cellsformat: 'd2' },
+                        { text: 'Total', align: 'center', datafield: 'total', cellsalign: 'right', width: '8%', cellsformat: 'd2' },
+                        { text: 'Importe', align: 'center', datafield: 'importe', cellsalign: 'right', width: '8%', cellsformat: 'd2' },
                         { text: 'Saldo', align: 'center', datafield: 'saldo', cellsalign: 'right', width: '8%', cellsformat: 'd2' },
                         { text: 'Profesor', align: 'center', datafield: 'nombre_corto', cellsalign: 'left', width: '10%' },
                         { text: 'Comentario', align: 'center', datafield: 'comentario', cellsalign: 'left', width: '10%' }
@@ -2625,6 +2626,7 @@
                             { name: 'anio_matricula', type: 'int'},
                             { name: 'mes_matricula', type: 'int'},
                             { name: 'mes', type: 'string'},
+                            { name: 'total', type: 'float'},
                             { name: 'importe', type: 'float'},
                             { name: 'saldo', type: 'float'},
                             { name: 'id_profesor', type: 'int'},

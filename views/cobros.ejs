@@ -493,7 +493,8 @@
                         { text: 'Fecha', align: 'center', datafield: 'fecha_emision', cellsalign: 'center', width: '10%' },
                         { text: 'Nombre del Tutor', align: 'center', datafield: 'tutor', cellsalign: 'left', width: '30%' },
                         { text: 'Descripcion del pedido', align: 'center', datafield: 'descripcion_pedido', cellsalign: 'left', width: '40%'},
-                        { text: 'Monto pagado', align: 'center', datafield: 'importe', cellsalign: 'right', width: '10%', cellsformat: 'd2' },
+                        { text: 'Total', align: 'center', datafield: 'total', cellsalign: 'right', width: '10%', cellsformat: 'd2' },
+                        { text: 'Importe', align: 'center', datafield: 'importe', cellsalign: 'right', width: '10%', cellsformat: 'd2' },
                         { text: 'Saldo', align: 'center', datafield: 'saldo', cellsalign: 'right', width: '10%', cellsformat: 'd2' }
                     ]
                 }
@@ -1103,6 +1104,7 @@
                         { name: 'id_alumno', type: 'int' },
                         { name: 'id_horario', type: 'int' },
                         { name: 'descripcion_pedido', type: 'string' },
+                        { name: 'total', type: 'float' },
                         { name: 'importe', type: 'float' },
                         { name: 'saldo', type: 'float' }
                     ],
