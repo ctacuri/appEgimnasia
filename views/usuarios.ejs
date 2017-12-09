@@ -232,8 +232,8 @@
                         source: dataAdapter,
                         selectionmode: 'singlerow',
                         columns: [
-                            { text: 'Usuario', align: 'center', datafield: 'usuario', cellsalign: 'left', width: '10%', pinned: true },
-                            { text: 'Contraseña', align: 'center', datafield: 'contrasena', cellsalign: 'left', width: '10%', pinned: true},
+                            { text: 'Usuario', align: 'center', datafield: 'usuario', cellsalign: 'left', width: '7%', pinned: true },
+                            { text: 'Contraseña', align: 'center', datafield: 'contrasena', cellsalign: 'left', width: '7%', pinned: true},
                             { text: 'Maestros', align: 'center', datafield: 'maestros', cellsalign: 'center', width: '7%' },
                             { text: 'Tutores', align: 'center', datafield: 'm_tutores', cellsalign: 'center', width: '7%' },
                             { text: 'Alumnos', align: 'center', datafield: 'm_alumnos', cellsalign: 'center', width: '7%' },
@@ -256,6 +256,10 @@
                     }
                 )
             );
+
+            setTimeout(function(){
+                $('#grid').jqxGrid('autoresizecolumns');
+            }, 500);
 
             var contextMenu = $("#Menu").jqxMenu({
                 theme: theme3,

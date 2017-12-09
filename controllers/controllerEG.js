@@ -207,7 +207,8 @@ controller.saveProfesores = function(req, res, next){
         apepat: req.body.apepat,
         apemat: req.body.apemat,
         sexo: req.body.sexo,
-        nombreCorto: req.body.nombreCorto
+        nombreCorto: req.body.nombreCorto,
+        estado: 'V'
     };
     model.saveProfesores(datos, function(err, registros){
         if(err){

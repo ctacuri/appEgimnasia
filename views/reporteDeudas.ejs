@@ -128,15 +128,18 @@
                         { text: 'Edades', align: 'center', datafield: 'edades', cellsalign: 'center', width: '10%' },
                         { text: 'Dias', align: 'center', datafield: 'dias', cellsalign: 'center', width: '10%' },
                         //{ text: 'Horario', align: 'center', datafield: 'HORARIO', cellsalign: 'center', width: '30%' },
+
+                        { text: 'Importe', align: 'center', datafield: 'total', cellsalign: 'right', width: '10%', cellsformat: 'd2' },
+                        { text: 'Pago', align: 'center', datafield: 'pago', cellsalign: 'right', width: '10%', cellsformat: 'd2' },
+                        { text: 'Saldo', align: 'center', datafield: 'saldo', cellsalign: 'right', width: '10%', cellsformat: 'd2' },
+
                         { text: 'Apellidos Alumno', align: 'center', datafield: 'apellidos_alumno', cellsalign: 'left', width: '25%' },
                         { text: 'Nombres Alumno', align: 'center', datafield: 'nombres_alumno', cellsalign: 'left', width: '25%' },
                         { text: 'Apellidos Tutor', align: 'center', datafield: 'apellidos_tutor', cellsalign: 'left', width: '25%' },
                         { text: 'Nombres Tutor', align: 'center', datafield: 'nombres_tutor', cellsalign: 'left', width: '25%' },
                         { text: 'Telefono', align: 'center', datafield: 'telefono_tutor', cellsalign: 'right', width: '10%' },
-                        { text: 'Celular', align: 'center', datafield: 'celular_tutor', cellsalign: 'right', width: '10%' },
-                        { text: 'Total', align: 'center', datafield: 'total', cellsalign: 'right', width: '10%', cellsformat: 'd2' },
-                        { text: 'Pago', align: 'center', datafield: 'pago', cellsalign: 'right', width: '10%', cellsformat: 'd2' },
-                        { text: 'Saldo', align: 'center', datafield: 'saldo', cellsalign: 'right', width: '10%', cellsformat: 'd2' }
+                        { text: 'Celular', align: 'center', datafield: 'celular_tutor', cellsalign: 'right', width: '10%' }
+
                     ]
                 }
             )
@@ -176,6 +179,7 @@
                 {
                     source: dataAdapter
                 });
+                $('#grid').jqxGrid('autoresizecolumns');
             });
         }
 

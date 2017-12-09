@@ -107,8 +107,8 @@ model.saveProfesores = function(datos, cb){
     sentenciaSQL += "'" + datos.apepat + "',";
     sentenciaSQL += "'" + datos.apemat + "',";
     sentenciaSQL += "'" + datos.nombreCorto + "',";
-    sentenciaSQL += "'" + datos.sexo + "')";
-
+    sentenciaSQL +=  datos.sexo + ",";
+    sentenciaSQL += "'" + datos.estado + "')";
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }

@@ -147,20 +147,14 @@
                         {}, vDefaultOptionsGrid,
                         {
                             source: dataAdapter
-                            /*virtualmode: true,
-                             rendergridrows: function (params) {
-                             var start = params.startindex;
-                             var end = params.endindex;
-                             var array = new Array();
-                             for (i = start; i < end; i++) {
-                             array[i] = records[i];
-                             }
-                             return array;
-                             }*/
                         }
                     )
                 );
+                setTimeout(function(){
+                    $('#grid').jqxGrid('autoresizecolumns');
+                }, 500);
             });
+
 
             $("#grid").jqxGrid(
                 $.extend(
@@ -173,7 +167,7 @@
                         columns: [
                             { text: 'Id tutor', align: 'center', datafield: 'id_tutor', cellsalign: 'center', width: '5%' },
                             { text: 'Tipo de documento', align: 'center', datafield: 'tipo_doc', cellsalign: 'center', width: '10%' },
-                            { text: 'Nro. Documento', align: 'center', datafield: 'numdoc', cellsalign: 'right', width: '10%' },
+                            { text: 'Nro. Documento', align: 'center', datafield: 'numdoc', cellsalign: 'right' },
                             { text: 'Nombres', align: 'center', datafield: 'nombres', cellsalign: 'left', width: '15%' },
                             { text: 'Apellido Paterno', align: 'center', datafield: 'apepat', cellsalign: 'left', width: '15%'},
                             { text: 'Apellido Materno', align: 'center', datafield: 'apemat', cellsalign: 'left', width: '15%' },

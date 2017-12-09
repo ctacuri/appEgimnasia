@@ -992,15 +992,15 @@
                     selectionmode: 'singlerow',
                     columns: [
                         { text: 'Id matricula', align: 'center', datafield: 'id_matricula', cellsalign: 'right', width: '8%' },
-                        { text: 'Alumno', align: 'center', datafield: 'alumno', cellsalign: 'left', width: '25%'},
-                        { text: 'Horario', align: 'center', datafield: 'clase', cellsalign: 'left', width: '25%' },
+                        { text: 'Alumno', align: 'center', datafield: 'alumno', cellsalign: 'left', width: '15%'},
+                        { text: 'Horario', align: 'center', datafield: 'clase', cellsalign: 'left', width: '15%' },
                         { text: 'Fecha', align: 'center', datafield: 'fecha_matricula', cellsalign: 'center', width: '8%' },
                         { text: 'Año', align: 'center', datafield: 'anio_matricula', cellsalign: 'center', width: '7%' },
                         { text: 'Mes', align: 'center', datafield: 'mes', cellsalign: 'left', width: '7%' },
                         { text: 'Monto Pagado', align: 'center', datafield: 'importe', cellsalign: 'right', width: '8%', cellsformat: 'd2' },
                         { text: 'Saldo', align: 'center', datafield: 'saldo', cellsalign: 'right', width: '8%', cellsformat: 'd2' },
-                        { text: 'Profesor', align: 'center', datafield: 'nombre_corto', cellsalign: 'left', width: '30%' },
-                        { text: 'Comentario', align: 'center', datafield: 'comentario', cellsalign: 'left', width: '30%' }
+                        { text: 'Profesor', align: 'center', datafield: 'nombre_corto', cellsalign: 'left', width: '10%' },
+                        { text: 'Comentario', align: 'center', datafield: 'comentario', cellsalign: 'left', width: '10%' }
                     ]
                 }
             )
@@ -2639,6 +2639,9 @@
                 {
                     source: dataAdapter
                 });
+                setTimeout(function(){
+                    $('#grid').jqxGrid('autoresizecolumns');
+                }, 500);
             });
         }
         fn_listaMatricula($("#FechaIniOS").val(), $("#FechaFinOS").val());
@@ -2666,6 +2669,9 @@
                 {
                     source: dataAdapter
                 });
+                setTimeout(function(){
+                    $('#grid3').jqxGrid('autoresizecolumns');
+                }, 500);
             });
         }
 

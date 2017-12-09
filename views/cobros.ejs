@@ -1113,6 +1113,9 @@
                 {
                     source: dataAdapter
                 });
+                setTimeout(function(){
+                    $('#grid').jqxGrid('autoresizecolumns');
+                }, 500);
             });
 
         }
