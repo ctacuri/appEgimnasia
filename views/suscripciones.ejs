@@ -998,6 +998,7 @@
                         { text: 'Año', align: 'center', datafield: 'anio_matricula', cellsalign: 'center', width: '7%' },
                         { text: 'Mes', align: 'center', datafield: 'mes', cellsalign: 'left', width: '7%' },
                         { text: 'Total', align: 'center', datafield: 'total', cellsalign: 'right', width: '8%', cellsformat: 'd2' },
+                        /*{ text: 'Forma Pago', align: 'center', datafield: 'forma_pago', cellsalign: 'left', width: '8%'},*/
                         { text: 'Importe', align: 'center', datafield: 'importe', cellsalign: 'right', width: '8%', cellsformat: 'd2' },
                         { text: 'Saldo', align: 'center', datafield: 'saldo', cellsalign: 'right', width: '8%', cellsformat: 'd2' },
                         { text: 'Profesor', align: 'center', datafield: 'nombre_corto', cellsalign: 'left', width: '10%' },
@@ -2641,11 +2642,12 @@
                             { name: 'mes_matricula', type: 'int'},
                             { name: 'mes', type: 'string'},
                             { name: 'total', type: 'float'},
+                            { name: 'forma_pago', type: 'string'},
                             { name: 'importe', type: 'float'},
                             { name: 'saldo', type: 'float'},
                             { name: 'id_profesor', type: 'int'},
                             { name: 'nombre_corto', type: 'string'},
-                            { name: 'comentario', type: 'string'}
+                            { name: 'comentario', type: 'string'},
                         ],
                         localdata: json.registros[0]
                     };

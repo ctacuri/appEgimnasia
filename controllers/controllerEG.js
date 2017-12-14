@@ -983,7 +983,7 @@ controller.saveMatricula = function(req, res, next){
         datosGrilla: JSON.parse(req.body.datosGrilla)
     };*/
 
-    //console.log(datos);
+    console.log(datos);
     //return false;
     model.saveMatricula(datos, function(err, registros){
         if(err){
