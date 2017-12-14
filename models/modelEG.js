@@ -285,7 +285,9 @@ model.saveMatricula = function(datos, cb){
     sentenciaSQL += datos.importe + ",";
     sentenciaSQL += datos.saldo + ",";
     sentenciaSQL += datos.profesor + ",";
-    sentenciaSQL += "'" + datos.comentario + "')";
+    sentenciaSQL += "'" + datos.comentario + "',";
+    sentenciaSQL += "'" + datos.rucEmpresa + "',";
+    sentenciaSQL += "'" + datos.formaPago + "')";
 
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
@@ -313,8 +315,9 @@ model.updMatricula = function(datos, cb){
     sentenciaSQL += datos.importe + ",";
     sentenciaSQL += datos.saldo + ",";
     sentenciaSQL += datos.id_profesor + ",";
-    sentenciaSQL += "'" + datos.comentario + "')";
-
+    sentenciaSQL += "'" + datos.comentario + "',";
+    sentenciaSQL += "'" + datos.rucEmpresa + "',";
+    sentenciaSQL += "'" + datos.formaPago + "')";
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
