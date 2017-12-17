@@ -33,6 +33,13 @@
                             </div>
 
                             <div class="form-group row">
+                                <label for="alias" class="col-md-3 col-form-label col-form-label-sm">Alias</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-sm" id="alias">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label for="descripcion" class="col-md-3 col-form-label col-form-label-sm">Razon Social</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control form-control-sm" id="descripcion">
@@ -370,6 +377,7 @@
                         datafields: [
                             { name: 'id_parametro', type: 'int'},
                             { name: 'numdoc', type: 'string'},
+                            { name: 'alias', type: 'string'},
                             { name: 'descripcion', type: 'string'},
 
                             { name: 'departamento', type: 'string'},
@@ -417,6 +425,7 @@
                         selectionmode: 'singlerow',
                         columns: [
                             { text: 'Ruc', align: 'center', datafield: 'numdoc', cellsalign: 'right', width: '8%' },
+                            { text: 'Alias', align: 'center', datafield: 'alias', cellsalign: 'left', width: '30%' },
                             { text: 'Razon Social', align: 'center', datafield: 'descripcion', cellsalign: 'left', width: '30%' },
 
                             { text: 'Departamento', align: 'center', datafield: 'departamento_name', cellsalign: 'left', width: '10%' },
@@ -485,6 +494,7 @@
                 console.log(data);
                 $("#id").val(data.id_parametro);
                 $("#nroDocumento").val(data.numdoc);
+                $("#alias").val(data.alias);
                 $("#descripcion").val(data.descripcion);
 
                 setTimeout(function() {
@@ -533,6 +543,7 @@
                 var datos = {
                     id: $("#id").val(),
                     nroDocumento: $("#nroDocumento").val(),
+                    alias: $("#alias").val(),
                     descripcion: $("#descripcion").val(),
 
                     departamento: $("#departamento").val(),

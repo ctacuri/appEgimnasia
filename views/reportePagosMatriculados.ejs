@@ -22,6 +22,26 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        var meses = [
+            { id_mes: 1, mes: "Enero"},
+            { id_mes: 2, mes: "Febrero"},
+            { id_mes: 3, mes: "Marzo"},
+            { id_mes: 4, mes: "Abril"},
+            { id_mes: 5, mes: "Mayo"},
+            { id_mes: 6, mes: "Junio"},
+            { id_mes: 7, mes: "Julio"},
+            { id_mes: 8, mes: "Agosto"},
+            { id_mes: 9, mes: "Setiembre"},
+            { id_mes: 10, mes: "Octubre"},
+            { id_mes: 11, mes: "Noviembre"},
+            { id_mes: 12, mes: "Diciembre"}
+        ];
+        var f = new Date();
+        var anios = [];
+
+        for(var x= f.getFullYear() + 1; x>= 2007;x--){
+            anios.push(x);
+        }
         $("#jqxToolBar").jqxToolBar(
                 $.extend( {},
                         vDefaultOptionsToolBar,
@@ -34,32 +54,55 @@
                                         tool.append(label);
                                         break;
                                     case 1:
-                                        var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Inicio: </div>";
+                                        var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Mes: </div>";
                                         tool.append(label);
                                         break;
                                     case 2:
-                                        var fecha = $("<div id='FechaIniOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
+                                        /*var fecha = $("<div id='FechaIniOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
                                             theme: theme2,
                                             value: new Date(anioActual, mesActual, 1),
                                             width: 105,
                                             height: 25,
                                             culture: 'es-ES'
                                         });
-                                        tool.append(fecha);
+                                        tool.append(fecha);*/
+                                        tool.jqxDropDownList(
+                                            $.extend(
+                                                {}, vDefaultOptionsDropDownList, {
+                                                    width: 80,
+                                                    source: meses,
+                                                    displayMember: "mes",
+                                                    valueMember: "id_mes",
+                                                    dropDownWidth: 150,
+                                                    dropDownHeight: 150
+                                                }
+                                            )
+                                        );
+                                        tool.jqxDropDownList('selectItem', mesActual + 1);
                                         break;
                                     case 3:
-                                        var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Fin: </div>";
+                                        var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Año: </div>";
                                         tool.append(label);
                                         break;
                                     case 4:
-                                        var fecha = $("<div id='FechaFinOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
+                                        /*var fecha = $("<div id='FechaFinOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
                                             theme: theme2,
                                             value: new Date(anioActual, mesActual, ultimoDiaMesActual),
                                             width: 105,
                                             height: 25,
                                             culture: 'es-ES'
                                         });
-                                        tool.append(fecha);
+                                        tool.append(fecha);*/
+                                        tool.jqxDropDownList(
+                                            $.extend(
+                                                {}, vDefaultOptionsDropDownList, {
+                                                    width: 80,
+                                                    source: anios,
+                                                    dropDownHeight: 100
+                                                }
+                                            )
+                                        );
+                                        tool.jqxDropDownList('selectItem', anioActual);
                                         break;
                                     /*case 5:
                                         var toggleBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/notepad-20.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxToggleButton({
@@ -86,11 +129,16 @@
                                         });
                                         tool.append(searchBtn);
                                         searchBtn.click(function (event) {
-                                            var tools = $("#jqxToolBar").jqxToolBar("getTools");
+                                            /*var tools = $("#jqxToolBar").jqxToolBar("getTools");
                                             var fechaIni = fn_convertFecha_DMY_to_SQL($("#FechaIniOS").val());
                                             var fechaFin = fn_convertFecha_DMY_to_SQL($("#FechaFinOS").val());
 
-                                            fn_reportePagosMatriculados(fechaIni, fechaFin);
+                                            */
+                                            //fn_reportePagosMatriculados(fechaIni, fechaFin);
+                                            var tools = $("#jqxToolBar").jqxToolBar("getTools");
+                                            var mes = tools[2].tool.jqxDropDownList('val');
+                                            var anio = tools[4].tool.jqxDropDownList('val');
+                                            fn_reportePagosMatriculadosMesAnio(mes, anio);
                                         });
                                         break;
                                     case 6:
@@ -104,7 +152,6 @@
                                             var tools = $("#jqxToolBar").jqxToolBar("getTools");
                                             var JSONData = $("#grid").jqxGrid('exportdata', 'json');
                                             fn_JSONToCSVConvertor(JSONData, "RepPagosMatriculados", "", true);
-
                                         });
                                         break;
                                 }
@@ -187,6 +234,51 @@
                 {
                     source: dataAdapter
                 });
+                $('#grid').jqxGrid('autoresizecolumns');
+            });
+        }
+
+        function fn_reportePagosMatriculadosMesAnio(mes, anio){
+            console.log("MES:" + mes);
+            console.log("ANIO:" + anio);
+            $.getJSON('/reportePagosMatriculadosAlumnosMesAnio/'+mes+'/'+anio, function(json) {
+                console.log(json);
+                var source =
+                    {
+                        datatype: "json",
+                        datafields: [
+                            { name: 'id_horario', type: 'int'},
+                            { name: 'horario', type: 'string'},
+                            { name: 'anio_matricula', type: 'int'},
+                            { name: 'mes_matricula', type: 'int'},
+                            { name: 'sexo', type: 'string'},
+                            { name: 'edades', type: 'string'},
+                            { name: 'dias', type: 'string'},
+                            { name: 'id_alumno', type: 'int'},
+                            { name: 'profesor', type: 'string'},
+                            { name: 'alumno', type: 'string'},
+                            { name: 'tutor', type: 'string'},
+                            { name: 'fecha_matricula', type: 'string'},
+                            /*{ name: 'nombres_alumno', type: 'string'},
+                             { name: 'apellidos_tutor', type: 'string'},
+                             { name: 'nombres_tutor', type: 'string'},
+                             { name: 'telefono_tutor', type: 'string'},
+                             { name: 'celular_tutor', type: 'string'},
+                             { name: 'email_tutor', type: 'string'},*/
+                            //{ name: 'fpago', type: 'string'},
+                            { name: 'forma_pago', type: 'string'},
+                            { name: 'total', type: 'float'},
+                            { name: 'pago', type: 'float'},
+                            { name: 'saldo', type: 'float'}
+                        ],
+                        localdata: json.registros[0]
+                    };
+                var dataAdapter = new $.jqx.dataAdapter(source);
+
+                $("#grid").jqxGrid(
+                    {
+                        source: dataAdapter
+                    });
                 $('#grid').jqxGrid('autoresizecolumns');
             });
         }

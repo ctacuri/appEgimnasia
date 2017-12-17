@@ -261,6 +261,7 @@ controller.updProfesores = function(req, res, next){
 controller.saveParametros = function(req, res, next){
     var datos = {
         nroDocumento: req.body.nroDocumento,
+        alias: req.body.alias,
         descripcion: req.body.descripcion,
 
         departamento: req.body.departamento,
@@ -306,6 +307,7 @@ controller.updParametros = function(req, res, next){
     var datos = {
         id: req.body.id,
         nroDocumento: req.body.nroDocumento,
+        alias: req.body.alias,
         descripcion: req.body.descripcion,
 
         departamento: req.body.departamento,
@@ -1408,6 +1410,30 @@ controller.reportePagosMatriculadosAlumnos = function(req, res, next){
         }
     });
 }
+
+controller.reportePagosMatriculadosAlumnosMesAnio = function(req, res, next){
+    var datos = {
+        mes: req.params.mes,
+        anio: req.params.anio
+    };
+    model.reportePagosMatriculadosAlumnosMesAnio(datos, function(err, registros){
+        if(err){
+            //console.log("Error: " + err);
+            res.status(200).json({"status": "error"});
+        }else{
+            if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
+                //console.log(datos);
+                res.status(200).json({"status": "success", "registros": registros});
+            }else{
+                res.status(200).json({"status": "sinDatos"});
+            }
+        }
+    });
+}
+
 
 controller.reporteRegistroVentas = function(req, res, next){
     var datos = {

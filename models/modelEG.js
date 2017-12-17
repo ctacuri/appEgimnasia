@@ -132,6 +132,7 @@ model.updProfesores = function(datos, cb){
 model.saveParametros = function(datos, cb){
     var sentenciaSQL = "INSERT INTO gim_parametros( ";
     sentenciaSQL += "numdoc,";
+    sentenciaSQL += "alias,";
     sentenciaSQL += "descripcion,";
 
     sentenciaSQL += "departamento,";
@@ -154,6 +155,7 @@ model.saveParametros = function(datos, cb){
     sentenciaSQL += "nro_serie_registro,";
     sentenciaSQL += "nro_registro)";
     sentenciaSQL += " VALUES('" + datos.nroDocumento + "',";
+    sentenciaSQL += "'" + datos.alias + "',";
     sentenciaSQL += "'" + datos.descripcion + "',";
 
     sentenciaSQL += "'" +datos.departamento + "',";
@@ -182,6 +184,7 @@ model.saveParametros = function(datos, cb){
 model.updParametros = function(datos, cb){
     var sentenciaSQL = "UPDATE gim_parametros SET ";
     sentenciaSQL += "numdoc = '" + datos.nroDocumento + "',";
+    sentenciaSQL += "alias = '" + datos.alias + "',";
     sentenciaSQL += "descripcion = '" + datos.descripcion + "',";
 
     sentenciaSQL += "departamento = '" + datos.departamento + "',";
@@ -556,6 +559,7 @@ model.listaParametros = function(cb){
     var sentenciaSQL = "SELECT ";
     sentenciaSQL += "p.id_parametro ";
     sentenciaSQL += ",p.numdoc ";
+    sentenciaSQL += ",p.alias ";
     sentenciaSQL += ",p.descripcion ";
     sentenciaSQL += ",p.departamento ";
     sentenciaSQL += ",dpto.descripcion as departamento_name ";
@@ -760,6 +764,15 @@ model.reportePagosMatriculadosAlumnos = function(datos, cb){
     var sentenciaSQL = "CALL sp_reportePagosMatriculados(";
     sentenciaSQL += "'" + datos.fechaInicio + "',";
     sentenciaSQL += "'" + datos.fechaFin + "')";
+
+    console.log(sentenciaSQL);
+    conn.query(sentenciaSQL, cb);
+}
+
+model.reportePagosMatriculadosAlumnosMesAnio = function(datos, cb){
+    var sentenciaSQL = "CALL sp_reportePagosMatriculadosMesAnio(";
+    sentenciaSQL += datos.mes + ",";
+    sentenciaSQL += datos.anio + ")";
 
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
