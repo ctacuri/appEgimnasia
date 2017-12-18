@@ -218,6 +218,8 @@ router.get('/EG/listaCobroDet/:idCobro', fnEstaAutenticado, controladorEG.listaC
 router.post('/EG/updSaldoMatricula', fnEstaAutenticado, controladorEG.updSaldoMatricula);
 
 router.post('/updateProfesorReporteAlumno', fnEstaAutenticado, controladorEG.updateProfesorReporteAlumno);
+router.post('/updateFormaPagoReportePagosAlumno', fnEstaAutenticado, controladorEG.updateFormaPagoReportePagosAlumno);
+
 
 router.post('/loguear',
 

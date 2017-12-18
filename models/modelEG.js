@@ -913,11 +913,20 @@ model.updSaldoMatricula = function(datos, cb){
     conn.query(sentenciaSQL, cb);
 }
 
-model.updateProfesorReporteAlumno  = function(datos, cb){
+model.updateProfesorReporteAlumno = function(datos, cb){
     var sentenciaSQL = "";
     sentenciaSQL += "CALL sp_updateProfesorReporteAlumno(";
     sentenciaSQL += datos.id_matricula + ",";
     sentenciaSQL += "'" + datos.profesor + "')";
+    console.log(sentenciaSQL);
+    conn.query(sentenciaSQL, cb);
+}
+
+model.updateFormaPagoReportePagosAlumno = function(datos, cb){
+    var sentenciaSQL = "";
+    sentenciaSQL += "CALL updateFormaPagoReportePagosAlumno(";
+    sentenciaSQL += datos.id + ",";
+    sentenciaSQL += "'" + datos.descripcion + "')";
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }
