@@ -1505,6 +1505,7 @@
                     }
                 );
             }
+            //console.log(arregloEmpresas);
 
             if(json1[0].status == "success"){
                 $("#alumno").jqxDropDownList({
@@ -1849,7 +1850,8 @@
                     pantallaCobro: "NO",
                     fechaEmision: fn_convertFecha_DMY_to_SQL($('#fecha').val()),
                     rucEmpresa: $('#empresa').val(),
-                    empresa: $('#empresa').text(),
+                    //empresa: $('#empresa').text(),
+                    empresa: queryResultE[0].descripcion,
 
                     departamento: queryResultE[0].departamento,
                     departamento_name: queryResultE[0].departamento_name,
@@ -1884,7 +1886,7 @@
                 //fn_registrarCabCobro(arregloCabCobro[0], JSON.stringify(datos), queryResultE[0].impuesto);
                 //fn_emisionTicket(arregloCabCobro[0], JSON.stringify(datos));
             }
-
+            //console.log(arregloCabCobro);
             //return false;
             if(confirm("Esta seguro de "+txtMsg+" los datos ?")){
                 if(datos.length > 1){

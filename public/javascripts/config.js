@@ -1028,8 +1028,8 @@ function fn_viewTicket(idCobro){
 function fn_emisionTicket(arregloCab, arregloDet){
     var objDet = JSON.parse(arregloDet);
     console.log("EMISION DE TICKET");
-    //console.log(arregloCab);
-    console.log(objDet);
+    //console.log("objDet");
+    //console.log(objDet);
     $("#nroTicket").text(arregloCab.nroCorrelativo);
     $("#fechaEmision").text(fn_convertFecha_SQL_to_DMY(arregloCab.fechaEmision));
 
