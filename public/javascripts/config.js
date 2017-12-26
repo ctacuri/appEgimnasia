@@ -727,7 +727,7 @@ function fn_validarTutor(datos) {
         alert("Error: ingrese un nombre valido");
         return false;
     }
-    if(datos.sexo == ""){
+    /*if(datos.sexo == ""){
         alert("Error: ingrese un sexo valido");
         return false;
     }
@@ -747,6 +747,7 @@ function fn_validarTutor(datos) {
         alert("Error: ingrese una direccion valida");
         return false;
     }
+    */
     /*if(datos.obs == ""){
         alert("Error: ingrese una observacion valida");
         return false;
@@ -779,10 +780,10 @@ function fn_validarAlumno(datos){
         alert("Error: ingrese un nombre valido");
         return false;
     }
-    if(datos.sexo == ""){
+    /*if(datos.sexo == ""){
         alert("Error: ingrese un sexo valido");
         return false;
-    }
+    }*/
 
     /*if(datos.dpto == ""){
         alert("Error: ingrese un departamento valido");
