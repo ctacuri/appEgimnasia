@@ -1792,7 +1792,7 @@
                     saldo: datos[i].saldo
                 });
             }
-            console.log(arregloNuevo);
+            //console.log(arregloNuevo);
             //return false;
             //INICIO - VALIDACION DE CONTROLES DE EMISION DE PAGOS
             if(txtMsg != "actualizar") {
@@ -1889,6 +1889,7 @@
             //console.log(arregloCabCobro);
             //return false;
             if(confirm("Esta seguro de "+txtMsg+" los datos ?")){
+                console.log("CONTADOR " + datos.length);
                 if(datos.length > 1){
                     //console.log("AAAAA");
                     //return false;
@@ -1904,9 +1905,9 @@
                             success: function(result){
                                 //console.log(result);
                                 if(result.status == "success") {
-                                    //console.log(cont);
                                     //console.log(i);
                                     cont2 = cont2 + 1;
+                                    console.log(cont2);
                                 }else{
                                     alert("Error: Vuelva a intentarlo");
                                     return false;
@@ -1918,6 +1919,7 @@
 
                         //console.log("CONTADOR 1: " + cont);
                         //console.log("CONTADOR 2: " + cont2);
+                        console.log(cont + " de " + datos.length);
                         if(cont == datos.length){
                             //alert("Proceso realizado correctamente");
                             //UNA VEZ REGISTRADO LA MATRICULA, SE REGISTRA EL COBRO
@@ -1925,8 +1927,10 @@
                             // 1 - TICKET
                             // 2 - BOLETA
                             // 3 - FACTURA
-                            // 4 - REGISTROXS
-                            if($("#emitir").val() == 1 && $("#emitir").val() == 2 && $("#emitir").val() == 3 && $("#emitir").val() == 4){
+                            // 4 - REGISTRO
+                            console.log("EMITIR:" + $("#emitir").val());
+                            if($("#emitir").val() == 1 || $("#emitir").val() == 2 || $("#emitir").val() == 3 || $("#emitir").val() == 4){
+                                console.log("COBRO:");
                                 fn_registrarCabCobro(arregloCabCobro[0], JSON.stringify(arregloNuevo), queryResultE[0].impuesto);
                                 return false;
                             }else{
@@ -1941,7 +1945,7 @@
                                     data: arregloUpdCorrelativo,
                                     dataType: 'json',
                                     success: function(result){
-                                        console.log("ver ticket");
+                                        console.log("ver ticket VARIOS");
                                         console.log(result);
                                         if(result.status == "success") {
                                             //DESPUES DE ACTUALIZAR EL CORRELATIVO MUESTRO
@@ -1963,14 +1967,15 @@
                                     }
                                 });
                             }
-                            alert("Proceso realizado correctamente (MATRICULA)");
-                            location.reload();
+
+                            alert("Proceso realizado correctamente (MATRICULA) VARIOS");
+                            //location.reload();
                             return false;
                         }
                         sleep(1000);
                     }
                 }else{
-                    //console.log("BBBBB");
+                    console.log("BBBBB");
                     //console.log(datos[0]);
                     //return false;
                     $.ajax({
@@ -1979,12 +1984,14 @@
                         data: arregloNuevo[0],
                         dataType: 'json',
                         success: function(result){
+                            //console.log("VERIFICAR ESTO ...");
                             //console.log(result);
                             if(result.status == "success") {
                                 //EN LA ACTUALIZACION DE MATRICULA
                                 //NO SE ALTERA NINGUNA INFORMACION
                                 //DE COBRO
-                                if($("#emitir").val() == 1){
+                                //if($("#emitir").val() == 1){
+                                if($("#emitir").val() == 1 || $("#emitir").val() == 2 || $("#emitir").val() == 3 || $("#emitir").val() == 4){
                                     fn_registrarCabCobro(arregloCabCobro[0], JSON.stringify(arregloNuevo), queryResultE[0].impuesto);
                                     return false;
                                 }else{
@@ -2001,7 +2008,7 @@
                                         data: arregloUpdCorrelativo,
                                         dataType: 'json',
                                         success: function(result){
-                                            console.log("ver ticket");
+                                            console.log("ver ticket UNO");
                                             console.log(result);
                                             if(result.status == "success") {
                                                 //DESPUES DE ACTUALIZAR EL CORRELATIVO MUESTRO
@@ -2023,8 +2030,9 @@
                                         }
                                     });
                                 }
-                                alert("Proceso realizado correctamente (MATRICULA)");
-                                location.reload();
+
+                                alert("Proceso realizado correctamente (MATRICULA) UNO");
+                                //location.reload();
                                 return false;
                             }else{
                                 alert("Error: Vuelva a intentarlo");
