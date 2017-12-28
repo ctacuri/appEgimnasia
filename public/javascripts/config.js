@@ -360,7 +360,7 @@ function fn_JSONToCSVConvertor(JSONData, fileName, ReportTitleCSV, ShowLabel) {
             for (var index in arrData[0]) {
 
                 //Now convert each value to string and comma-seprated
-                row += index + ',';
+                row += index + ';';
             }
 
             row = row.slice(0, -1);
@@ -377,7 +377,7 @@ function fn_JSONToCSVConvertor(JSONData, fileName, ReportTitleCSV, ShowLabel) {
 
             //2nd loop will extract each column and convert it in string comma-seprated
             for (var index in arrData[i]) {
-                row += '"' + arrData[i][index] + '",';
+                row += '"' + arrData[i][index] + '";';
             }
 
             row.slice(0, row.length - 1);
