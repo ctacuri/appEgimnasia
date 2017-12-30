@@ -21,6 +21,17 @@ var mysql = require("mysql"),
         waitForConnection: true
 	};
 
+    opciones3 = {
+        host: "159.203.187.136",
+        port: 3306,
+        user: "root",
+        password: "CesarTacuri",
+        database: "gimnasio",
+        connectionLimit: 50,
+        queueLimit: 0,
+        waitForConnection: true
+    };
+
 /*
 function fnConectado(err){
 	if(err){
@@ -65,7 +76,7 @@ var connection;
 function startConnection() {
     console.error('CONNECTING');
     //connection = mysql.createConnection(opciones2);
-    connection = mysql.createPool(opciones2);
+    connection = mysql.createPool(opciones3);
 
     connection.getConnection(function(err) {
         if (err) {
