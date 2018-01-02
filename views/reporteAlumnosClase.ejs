@@ -207,6 +207,7 @@
                     pagermode: 'simple',
                     selectionmode: 'singlerow',
                     columns: [
+                        { text: 'Fecha', align: 'center', datafield: 'fecha_matricula', cellsalign: 'center', width: '8%' },
                         { text: 'Año', align: 'center', datafield: 'anio_matricula', cellsalign: 'right', width: '8%' },
                         { text: 'Mes', align: 'center', datafield: 'mes_matricula', cellsalign: 'right', width: '8%' },
                         //{ text: 'Sexo', align: 'center', datafield: 'SEXO', cellsalign: 'right', width: '10%' },
@@ -215,16 +216,12 @@
                         { text: 'Horario', align: 'center', datafield: 'horario', cellsalign: 'left', width: '30%' },
 
                         { text: 'Sexo', align: 'center', datafield: 'sexo', cellsalign: 'left', width: '10%' },
-                        { text: 'Edades', align: 'center', datafield: 'edades', cellsalign: 'left', width: '10%' },
                         { text: 'Dias', align: 'center', datafield: 'dias', cellsalign: 'left', width: '10%' },
-
-                        { text: 'Id Alumno', align: 'center', datafield: 'id_alumno', cellsalign: 'right', width: '7%' },
-                        { text: 'Apellidos', align: 'center', datafield: 'apellidos_alumno', cellsalign: 'left', width: '20%' },
-                        { text: 'Nombres', align: 'center', datafield: 'nombres_alumno', cellsalign: 'left', width: '20%' },
-                        { text: 'Saldo', align: 'center', datafield: 'saldo', cellsalign: 'right', width: '7%', cellsformat: 'd2' },
+                        { text: 'Edades', align: 'center', datafield: 'edades', cellsalign: 'left', width: '10%' },
+                        { text: 'Hora', align: 'center', datafield: 'hora', cellsalign: 'left', width: '15%' },
 
                         { text: 'Profesor', align: 'center', datafield: 'profesor', cellsalign: 'left', width: '30%', columntype: 'dropdownlist',
-                                createeditor: function (row, value, editor) {
+                            createeditor: function (row, value, editor) {
                                 editor.jqxDropDownList({
                                     source: arregloProfesores,
                                     displayMember: 'nombre_corto',
@@ -233,11 +230,19 @@
                                 });
                             }
                         },
-                        { text: 'Tutor', align: 'center', datafield: 'tutor', cellsalign: 'left', width: '30%' },
-                        { text: 'Telefono', align: 'center', datafield: 'telefono_tutor', cellsalign: 'right', width: '10%' },
+
+                        { text: 'Id Alumno', align: 'center', datafield: 'id_alumno', cellsalign: 'right', width: '7%' },
+                        { text: 'Apellidos', align: 'center', datafield: 'apellidos_alumno', cellsalign: 'left', width: '20%' },
+                        { text: 'Nombres', align: 'center', datafield: 'nombres_alumno', cellsalign: 'left', width: '20%' },
+                        { text: 'Saldo', align: 'center', datafield: 'saldo', cellsalign: 'right', width: '7%', cellsformat: 'd2' },
+
+                        { text: 'Apellidos Tutor', align: 'center', datafield: 'apellidos_tutor', cellsalign: 'left', width: '15%' },
+                        { text: 'Nombres Tutor', align: 'center', datafield: 'nombres_tutor', cellsalign: 'left', width: '15%' }
+
+                        /*{ text: 'Telefono', align: 'center', datafield: 'telefono_tutor', cellsalign: 'right', width: '10%' },
                         { text: 'Celular', align: 'center', datafield: 'celular_tutor', cellsalign: 'right', width: '10%' },
                         { text: 'Email', align: 'center', datafield: 'email_tutor', cellsalign: 'left', width: '30%' },
-                        { text: 'Distrito', align: 'center', datafield: 'distrito_name', cellsalign: 'left', width: '30%' }
+                        { text: 'Distrito', align: 'center', datafield: 'distrito_name', cellsalign: 'left', width: '30%' }*/
                     ]
                 }
             )
@@ -253,6 +258,7 @@
                         fn_updateRowProfesor(rowdata, commit);
                     },
                     datafields: [
+                        { name: 'fecha_matricula', type: 'string'},
                         { name: 'anio_matricula', type: 'int'},
                         { name: 'mes_matricula', type: 'int'},
                         { name: 'id_horario', type: 'int'},
@@ -263,13 +269,15 @@
                         { name: 'sexo', type: 'string'},
                         { name: 'edades', type: 'string'},
                         { name: 'dias', type: 'string'},
+                        { name: 'hora', type: 'string'},
 
                         { name: 'id_alumno', type: 'int'},
                         { name: 'apellidos_alumno', type: 'string'},
                         { name: 'nombres_alumno', type: 'string'},
                         { name: 'id_matricula', type: 'int'},
                         { name: 'saldo', type: 'float'},
-                        { name: 'tutor', type: 'string'},
+                        { name: 'apellidos_tutor', type: 'string'},
+                        { name: 'nombres_tutor', type: 'string'},
                         { name: 'telefono_tutor', type: 'string'},
                         { name: 'celular_tutor', type: 'string'},
                         { name: 'email_tutor', type: 'string'},

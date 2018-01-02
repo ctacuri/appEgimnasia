@@ -121,12 +121,14 @@
                     pagermode: 'simple',
                     selectionmode: 'singlerow',
                     columns: [
-                        { text: 'Clase', align: 'center', datafield: 'horario', cellsalign: 'left', width: '20%' },
+                        { text: 'Fecha', align: 'center', datafield: 'fecha_matricula', cellsalign: 'center', width: '8%' },
                         { text: 'Año', align: 'center', datafield: 'anio_matricula', cellsalign: 'center', width: '10%' },
                         { text: 'Mes', align: 'center', datafield: 'mes_matricula', cellsalign: 'right', width: '10%' },
+                        { text: 'Horario', align: 'center', datafield: 'horario', cellsalign: 'left', width: '20%' },
                         { text: 'Sexo', align: 'center', datafield: 'sexo', cellsalign: 'center', width: '10%' },
-                        { text: 'Edades', align: 'center', datafield: 'edades', cellsalign: 'center', width: '10%' },
                         { text: 'Dias', align: 'center', datafield: 'dias', cellsalign: 'center', width: '10%' },
+                        { text: 'Edades', align: 'center', datafield: 'edades', cellsalign: 'center', width: '10%' },
+                        { text: 'Hora', align: 'center', datafield: 'hora', cellsalign: 'left', width: '15%' },
                         //{ text: 'Horario', align: 'center', datafield: 'HORARIO', cellsalign: 'center', width: '30%' },
 
                         { text: 'Total', align: 'center', datafield: 'total', cellsalign: 'right', width: '10%', cellsformat: 'd2' },
@@ -137,9 +139,19 @@
                         { text: 'Nombres Alumno', align: 'center', datafield: 'nombres_alumno', cellsalign: 'left', width: '25%' },
                         { text: 'Apellidos Tutor', align: 'center', datafield: 'apellidos_tutor', cellsalign: 'left', width: '25%' },
                         { text: 'Nombres Tutor', align: 'center', datafield: 'nombres_tutor', cellsalign: 'left', width: '25%' },
-                        { text: 'Telefono', align: 'center', datafield: 'telefono_tutor', cellsalign: 'right', width: '10%' },
-                        { text: 'Celular', align: 'center', datafield: 'celular_tutor', cellsalign: 'right', width: '10%' }
 
+                        { text: 'Nombres Mama', align: 'center', datafield: 'nombre_mama', cellsalign: 'left', width: '25%' },
+                        { text: 'Tel. Fijo Mama', align: 'center', datafield: 'tel_fijo_mama', cellsalign: 'left', width: '25%' },
+                        { text: 'Tel. Cel. Mama', align: 'center', datafield: 'tel_cel_mama', cellsalign: 'left', width: '25%' },
+                        { text: 'Email Mama', align: 'center', datafield: 'email_mama', cellsalign: 'left', width: '25%' },
+
+                        { text: 'Nombres Papa', align: 'center', datafield: 'nombre_papa', cellsalign: 'left', width: '25%' },
+                        { text: 'Tel. Fijo Papa', align: 'center', datafield: 'tel_fijo_papa', cellsalign: 'left', width: '25%' },
+                        { text: 'Tel. Cel. Papa', align: 'center', datafield: 'tel_cel_papa', cellsalign: 'left', width: '25%' },
+                        { text: 'Email Papa', align: 'center', datafield: 'email_papa', cellsalign: 'left', width: '25%' }
+
+                        /*{ text: 'Telefono', align: 'center', datafield: 'telefono_tutor', cellsalign: 'right', width: '10%' },
+                        { text: 'Celular', align: 'center', datafield: 'celular_tutor', cellsalign: 'right', width: '10%' }*/
                     ]
                 }
             )
@@ -154,11 +166,13 @@
                         datafields: [
                             { name: 'id_horario', type: 'int'},
                             { name: 'horario', type: 'string'},
+                            { name: 'fecha_matricula', type: 'string'},
                             { name: 'anio_matricula', type: 'int'},
                             { name: 'mes_matricula', type: 'int'},
                             { name: 'sexo', type: 'string'},
                             { name: 'edades', type: 'string'},
                             { name: 'dias', type: 'string'},
+                            { name: 'hora', type: 'string'},
                             { name: 'id_alumno', type: 'int'},
                             { name: 'apellidos_alumno', type: 'string'},
                             { name: 'nombres_alumno', type: 'string'},
@@ -167,6 +181,17 @@
                             { name: 'telefono_tutor', type: 'string'},
                             { name: 'celular_tutor', type: 'string'},
                             { name: 'email_tutor', type: 'string'},
+
+                            { name: 'nombre_mama', type: 'string'},
+                            { name: 'tel_fijo_mama', type: 'string'},
+                            { name: 'tel_cel_mama', type: 'string'},
+                            { name: 'email_mama', type: 'string'},
+
+                            { name: 'nombre_papa', type: 'string'},
+                            { name: 'tel_fijo_papa', type: 'string'},
+                            { name: 'tel_cel_papa', type: 'string'},
+                            { name: 'email_papa', type: 'string'},
+
                             { name: 'total', type: 'float'},
                             { name: 'importe', type: 'float'},
                             { name: 'saldo', type: 'float'}
