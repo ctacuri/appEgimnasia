@@ -1757,6 +1757,11 @@
                 return false;
             }
 
+            if($("#formaPago").jqxDropDownList('selectedIndex') == -1){
+                alert("Error: ingrese una forma de pago valida");
+                return false;
+            }
+
             var txtMsg = "", url = "";
             if($("#id").val() != ""){
                 url = "/EG/updMatricula";
