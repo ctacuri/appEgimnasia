@@ -208,7 +208,8 @@ router.get('/reporteAlumnosClase/:mes/:anio/:id_horario', fnEstaAutenticado, con
 router.get('/reporteDeudasMatriculados', fnEstaAutenticado, controladorEG.reporteDeudasMatriculados);
 router.get('/reportePagosMatriculadosAlumnos/:fechaInicio/:fechaFin', fnEstaAutenticado, controladorEG.reportePagosMatriculadosAlumnos);
 router.get('/reportePagosMatriculadosAlumnosMesAnio/:mes/:anio', fnEstaAutenticado, controladorEG.reportePagosMatriculadosAlumnosMesAnio);
-router.get('/reporteCierreDiarioMatricula/:fechaInicio/:fechaFin/:rucEmpresa/:formaPago', fnEstaAutenticado, controladorEG.reporteCierreDiarioMatricula);
+//router.get('/reporteCierreDiarioMatricula/:fechaInicio/:fechaFin/:rucEmpresa/:formaPago', fnEstaAutenticado, controladorEG.reporteCierreDiarioMatricula);
+router.get('/reporteCierreDiarioMatricula/:fechaInicio/:fechaFin', fnEstaAutenticado, controladorEG.reporteCierreDiarioMatricula);
 router.get('/reporteRegistroVentas/:fechaInicio/:fechaFin/:rucEmpresa', fnEstaAutenticado, controladorEG.reporteRegistroVentas);
 router.get('/listarAsistenciaHorarioAlumno/:id_horario/:idAlumno', fnEstaAutenticado, controladorEG.listarAsistenciaHorarioAlumno);
 

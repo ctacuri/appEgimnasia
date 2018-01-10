@@ -89,7 +89,7 @@
             $.extend( {},
                 vDefaultOptionsToolBar,
                 {
-                    tools: 'custom | custom | custom | custom | custom | custom | custom | custom | custom | custom | custom ', //| input | custom | custom | custom | custom
+                    tools: 'custom | custom | custom | custom | custom | custom | custom ', //| input | custom | custom | custom | custom
                     initTools: function (type, index, tool, menuToolIninitialization) {
                         switch (index) {
                             case 0:
@@ -136,18 +136,8 @@
                                     culture: 'es-ES'
                                 });
                                 tool.append(fecha);
-                                /*tool.jqxDropDownList(
-                                    $.extend(
-                                        {}, vDefaultOptionsDropDownList, {
-                                            width: 80,
-                                            source: anios,
-                                            dropDownHeight: 100
-                                        }
-                                    )
-                                );
-                                tool.jqxDropDownList('selectItem', anioActual);*/
                                 break;
-                            case 5:
+                            /*case 5:
                                 var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Empresa: </div>";
                                 tool.append(label);
                                 break;
@@ -195,8 +185,8 @@
                                         )
                                     );
                                 });
-                                break;
-                            case 9:
+                                break;*/
+                            case 5:
                                 var searchBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/search.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
                                     theme: theme2,
                                     width: 30,
@@ -207,15 +197,15 @@
                                     var tools = $("#jqxToolBar").jqxToolBar("getTools");
                                     var datos = {
                                         fechaInicio: fn_convertFecha_DMY_to_SQL($("#FechaIniOS").val()),
-                                        fechaFin: fn_convertFecha_DMY_to_SQL($("#FechaFinOS").val()),
-                                        rucEmpresa: tools[6].tool.jqxDropDownList('val'),
-                                        formaPago: tools[8].tool.text()
+                                        fechaFin: fn_convertFecha_DMY_to_SQL($("#FechaFinOS").val())
+                                        //rucEmpresa: tools[6].tool.jqxDropDownList('val'),
+                                        //formaPago: tools[8].tool.text()
                                     };
                                     //console.log(datos);
                                     fn_reporteCierreDiario(datos);
                                 });
                                 break;
-                            case 10:
+                            case 6:
                                 var exportBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/icon_excel_02_20.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
                                     theme: theme2,
                                     width: 30,
@@ -268,9 +258,36 @@
                         { text: 'Mes', align: 'center', datafield: 'mes_matricula', cellsalign: 'right', width: '7%' },
 
                         { text: 'Forma Pago', align: 'center', datafield: 'forma_pago', cellsalign: 'left', width: '9%' },
-                        { text: 'Total', align: 'center', datafield: 'total', cellsalign: 'right', width: '10%', cellsformat: 'd2' },
-                        { text: 'Importe', align: 'center', datafield: 'importe', cellsalign: 'right', width: '10%', cellsformat: 'd2' },
-                        { text: 'Saldo', align: 'center', datafield: 'saldo', cellsalign: 'right', width: '10%', cellsformat: 'd2' }
+                        { text: '&nbsp; &nbsp;&nbsp; Total &nbsp;&nbsp; &nbsp;', align: 'center', datafield: 'total', cellsalign: 'right', width: '10%', cellsformat: 'd2' , aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },
+                        { text: '&nbsp; &nbsp;&nbsp; Importe &nbsp;&nbsp; &nbsp;', align: 'center', datafield: 'importe', cellsalign: 'right', width: '10%', cellsformat: 'd2' , aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },
+                        { text: '&nbsp; &nbsp;&nbsp; Saldo &nbsp;&nbsp; &nbsp;', align: 'center', datafield: 'saldo', cellsalign: 'right', width: '10%', cellsformat: 'd2' , aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        }
                     ]
                 }
             )
@@ -309,9 +326,8 @@
         }
 
         function fn_reporteCierreDiario(datos){
-            //console.log("MES:" + mes);
-            //console.log("ANIO:" + anio);
-            $.getJSON('/reporteCierreDiarioMatricula/'+datos.fechaInicio+'/'+datos.fechaFin+'/'+datos.rucEmpresa+'/'+datos.formaPago, function(json) {
+            //$.getJSON('/reporteCierreDiarioMatricula/'+datos.fechaInicio+'/'+datos.fechaFin+'/'+datos.rucEmpresa+'/'+datos.formaPago, function(json) {
+            $.getJSON('/reporteCierreDiarioMatricula/'+datos.fechaInicio+'/'+datos.fechaFin, function(json) {
                 //console.log(json.registros[0]);
                 //return false;
                 var source =

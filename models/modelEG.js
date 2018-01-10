@@ -781,9 +781,9 @@ model.reportePagosMatriculadosAlumnosMesAnio = function(datos, cb){
 model.reporteCierreDiarioMatricula = function(datos, cb){
     var sentenciaSQL = "CALL sp_reporteCierreDiario(";
     sentenciaSQL += "'" + datos.fechaInicio + "',";
-    sentenciaSQL += "'" + datos.fechaFin + "',";
-    sentenciaSQL += "'" + datos.rucEmpresa + "',";
-    sentenciaSQL += "'" + datos.formaPago + "')";
+    sentenciaSQL += "'" + datos.fechaFin + "')";
+    //sentenciaSQL += "'" + datos.rucEmpresa + "',";
+    //sentenciaSQL += "'" + datos.formaPago + "')";
 
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);

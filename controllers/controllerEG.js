@@ -1438,9 +1438,9 @@ controller.reportePagosMatriculadosAlumnosMesAnio = function(req, res, next){
 controller.reporteCierreDiarioMatricula = function(req, res, next){
     var datos = {
         fechaInicio: req.params.fechaInicio,
-        fechaFin: req.params.fechaFin,
-        rucEmpresa: req.params.rucEmpresa,
-        formaPago: req.params.formaPago
+        fechaFin: req.params.fechaFin
+        //rucEmpresa: req.params.rucEmpresa,
+        //formaPago: req.params.formaPago
     };
     model.reporteCierreDiarioMatricula(datos, function(err, registros){
         if(err){
