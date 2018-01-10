@@ -42,142 +42,200 @@
         for(var x= f.getFullYear() + 1; x>= 2007;x--){
             anios.push(x);
         }
-        $("#jqxToolBar").jqxToolBar(
-                $.extend( {},
-                        vDefaultOptionsToolBar,
-                        {
-                            tools: 'custom | custom | custom | custom | custom | custom | custom | custom | custom | custom | custom ', //| input | custom | custom | custom | custom
-                            initTools: function (type, index, tool, menuToolIninitialization) {
-                                switch (index) {
-                                    case 0:
-                                        var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'><b>CIERRE DIARIO &nbsp;&nbsp; </b></div>";
-                                        tool.append(label);
-                                        break;
-                                    case 1:
-                                        var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>F. Inicio: </div>";
-                                        tool.append(label);
-                                        break;
-                                    case 2:
-                                        var fecha = $("<div id='FechaIniOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
-                                            theme: theme2,
-                                            value: new Date(anioActual, mesActual, 1),
-                                            width: 105,
-                                            height: 25,
-                                            culture: 'es-ES'
-                                        });
-                                        tool.append(fecha);
-                                        /*tool.jqxDropDownList(
-                                            $.extend(
-                                                {}, vDefaultOptionsDropDownList, {
-                                                    width: 80,
-                                                    source: meses,
-                                                    displayMember: "mes",
-                                                    valueMember: "id_mes",
-                                                    dropDownWidth: 150,
-                                                    dropDownHeight: 150
-                                                }
-                                            )
-                                        );*/
-                                        tool.jqxDropDownList('selectItem', mesActual + 1);
-                                        break;
-                                    case 3:
-                                        var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>F. Fin: </div>";
-                                        tool.append(label);
-                                        break;
-                                    case 4:
-                                        var fecha = $("<div id='FechaFinOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
-                                            theme: theme2,
-                                            value: new Date(anioActual, mesActual, ultimoDiaMesActual),
-                                            width: 105,
-                                            height: 25,
-                                            culture: 'es-ES'
-                                        });
-                                        tool.append(fecha);
-                                        /*tool.jqxDropDownList(
-                                            $.extend(
-                                                {}, vDefaultOptionsDropDownList, {
-                                                    width: 80,
-                                                    source: anios,
-                                                    dropDownHeight: 100
-                                                }
-                                            )
-                                        );
-                                        tool.jqxDropDownList('selectItem', anioActual);*/
-                                        break;
-                                    case 5:
-                                        var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Empresa: </div>";
-                                        tool.append(label);
-                                        break;
-                                    case 6:
-                                        tool.jqxDropDownList(
-                                            $.extend(
-                                                {}, vDefaultOptionsDropDownList, {
-                                                    width: 80,
-                                                    height: 25,
-                                                    source: anios,
-                                                    dropDownHeight: 100
-                                                }
-                                            )
-                                        );
-                                        break;
-                                    case 7:
-                                        var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Forma Pago: </div>";
-                                        tool.append(label);
-                                        break;
-                                    case 8:
-                                        tool.jqxDropDownList(
-                                            $.extend(
-                                                {}, vDefaultOptionsDropDownList, {
-                                                    width: 80,
-                                                    height: 25,
-                                                    source: anios,
-                                                    dropDownHeight: 100
-                                                }
-                                            )
-                                        );
-                                        break;
-                                    case 9:
-                                        var searchBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/search.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
-                                            theme: theme2,
-                                            width: 30,
-                                            height: 19
-                                        });
-                                        tool.append(searchBtn);
-                                        searchBtn.click(function (event) {
-                                            /*var tools = $("#jqxToolBar").jqxToolBar("getTools");
-                                            var fechaIni = fn_convertFecha_DMY_to_SQL($("#FechaIniOS").val());
-                                            var fechaFin = fn_convertFecha_DMY_to_SQL($("#FechaFinOS").val());
 
-                                            */
-                                            //fn_reportePagosMatriculados(fechaIni, fechaFin);
-                                            var tools = $("#jqxToolBar").jqxToolBar("getTools");
-                                            var datos = {
-                                                fechaInicio: fn_convertFecha_DMY_to_SQL($("#FechaIniOS").val()),
-                                                fechaFin: fn_convertFecha_DMY_to_SQL($("#FechaFinOS").val()),
-                                                rucEmpresa: tools[6].tool.jqxDropDownList('val'),
-                                                formaPago: tools[8].tool.jqxDropDownList('val')
-                                            };
-                                            console.log(datos);
-                                            //fn_reportePagosMatriculadosMesAnio(mes, anio);
-                                        });
-                                        break;
-                                    case 10:
-                                        var exportBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/icon_excel_02_20.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
-                                            theme: theme2,
-                                            width: 30,
-                                            height: 19
-                                        });
-                                        tool.append(exportBtn);
-                                        exportBtn.click(function (event) {
-                                            var tools = $("#jqxToolBar").jqxToolBar("getTools");
-                                            var JSONData = $("#grid").jqxGrid('exportdata', 'json');
-                                            fn_JSONToCSVConvertor(JSONData, "RepPagosMatriculados", "", true);
-                                        });
-                                        break;
-                                }
-                            }
+
+        var arregloEmpresas = [], arregloFormaPago = [];
+        $.when(
+            $.ajax("/listaEmpresas"),
+            $.ajax("/listaFormaPago")
+        ).done(function( json5, json6) {
+            for(var x = 0; x<json5[0].registros[0].length; x++){
+                arregloEmpresas.push(
+                    {
+                        id_parametro: json5[0].registros[0][x].id_parametro,
+                        numdoc: json5[0].registros[0][x].numdoc,
+                        alias: json5[0].registros[0][x].alias,
+                        descripcion: json5[0].registros[0][x].descripcion
+                    }
+                );
+            }
+            //console.log(json6[0].registros[0]);
+            for(var y = 0; y<json6[0].registros[0].length; y++){
+                arregloFormaPago.push(
+                    {
+                        id_tipo_pago: json6[0].registros[0][y].id_tipo_pago,
+                        descripcion: json6[0].registros[0][y].descripcion
+                    }
+                );
+            }
+
+            /*if(json5[0].status == "success"){
+                $("#empresa").jqxDropDownList({
+                    source: arregloEmpresas,
+                    displayMember: "alias",
+                    valueMember: "numdoc",
+                    autoDropDownHeight: true
+                });
+            }else{
+                alert("Error: al cargar empresa");
+                return false;
+            }*/
+        });
+
+        //console.log(arregloEmpresas);
+        //console.log(arregloFormaPago);
+
+        $("#jqxToolBar").jqxToolBar(
+            $.extend( {},
+                vDefaultOptionsToolBar,
+                {
+                    tools: 'custom | custom | custom | custom | custom | custom | custom | custom | custom | custom | custom ', //| input | custom | custom | custom | custom
+                    initTools: function (type, index, tool, menuToolIninitialization) {
+                        switch (index) {
+                            case 0:
+                                var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'><b>CIERRE DIARIO &nbsp;&nbsp; </b></div>";
+                                tool.append(label);
+                                break;
+                            case 1:
+                                var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>F. Inicio: </div>";
+                                tool.append(label);
+                                break;
+                            case 2:
+                                var fecha = $("<div id='FechaIniOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
+                                    theme: theme2,
+                                    value: new Date(anioActual, mesActual, 1),
+                                    width: 105,
+                                    height: 25,
+                                    culture: 'es-ES'
+                                });
+                                tool.append(fecha);
+                                /*tool.jqxDropDownList(
+                                    $.extend(
+                                        {}, vDefaultOptionsDropDownList, {
+                                            width: 80,
+                                            source: meses,
+                                            displayMember: "mes",
+                                            valueMember: "id_mes",
+                                            dropDownWidth: 150,
+                                            dropDownHeight: 150
+                                        }
+                                    )
+                                );*/
+                                tool.jqxDropDownList('selectItem', mesActual + 1);
+                                break;
+                            case 3:
+                                var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>F. Fin: </div>";
+                                tool.append(label);
+                                break;
+                            case 4:
+                                var fecha = $("<div id='FechaFinOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
+                                    theme: theme2,
+                                    value: new Date(anioActual, mesActual, ultimoDiaMesActual),
+                                    width: 105,
+                                    height: 25,
+                                    culture: 'es-ES'
+                                });
+                                tool.append(fecha);
+                                /*tool.jqxDropDownList(
+                                    $.extend(
+                                        {}, vDefaultOptionsDropDownList, {
+                                            width: 80,
+                                            source: anios,
+                                            dropDownHeight: 100
+                                        }
+                                    )
+                                );
+                                tool.jqxDropDownList('selectItem', anioActual);*/
+                                break;
+                            case 5:
+                                var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Empresa: </div>";
+                                tool.append(label);
+                                break;
+                            case 6:
+                                $.when(
+                                    $.ajax("/listaEmpresas")
+                                ).done(function(json5) {
+                                    //console.log(json5.registros[0]);
+                                    tool.jqxDropDownList(
+                                        $.extend(
+                                            {}, vDefaultOptionsDropDownList, {
+                                                width: 80,
+                                                height: 25,
+                                                source: json5.registros[0],
+                                                displayMember: "alias",
+                                                valueMember: "numdoc",
+                                                dropDownWidth: 160,
+                                                autoDropDownHeight: true
+                                            }
+                                        )
+                                    );
+
+                                });
+                                break;
+                            case 7:
+                                var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Forma Pago: </div>";
+                                tool.append(label);
+                                break;
+                            case 8:
+                                $.when(
+                                    $.ajax("/listaFormaPago")
+                                ).done(function(json6) {
+                                    tool.jqxDropDownList(
+                                        $.extend(
+                                            {}, vDefaultOptionsDropDownList, {
+                                                width: 80,
+                                                height: 25,
+                                                source: json6.registros[0],
+                                                displayMember: "descripcion",
+                                                valueMember: "id_tipo_pago",
+                                                autoDropDownHeight: true
+                                            }
+                                        )
+                                    );
+                                });
+                                break;
+                            case 9:
+                                var searchBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/search.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                    theme: theme2,
+                                    width: 30,
+                                    height: 19
+                                });
+                                tool.append(searchBtn);
+                                searchBtn.click(function (event) {
+                                    /*var tools = $("#jqxToolBar").jqxToolBar("getTools");
+                                    var fechaIni = fn_convertFecha_DMY_to_SQL($("#FechaIniOS").val());
+                                    var fechaFin = fn_convertFecha_DMY_to_SQL($("#FechaFinOS").val());
+
+                                    */
+                                    //fn_reportePagosMatriculados(fechaIni, fechaFin);
+                                    var tools = $("#jqxToolBar").jqxToolBar("getTools");
+                                    var datos = {
+                                        fechaInicio: fn_convertFecha_DMY_to_SQL($("#FechaIniOS").val()),
+                                        fechaFin: fn_convertFecha_DMY_to_SQL($("#FechaFinOS").val()),
+                                        rucEmpresa: tools[6].tool.jqxDropDownList('val'),
+                                        formaPago: tools[8].tool.jqxDropDownList('val')
+                                    };
+                                    console.log(datos);
+                                    //fn_reportePagosMatriculadosMesAnio(mes, anio);
+                                });
+                                break;
+                            case 10:
+                                var exportBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/icon_excel_02_20.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                    theme: theme2,
+                                    width: 30,
+                                    height: 19
+                                });
+                                tool.append(exportBtn);
+                                exportBtn.click(function (event) {
+                                    var tools = $("#jqxToolBar").jqxToolBar("getTools");
+                                    var JSONData = $("#grid").jqxGrid('exportdata', 'json');
+                                    fn_JSONToCSVConvertor(JSONData, "RepPagosMatriculados", "", true);
+                                });
+                                break;
                         }
-                )
+                    }
+                }
+            )
         )
 
         var arregloFormaPago = [
