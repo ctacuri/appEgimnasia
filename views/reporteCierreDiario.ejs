@@ -165,6 +165,7 @@
                                                 displayMember: "alias",
                                                 valueMember: "numdoc",
                                                 dropDownWidth: 160,
+                                                selectedIndex: 0,
                                                 autoDropDownHeight: true
                                             }
                                         )
@@ -188,6 +189,7 @@
                                                 source: json6.registros[0],
                                                 displayMember: "descripcion",
                                                 valueMember: "id_tipo_pago",
+                                                selectedIndex: 0,
                                                 autoDropDownHeight: true
                                             }
                                         )
@@ -202,21 +204,15 @@
                                 });
                                 tool.append(searchBtn);
                                 searchBtn.click(function (event) {
-                                    /*var tools = $("#jqxToolBar").jqxToolBar("getTools");
-                                    var fechaIni = fn_convertFecha_DMY_to_SQL($("#FechaIniOS").val());
-                                    var fechaFin = fn_convertFecha_DMY_to_SQL($("#FechaFinOS").val());
-
-                                    */
-                                    //fn_reportePagosMatriculados(fechaIni, fechaFin);
                                     var tools = $("#jqxToolBar").jqxToolBar("getTools");
                                     var datos = {
                                         fechaInicio: fn_convertFecha_DMY_to_SQL($("#FechaIniOS").val()),
                                         fechaFin: fn_convertFecha_DMY_to_SQL($("#FechaFinOS").val()),
                                         rucEmpresa: tools[6].tool.jqxDropDownList('val'),
-                                        formaPago: tools[8].tool.jqxDropDownList('val')
+                                        formaPago: tools[8].tool.text()
                                     };
-                                    console.log(datos);
-                                    //fn_reportePagosMatriculadosMesAnio(mes, anio);
+                                    //console.log(datos);
+                                    fn_reporteCierreDiario(datos);
                                 });
                                 break;
                             case 10:
@@ -227,9 +223,9 @@
                                 });
                                 tool.append(exportBtn);
                                 exportBtn.click(function (event) {
-                                    var tools = $("#jqxToolBar").jqxToolBar("getTools");
+                                    //var tools = $("#jqxToolBar").jqxToolBar("getTools");
                                     var JSONData = $("#grid").jqxGrid('exportdata', 'json');
-                                    fn_JSONToCSVConvertor(JSONData, "RepPagosMatriculados", "", true);
+                                    fn_JSONToCSVConvertor(JSONData, "RepCierreDiario", "", true);
                                 });
                                 break;
                         }
@@ -255,100 +251,30 @@
                 {}, vDefaultOptionsGrid,
                 {
                     pageable: true,
-                    editable: true,
+                    editable: false,
                     pagermode: 'simple',
                     selectionmode: 'singlerow',
                     pagesize: 20,
                     columns: [
+                        { text: 'id_matricula', align: 'center', datafield: 'id_matricula', cellsalign: 'center', width: '10%' },
                         { text: 'Fecha', align: 'center', datafield: 'fecha_matricula', cellsalign: 'center', width: '10%' },
+
+                        { text: 'Alias', align: 'center', datafield: 'alias', cellsalign: 'left', width: '10%' },
+                        { text: 'Alumno', align: 'center', datafield: 'alumno', cellsalign: 'left', width: '10%' },
+                        { text: 'Tutor', align: 'center', datafield: 'tutor', cellsalign: 'left', width: '10%' },
+
+                        { text: 'Horario', align: 'center', datafield: 'horario', cellsalign: 'left', width: '20%' },
                         { text: 'Año', align: 'center', datafield: 'anio_matricula', cellsalign: 'center', width: '8%' },
                         { text: 'Mes', align: 'center', datafield: 'mes_matricula', cellsalign: 'right', width: '7%' },
-                        { text: 'Horario', align: 'center', datafield: 'horario', cellsalign: 'left', width: '20%' },
 
-                        { text: 'Sexo', align: 'center', datafield: 'sexo', cellsalign: 'center', width: '10%' },
-                        { text: 'Dias', align: 'center', datafield: 'dias', cellsalign: 'left', width: '10%' },
-                        { text: 'Edades', align: 'center', datafield: 'edades', cellsalign: 'left', width: '10%' },
-                        { text: 'Hora', align: 'center', datafield: 'hora', cellsalign: 'left', width: '15%' },
-
-                        ////{ text: 'Horario', align: 'center', datafield: 'HORARIO', cellsalign: 'center', width: '30%' },
-
-                        { text: 'Profesor', align: 'center', datafield: 'profesor', cellsalign: 'left', width: '25%' },
-                        { text: 'Apellidos', align: 'center', datafield: 'apellidos_alumno', cellsalign: 'left', width: '20%' },
-                        { text: 'Nombres', align: 'center', datafield: 'nombres_alumno', cellsalign: 'left', width: '20%' },
-                        { text: 'Apellidos Tutor', align: 'center', datafield: 'apellidos_tutor', cellsalign: 'left', width: '15%' },
-                        { text: 'Nombres Tutor', align: 'center', datafield: 'nombres_tutor', cellsalign: 'left', width: '15%' },
-
-                        ////{ text: 'Monto Importe', align: 'center', datafield: 'MONTO_IMPORTE', cellsalign: 'right', width: '10%' },
-                        //{ text: 'Tipo Pago', align: 'center', datafield: 'TIPO_PAGO', cellsalign: 'right', width: '12%' },
-
-                        //{ text: 'Forma Pago', align: 'center', datafield: 'fpago', cellsalign: 'left', width: '10%' },
-                        { text: 'Forma Pago', align: 'center', datafield: 'forma_pago', cellsalign: 'left', width: '9%' , columntype: 'dropdownlist',
-                            createeditor: function (row, value, editor) {
-                                editor.jqxDropDownList({
-                                    source: arregloFormaPago,
-                                    displayMember: 'descripcion',
-                                    valueMember: 'id',
-                                    autoDropDownHeight: true,
-                                    dropDownWidth: 130
-                                });
-                            }
-                        },
-                        { text: 'Total', align: 'center', datafield: 'pago', cellsalign: 'right', width: '10%', cellsformat: 'd2' },
-                        { text: 'Importe', align: 'center', datafield: 'total', cellsalign: 'right', width: '10%', cellsformat: 'd2' },
+                        { text: 'Forma Pago', align: 'center', datafield: 'forma_pago', cellsalign: 'left', width: '9%' },
+                        { text: 'Total', align: 'center', datafield: 'total', cellsalign: 'right', width: '10%', cellsformat: 'd2' },
+                        { text: 'Importe', align: 'center', datafield: 'importe', cellsalign: 'right', width: '10%', cellsformat: 'd2' },
                         { text: 'Saldo', align: 'center', datafield: 'saldo', cellsalign: 'right', width: '10%', cellsformat: 'd2' }
                     ]
                 }
             )
         );
-
-        function fn_reportePagosMatriculados(fechaIni, fechaFin){
-            $.getJSON('/reportePagosMatriculadosAlumnos/'+fechaIni+'/'+fechaFin, function(json) {
-                console.log(json);
-                var source =
-                    {
-                        datatype: "json",
-                        updaterow: function (rowid, rowdata, commit) {
-                            fn_updateRowFormaPago(rowdata, commit);
-                        },
-                        datafields: [
-                            { name: 'fecha_matricula', type: 'string'},
-                            { name: 'id_horario', type: 'int'},
-                            { name: 'horario', type: 'string'},
-                            { name: 'anio_matricula', type: 'int'},
-                            { name: 'mes_matricula', type: 'int'},
-                            { name: 'sexo', type: 'string'},
-                            { name: 'edades', type: 'string'},
-                            { name: 'dias', type: 'string'},
-                            { name: 'hora', type: 'string'},
-                            { name: 'id_alumno', type: 'int'},
-                            { name: 'profesor', type: 'string'},
-                            { name: 'apellidos_alumno', type: 'string'},
-                            { name: 'nombres_alumno', type: 'string'},
-                            { name: 'apellidos_tutor', type: 'string'},
-                            { name: 'nombres_tutor', type: 'string'},
-                            /*{ name: 'nombres_alumno', type: 'string'},
-                            { name: 'apellidos_tutor', type: 'string'},
-                            { name: 'nombres_tutor', type: 'string'},
-                            { name: 'telefono_tutor', type: 'string'},
-                            { name: 'celular_tutor', type: 'string'},
-                            { name: 'email_tutor', type: 'string'},*/
-                            //{ name: 'fpago', type: 'string'},
-                            { name: 'forma_pago', type: 'string'},
-                            { name: 'total', type: 'float'},
-                            { name: 'pago', type: 'float'},
-                            { name: 'saldo', type: 'float'}
-                        ],
-                        localdata: json.registros[0]
-                    };
-                var dataAdapter = new $.jqx.dataAdapter(source);
-
-                $("#grid").jqxGrid(
-                {
-                    source: dataAdapter
-                });
-                $('#grid').jqxGrid('autoresizecolumns');
-            });
-        }
 
         function fn_updateRowFormaPago(rowdata, commit){
             //commit(true);
@@ -382,43 +308,30 @@
             });
         }
 
-        function fn_reportePagosMatriculadosMesAnio(mes, anio){
+        function fn_reporteCierreDiario(datos){
             //console.log("MES:" + mes);
             //console.log("ANIO:" + anio);
-            $.getJSON('/reportePagosMatriculadosAlumnosMesAnio/'+mes+'/'+anio, function(json) {
-                console.log(json);
+            $.getJSON('/reporteCierreDiarioMatricula/'+datos.fechaInicio+'/'+datos.fechaFin+'/'+datos.rucEmpresa+'/'+datos.formaPago, function(json) {
+                //console.log(json.registros[0]);
+                //return false;
                 var source =
                     {
                         datatype: "json",
-                        updaterow: function (rowid, rowdata, commit) {
+                        /*updaterow: function (rowid, rowdata, commit) {
                             fn_updateRowFormaPago(rowdata, commit);
-                        },
+                        },*/
                         datafields: [
+                            { name: 'id_matricula', type: 'int'},
                             { name: 'fecha_matricula', type: 'string'},
-                            { name: 'id_horario', type: 'int'},
+                            { name: 'alias', type: 'string'},
+                            { name: 'alumno', type: 'string'},
+                            { name: 'tutor', type: 'string'},
                             { name: 'horario', type: 'string'},
                             { name: 'anio_matricula', type: 'int'},
                             { name: 'mes_matricula', type: 'int'},
-                            { name: 'sexo', type: 'string'},
-                            { name: 'edades', type: 'string'},
-                            { name: 'dias', type: 'string'},
-                            { name: 'hora', type: 'string'},
-                            { name: 'id_alumno', type: 'int'},
-                            { name: 'profesor', type: 'string'},
-                            { name: 'apellidos_alumno', type: 'string'},
-                            { name: 'nombres_alumno', type: 'string'},
-                            { name: 'apellidos_tutor', type: 'string'},
-                            { name: 'nombres_tutor', type: 'string'},
-                            /*{ name: 'nombres_alumno', type: 'string'},
-                            { name: 'apellidos_tutor', type: 'string'},
-                            { name: 'nombres_tutor', type: 'string'},
-                            { name: 'telefono_tutor', type: 'string'},
-                            { name: 'celular_tutor', type: 'string'},
-                            { name: 'email_tutor', type: 'string'},*/
-                            //{ name: 'fpago', type: 'string'},
                             { name: 'forma_pago', type: 'string'},
                             { name: 'total', type: 'float'},
-                            { name: 'pago', type: 'float'},
+                            { name: 'importe', type: 'float'},
                             { name: 'saldo', type: 'float'}
                         ],
                         localdata: json.registros[0]
