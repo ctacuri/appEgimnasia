@@ -112,6 +112,12 @@ router.get('/reporteCierreDiario', fnEstaAutenticado, function(req, res, next) {
     res.header("Expires", 0);
     res.render('reporteCierreDiario', { usuario: req.user });
 });
+router.get('/reporteResumenAlumnosClase', fnEstaAutenticado, function(req, res, next) {
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
+    res.render('reporteResumenAlumnosClase', { usuario: req.user });
+});
 router.get('/padronSocios', fnEstaAutenticado, function(req, res, next) {
     res.header("Cache-Control", "no-cache, no-store, must-revalidate");
     res.header("Pragma", "no-cache");
@@ -210,6 +216,7 @@ router.get('/reportePagosMatriculadosAlumnos/:fechaInicio/:fechaFin', fnEstaAute
 router.get('/reportePagosMatriculadosAlumnosMesAnio/:mes/:anio', fnEstaAutenticado, controladorEG.reportePagosMatriculadosAlumnosMesAnio);
 //router.get('/reporteCierreDiarioMatricula/:fechaInicio/:fechaFin/:rucEmpresa/:formaPago', fnEstaAutenticado, controladorEG.reporteCierreDiarioMatricula);
 router.get('/reporteCierreDiarioMatricula/:fechaInicio/:fechaFin', fnEstaAutenticado, controladorEG.reporteCierreDiarioMatricula);
+router.get('/reporteresumenAlumnosClaseMatriculados/:mes/:anio', fnEstaAutenticado, controladorEG.reporteResumenAlumnosClaseMatriculados);
 router.get('/reporteRegistroVentas/:fechaInicio/:fechaFin/:rucEmpresa', fnEstaAutenticado, controladorEG.reporteRegistroVentas);
 router.get('/listarAsistenciaHorarioAlumno/:id_horario/:idAlumno', fnEstaAutenticado, controladorEG.listarAsistenciaHorarioAlumno);
 

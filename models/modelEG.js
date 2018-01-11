@@ -789,6 +789,15 @@ model.reporteCierreDiarioMatricula = function(datos, cb){
     conn.query(sentenciaSQL, cb);
 }
 
+model.reporteResumenAlumnosClaseMatriculados = function(datos, cb){
+    var sentenciaSQL = "CALL sp_reporteResumenAlumnosClase(";
+    sentenciaSQL += datos.mes + ",";
+    sentenciaSQL += datos.anio + ")";
+
+    console.log(sentenciaSQL);
+    conn.query(sentenciaSQL, cb);
+}
+
 model.reporteRegistroVentas = function(datos, cb){
     var sentenciaSQL = "CALL sp_reporteRegistroVentas(";
     sentenciaSQL += "'" + datos.fechaInicio + "',";
