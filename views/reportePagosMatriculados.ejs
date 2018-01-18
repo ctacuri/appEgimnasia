@@ -286,7 +286,7 @@
                 id: rowdata.id_matricula,
                 descripcion: rowdata.forma_pago
             };
-            console.log(datos);
+            //console.log(datos);
             //return false;
             $.ajax({
                 type: "POST",
@@ -322,6 +322,7 @@
                             fn_updateRowFormaPago(rowdata, commit);
                         },
                         datafields: [
+                            { name: 'id_matricula', type: 'int'},
                             { name: 'fecha_matricula', type: 'string'},
                             { name: 'id_horario', type: 'int'},
                             { name: 'horario', type: 'string'},

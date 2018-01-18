@@ -1059,6 +1059,12 @@ function fn_emisionTicket(arregloCab, arregloDet){
         case "3":
             tipoPago = 'CREDITO';
             break;
+        case "4":
+            tipoPago = 'DEPOSITO';
+            break;
+        case "5":
+            tipoPago = 'TRANSFERENCIA';
+            break;
     }
     //console.log(tipoPago);
     $("#tipoPago").text(tipoPago);

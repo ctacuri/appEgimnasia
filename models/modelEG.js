@@ -944,7 +944,7 @@ model.updateProfesorReporteAlumno = function(datos, cb){
 
 model.updateFormaPagoReportePagosAlumno = function(datos, cb){
     var sentenciaSQL = "";
-    sentenciaSQL += "CALL updateFormaPagoReportePagosAlumno(";
+    sentenciaSQL += "CALL sp_updateFormaPagoReportePagosAlumno(";
     sentenciaSQL += datos.id + ",";
     sentenciaSQL += "'" + datos.descripcion + "')";
     console.log(sentenciaSQL);

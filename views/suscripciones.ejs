@@ -1757,11 +1757,6 @@
                 return false;
             }
 
-            if($("#formaPago").jqxDropDownList('selectedIndex') == -1){
-                alert("Error: ingrese una forma de pago valida");
-                return false;
-            }
-
             var txtMsg = "", url = "";
             if($("#id").val() != ""){
                 url = "/EG/updMatricula";
@@ -1780,10 +1775,12 @@
             }else{
                 url = "/EG/saveMatricula";
                 txtMsg = "registrar";
+                if($("#formaPago").jqxDropDownList('selectedIndex') == -1){
+                    alert("Error: ingrese una forma de pago valida");
+                    return false;
+                }
             }
             var datos = $('#grid2').jqxGrid('getrows');
-            //console.log(datos);
-            //return false;
             if(datos.length == 0){
                 alert("Error: agregue una matricula a la grilla");
                 return false;
@@ -1903,7 +1900,8 @@
                 //fn_registrarCabCobro(arregloCabCobro[0], JSON.stringify(datos), queryResultE[0].impuesto);
                 //fn_emisionTicket(arregloCabCobro[0], JSON.stringify(datos));
             }
-            //console.log(arregloCabCobro);
+
+            console.log(arregloCabCobro);
             //return false;
             if(confirm("Esta seguro de "+txtMsg+" los datos ?")){
                 console.log("CONTADOR " + datos.length);
@@ -1963,7 +1961,7 @@
                                     dataType: 'json',
                                     success: function(result){
                                         console.log("ver ticket VARIOS");
-                                        console.log(result);
+                                        //console.log(result);
                                         if(result.status == "success") {
                                             //DESPUES DE ACTUALIZAR EL CORRELATIVO MUESTRO
                                             //EL TICKET
@@ -1993,74 +1991,86 @@
                     }
                 }else{
                     console.log("BBBBB");
-                    //console.log(datos[0]);
+                    //console.log(arregloNuevo[0]);
                     //return false;
-                    $.ajax({
-                        type: "POST",
-                        url: url,
-                        data: arregloNuevo[0],
-                        dataType: 'json',
-                        success: function(result){
-                            //console.log("VERIFICAR ESTO ...");
-                            //console.log(result);
-                            if(result.status == "success") {
-                                //EN LA ACTUALIZACION DE MATRICULA
-                                //NO SE ALTERA NINGUNA INFORMACION
-                                //DE COBRO
-                                //if($("#emitir").val() == 1){
-                                if($("#emitir").val() == 1 || $("#emitir").val() == 2 || $("#emitir").val() == 3 || $("#emitir").val() == 4){
-                                    fn_registrarCabCobro(arregloCabCobro[0], JSON.stringify(arregloNuevo), queryResultE[0].impuesto);
-                                    return false;
-                                }else{
-                                    var url = "/EG/updCorrelativo/";
-                                    var arregloUpdCorrelativo = {
-                                        rucEmpresa: $("#empresa").val(),
-                                        idFormaPago: $("#emitir").val()
-                                    };
-                                    //console.log("arregloUpdCorrelativo");
-                                    //console.log(arregloUpdCorrelativo);
-                                    $.ajax({
-                                        type: "POST",
-                                        url: url,
-                                        data: arregloUpdCorrelativo,
-                                        dataType: 'json',
-                                        success: function(result){
-                                            console.log("ver ticket UNO");
-                                            console.log(result);
-                                            if(result.status == "success") {
-                                                //DESPUES DE ACTUALIZAR EL CORRELATIVO MUESTRO
-                                                //EL TICKET
-                                                //$('#myModalTicket').modal('show');
-                                                /*fn_updArreglos();
-                                                if(arregloCabCobro[0].pantallaCobro == "SI"){
-                                                    console.log("UPDATE DE SALDO DE MATRICULA");
-                                                    console.log(arregloCabCobro[0]);
-                                                    fn_updSaldoCobro(arregloCabCobro[0]);
-                                                }*/
-                                                return false;
-                                            }else{
-                                                alert("Error: Vuelva a intentarlo (Upd Correlativo)");
-                                                return false;
-                                            }
-                                        },error: function (xhr, ajaxOptions, thrownError) {
-                                            alert("ERROR: " + xhr.responseText+" - "+thrownError);
-                                        }
-                                    });
-                                }
 
-                                alert("Proceso realizado correctamente (MATRICULA) UNO");
-                                //location.reload();
-                                return false;
-                            }else{
-                                alert("Error: Vuelva a intentarlo");
-                                return false;
+
+                        $.ajax({
+                            type: "POST",
+                            url: url,
+                            data: arregloNuevo[0],
+                            dataType: 'json',
+                            success: function(result){
+                                //console.log("VERIFICAR ESTO ...");
+                                //console.log(result);
+                                if(result.status == "success") {
+                                    //EN LA ACTUALIZACION DE MATRICULA
+                                    //NO SE ALTERA NINGUNA INFORMACION
+                                    //DE COBRO
+                                    //if($("#emitir").val() == 1){
+
+                                    if (txtMsg == "actualizar"){
+                                        fn_listaMatricula($("#FechaIniOS").val(), $("#FechaFinOS").val());
+                                        $('#myModal').modal('hide');
+                                    }else{
+
+                                        if ($("#emitir").val() == 1 || $("#emitir").val() == 2 || $("#emitir").val() == 3 || $("#emitir").val() == 4) {
+                                            //console.log(arregloCabCobro);
+                                            fn_registrarCabCobro(arregloCabCobro[0], JSON.stringify(arregloNuevo), queryResultE[0].impuesto);
+                                            return false;
+                                        } else {
+                                            var url = "/EG/updCorrelativo/";
+                                            var arregloUpdCorrelativo = {
+                                                rucEmpresa: $("#empresa").val(),
+                                                idFormaPago: $("#emitir").val()
+                                            };
+                                            //console.log("arregloUpdCorrelativo");
+                                            //console.log(arregloUpdCorrelativo);
+                                            $.ajax({
+                                                type: "POST",
+                                                url: url,
+                                                data: arregloUpdCorrelativo,
+                                                dataType: 'json',
+                                                success: function (result) {
+                                                    console.log("ver ticket UNO");
+                                                    console.log(result);
+                                                    if (result.status == "success") {
+                                                        //DESPUES DE ACTUALIZAR EL CORRELATIVO MUESTRO
+                                                        //EL TICKET
+                                                        //$('#myModalTicket').modal('show');
+                                                        /*fn_updArreglos();
+                                                         if(arregloCabCobro[0].pantallaCobro == "SI"){
+                                                         console.log("UPDATE DE SALDO DE MATRICULA");
+                                                         console.log(arregloCabCobro[0]);
+                                                         fn_updSaldoCobro(arregloCabCobro[0]);
+                                                         }*/
+                                                        return false;
+                                                    } else {
+                                                        alert("Error: Vuelva a intentarlo (Upd Correlativo)");
+                                                        return false;
+                                                    }
+                                                }, error: function (xhr, ajaxOptions, thrownError) {
+                                                    alert("ERROR: " + xhr.responseText + " - " + thrownError);
+                                                }
+                                            });
+
+                                        }
+
+                                        alert("Proceso realizado correctamente (MATRICULA) UNO");
+                                        //location.reload();
+                                        return false;
+                                    }
+                                }else{
+                                    alert("Error: Vuelva a intentarlo");
+                                    return false;
+                                }
+                            },error: function (xhr, ajaxOptions, thrownError) {
+                                alert("ERROR: " + xhr.responseText+" - "+thrownError);
                             }
-                        },error: function (xhr, ajaxOptions, thrownError) {
-                            alert("ERROR: " + xhr.responseText+" - "+thrownError);
-                        }
-                    });
+                        });
+                    }
+
                 }
-            }
 
         });
 
