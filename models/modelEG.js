@@ -816,6 +816,38 @@ model.listarAsistenciaHorarioAlumno = function(datos, cb){
     conn.query(sentenciaSQL, cb);
 }
 
+model.listaHorariosVacantes = function(cb){
+    var sentenciaSQL = "CALL sp_listarHorariosVacantes()";
+    //sentenciaSQL += datos.idHorario + ",";
+    //sentenciaSQL += datos.idAlumno + ")";
+
+    console.log(sentenciaSQL);
+    conn.query(sentenciaSQL, cb);
+}
+
+model.saveHorariosVacantes = function(datos, cb){
+    var sentenciaSQL = "CALL sp_saveHorariosVacantes(";
+    sentenciaSQL += datos.mes + ",";
+    sentenciaSQL += datos.anio + ",";
+    sentenciaSQL += datos.id_horario + ",";
+    sentenciaSQL += datos.vacantes + ")";
+
+    console.log(sentenciaSQL);
+    conn.query(sentenciaSQL, cb);
+}
+
+model.updHorariosVacantes = function(datos, cb){
+    var sentenciaSQL = "CALL sp_updHorariosVacantes(";
+    sentenciaSQL += datos.id + ",";
+    sentenciaSQL += datos.mes + ",";
+    sentenciaSQL += datos.anio + ",";
+    sentenciaSQL += datos.id_horario + ",";
+    sentenciaSQL += datos.vacantes + ")";
+
+    console.log(sentenciaSQL);
+    conn.query(sentenciaSQL, cb);
+}
+
 model.eliminarRegistroTabla = function(datos, cb){
     var sentenciaSQL = "CALL sp_eliminarRegistroTabla(";
     sentenciaSQL += datos.id + ",";
@@ -918,7 +950,7 @@ model.listaCobroDet = function(datos, cb){
     sentenciaSQL += "inner join gim_matricula m on m.id_alumno = a.id_alumno and m.id_horario = d.id_horario and m.estado = 'V' ";
     sentenciaSQL += "WHERE d.id_cobro = "+datos.id+" ";
     sentenciaSQL += "AND d.estado = 'V' ";
-    sentenciaSQL += "ORDER BY m.anio_matricula, m.mes_matricula ";
+    //sentenciaSQL += "ORDER BY m.anio_matricula, m.mes_matricula ";
 
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
@@ -947,6 +979,34 @@ model.updateFormaPagoReportePagosAlumno = function(datos, cb){
     sentenciaSQL += "CALL sp_updateFormaPagoReportePagosAlumno(";
     sentenciaSQL += datos.id + ",";
     sentenciaSQL += "'" + datos.descripcion + "')";
+    console.log(sentenciaSQL);
+    conn.query(sentenciaSQL, cb);
+}
+
+model.chkVacantes = function(datos, cb){
+    //var sentenciaSQL = "SELECT * FROM gim_cobro_det WHERE id_cobro = "  + datos.id;
+    var sentenciaSQL = "";
+    sentenciaSQL += "SELECT ";
+    sentenciaSQL += "m.anio_matricula ";
+    sentenciaSQL += ",m.mes_matricula ";
+    sentenciaSQL += ",h.id_horario ";
+    sentenciaSQL += ",IFNULL(v.vacantes,0) as capacidad ";
+    sentenciaSQL += ",COUNT(anio_matricula) as total ";
+    sentenciaSQL += ",(v.vacantes - COUNT(anio_matricula)) as vacantes ";
+    sentenciaSQL += "FROM gim_matricula m ";
+    sentenciaSQL += "inner join gim_horarios h ON m.id_horario = h.id_horario ";
+    sentenciaSQL += "left join gim_vacantes v ON v.anio = m.anio_matricula and v.mes = m.mes_matricula and v.id_horario = h.id_horario ";
+    sentenciaSQL += "WHERE m.mes_matricula = "+datos.mes+" ";
+    sentenciaSQL += "AND m.anio_matricula = "+datos.anio+" ";
+    sentenciaSQL += "AND h.id_horario = "+datos.id_horario+" ";
+    sentenciaSQL += "AND m.estado = 'V' ";
+    sentenciaSQL += "GROUP BY ";
+    sentenciaSQL += "m.anio_matricula ";
+    sentenciaSQL += ",m.mes_matricula ";
+    sentenciaSQL += ",h.clase ";
+    sentenciaSQL += ",CONCAT(h.hora_inicio,'-',h.hora_fin) ";
+    sentenciaSQL += ",v.vacantes ";
+
     console.log(sentenciaSQL);
     conn.query(sentenciaSQL, cb);
 }

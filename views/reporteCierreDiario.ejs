@@ -234,6 +234,12 @@
             {
                 id: 3, descripcion: "CREDITO"
             }
+            {
+                id: 4, descripcion: "DEPOSITO"
+            }
+            {
+                id: 5, descripcion: "TRANSFERENCIAS"
+            }
         ];
 
         $("#grid").jqxGrid(
@@ -246,7 +252,17 @@
                     selectionmode: 'singlerow',
                     pagesize: 20,
                     columns: [
-                        { text: 'id_matricula', align: 'center', datafield: 'id_matricula', cellsalign: 'center', width: '10%', aggregates: ['count'],
+                        /*{ text: 'id_matricula', align: 'center', datafield: 'id_matricula', cellsalign: 'center', width: '10%', aggregates: ['count'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },*/
+                        { text: 'Fecha', align: 'center', datafield: 'fecha_matricula', cellsalign: 'center', width: '10%',  aggregates: ['count'],
                             aggregatesrenderer: function (aggregates, column, element, summaryData) {
                                 var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
                                 $.each(aggregates, function (key, value) {
@@ -256,15 +272,14 @@
                                 return renderstring;
                             }
                         },
-                        { text: 'Fecha', align: 'center', datafield: 'fecha_matricula', cellsalign: 'center', width: '10%' },
 
                         { text: 'Alias', align: 'center', datafield: 'alias', cellsalign: 'left', width: '10%' },
                         { text: 'Alumno', align: 'center', datafield: 'alumno', cellsalign: 'left', width: '10%' },
                         { text: 'Tutor', align: 'center', datafield: 'tutor', cellsalign: 'left', width: '10%' },
 
                         { text: 'Horario', align: 'center', datafield: 'horario', cellsalign: 'left', width: '20%' },
-                        { text: 'Año', align: 'center', datafield: 'anio_matricula', cellsalign: 'center', width: '8%' },
-                        { text: 'Mes', align: 'center', datafield: 'mes_matricula', cellsalign: 'right', width: '7%' },
+                        /*{ text: 'Año', align: 'center', datafield: 'anio_matricula', cellsalign: 'center', width: '8%' },
+                        { text: 'Mes', align: 'center', datafield: 'mes_matricula', cellsalign: 'right', width: '7%' },*/
 
                         { text: 'Forma Pago', align: 'center', datafield: 'forma_pago', cellsalign: 'left', width: '9%' },
                         /*{ text: '&nbsp; &nbsp;&nbsp; Total &nbsp;&nbsp; &nbsp;', align: 'center', datafield: 'total', cellsalign: 'right', width: '10%', cellsformat: 'd2', aggregates: ['sum'],

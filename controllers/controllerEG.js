@@ -1532,6 +1532,80 @@ controller.listarAsistenciaHorarioAlumno = function(req, res, next){
     });
 }
 
+controller.listaHorariosVacantes = function(req, res, next){
+    model.listaHorariosVacantes(function(err, registros){
+        if(err){
+            //console.log("Error: " + err);
+            res.status(200).json({"status": "error"});
+        }else{
+            if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
+                //console.log(datos);
+                res.status(200).json({"status": "success", "registros": registros});
+            }else{
+                res.status(200).json({"status": "sinDatos"});
+            }
+        }
+    });
+}
+
+controller.saveHorariosVacantes = function(req, res, next){
+    var datos = {
+        mes: req.body.mes,
+        anio: req.body.anio,
+        id_horario: req.body.id_horario,
+        vacantes: req.body.vacantes
+    };
+    //console,log(datos);
+    //return false;
+    model.saveHorariosVacantes(datos, function(err, registros){
+        if(err){
+            //console.log("Error: " + err);
+            res.status(200).json({"status": "error"});
+        }else{
+            /*if(registros.length > 0){
+             res.status(200).json({"status": "success", "registros": registros});
+             }else{
+             res.status(200).json({"status": "sinDatos"});
+             }*/
+            res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+            res.header("Pragma", "no-cache");
+            res.header("Expires", 0);
+            res.status(200).json({"status": "success"});
+        }
+    });
+}
+
+controller.updHorariosVacantes = function(req, res, next){
+    var datos = {
+        id: req.body.id,
+        mes: req.body.mes,
+        anio: req.body.anio,
+        id_horario: req.body.id_horario,
+        vacantes: req.body.vacantes
+    };
+    //console,log(datos);
+    //return false;
+    model.updHorariosVacantes(datos, function(err, registros){
+        if(err){
+            //console.log("Error: " + err);
+            res.status(200).json({"status": "error"});
+        }else{
+            /*if(registros.length > 0){
+             res.status(200).json({"status": "success", "registros": registros});
+             }else{
+             res.status(200).json({"status": "sinDatos"});
+             }*/
+            res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+            res.header("Pragma", "no-cache");
+            res.header("Expires", 0);
+            res.status(200).json({"status": "success"});
+        }
+    });
+}
+
 controller.eliminarRegistroTabla = function(req, res, next){
     var datos = {
         id: req.body.id,
@@ -1752,6 +1826,30 @@ controller.updateFormaPagoReportePagosAlumno = function(req, res, next){
             /*}else{
              res.status(200).json({"status": "sinDatos"});
              }*/
+        }
+    });
+}
+
+controller.chkVacantes = function(req, res, next){
+    var datos = {
+        mes: req.params.mes,
+        anio: req.params.anio,
+        id_horario: req.params.id_horario
+    };
+    model.chkVacantes(datos, function(err, registros){
+        if(err){
+            //console.log("Error: " + err);
+            res.status(200).json({"status": "error"});
+        }else{
+            if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
+                //console.log(datos);
+                res.status(200).json({"status": "success", "registros": registros});
+            }else{
+                res.status(200).json({"status": "sinDatos"});
+            }
         }
     });
 }

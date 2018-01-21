@@ -183,6 +183,7 @@
                 </div>
             </div>
             <div class="modal-footer" style="margin-top: -10px;">
+                <span id="txtChkVacantes" style="margin-right: 15px; margin-top: 20px !important; font-size: 22px;"></span>
                 <button type="button" class="btn btn-primary" id="btnSave">Guardar</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCerrar">Cerrar</button>
             </div>
@@ -1404,8 +1405,6 @@
             )
         );
 
-
-
         $("#horario").jqxDropDownList(
             $.extend(
                 {}, vDefaultOptionsDropDownList, {
@@ -1643,8 +1642,44 @@
                 $("#profesor").jqxDropDownList('selectItem', queryResult[0].id_profesor);
                 $("#importe").val(queryResult[0].importe);
                 $("#saldo").val(queryResult[0].importe);
+
+                var parametros = {
+                    mes: $("#mes").val(),
+                    anio: $("#anio").val(),
+                    id_horario: value
+                };
+                fn_chkVacante(parametros);
+
             }
         });
+
+        function fn_chkVacante(parametros){
+            //console.log(parametros);
+            $.ajax({
+                type: "GET",
+                url: "/EG/chkVacantes/"+parametros.mes+"/"+parametros.anio+"/"+parametros.id_horario,
+                //data: parametros,
+                dataType: 'json',
+                success: function(result){
+                    //console.log(result);
+                    if(result.status == "success") {
+                        //console.log(result.registros);
+                        $("#txtChkVacantes").text("Total de Vacantes: "+result.registros[0].vacantes);
+                        //$('#btnSave').prop('disabled', true);
+                    }else if(result.status == "sinDatos"){
+                        alert("Error: No ha definido vacantes para este horario");
+                        $("#txtChkVacantes").text("No ha definido vacantes para este horario");
+                        return false;
+                    }else{
+                        alert("Error: Vuelva a intentarlo");
+                        $("#txtChkVacantes").text("");
+                        return false;
+                    }
+                },error: function (xhr, ajaxOptions, thrownError) {
+                    alert("ERROR: " + xhr.responseText+" - "+thrownError);
+                }
+            });
+        }
 
         $("#importe").change(function(){
             if(parseFloat($("#importe").val()) > parseFloat($("#saldo").val())){

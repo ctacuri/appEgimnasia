@@ -956,6 +956,7 @@ function fn_registrarCabCobro(arregloCab, arregloDet, impuesto){
 }
 
 function fn_viewTicket(idCobro){
+    console.log(idCobro);
     $.when(
         $.ajax("/EG/listaCobroCab/"+idCobro),
         $.ajax("/EG/listaCobroDet/"+idCobro)
@@ -968,6 +969,8 @@ function fn_viewTicket(idCobro){
             alert("Error: al cargar cobroCab");
             return false;
         }
+
+        console.log(json2);
 
         if(json2[0].status == "success"){
             console.log("DET");

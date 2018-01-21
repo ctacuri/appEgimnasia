@@ -56,6 +56,7 @@
                                                     <li id="m_parametros">Parametros</li>
                                                     <li id="m_registroVentas">Registro de Ventas</li>
                                                     <li id="m_edades">Edades</li>
+                                                    <li id="m_vacantes">Vacantes</li>
                                                 </ul>
                                             </li>
 
@@ -212,6 +213,7 @@
                     { name: 'm_parametros', type: 'int'},
                     { name: 'm_registroVentas', type: 'int'},
                     { name: 'm_edades', type: 'int'},
+                    { name: 'm_vacantes', type: 'int'},
                     { name: 'reportes', type: 'int'},
                     { name: 'r_alumnosPorClase', type: 'int'},
                     { name: 'r_deudasMatriculados', type: 'int'},
@@ -244,6 +246,7 @@
                             { text: 'Parametros', align: 'center', datafield: 'm_parametros', cellsalign: 'center', width: '7%' },
                             { text: 'Registro Vtas', align: 'center', datafield: 'm_registroVentas', cellsalign: 'center', width: '7%' },
                             { text: 'Edades', align: 'center', datafield: 'm_edades', cellsalign: 'center', width: '7%' },
+                            { text: 'Vacantes', align: 'center', datafield: 'm_vacantes', cellsalign: 'center', width: '7%' },
                             { text: 'Reportes', align: 'center', datafield: 'reportes', cellsalign: 'center', width: '7%' },
                             { text: 'Rep. Alumnos', align: 'center', datafield: 'r_alumnosPorClase', cellsalign: 'center', width: '7%' },
                             { text: 'Rep. Deudas', align: 'center', datafield: 'r_deudasMatriculados', cellsalign: 'center', width: '7%' },
@@ -251,7 +254,6 @@
                             { text: 'Suscripciones', align: 'center', datafield: 'suscripciones', cellsalign: 'center', width: '7%' },
                             { text: 'Cobros', align: 'center', datafield: 'cobros', cellsalign: 'center', width: '7%' },
                             { text: 'Estado', align: 'center', datafield: 'estado', cellsalign: 'center', width: '7%' }
-
                         ]
                     }
                 )
@@ -337,6 +339,7 @@
                 $("#jqxTree").jqxTree('checkItem', $("#m_parametros")[0], (data.m_parametros == 1) ? true  : false);
                 $("#jqxTree").jqxTree('checkItem', $("#m_registroVentas")[0], (data.m_registroVentas == 1) ? true  : false);
                 $("#jqxTree").jqxTree('checkItem', $("#m_edades")[0], (data.m_edades == 1) ? true  : false);
+                $("#jqxTree").jqxTree('checkItem', $("#m_vacantes")[0], (data.m_vacantes == 1) ? true  : false);
                 $("#jqxTree").jqxTree('checkItem', $("#reportes")[0], (data.reportes == 1) ? true  : false);
                 $("#jqxTree").jqxTree('checkItem', $("#r_alumnosPorClase")[0], (data.r_alumnosPorClase == 1) ? true  : false);
                 $("#jqxTree").jqxTree('checkItem', $("#r_deudasMatriculados")[0], (data.r_deudasMatriculados == 1) ? true  : false);

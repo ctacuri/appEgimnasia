@@ -81,6 +81,7 @@ passport.use(new passportLocal(
             m_parametros: registros[0].m_parametros,
             m_registroVentas: registros[0].m_registroVentas,
             m_edades: registros[0].m_edades,
+            m_vacantes: registros[0].m_vacantes,
             reportes: registros[0].reportes,
             r_alumnosPorClase: registros[0].r_alumnosPorClase,
             r_deudasMatriculados: registros[0].r_deudasMatriculados,

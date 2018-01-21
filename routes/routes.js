@@ -82,6 +82,12 @@ router.get('/edades', fnEstaAutenticado, function(req, res, next) {
     res.header("Expires", 0);
     res.render('edades', { usuario: req.user });
 });
+router.get('/vacantes', fnEstaAutenticado, function(req, res, next) {
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
+    res.render('vacantes', { usuario: req.user });
+});
 router.get('/registroVentas', fnEstaAutenticado, function(req, res, next) {
     res.header("Cache-Control", "no-cache, no-store, must-revalidate");
     res.header("Pragma", "no-cache");
@@ -220,6 +226,10 @@ router.get('/reporteresumenAlumnosClaseMatriculados/:mes/:anio', fnEstaAutentica
 router.get('/reporteRegistroVentas/:fechaInicio/:fechaFin/:rucEmpresa', fnEstaAutenticado, controladorEG.reporteRegistroVentas);
 router.get('/listarAsistenciaHorarioAlumno/:id_horario/:idAlumno', fnEstaAutenticado, controladorEG.listarAsistenciaHorarioAlumno);
 
+router.get('/listaHorariosVacantes/', fnEstaAutenticado, controladorEG.listaHorariosVacantes);
+router.post('/EG/saveHorariosVacantes/', fnEstaAutenticado, controladorEG.saveHorariosVacantes);
+router.post('/EG/updHorariosVacantes/', fnEstaAutenticado, controladorEG.updHorariosVacantes);
+
 router.post('/EG/eliminarRegistroTabla/', fnEstaAutenticado, controladorEG.eliminarRegistroTabla);
 
 router.post('/EG/updCorrelativo/', fnEstaAutenticado, controladorEG.updCorrelativo);
@@ -235,6 +245,7 @@ router.post('/EG/updSaldoMatricula', fnEstaAutenticado, controladorEG.updSaldoMa
 router.post('/updateProfesorReporteAlumno', fnEstaAutenticado, controladorEG.updateProfesorReporteAlumno);
 router.post('/updateFormaPagoReportePagosAlumno', fnEstaAutenticado, controladorEG.updateFormaPagoReportePagosAlumno);
 
+router.get('/EG/chkVacantes/:mes/:anio/:id_horario', fnEstaAutenticado, controladorEG.chkVacantes);
 
 router.post('/loguear',
 
