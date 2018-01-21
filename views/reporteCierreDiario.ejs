@@ -292,7 +292,7 @@
                                 return renderstring;
                             }
                         },*/
-                        { text: '&nbsp; &nbsp;&nbsp; Importe &nbsp;&nbsp; &nbsp;', align: 'center', datafield: 'importe', cellsalign: 'right', width: '10%', cellsformat: 'd2' , aggregates: ['sum'],
+                        { text: '&nbsp; &nbsp;&nbsp; Importe &nbsp;&nbsp; &nbsp;', align: 'center', datafield: 'importe', cellsalign: 'right', width: '10%', cellsformat: 'd2', aggregates: ['sum'],
                             aggregatesrenderer: function (aggregates, column, element, summaryData) {
                                 var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
                                 $.each(aggregates, function (key, value) {

@@ -124,6 +124,12 @@ router.get('/reporteResumenAlumnosClase', fnEstaAutenticado, function(req, res, 
     res.header("Expires", 0);
     res.render('reporteResumenAlumnosClase', { usuario: req.user });
 });
+router.get('/reporteSeleccion', fnEstaAutenticado, function(req, res, next) {
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
+    res.render('reporteSeleccion', { usuario: req.user });
+});
 router.get('/padronSocios', fnEstaAutenticado, function(req, res, next) {
     res.header("Cache-Control", "no-cache, no-store, must-revalidate");
     res.header("Pragma", "no-cache");
@@ -246,6 +252,8 @@ router.post('/updateProfesorReporteAlumno', fnEstaAutenticado, controladorEG.upd
 router.post('/updateFormaPagoReportePagosAlumno', fnEstaAutenticado, controladorEG.updateFormaPagoReportePagosAlumno);
 
 router.get('/EG/chkVacantes/:mes/:anio/:id_horario', fnEstaAutenticado, controladorEG.chkVacantes);
+
+router.get('/reporteSeleccion/:mes/:anio/', fnEstaAutenticado, controladorEG.reporteSeleccion);
 
 router.post('/loguear',
 

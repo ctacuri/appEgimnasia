@@ -1854,6 +1854,32 @@ controller.chkVacantes = function(req, res, next){
     });
 }
 
+controller.reporteSeleccion = function(req, res, next){
+    var datos = {
+        mes: req.params.mes,
+        anio: req.params.anio
+    };
+    model.reporteSeleccion(datos, function(err, registros){
+        if(err){
+            //console.log("Error: " + err);
+            res.status(200).json({"status": "error"});
+        }else{
+            if(registros.length > 0){
+                res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+                res.header("Pragma", "no-cache");
+                res.header("Expires", 0);
+                //console.log(datos);
+                res.status(200).json({"status": "success", "registros": registros});
+            }else{
+                res.status(200).json({"status": "sinDatos"});
+            }
+        }
+    });
+}
+
+
+
+
 controller.emisionTicket = function(req, res, next){
     var datos = {
         nroCorrelativo: 123456,

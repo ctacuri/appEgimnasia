@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Escuela de Gimnasia</title>
+    <script type="text/javascript" src="javascripts/scripts.js"></script>
+    <script type="text/javascript" src="javascripts/config.js"></script>
+</head>
+<body>
+<% include menu %>
+
+<div class="row fill-height-91">
+    <div class="col-md-12 fill-height-91">
+        <div id="jqxToolBar"></div>
+        <div id="grid"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var meses = [
+            { id_mes: 1, mes: "Enero"},
+            { id_mes: 2, mes: "Febrero"},
+            { id_mes: 3, mes: "Marzo"},
+            { id_mes: 4, mes: "Abril"},
+            { id_mes: 5, mes: "Mayo"},
+            { id_mes: 6, mes: "Junio"},
+            { id_mes: 7, mes: "Julio"},
+            { id_mes: 8, mes: "Agosto"},
+            { id_mes: 9, mes: "Setiembre"},
+            { id_mes: 10, mes: "Octubre"},
+            { id_mes: 11, mes: "Noviembre"},
+            { id_mes: 12, mes: "Diciembre"}
+        ];
+        var f = new Date();
+        var anios = [];
+
+        for(var x= f.getFullYear() + 1; x>= 2007;x--){
+            anios.push(x);
+        }
+        $("#jqxToolBar").jqxToolBar(
+                $.extend( {},
+                        vDefaultOptionsToolBar,
+                        {
+                            tools: 'custom | custom | custom | custom | custom | custom | custom | custom', //| input | custom | custom | custom | custom
+                            initTools: function (type, index, tool, menuToolIninitialization) {
+                                switch (index) {
+                                    case 0:
+                                        var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'><b>SELECCION &nbsp;&nbsp; </b></div>";
+                                        tool.append(label);
+                                        break;
+                                    case 1:
+                                        var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Mes: </div>";
+                                        tool.append(label);
+                                        break;
+                                    case 2:
+                                        /*var fecha = $("<div id='FechaIniOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
+                                            theme: theme2,
+                                            value: new Date(anioActual, mesActual, 1),
+                                            width: 105,
+                                            height: 25,
+                                            culture: 'es-ES'
+                                        });
+                                        tool.append(fecha);*/
+                                        tool.jqxDropDownList(
+                                            $.extend(
+                                                {}, vDefaultOptionsDropDownList, {
+                                                    width: 80,
+                                                    source: meses,
+                                                    displayMember: "mes",
+                                                    valueMember: "id_mes",
+                                                    dropDownWidth: 150,
+                                                    dropDownHeight: 150
+                                                }
+                                            )
+                                        );
+                                        tool.jqxDropDownList('selectItem', mesActual + 1);
+                                        break;
+                                    case 3:
+                                        var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Año: </div>";
+                                        tool.append(label);
+                                        break;
+                                    case 4:
+                                        /*var fecha = $("<div id='FechaFinOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
+                                            theme: theme2,
+                                            value: new Date(anioActual, mesActual, ultimoDiaMesActual),
+                                            width: 105,
+                                            height: 25,
+                                            culture: 'es-ES'
+                                        });
+                                        tool.append(fecha);*/
+                                        tool.jqxDropDownList(
+                                            $.extend(
+                                                {}, vDefaultOptionsDropDownList, {
+                                                    width: 80,
+                                                    source: anios,
+                                                    dropDownHeight: 100
+                                                }
+                                            )
+                                        );
+                                        tool.jqxDropDownList('selectItem', anioActual);
+                                        break;
+                                    /*case 5:
+                                        var toggleBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/notepad-20.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxToggleButton({
+                                            theme: theme2,
+                                            width: 30,
+                                            height: 19,
+                                            toggled: true
+                                        });
+                                        tool.append(toggleBtn);
+                                        toggleBtn.click(function (event) {
+                                            var toggled = toggleBtn.jqxToggleButton('toggled');
+                                            if (toggled) {
+                                                console.log('Toggled On');
+                                            } else {
+                                                console.log('Toggled Off');
+                                            }
+                                        });
+                                        break;*/
+                                    case 5:
+                                        var searchBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/search.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                            theme: theme2,
+                                            width: 30,
+                                            height: 19
+                                        });
+                                        tool.append(searchBtn);
+                                        searchBtn.click(function (event) {
+                                            /*var tools = $("#jqxToolBar").jqxToolBar("getTools");
+                                            var fechaIni = fn_convertFecha_DMY_to_SQL($("#FechaIniOS").val());
+                                            var fechaFin = fn_convertFecha_DMY_to_SQL($("#FechaFinOS").val());
+
+                                            */
+                                            //fn_reportePagosMatriculados(fechaIni, fechaFin);
+                                            var tools = $("#jqxToolBar").jqxToolBar("getTools");
+                                            var mes = tools[2].tool.jqxDropDownList('val');
+                                            var anio = tools[4].tool.jqxDropDownList('val');
+                                            //fn_reportePagosMatriculadosMesAnio(mes, anio);
+                                            fn_reporteSeleccion(mes, anio);
+                                        });
+                                        break;
+                                    case 6:
+                                        var exportBtn = $("<div style='float: left; margin-left: 2px; position: relative; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/icon_excel_02_20.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                            theme: theme2,
+                                            width: 30,
+                                            height: 19
+                                        });
+                                        tool.append(exportBtn);
+                                        exportBtn.click(function (event) {
+                                            var tools = $("#jqxToolBar").jqxToolBar("getTools");
+                                            var JSONData = $("#grid").jqxGrid('exportdata', 'json');
+                                            fn_JSONToCSVConvertor(JSONData, "RepSeleccion", "", true);
+                                        });
+                                        break;
+                                }
+                            }
+                        }
+                )
+        )
+
+        var arregloFormaPago = [
+            {
+                id: 1, descripcion: "EFECTIVO"
+            },
+            {
+                id: 2, descripcion: "DEBITO"
+            },
+            {
+                id: 3, descripcion: "CREDITO"
+            },
+            {
+                id: 4, descripcion: "DEPOSITO"
+            },
+            {
+                id: 5, descripcion: "TRANSFERENCIA"
+            }
+        ];
+
+        //var c = (a < b) ? "a is less than b"  : "a is not less than b";
+        var MES_CON_CERO = ( (mesActual + 1) < 10 ) ? "0"+(mesActual + 1) : (mesActual + 1);
+        var FECHA_INICIAL = "01/"+ MES_CON_CERO +"/"+anioActual;
+        var col_1, col_2, col_3, col_4, col_5, col_6 = "";
+        var col_7, col_8, col_9, col_10, col_11, col_12 = "";
+
+        col_1 = fn_subString(fn_editarFecha(FECHA_INICIAL, "-1", "m", "/"), 3, 10);
+        col_2 = fn_subString(fn_editarFecha(FECHA_INICIAL, "-2", "m", "/"), 3, 10);
+        col_3 = fn_subString(fn_editarFecha(FECHA_INICIAL, "-3", "m", "/"), 3, 10);
+        col_4 = fn_subString(fn_editarFecha(FECHA_INICIAL, "-4", "m", "/"), 3, 10);
+        col_5 = fn_subString(fn_editarFecha(FECHA_INICIAL, "-5", "m", "/"), 3, 10);
+        col_6 = fn_subString(fn_editarFecha(FECHA_INICIAL, "-6", "m", "/"), 3, 10);
+        col_7 = fn_subString(fn_editarFecha(FECHA_INICIAL, "-7", "m", "/"), 3, 10);
+        col_8= fn_subString(fn_editarFecha(FECHA_INICIAL, "-8", "m", "/"), 3, 10);
+        col_9 = fn_subString(fn_editarFecha(FECHA_INICIAL, "-9", "m", "/"), 3, 10);
+        col_10 = fn_subString(fn_editarFecha(FECHA_INICIAL, "-10", "m", "/"), 3, 10);
+        col_11 = fn_subString(fn_editarFecha(FECHA_INICIAL, "-11", "m", "/"), 3, 10);
+        col_12 = fn_subString(fn_editarFecha(FECHA_INICIAL, "-12", "m", "/"), 3, 10);
+
+        $("#grid").jqxGrid(
+            $.extend(
+                {}, vDefaultOptionsGrid,
+                {
+                    pageable: true,
+                    editable: true,
+                    pagermode: 'simple',
+                    selectionmode: 'singlerow',
+                    pagesize: 20,
+                    columns: [
+                        {
+                            text: '#', align: 'center', sortable: false, filterable: false, editable: false,
+                            groupable: false, draggable: false, resizable: false, cellsalign: 'right',
+                            datafield: '', columntype: 'number', width: 50,
+                            cellsrenderer: function (row, column, value) {
+                                return "<div style='margin: 4px; text-align: right;'>" + (value + 1) + "</div>";
+                            }
+                        },
+                        { text: 'Seleccion', align: 'center', datafield: 'alumno', cellsalign: 'left', width: '10%' },
+
+                        { text: col_1, align: 'center', datafield: 'mes_1', cellsalign: 'right', width: '7%', cellsformat: 'd2', aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },
+                        { text: col_2, align: 'center', datafield: 'mes_2', cellsalign: 'right', width: '7%', cellsformat: 'd2', aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },
+                        { text: col_3, align: 'center', datafield: 'mes_3', cellsalign: 'right', width: '7%', cellsformat: 'd2', aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },
+                        { text: col_4, align: 'center', datafield: 'mes_4', cellsalign: 'right', width: '7%', cellsformat: 'd2', aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },
+                        { text: col_5, align: 'center', datafield: 'mes_5', cellsalign: 'right', width: '7%', cellsformat: 'd2', aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },
+                        { text: col_6, align: 'center', datafield: 'mes_6', cellsalign: 'right', width: '7%', cellsformat: 'd2', aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },
+                        { text: col_7, align: 'center', datafield: 'mes_7', cellsalign: 'right', width: '7%', cellsformat: 'd2', aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },
+                        { text: col_8, align: 'center', datafield: 'mes_8', cellsalign: 'right', width: '7%', cellsformat: 'd2', aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },
+                        { text: col_9, align: 'center', datafield: 'mes_9', cellsalign: 'right', width: '7%', cellsformat: 'd2', aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },
+                        { text: col_10, align: 'center', datafield: 'mes_10', cellsalign: 'right', width: '7%', cellsformat: 'd2', aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },
+                        { text: col_11, align: 'center', datafield: 'mes_11', cellsalign: 'right', width: '7%', cellsformat: 'd2', aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },
+                        { text: col_12, align: 'center', datafield: 'mes_12', cellsalign: 'right', width: '7%', cellsformat: 'd2', aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        }
+
+                        /*{ text: 'Forma Pago', align: 'center', datafield: 'forma_pago', cellsalign: 'left', width: '9%' , columntype: 'dropdownlist',
+                            createeditor: function (row, value, editor) {
+                                editor.jqxDropDownList({
+                                    source: arregloFormaPago,
+                                    displayMember: 'descripcion',
+                                    valueMember: 'id',
+                                    autoDropDownHeight: true,
+                                    dropDownWidth: 130
+                                });
+                            }
+                        },*/
+
+                    ]
+                }
+            )
+        );
+
+        function fn_reportePagosMatriculados(fechaIni, fechaFin){
+            $.getJSON('/reportePagosMatriculadosAlumnos/'+fechaIni+'/'+fechaFin, function(json) {
+                console.log(json);
+                var source =
+                    {
+                        datatype: "json",
+                        updaterow: function (rowid, rowdata, commit) {
+                            fn_updateRowFormaPago(rowdata, commit);
+                        },
+                        datafields: [
+                            { name: 'fecha_matricula', type: 'string'},
+                            { name: 'id_horario', type: 'int'},
+                            { name: 'horario', type: 'string'},
+                            { name: 'anio_matricula', type: 'int'},
+                            { name: 'mes_matricula', type: 'int'},
+                            { name: 'sexo', type: 'string'},
+                            { name: 'edades', type: 'string'},
+                            { name: 'dias', type: 'string'},
+                            { name: 'hora', type: 'string'},
+                            { name: 'id_alumno', type: 'int'},
+                            { name: 'profesor', type: 'string'},
+                            { name: 'apellidos_alumno', type: 'string'},
+                            { name: 'nombres_alumno', type: 'string'},
+                            { name: 'apellidos_tutor', type: 'string'},
+                            { name: 'nombres_tutor', type: 'string'},
+                            /*{ name: 'nombres_alumno', type: 'string'},
+                            { name: 'apellidos_tutor', type: 'string'},
+                            { name: 'nombres_tutor', type: 'string'},
+                            { name: 'telefono_tutor', type: 'string'},
+                            { name: 'celular_tutor', type: 'string'},
+                            { name: 'email_tutor', type: 'string'},*/
+                            //{ name: 'fpago', type: 'string'},
+                            { name: 'forma_pago', type: 'string'},
+                            { name: 'total', type: 'float'},
+                            { name: 'pago', type: 'float'},
+                            { name: 'saldo', type: 'float'}
+                        ],
+                        localdata: json.registros[0]
+                    };
+                var dataAdapter = new $.jqx.dataAdapter(source);
+
+                $("#grid").jqxGrid(
+                {
+                    source: dataAdapter
+                });
+                $('#grid').jqxGrid('autoresizecolumns');
+            });
+        }
+
+        function fn_updateRowFormaPago(rowdata, commit){
+            //commit(true);
+            //console.log(rowdata);
+            //return false;
+            var datos = {
+                id: rowdata.id_matricula,
+                descripcion: rowdata.forma_pago
+            };
+            //console.log(datos);
+            //return false;
+            $.ajax({
+                type: "POST",
+                url: '/updateFormaPagoReportePagosAlumno',
+                data: datos,
+                dataType: 'json',
+                success: function(result){
+                    //console.log(result);
+                    if(result.status == "success") {
+                        commit(true);
+                        $('#grid').jqxGrid('autoresizecolumns');
+                        //alert("Proceso realizado satisfactoriamente");
+                        return false;
+                    }else{
+                        alert("Error: Vuelva a intentarlo");
+                        return false;
+                    }
+                },error: function (xhr, ajaxOptions, thrownError) {
+                    alert("ERROR: " + xhr.responseText+" - "+thrownError);
+                }
+            });
+        }
+
+        function fn_reporteSeleccion(mes, anio){
+            //console.log("MES:" + mes);
+            //console.log("ANIO:" + anio);
+            $.getJSON('/reporteSeleccion/'+mes+'/'+anio+"/", function(json) {
+                console.log(json);
+                var source =
+                    {
+                        datatype: "json",
+                        /*updaterow: function (rowid, rowdata, commit) {
+                            fn_updateRowFormaPago(rowdata, commit);
+                        },*/
+                        datafields: [
+                            { name: 'alumno', type: 'string'},
+                            { name: 'mes_1', type: 'float'},
+                            { name: 'mes_2', type: 'float'},
+                            { name: 'mes_3', type: 'float'},
+                            { name: 'mes_4', type: 'float'},
+                            { name: 'mes_5', type: 'float'},
+                            { name: 'mes_6', type: 'float'},
+                            { name: 'mes_7', type: 'float'},
+                            { name: 'mes_8', type: 'float'},
+                            { name: 'mes_9', type: 'float'},
+                            { name: 'mes_10', type: 'float'},
+                            { name: 'mes_11', type: 'float'},
+                            { name: 'mes_12', type: 'float'}
+                        ],
+                        localdata: json.registros[0]
+                    };
+                var dataAdapter = new $.jqx.dataAdapter(source);
+
+                var MES_CON_CERO = ( mes < 10 ) ? "0" + mes : mes;
+                var FECHA_INICIAL = "01/"+ MES_CON_CERO +"/"+anio;
+                var col_1, col_2, col_3, col_4, col_5, col_6 = "";
+                var col_7, col_8, col_9, col_10, col_11, col_12 = "";
+
+                col_1 = fn_subString(fn_editarFecha(FECHA_INICIAL, "-1", "m", "/"), 3, 10);
+                col_2 = fn_subString(fn_editarFecha(FECHA_INICIAL, "-2", "m", "/"), 3, 10);
+                col_3 = fn_subString(fn_editarFecha(FECHA_INICIAL, "-3", "m", "/"), 3, 10);
+                col_4 = fn_subString(fn_editarFecha(FECHA_INICIAL, "-4", "m", "/"), 3, 10);
+                col_5 = fn_subString(fn_editarFecha(FECHA_INICIAL, "-5", "m", "/"), 3, 10);
+                col_6 = fn_subString(fn_editarFecha(FECHA_INICIAL, "-6", "m", "/"), 3, 10);
+                col_7 = fn_subString(fn_editarFecha(FECHA_INICIAL, "-7", "m", "/"), 3, 10);
+                col_8= fn_subString(fn_editarFecha(FECHA_INICIAL, "-8", "m", "/"), 3, 10);
+                col_9 = fn_subString(fn_editarFecha(FECHA_INICIAL, "-9", "m", "/"), 3, 10);
+                col_10 = fn_subString(fn_editarFecha(FECHA_INICIAL, "-10", "m", "/"), 3, 10);
+                col_11 = fn_subString(fn_editarFecha(FECHA_INICIAL, "-11", "m", "/"), 3, 10);
+                col_12 = fn_subString(fn_editarFecha(FECHA_INICIAL, "-12", "m", "/"), 3, 10);
+
+                $("#grid").jqxGrid(
+                {
+                    source: dataAdapter,
+                    columns: [
+                        {
+                            text: '#', align: 'center', sortable: false, filterable: false, editable: false,
+                            groupable: false, draggable: false, resizable: false, cellsalign: 'right',
+                            datafield: '', columntype: 'number', width: 50,
+                            cellsrenderer: function (row, column, value) {
+                                return "<div style='margin: 4px; text-align: right;'>" + (value + 1) + "</div>";
+                            }
+                        },
+                        { text: 'Seleccion', align: 'center', datafield: 'alumno', cellsalign: 'left', width: '10%' },
+
+                        { text: col_1, align: 'center', datafield: 'mes_1', cellsalign: 'right', width: '7%', cellsformat: 'd2', aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },
+                        { text: col_2, align: 'center', datafield: 'mes_2', cellsalign: 'right', width: '7%', cellsformat: 'd2', aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },
+                        { text: col_3, align: 'center', datafield: 'mes_3', cellsalign: 'right', width: '7%', cellsformat: 'd2', aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },
+                        { text: col_4, align: 'center', datafield: 'mes_4', cellsalign: 'right', width: '7%', cellsformat: 'd2', aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },
+                        { text: col_5, align: 'center', datafield: 'mes_5', cellsalign: 'right', width: '7%', cellsformat: 'd2', aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },
+                        { text: col_6, align: 'center', datafield: 'mes_6', cellsalign: 'right', width: '7%', cellsformat: 'd2', aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },
+                        { text: col_7, align: 'center', datafield: 'mes_7', cellsalign: 'right', width: '7%', cellsformat: 'd2', aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },
+                        { text: col_8, align: 'center', datafield: 'mes_8', cellsalign: 'right', width: '7%', cellsformat: 'd2', aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },
+                        { text: col_9, align: 'center', datafield: 'mes_9', cellsalign: 'right', width: '7%', cellsformat: 'd2', aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },
+                        { text: col_10, align: 'center', datafield: 'mes_10', cellsalign: 'right', width: '7%', cellsformat: 'd2', aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },
+                        { text: col_11, align: 'center', datafield: 'mes_11', cellsalign: 'right', width: '7%', cellsformat: 'd2', aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        },
+                        { text: col_12, align: 'center', datafield: 'mes_12', cellsalign: 'right', width: '7%', cellsformat: 'd2', aggregates: ['sum'],
+                            aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                                var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                                $.each(aggregates, function (key, value) {
+                                    renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                                });
+                                renderstring += "</div>";
+                                return renderstring;
+                            }
+                        }
+
+                    ]
+                });
+                $('#grid').jqxGrid('autoresizecolumns');
+            });
+        }
+
+    });
+</script>
+</body>
+</html>

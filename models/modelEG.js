@@ -1011,4 +1011,14 @@ model.chkVacantes = function(datos, cb){
     conn.query(sentenciaSQL, cb);
 }
 
+model.reporteSeleccion = function(datos, cb){
+    var sentenciaSQL = "";
+    sentenciaSQL += "CALL sp_reporteSeleccion( ";
+    sentenciaSQL += datos.mes+", ";
+    sentenciaSQL += datos.anio+") ";
+
+    console.log(sentenciaSQL);
+    conn.query(sentenciaSQL, cb);
+}
+
 module.exports = model;
