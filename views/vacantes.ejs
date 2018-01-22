@@ -28,7 +28,7 @@
                                 <label for="anio" class="col-md-3 col-form-label col-form-label-sm">Año</label>
                                 <div class="col-md-3">
                                     <div id="anio"></div>
-                                    <input type="text" class="form-control form-control-sm" id="id">
+                                    <input type="hidden" class="form-control form-control-sm" id="id">
                                 </div>
 
                                 <label for="mes" class="col-md-3 col-form-label col-form-label-sm">Mes</label>
@@ -71,12 +71,11 @@
     </div>
 
 
-    <!--<div id='Menu'>
+    <div id='Menu'>
         <ul>
-            <li>Editar</li>
             <li>Eliminar</li>
         </ul>
-    </div>-->
+    </div>
 
     <div class="row fill-height-91">
         <div class="col-md-12 fill-height-91">
@@ -238,30 +237,52 @@
                     }
                 )
             );
-            //var contextMenu = $("#Menu").jqxMenu({ theme: theme3, width: 200, height: 58, autoOpenPopup: false, mode: 'popup'});
+            var contextMenu = $("#Menu").jqxMenu({
+                theme: theme3,
+                width: 180,
+                height: 30,
+                autoOpenPopup: false,
+                mode: 'popup'
+            });
             $("#grid").on('contextmenu', function () {
                 return false;
             });
 
-            /*$("#Menu").on('itemclick', function (event) {
+            $("#Menu").on('itemclick', function (event) {
                 var args = event.args;
                 var rowindex = $("#grid").jqxGrid('getselectedrowindex');
-
-                if ( $.trim($(args).text()) == "Editar" ) {
-                    editrow = rowindex;
-                    var offset = $("#jqxgrid").offset();
-                    $("#popupWindow").jqxWindow({ position: { x: parseInt(offset.left) + 60, y: parseInt(offset.top) + 60} });
-                    // get the clicked row's data and initialize the input fields.
-                    var dataRecord = $("#jqxgrid").jqxGrid('getrowdata', editrow);
-                    $("#firstName").val(dataRecord.firstname);
-                    // show the popup window.
-                    $("#popupWindow").jqxWindow('show');
-                } else if( $.trim($(args).text()) == "Eliminar" ) {
-                    var rowid = $("#jqxgrid").jqxGrid('getrowid', rowindex);
-                    $("#jqxgrid").jqxGrid('deleterow', rowid);
-
+                var dataRecord = $("#grid").jqxGrid('getrowdata', rowindex);
+                if( $.trim($(args).text()) == "Eliminar" ) {
+                    if(confirm("Esta seguro de eliminar el registro?")) {
+                        var rowid = $("#grid").jqxGrid('getrowid', rowindex);
+                        var datos = {
+                            id: dataRecord.id,
+                            tabla: 'gim_vacantes'
+                        };
+                        //console.log(datos);
+                        //return false;
+                        $.ajax({
+                            type: "POST",
+                            url: '/EG/eliminarRegistroTabla/',
+                            data: datos,
+                            dataType: 'json',
+                            success: function (result) {
+                                //console.log(result);
+                                if (result.status == "success") {
+                                    //alert("Proceso realizado correctamente");
+                                    $("#grid").jqxGrid('deleterow', rowid);
+                                    return false;
+                                } else {
+                                    alert("Error: Vuelva a intentarlo");
+                                    return false;
+                                }
+                            }, error: function (xhr, ajaxOptions, thrownError) {
+                                alert("ERROR: " + xhr.responseText + " - " + thrownError);
+                            }
+                        });
+                    }
                 }
-            });*/
+            });
             $("#grid").on('rowclick', function (event) {
                 if (event.args.rightclick) {
                     $("#grid").jqxGrid('selectrow', event.args.rowindex);
