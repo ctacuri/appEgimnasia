@@ -993,6 +993,7 @@
                     selectionmode: 'singlerow',
                     columns: [
                         { text: 'Fecha', align: 'center', datafield: 'fecha_matricula', cellsalign: 'center', width: '8%' },
+                        { text: 'Nro. Ticket', align: 'center', datafield: 'nro_ticket', cellsalign: 'right', width: '8%' },
                         { text: 'Año', align: 'center', datafield: 'anio_matricula', cellsalign: 'center', width: '7%' },
                         { text: 'Mes', align: 'center', datafield: 'mes', cellsalign: 'left', width: '7%' },
                         { text: 'Id matricula', align: 'center', datafield: 'id_matricula', cellsalign: 'right', width: '8%' },
@@ -1291,6 +1292,15 @@
                     //selectionmode: 'checkbox',
                     columns: [
                         { text: 'Clase', align: 'center', datafield: 'clase', cellsalign: 'left', width: '34%', aggregatesrenderer: function (aggregates, column, element, summaryData) {
+                            var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
+                            $.each(aggregates, function (key, value) {
+                                renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
+                            });
+                            renderstring += "</div>";
+                            return renderstring;
+                        }
+                        },
+                        { text: 'Nro. Ticket', align: 'center', datafield: 'nro_ticket', cellsalign: 'right', width: '34%', aggregatesrenderer: function (aggregates, column, element, summaryData) {
                             var renderstring = "<div class='jqx-widget-content jqx-widget-content-" + theme + "' style='float: right; width: 100%; height: 100%;'>";
                             $.each(aggregates, function (key, value) {
                                 renderstring += '<div style="position: relative; margin-right: 2px; margin-left: 4px; margin-top: 4px; text-align: right; overflow: hidden; font-size:14px;"><b>' + value + '</b></div>';
@@ -2720,6 +2730,7 @@
                             { name: 'edades', type: 'string'},
                             { name: 'hora', type: 'string'},
                             { name: 'fecha_matricula', type: 'string'},
+                            { name: 'nro_ticket', type: 'int'},
                             { name: 'anio_matricula', type: 'int'},
                             { name: 'mes_matricula', type: 'int'},
                             { name: 'mes', type: 'string'},
@@ -2756,6 +2767,7 @@
                     datatype: "json",
                     datafields: [
                         { name: 'clase', type: 'string'},
+                        { name: 'nro_ticket', type: 'int'},
                         { name: 'mes_matricula', type: 'string'},
                         { name: 'anio_matricula', type: 'int'},
                         { name: 'fecha_matricula', type: 'string'},
