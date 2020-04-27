@@ -22,10 +22,10 @@ var mysql = require("mysql"),
 	};
 
     opciones3 = {
-        host: "159.203.187.136",
+        host: "localhost", //159.203.187.136
         port: 3306,
         user: "root",
-        password: "CesarTacuri",
+        password: "968067516", //CesarTacuri
         database: "gimnasio",
         connectionLimit: 50,
         queueLimit: 0,
